@@ -1,0 +1,62 @@
+# Python 관련
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+*.swp
+
+# 환경 설정 파일
+.env
+config.py
+
+# Django 관련
+db.sqlite3-journal
+/media/
+staticfiles/
+*.log
+debug.log
+
+# Anaconda 환경
+.conda/
+.condarc
+*.conda
+*.ipynb_checkpoints
+
+# Jupyter Notebook 체크포인트
+.ipynb_checkpoints/
+
+# VSCode 관련 설정 파일
+.vscode/
+
+# MacOS 관련
+.DS_Store
+
+# MySQL DB 덤프 파일
+*.sql
+
+# Docker 관련
+docker-compose.yml
+Dockerfile
+.env.docker
+
+# 가상환경 폴더
+venv/
+env/
+ENV/
+.venv/
+
+# pipenv 관련
+Pipfile
+Pipfile.lock
+
+# pytest 관련
+.cache/
+
+# Migrations (선택 사항: 마이그레이션 파일을 제외할지 여부는 팀에서 결정)
+# */migrations/__pycache__/
+# */migrations/*.pyc
+
+# 데이터셋 관련
+*.mp3
+*.wav
+/lecture_video
