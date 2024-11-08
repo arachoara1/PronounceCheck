@@ -1,0 +1,284 @@
+_level1
+1. 모음 (A, E, I, O, U)
+A is for ant.
+A is for apple.
+A is for alligator.
+A is for airplane.
+A is for arm.
+E is for egg.
+E is for elephant.
+E is for envelope.
+E is for ear.
+E is for elbow.
+I is for igloo.
+I is for insect.
+I is for ice.
+I is for island.
+I is for idea.
+O is for octopus.
+O is for orange.
+O is for ostrich.
+O is for oven.
+O is for ox.
+U is for umbrella.
+U is for unicorn.
+U is for uniform.
+U is for uncle.
+U is for under.
+
+2. 입술 소리 (B, P, M)
+B is for ball.
+B is for banana.
+B is for bed.
+B is for bird.
+B is for book.
+P is for pig.
+P is for pen.
+P is for pizza.
+P is for plane.
+P is for park.
+M is for moon.
+M is for mouse.
+M is for milk.
+M is for map.
+M is for man.
+
+3. 카 소리 (C, K, Q)
+C is for cat.
+C is for car.
+C is for cake.
+C is for cup.
+C is for cow.
+K is for kite.
+K is for king.
+K is for key.
+K is for kangaroo.
+K is for kitchen.
+Q is for queen.
+Q is for quail.
+Q is for quick.
+Q is for quilt.
+Q is for quiet.
+
+4. 혀의 끝을 사용하는 소리 (D, T, N)
+D is for dog.
+D is for duck.
+D is for door.
+D is for drum.
+D is for doll.
+T is for tiger.
+T is for table.
+T is for tree.
+T is for train.
+T is for turtle.
+N is for nose.
+N is for nest.
+N is for net.
+N is for nail.
+N is for night.
+
+5. 입술과 이빨 소리 (F, V)
+F is for fish.
+F is for frog.
+F is for fan.
+F is for foot.
+F is for fork.
+V is for van.
+V is for violin.
+V is for vase.
+V is for volcano.
+V is for vest.
+
+6. 입천장에 혀를 대는 소리 (G, J)
+G is for goat.
+G is for gift.
+G is for girl.
+G is for gum.
+G is for gold.
+J is for jam.
+J is for jump.
+J is for jelly.
+J is for juice.
+J is for jacket.
+
+7. 호흡과 관련된 소리 (H, L, R)
+H is for hat.
+H is for hand.
+H is for house.
+H is for horse.
+H is for hill.
+L is for lion.
+L is for leaf.
+L is for lamp.
+L is for lake.
+L is for ladder.
+R is for rabbit.
+R is for robot.
+R is for rain.
+R is for ring.
+R is for road.
+
+8. 혀와 치아 사이 소리 (S, Z)
+S is for sun.
+S is for snake.
+S is for sock.
+S is for star.
+S is for spoon.
+Z is for zebra.
+Z is for zoo.
+Z is for zipper.
+Z is for zero.
+Z is for zigzag.
+
+9. 반모음 (W, Y)
+W is for whale.
+W is for window.
+W is for water.
+W is for wolf.
+W is for watch.
+Y is for yak.
+Y is for yellow.
+Y is for yogurt.
+Y is for yo-yo.
+Y is for yard.
+
+10. 혼합 소리 (X)
+X is for xylophone.
+X is for fox.
+X is for box.
+X is for mix.
+X is for six.
+
+
+_level2
+1. 모음 (A, E, I, O, U)
+What is it?
+It is an apple.
+What is this?
+This is an ant.
+What do you see?
+I see an airplane.
+What do you see?
+I see an egg.
+Who has an elephant?
+Ella has an elephant.
+Where is it?
+
+2. 입술 소리 (B, P, M)
+What is this?
+This is a ball.
+Who has the banana?
+Ben has the banana.
+Where is the book?
+The book is on the bed.
+What color is the bear?
+The bear is brown.
+Who has milk?
+Mia has milk.
+
+3. 카 소리 (C, K, Q)
+What do you see?
+I see a cat.
+What color is the car?
+The car is red.
+What is on the cake?
+Candles are on the cake.
+What do you see?
+I see a kite.
+Who is the king?
+The lion is the king.
+Where is the key?
+The key is on the table.
+
+4. 혀의 끝을 사용하는 소리 (D, T, N)
+What do you have?
+I have a dog.
+Who has the duck?
+Dan has the duck.
+Where is the door?
+The door is open.
+What do you hear?
+I hear a drum.
+What color is the doll?
+The doll is pink.
+Is it night or day now?
+
+5. 입술과 이빨 소리 (F, V)
+What do you see?
+I see a fish.
+Who has a frog?
+Fred has a frog.
+Where is the fan?
+The fan is in my room.
+What color are your feet?
+My feet are cold and blue!
+Do you like gold jewelry?
+Yes, I love gold jewelry.
+What color is the vase?
+
+6. 입천장에 혀를 대는 소리 (G, J)
+What do you see?
+I see a goat.
+Who has gum?
+George has gum.
+What is in the jam?
+Strawberries are in the jam.
+Where is the jacket?
+The jacket is on the chair.
+Who is jumping?
+Jack is jumping.
+Is it good to eat grass like a goat?
+
+7. 호흡과 관련된 소리 (H, L, R)
+What do you have on your head?
+I have a hat on my head.
+Who lives in that house?
+Henry lives in that house.
+Where are your hands now?
+My hands are in my pockets!
+What color is the lion?
+The lion is yellow.
+What do you see?
+I see a red rock.
+Where is the rabbit?
+The rabbit is in the garden.
+
+8. 혀와 치아 사이 소리 (S, Z)
+What is that?
+That is the sun.
+Where is the snake?
+The snake is in the grass.
+What color is the sock?
+The sock is blue.
+What is on the table?
+The toy is on the table.
+Who has a zipper?
+Zoe has a zipper.
+Is it soft?
+Yes, it is soft.
+
+9. 반모음 (W, Y)
+Who has water?
+Wendy has water.
+Where is the wolf?
+The wolf is in the forest.
+Is it windy today?
+Yes, it’s very windy!
+What color is your watch?
+My watch is black.
+Where is the yard?
+The yard is behind the house.
+Is yogurt sweet or sour?
+Yogurt is sour.
+
+10. 혼합 소리 (X)
+What is in the box?
+A toy is in the box.
+What do you see on the x-ray?
+I see bones on the x-ray.
+What does the fox do?
+The fox runs fast.
+Where is the ax?
+The ax is in the shed.
+Who has a six?
+Tom has a six.
