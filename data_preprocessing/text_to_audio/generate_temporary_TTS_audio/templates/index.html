@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Voice Recorder and TTS</title>
+</head>
+<body>
+    <h1>Flask 서버가 정상적으로 실행되었습니다!</h1>
+    <p>녹음 및 TTS 버튼을 사용해보세요.</p>
+    
+    <button onclick="startRecording()">녹음 시작</button>
+    <button onclick="stopRecording()">녹음 종료</button>
+    <button onclick="playTTS()">TTS 재생</button>
+    <button onclick="next()">다음</button>
+
+    <audio id="audioPlayer" controls></audio>
+    
+    <script>
+        let mediaRecorder;
+        let recordedChunks = [];
+
+        async function startRecording() {
+            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            mediaRecorder = new MediaRecorder(stream);
+            
+            mediaRecorder.ondataavailable = event => {
+                if (event.data.size > 0) {
+                    recordedChunks.push(event.data);
+                }
+            };
+            
+            mediaRecorder.onstop = saveRecording;
+            mediaRecorder.start();
+            console.log("녹음 시작");
+        }
+
+        function stopRecording() {
+            if (mediaRecorder) {
+                mediaRecorder.stop();
+                console.log("녹음 종료");
+            }
+        }
+
+        function saveRecording() {
+            const blob = new Blob(recordedChunks, { type: 'audio/mp3' });
+            const url = URL.createObjectURL(blob);
+            const audioPlayer = document.getElementById("audioPlayer");
+            audioPlayer.src = url;
+            console.log("녹음 파일 저장 완료");
+            recordedChunks = [];  // 다음 녹음을 위해 초기화
+        }
+
+        async function playTTS() {
+            const response = await fetch('/generate_tts', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text: "Hello, this is a sample text." })
+            });
+            const data = await response.json();
+            const audioPlayer = document.getElementById("audioPlayer");
+            audioPlayer.src = data.url;
+            audioPlayer.play();
+            console.log("TTS 파일 재생 중");
+        }
+
+        async function next() {
+            // TTS 파일 삭제 요청
+            await fetch('/delete_tts', { method: 'POST' });
+            console.log("TTS 파일 삭제 완료");
+        }
+    </script>
+</body>
+</html>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Voice Recorder and TTS</title>
+</head>
+<body>
+    <h1>Flask 서버가 정상적으로 실행되었습니다!</h1>
+    <p>녹음 및 TTS 버튼을 사용해보세요.</p>
+    
+    <button onclick="startRecording()">녹음 시작</button>
+    <button onclick="stopRecording()">녹음 종료</button>
+    <button onclick="playTTS()">TTS 재생</button>
+    <button onclick="next()">다음</button>
+
+    <audio id="audioPlayer" controls></audio>
+    
+    <script>
+        let mediaRecorder;
+        let recordedChunks = [];
+
+        async function startRecording() {
+            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            mediaRecorder = new MediaRecorder(stream);
+            
+            mediaRecorder.ondataavailable = event => {
+                if (event.data.size > 0) {
+                    recordedChunks.push(event.data);
+                }
+            };
+            
+            mediaRecorder.onstop = saveRecording;
+            mediaRecorder.start();
+            console.log("녹음 시작");
+        }
+
+        function stopRecording() {
+            if (mediaRecorder) {
+                mediaRecorder.stop();
+                console.log("녹음 종료");
+            }
+        }
+
+        function saveRecording() {
+            const blob = new Blob(recordedChunks, { type: 'audio/mp3' });
+            const url = URL.createObjectURL(blob);
+            const audioPlayer = document.getElementById("audioPlayer");
+            audioPlayer.src = url;
+            console.log("녹음 파일 저장 완료");
+            recordedChunks = [];  // 다음 녹음을 위해 초기화
+        }
+
+        async function playTTS() {
+            const response = await fetch('/generate_tts', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text: "Hello, this is a sample text." })
+            });
+            const data = await response.json();
+            const audioPlayer = document.getElementById("audioPlayer");
+            audioPlayer.src = data.url;
+            audioPlayer.play();
+            console.log("TTS 파일 재생 중");
+        }
+
+        async function next() {
+            // TTS 파일 삭제 요청
+            await fetch('/delete_tts', { method: 'POST' });
+            console.log("TTS 파일 삭제 완료");
+        }
+    </script>
+</body>
+</html>
