@@ -44,6 +44,7 @@ venv/
 env/
 ENV/
 .venv/
+.env/
 
 # pipenv 관련
 Pipfile
@@ -59,4 +60,4 @@ Pipfile.lock
 # 데이터셋 관련
 *.mp3
 *.wav
-/lecture_video
+#/lecture_video
