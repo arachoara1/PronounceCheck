@@ -1,0 +1,194 @@
+{
+    "categories": [
+        {
+            "category_name": "phonics",
+            "levels": [
+                {
+                    "level": 1,
+                    "scripts": [
+                        {
+                            "title": "모음 (A, E, I, O, U)",
+                            "contents": [
+                                "A is for ant.",
+                                "A is for apple.",
+                                "A is for alligator.",
+                                "A is for airplane.",
+                                "A is for arm.",
+                                "E is for egg.",
+                                "E is for elephant.",
+                                "E is for envelope.",
+                                "E is for ear.",
+                                "E is for elbow.",
+                                "I is for igloo.",
+                                "I is for insect.",
+                                "I is for ice.",
+                                "I is for island.",
+                                "I is for idea.",
+                                "O is for octopus.",
+                                "O is for orange.",
+                                "O is for ostrich.",
+                                "O is for oven.",
+                                "O is for ox.",
+                                "U is for umbrella.",
+                                "U is for unicorn.",
+                                "U is for uniform.",
+                                "U is for uncle.",
+                                "U is for under."
+                            ]
+                        },
+                        {
+                            "title": "입술 소리 (B, P, M)",
+                            "contents": [
+                                "B is for ball.",
+                                "B is for banana.",
+                                "B is for bed.",
+                                "B is for bird.",
+                                "B is for book.",
+                                "P is for pig.",
+                                "P is for pen.",
+                                "P is for pizza.",
+                                "P is for plane.",
+                                "P is for park.",
+                                "M is for moon.",
+                                "M is for mouse.",
+                                "M is for milk.",
+                                "M is for map.",
+                                "M is for man."
+                            ]
+                        },
+                        {
+                            "title": "카 소리 (C, K, Q)",
+                            "contents": [
+                                "C is for cat.",
+                                "C is for car.",
+                                "C is for cake.",
+                                "C is for cup.",
+                                "C is for cow.",
+                                "K is for kite.",
+                                "K is for king.",
+                                "K is for key.",
+                                "K is for kangaroo.",
+                                "K is for kitchen.",
+                                "Q is for queen.",
+                                "Q is for quail.",
+                                "Q is for quick.",
+                                "Q is for quilt.",
+                                "Q is for quiet."
+                            ]
+                        },
+                        {
+                            "title": "혀의 끝을 사용하는 소리 (D, T, N)",
+                            "contents": [
+                                "D is for dog.",
+                                "D is for duck.",
+                                "D is for door.",
+                                "D is for drum.",
+                                "D is for doll.",
+                                "T is for tiger.",
+                                "T is for table.",
+                                "T is for tree.",
+                                "T is for train.",
+                                "T is for turtle.",
+                                "N is for nose.",
+                                "N is for nest.",
+                                "N is for net.",
+                                "N is for nail.",
+                                "N is for night."
+                            ]
+                        },
+                        {
+                            "title": "입술과 이빨 소리 (F, V)",
+                            "contents": [
+                                "F is for fish.",
+                                "F is for frog.",
+                                "F is for fan.",
+                                "F is for foot.",
+                                "F is for fork.",
+                                "V is for van.",
+                                "V is for violin.",
+                                "V is for vase.",
+                                "V is for volcano.",
+                                "V is for vest."
+                            ]
+                        },
+                        {
+                            "title": "입천장에 혀를 대는 소리 (G, J)",
+                            "contents": [
+                                "G is for goat.",
+                                "G is for gift.",
+                                "G is for girl.",
+                                "G is for gum.",
+                                "G is for gold.",
+                                "J is for jam.",
+                                "J is for jump.",
+                                "J is for jelly.",
+                                "J is for juice.",
+                                "J is for jacket."
+                            ]
+                        },
+                        {
+                            "title": "호흡과 관련된 소리 (H, L, R)",
+                            "contents": [
+                                "H is for hat.",
+                                "H is for hand.",
+                                "H is for house.",
+                                "H is for horse.",
+                                "H is for hill.",
+                                "L is for lion.",
+                                "L is for leaf.",
+                                "L is for lamp.",
+                                "L is for lake.",
+                                "L is for ladder.",
+                                "R is for rabbit.",
+                                "R is for robot.",
+                                "R is for rain.",
+                                "R is for ring.",
+                                "R is for road."
+                            ]
+                        },
+                        {
+                            "title": "혀와 치아 사이 소리 (S, Z)",
+                            "contents": [
+                                "S is for sun.",
+                                "S is for snake.",
+                                "S is for sock.",
+                                "S is for star.",
+                                "S is for spoon.",
+                                "Z is for zebra.",
+                                "Z is for zoo.",
+                                "Z is for zipper.",
+                                "Z is for zero.",
+                                "Z is for zigzag."
+                            ]
+                        },
+                        {
+                            "title": "반모음 (W, Y)",
+                            "contents": [
+                                "W is for whale.",
+                                "W is for window.",
+                                "W is for water.",
+                                "W is for wolf.",
+                                "W is for watch.",
+                                "Y is for yak.",
+                                "Y is for yellow.",
+                                "Y is for yogurt.",
+                                "Y is for yo-yo.",
+                                "Y is for yard."
+                            ]
+                        },
+                        {
+                            "title": "혼합 소리 (X)",
+                            "contents": [
+                                "X is for xylophone.",
+                                "X is for fox.",
+                                "X is for box.",
+                                "X is for mix.",
+                                "X is for six."
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
