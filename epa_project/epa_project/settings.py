@@ -143,9 +143,8 @@ AWS_S3_REGION_NAME = config('AWS_S3_REGION_NAME')
 # 파일 URL에 인증 토큰을 포함하지 않음
 AWS_QUERYSTRING_AUTH = False
 
-# 선택적으로 S3 파일 URL의 기본 도메인을 설정
-AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
-
-
+# 각 버킷의 기본 도메인 설정
+AWS_S3_CUSTOM_DOMAIN_USER = f"{AWS_STORAGE_BUCKET_NAME_USER}.s3.{AWS_S3_REGION_NAME}.amazonaws.com"
+AWS_S3_CUSTOM_DOMAIN_STANDARD = f"{AWS_STORAGE_BUCKET_NAME_STANDARD}.s3.{AWS_S3_REGION_NAME}.amazonaws.com"
 
 AUTH_USER_MODEL = 'core.User'
