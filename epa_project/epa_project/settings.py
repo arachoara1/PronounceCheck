@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -129,13 +130,22 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-"""s3 개설후 건들기
+
+# AWS S3 설정
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-AWS_ACCESS_KEY_ID = 'your_access_key'
-AWS_SECRET_ACCESS_KEY = 'your_secret_key'
-AWS_STORAGE_BUCKET_NAME = 'your_bucket_name'
-AWS_QUERYSTRING_AUTH = False  # 파일 URL에서 인증 토큰 제외
-"""
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME_USER = config('AWS_STORAGE_BUCKET_NAME_USER')
+AWS_STORAGE_BUCKET_NAME_STANDARD = config('AWS_STORAGE_BUCKET_NAME_STANDARD')
+AWS_S3_REGION_NAME = config('AWS_S3_REGION_NAME')
+
+# 파일 URL에 인증 토큰을 포함하지 않음
+AWS_QUERYSTRING_AUTH = False
+
+# 선택적으로 S3 파일 URL의 기본 도메인을 설정
+AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
+
+
 
 AUTH_USER_MODEL = 'core.User'
