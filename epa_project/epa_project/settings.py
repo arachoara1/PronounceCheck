@@ -137,3 +137,5 @@ AWS_SECRET_ACCESS_KEY = 'your_secret_key'
 AWS_STORAGE_BUCKET_NAME = 'your_bucket_name'
 AWS_QUERYSTRING_AUTH = False  # 파일 URL에서 인증 토큰 제외
 """
+
+AUTH_USER_MODEL = 'core.User'
