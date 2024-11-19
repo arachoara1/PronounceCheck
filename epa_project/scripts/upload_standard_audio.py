@@ -27,20 +27,6 @@ s3 = boto3.client(
 BASE_AUDIO_FOLDER = "../../Data"  # Data/novel 폴더 경로
 BUCKET_NAME = settings.AWS_STORAGE_BUCKET_NAME_STANDARD  # 표준 음성 파일용 버킷
 
-
-# [디버깅] 파일 경로가 유효한지 출력
-if not os.path.exists(BASE_AUDIO_FOLDER):
-    print(f"Folder not found: {BASE_AUDIO_FOLDER}")
-for root, dirs, files in os.walk(BASE_AUDIO_FOLDER):
-    print(f"Scanning folder: {root}")
-    for file_name in files:
-        print(f"Found file: {file_name}")
-
-# [디버깅] boto3 클라이언트가 S3 버킷에 접근할 수 있는지 확인
-print(f"AWS_ACCESS_KEY_ID: {settings.AWS_ACCESS_KEY_ID}")
-print(f"AWS_STORAGE_BUCKET_NAME_STANDARD: {BUCKET_NAME}")
-
-
 def upload_standard_audio_to_s3():
     if not os.path.exists(BASE_AUDIO_FOLDER):
         print(f"Folder not found: {BASE_AUDIO_FOLDER}")
@@ -74,3 +60,8 @@ def upload_standard_audio_to_s3():
                 except Exception as e:
                     print(f"Error processing {file_name}: {e}")
 
+# [실행]음성 파일 S3에 업로드 & 파일 경로 postgresql에 업로드
+if __name__ == "__main__":
+    print("Starting S3 upload process...")
+    upload_standard_audio_to_s3()
+    print("S3 upload process completed.")
