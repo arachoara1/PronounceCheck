@@ -60,7 +60,10 @@
         {% endif %}
         <form method="POST">
             {% csrf_token %}
-            {{ form.as_p }}
+            
+            <table>
+                {{ form.as_table }}
+            </table>
             <button type="submit">로그인</button>
         </form>
         <div class="redirect-links">

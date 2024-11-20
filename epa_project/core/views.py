@@ -53,9 +53,21 @@ def login_view(request):
 
 
 # 템플릿 기반 로그아웃
-def logout_view(request):
-    logout(request)
-    return redirect('login')
+def login_view(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            id = form.cleaned_data['id']
+            password = form.cleaned_data['password']
+            user = authenticate(request, username=id, password=password)  # `username`에 `id` 전달
+            if user:
+                login(request, user)
+                return redirect('mypage')  # 로그인 후 마이페이지로 리디렉션
+            else:
+                messages.error(request, "아이디 또는 비밀번호가 잘못되었습니다.")
+    else:
+        form = LoginForm()
+    return render(request, 'login.html', {'form': form})
 
 
 # REST API 기반 회원가입
@@ -102,7 +114,9 @@ def mypage_view(request):
 # 서재 뷰
 @login_required
 def library_view(request):
-    return render(request, 'library.html', {'user': request.user})
+    # 서재 페이지에 표시할 데이터
+    books = [{"id": i, "title": f"책 {i}"} for i in range(1, 5)]  # 예제 데이터
+    return render(request, 'library.html', {'user': request.user, 'books': books})
 
 
 class UserPronunciationView(APIView):
