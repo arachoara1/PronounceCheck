@@ -1,10 +1,27 @@
 from django.contrib import admin
-from .models import User, UserSession, Lesson, UserPronunciation, FeedbackLog, Recommendation
+from .models import (
+    UserLoginLog,
+    UserSession,
+    LessonNovel,
+    LessonConversation,
+    LessonPhonics,
+    UserPronunciation,
+    FeedbackLog,
+    Recommendation,
+    UserScore,
+)
 
-# 모델 등록
-admin.site.register(User)
+# 사용자 관련 모델
+admin.site.register(UserLoginLog)
 admin.site.register(UserSession)
-admin.site.register(Lesson)
+
+# Lesson 관련 모델
+admin.site.register(LessonNovel)
+admin.site.register(LessonConversation)
+admin.site.register(LessonPhonics)
+
+# 기타 모델
 admin.site.register(UserPronunciation)
 admin.site.register(FeedbackLog)
 admin.site.register(Recommendation)
+admin.site.register(UserScore)

@@ -4,6 +4,55 @@ from rest_framework import status
 from .models import UserPronunciation
 from .serializers import UserPronunciationSerializer
 from .storages import UserAudioStorage  # 사용자 음성 파일용 스토리지 클래스
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth import get_user_model
+import json
+
+User = get_user_model()
+
+
+@csrf_exempt
+def register(request):
+    """회원가입 뷰"""
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        username = data.get('username')
+        email = data.get('email')
+        password = data.get('password')
+
+        if not username or not email or not password:
+            return JsonResponse({'error': 'All fields are required.'}, status=400)
+
+        try:
+            user = User(username=username, email=email)
+            user.set_password(password)  # 비밀번호 암호화 후 저장
+            user.save()
+            return JsonResponse({'message': 'User created successfully!'}, status=201)
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=400)
+
+    return JsonResponse({'error': 'Invalid HTTP method'}, status=405)
+
+@csrf_exempt
+def login(request):
+    """로그인 뷰"""
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        username = data.get('username')
+        password = data.get('password')
+
+        try:
+            user = User.objects.get(username=username)
+            if user.check_password(password):
+                return JsonResponse({'message': 'Login successful!'}, status=200)
+            else:
+                return JsonResponse({'error': 'Invalid password.'}, status=400)
+        except User.DoesNotExist:
+            return JsonResponse({'error': 'User not found.'}, status=404)
+
+    return JsonResponse({'error': 'Invalid HTTP method'}, status=405)
+
 
 class UserPronunciationView(APIView):
     def get(self, request):

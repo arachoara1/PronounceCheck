@@ -17,7 +17,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-from core.views import UserPronunciationView
+from core.views import UserPronunciationView, register, login
 from django.conf import settings
 from django.conf.urls.static import static
 from django.http import HttpResponse
@@ -27,6 +27,8 @@ def home_view(request):
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path('register/', register, name='register'),  # 회원가입 엔드포인트
+    path('login/', login, name='login'),          # 로그인 엔드포인트
     path("api/pronunciation/", UserPronunciationView.as_view(), name="user_pronunciation"),
     path("", home_view, name="home"),  # 루트 경로 추가
 ]

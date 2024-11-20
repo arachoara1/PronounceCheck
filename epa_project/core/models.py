@@ -1,42 +1,9 @@
+from django.contrib.auth.models import User  # Django 기본 User 모델 사용
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes.fields import GenericForeignKey
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
-from django.contrib.auth.hashers import make_password, check_password
 
-
-class User(models.Model):
-    """사용자 모델"""
-    username = models.CharField(max_length=50, unique=True)  # 사용자 이름
-    email = models.EmailField(unique=True)  # 이메일 (고유값)
-    password = models.CharField(max_length=128)  # 비밀번호 (암호화 필요)
-    is_active = models.BooleanField(default=True)  # 계정 활성화 여부
-    is_staff = models.BooleanField(default=False)  # 관리자 여부
-    date_joined = models.DateTimeField(auto_now_add=True)  # 가입 날짜
-
-    # Django 인증 시스템에서 요구하는 속성 추가
-    @property
-    def is_anonymous(self):
-        """익명 사용자 여부 (항상 False)"""
-        return False
-
-    @property
-    def is_authenticated(self):
-        """인증된 사용자 여부 (항상 True)"""
-        return True
-
-    # Django에서 요구하는 필드
-    USERNAME_FIELD = 'username'  # 인증에 사용할 필드
-    REQUIRED_FIELDS = ['email']  # createsuperuser 명령어에서 추가로 요구하는 필드
-
-    def __str__(self):
-        return self.username
-
-    # 비밀번호 암호화 및 확인 메서드 추가
-    def set_password(self, raw_password):
-        self.password = make_password(raw_password)
-        self.save()
-
-    def check_password(self, raw_password):
-        return check_password(raw_password, self.password)
 
 class UserLoginLog(models.Model):
     """사용자 로그인 로그"""
@@ -54,19 +21,73 @@ class UserSession(models.Model):
     ip_address = models.GenericIPAddressField(blank=True, null=True)  # IP 주소
 
 
-class Lesson(models.Model):
-    """레슨 정보"""
-    title = models.CharField(max_length=255)  # 레슨 제목
-    description = models.TextField()  # 레슨 설명
-    audio_file = models.URLField()  # 표준 음성 S3 URL
-    script = models.TextField()  # 화면에 표시할 스크립트
-    created_at = models.DateTimeField(auto_now_add=True)  # 레슨 생성 시간
+class LessonNovel(models.Model):
+    """소설(Novel) 레슨 정보"""
+    level = models.IntegerField()  # 레벨 번호
+    title = models.CharField(max_length=255)  # 스크립트 제목
+    sentence = models.TextField()  # JSON의 contents 리스트에서 추출한 개별 문장
+    audio_file = models.URLField()  # S3 URL을 저장할 필드
+    created_at = models.DateTimeField(auto_now_add=True)  # 생성 시간
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=['level', 'title', 'sentence'],
+                name='unique_lesson_novel_entry'
+            )
+        ]
+
+    def __str__(self):
+        return f"Novel - Level {self.level} - {self.title}: {self.sentence}"
+
+
+class LessonConversation(models.Model):
+    """회화(Conversation) 레슨 정보"""
+    level = models.IntegerField()  # 레벨 번호
+    title = models.CharField(max_length=255)  # 스크립트 제목
+    sentence = models.TextField()  # JSON의 contents 리스트에서 추출한 개별 문장
+    audio_file = models.URLField()  # S3 URL을 저장할 필드
+    created_at = models.DateTimeField(auto_now_add=True)  # 생성 시간
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=['level', 'title', 'sentence'],
+                name='unique_lesson_conversation_entry'
+            )
+        ]
+
+    def __str__(self):
+        return f"Conversation - Level {self.level} - {self.title}: {self.sentence}"
+
+
+class LessonPhonics(models.Model):
+    """파닉스(Phonics) 레슨 정보"""
+    level = models.IntegerField()  # 레벨 번호
+    title = models.CharField(max_length=255)  # 스크립트 제목
+    sentence = models.TextField()  # JSON의 contents 리스트에서 추출한 개별 문장
+    audio_file = models.URLField()  # S3 URL을 저장할 필드
+    created_at = models.DateTimeField(auto_now_add=True)  # 생성 시간
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=['level', 'title', 'sentence'],
+                name='unique_lesson_phonics_entry'
+            )
+        ]
+
+    def __str__(self):
+        return f"Phonics - Level {self.level} - {self.title}: {self.sentence}"
 
 
 class UserPronunciation(models.Model):
     """사용자 발음 평가"""
     user = models.ForeignKey(User, on_delete=models.CASCADE)  # 사용자 참조
-    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)  # 레슨 참조
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)  # Lesson 모델 타입
+    object_id = models.PositiveIntegerField()  # Lesson 모델 ID
+    lesson = GenericForeignKey('content_type', 'object_id')  # 다형성 참조
+
     audio_file = models.URLField()  # 업로드된 음성 파일 S3 URL
     score = models.FloatField(
         validators=[MinValueValidator(0.0), MaxValueValidator(100.0)],
@@ -75,6 +96,9 @@ class UserPronunciation(models.Model):
     )  # 발음 점수
     feedback = models.TextField(blank=True, null=True)  # 발음 피드백
     created_at = models.DateTimeField(auto_now_add=True)  # 업로드 시간
+
+    def __str__(self):
+        return f"User {self.user.id} - {self.lesson}: {self.score}"
 
 
 class FeedbackLog(models.Model):
@@ -87,8 +111,13 @@ class FeedbackLog(models.Model):
 class Recommendation(models.Model):
     """추천 레슨"""
     user = models.ForeignKey(User, on_delete=models.CASCADE)  # 사용자 참조
-    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)  # 레슨 참조
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)  # Lesson 모델 타입
+    object_id = models.PositiveIntegerField()  # Lesson 모델 ID
+    lesson = GenericForeignKey('content_type', 'object_id')  # 다형성 참조
     created_at = models.DateTimeField(auto_now_add=True)  # 추천 시간
+
+    def __str__(self):
+        return f"Recommendation for User {self.user.id} - {self.lesson}"
 
 
 class UserScore(models.Model):
