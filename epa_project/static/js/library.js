@@ -16,6 +16,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const book = document.createElement('div');
             book.classList.add('book');
             book.textContent = `읽고 있는 책 ${currentReadingPage}-${i + 1}`;
+
+            // 책 클릭 시 학습 화면으로 이동
+            book.onclick = () => {
+                const lessonId = (currentReadingPage - 1) * 10 + (i + 1); // 정수형 ID 생성
+                window.location.href = `/lesson/${lessonId}/`;
+            };
+
             bookshelf.appendChild(book);
         }
         readingBooksContainer.appendChild(bookshelf);
@@ -30,6 +37,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const book = document.createElement('div');
             book.classList.add('book');
             book.textContent = `학습 책 ${currentLearningPage}-${i + 1}`;
+
+            // 책 클릭 시 학습 화면으로 이동
+            book.onclick = () => {
+                const lessonId = (currentLearningPage - 1) * 10 + (i + 1); // 정수형 ID 생성
+                window.location.href = `/lesson/${lessonId}/`;
+            };
+
             bookshelf.appendChild(book);
         }
         learningBooksContainer.appendChild(bookshelf);

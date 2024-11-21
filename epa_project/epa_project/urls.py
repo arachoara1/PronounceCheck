@@ -23,7 +23,9 @@ from core.views import (
     logout_view,
     mypage_view,
     library_view,
-    UserPronunciationView
+    UserPronunciationView,
+    UpdateScoreView,
+    lesson_view,
 )
 from django.conf import settings
 from django.conf.urls.static import static
@@ -41,7 +43,9 @@ urlpatterns = [
     path("logout/", logout_view, name="logout"),       # 로그아웃
     path("mypage/", mypage_view, name="mypage"),       # 마이페이지
     path("library/", library_view, name="library"),    # 서재 페이지
-    path("api/pronunciation/", UserPronunciationView.as_view(), name="user_pronunciation"),  # API 엔드포인트
+    path("lesson/<int:lesson_id>/", lesson_view, name="lesson"),  # 학습 화면
+    path("upload/audio/", UserPronunciationView.as_view(), name="upload_audio"),
+    path("update/score/", UpdateScoreView.as_view(), name="update_score"),
 ]
 
 # 정적 파일 URL 추가 (개발 중에만 사용)
