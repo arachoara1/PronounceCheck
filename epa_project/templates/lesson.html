@@ -4,35 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ lesson.title }}</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 2rem;
-        }
-        h1, h2 {
-            text-align: center;
-        }
-        .content {
-            text-align: center;
-            margin: 20px;
-        }
-        .buttons {
-            text-align: center;
-            margin-top: 20px;
-        }
-        button {
-            padding: 10px 20px;
-            margin: 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-    </style>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/lesson.css' %}">
     <script src="{% static 'js/lesson.js' %}" defer></script>
 </head>
 <body>
@@ -51,6 +24,10 @@
             오디오 파일을 재생할 수 없습니다.
         </audio>
     </div>
+
+    <!-- 녹음 상태 표시 -->
+    <div id="recording-status" style="text-align: center; margin-top: 10px; font-size: 16px; color: red;"></div>
+
 
     <!-- 녹음 및 업로드 버튼 -->
     <div class="buttons">

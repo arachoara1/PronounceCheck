@@ -1,0 +1,110 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 2rem;
+    overflow-x: hidden;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+.section-container {
+    width: 70%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.dropdown {
+    display: inline-block;
+    margin: 10px;
+}
+
+select {
+    padding: 5px;
+    font-size: 14px;
+}
+
+.bookshelf-container-wrapper {
+    position: relative;
+    margin-top: 20px;
+}
+
+.bookshelf-container {
+    overflow-x: auto;
+    white-space: nowrap;
+    border: 1px solid #ddd;
+    display: flex;
+    gap: 10px;
+    scroll-behavior: smooth;
+    padding: 10px;
+    height: auto;
+}
+
+.bookshelf {
+    flex-shrink: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+}
+
+.book {
+    width: 150px;
+    height: 200px;
+    border: 1px solid #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.book:hover {
+    background-color: #e0e0e0;
+}
+
+.scroll-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scroll-button.left {
+    left: -20px;
+}
+
+.scroll-button.right {
+    right: -20px;
+}
+
+.scroll-button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.button:hover {
+    background-color: #45a049;
+}

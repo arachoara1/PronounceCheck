@@ -1,4 +1,7 @@
 let recorder, audioBlob;
+let recordingState = false; // 녹음 상태 변수
+let recordingStartTime = null; // 녹음 시작 시간
+let recordingTimer = null; // 녹음 타이머
 
 // 녹음 시작
 async function startRecording() {
@@ -11,15 +14,26 @@ async function startRecording() {
     };
 
     recorder.onstop = () => {
+        clearInterval(recordingTimer); // 타이머 정지
+        recordingState = false; // 녹음 상태 변경
+        updateRecordingStatus(); // 녹음 상태 UI 업데이트
+
         audioBlob = new Blob(audioChunks, { type: "audio/wav" });
         const audioUrl = URL.createObjectURL(audioBlob);
         document.getElementById("audio-preview").src = audioUrl;
+
         document.getElementById("upload-btn").disabled = false;
         document.getElementById("retry-btn").disabled = false; // 녹음 다시하기 버튼 활성화
     };
 
     recorder.start();
+    recordingState = true; // 녹음 상태 변경
+    recordingStartTime = Date.now(); // 녹음 시작 시간 기록
+    startRecordingTimer(); // 타이머 시작
+    updateRecordingStatus(); // 녹음 상태 UI 업데이트
+
     document.getElementById("stop-btn").disabled = false;
+    document.getElementById("record-btn").disabled = true;
 }
 
 // 녹음 중지
@@ -34,7 +48,30 @@ function retryRecording() {
     document.getElementById("audio-preview").src = ""; // 미리보기 초기화
     document.getElementById("upload-btn").disabled = true; // 업로드 버튼 비활성화
     document.getElementById("retry-btn").disabled = true; // 다시하기 버튼 비활성화
-    startRecording(); // 녹음 다시 시작
+    document.getElementById("record-btn").disabled = false; // 녹음 시작 버튼 활성화
+    clearInterval(recordingTimer); // 기존 타이머 정지
+    document.getElementById("recording-status").textContent = ""; // 상태 초기화
+
+    alert("기존 녹음을 초기화하고 다시 시작합니다."); // 알림 메시지 추가
+}
+
+// 녹음 상태 및 시간 업데이트
+function updateRecordingStatus() {
+    const statusElement = document.getElementById("recording-status");
+    if (recordingState) {
+        const elapsedTime = Math.floor((Date.now() - recordingStartTime) / 1000);
+        const minutes = Math.floor(elapsedTime / 60);
+        const seconds = elapsedTime % 60;
+        statusElement.textContent = `녹음 중... ${minutes}:${seconds.toString().padStart(2, "0")}`;
+        statusElement.style.color = "red";
+    } else {
+        statusElement.textContent = "";
+    }
+}
+
+// 타이머 시작
+function startRecordingTimer() {
+    recordingTimer = setInterval(updateRecordingStatus, 1000);
 }
 
 // 파일 업로드
@@ -57,10 +94,8 @@ async function uploadAudio() {
         } else {
             const error = await response.json();
             alert("녹음 파일 업로드 실패: " + error.error);
-            document.getElementById("retry-btn").disabled = false; // 업로드 실패 시 다시하기 버튼 활성화
         }
     } catch (e) {
         alert("업로드 중 오류 발생: " + e.message);
-        document.getElementById("retry-btn").disabled = false; // 업로드 실패 시 다시하기 버튼 활성화
     }
 }

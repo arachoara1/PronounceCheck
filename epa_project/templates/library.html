@@ -5,108 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>서재</title>
     {% load static %}
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 2rem;
-            overflow-x: hidden;
-        }
-        h1, h2 {
-            text-align: center;
-        }
-        .section-container {
-            width: 70%; /* 화면 크기 조정 (기존 대비 1.5배 줄임) */
-            margin: 0 auto;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            background-color: #f9f9f9;
-        }
-        .section-title {
-            font-size: 20px;
-            margin: 20px 0;
-            text-align: left;
-        }
-        .dropdown {
-            display: inline-block;
-            margin: 10px;
-        }
-        select {
-            padding: 5px;
-            font-size: 14px;
-        }
-        .bookshelf-container-wrapper {
-            position: relative;
-            margin-top: 20px;
-        }
-        .bookshelf-container {
-            overflow-x: auto;
-            white-space: nowrap;
-            border: 1px solid #ddd;
-            display: flex;
-            gap: 10px;
-            scroll-behavior: smooth;
-            padding: 10px;
-            height: auto;
-        }
-        .bookshelf {
-            flex-shrink: 0;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .book {
-            width: 150px;
-            height: 200px;
-            border: 1px solid #ddd;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background-color: #f9f9f9;
-        }
-        .book:hover {
-            background-color: #e0e0e0;
-        }
-        .scroll-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            font-size: 18px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .scroll-button.left {
-            left: -20px;
-        }
-        .scroll-button.right {
-            right: -20px;
-        }
-        .scroll-button:hover {
-            background-color: rgba(0, 0, 0, 0.7);
-        }
-        .button {
-            display: block;
-            margin: 20px auto;
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        .button:hover {
-            background-color: #45a049;
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'css/library.css' %}">
     <script src="{% static 'js/library.js' %}" defer></script>
 </head>
 <body>
@@ -126,9 +25,9 @@
         <div class="dropdown">
             <label for="contentSelect">콘텐츠:</label>
             <select id="contentSelect">
-                <option value="storybook">동화책</option>
-                <option value="novel">소설</option>
-                <option value="textbook">교과서</option>
+                <option value="storybook">파닉스</option>
+                <option value="novel">동화</option>
+                <option value="textbook">회화</option>
             </select>
         </div>
         <div class="dropdown">
@@ -136,7 +35,6 @@
             <select id="levelSelect">
                 <option value="1">레벨 1</option>
                 <option value="2">레벨 2</option>
-                <option value="3">레벨 3</option>
             </select>
         </div>
         <div class="bookshelf-container-wrapper">
@@ -146,4 +44,6 @@
         </div>
 
         <a href="{% url 'mypage' %}" class="button">마이페이지로 돌아가기</a>
-        </div>
+    </div>
+</body>
+</html>

@@ -31,8 +31,8 @@ s3 = boto3.client(
 )
 
 # Data 경로 정규화
-AUDIO_FOLDER_PATH = os.path.normpath(os.path.join(os.path.dirname(__file__), '../../Data/audio/novel'))
-JSON_FILE_PATH = os.path.normpath(os.path.join(os.path.dirname(__file__), '../../Data/text/novel.json'))
+AUDIO_FOLDER_PATH = os.path.normpath(os.path.join(os.path.dirname(__file__), '../../Data/audio/phonics'))
+JSON_FILE_PATH = os.path.normpath(os.path.join(os.path.dirname(__file__), '../../Data/text/phonics.json'))
 
 def upload_to_s3(file_path, s3_key):
     """S3에 파일 업로드"""
