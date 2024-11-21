@@ -72,7 +72,7 @@ class LessonPhonics(models.Model):
     class Meta:
         constraints = [
             models.UniqueConstraint(
-                fields=['level', 'title', 'sentence'],
+                fields=['level', 'title', 'sentence', 'audio_file'],
                 name='unique_lesson_phonics_entry'
             )
         ]

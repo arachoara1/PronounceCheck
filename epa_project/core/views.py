@@ -7,12 +7,14 @@ from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.http import JsonResponse
+from django.conf import settings
+from django.db import transaction
 from django.contrib.auth.decorators import login_required
 from .models import UserPronunciation, LessonNovel, LessonConversation, LessonPhonics
 from .serializers import UserPronunciationSerializer, UserSerializer
 from .forms import SignUpForm, LoginForm
 from .storages import UserAudioStorage
-from django.conf import settings
+from botocore.exceptions import NoCredentialsError
 import boto3
 
 
@@ -159,18 +161,40 @@ class UserPronunciationView(APIView):
         file_name = f"user_{user_id}/lesson_{lesson_id}/{audio_file.name}"
         try:
             s3.upload_fileobj(audio_file, bucket_name, file_name)
-            audio_url = f"https://{bucket_name}.s3.amazonaws.com/{file_name}"
+            audio_url = f"https://{bucket_name}.s3.{settings.AWS_S3_REGION_NAME}.amazonaws.com/{file_name}"
+        except NoCredentialsError:
+            return Response({'error': 'S3 credentials not available.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         except Exception as e:
             return Response({'error': f"Failed to upload file to S3: {str(e)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
         # UserPronunciation 테이블에 사용자 데이터 기록
-        UserPronunciation.objects.create(
-            user=user,
-            lesson=lesson,
-            audio_file=audio_url,
-        )
+        with transaction.atomic():
+            pronunciation = UserPronunciation.objects.create(
+                user=user,
+                lesson=lesson,
+                audio_file=audio_url,
+            )
 
-        return Response({'message': 'Audio file uploaded successfully', 'audio_url': audio_url}, status=status.HTTP_200_OK)
+        # 람다 호출로 채점 실행
+        lambda_client = boto3.client('lambda', region_name=settings.AWS_S3_REGION_NAME)
+        try:
+            response = lambda_client.invoke(
+                FunctionName='YourLambdaFunctionName',
+                InvocationType='Event',  # 비동기 실행
+                Payload=json.dumps({
+                    'audio_url': audio_url,
+                    'lesson_id': lesson_id,
+                    'user_id': user_id,
+                }),
+            )
+        except Exception as e:
+            return Response({'error': f"Failed to invoke Lambda function: {str(e)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+        return Response({
+            'message': 'Audio file uploaded successfully',
+            'audio_url': audio_url,
+            'lambda_status': response['StatusCode']
+        }, status=status.HTTP_200_OK)
 
 class UpdateScoreView(APIView):
     def post(self, request, *args, **kwargs):

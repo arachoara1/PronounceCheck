@@ -31,8 +31,8 @@ s3 = boto3.client(
 )
 
 # Data 경로 정규화
-AUDIO_FOLDER_PATH = os.path.normpath(os.path.join(os.path.dirname(__file__), '../../Data/audio/phonics'))
-JSON_FILE_PATH = os.path.normpath(os.path.join(os.path.dirname(__file__), '../../Data/text/phonics.json'))
+AUDIO_FOLDER_PATH = os.path.normpath(os.path.join(os.path.dirname(__file__), '../../Data/audio/conversation'))
+JSON_FILE_PATH = os.path.normpath(os.path.join(os.path.dirname(__file__), '../../Data/text/conversation.json'))
 
 def upload_to_s3(file_path, s3_key):
     """S3에 파일 업로드"""
@@ -59,46 +59,55 @@ def populate_lessons():
     """Lesson 테이블 채우기"""
     with open(JSON_FILE_PATH, 'r', encoding='utf-8') as json_file:
         data = json.load(json_file)
+        print(f"JSON file path: {JSON_FILE_PATH}")
 
-    for category in data['categories']:
-        category_name = category['category_name']
-        LessonModel = get_lesson_model(category_name)
+        
+        # JSON 데이터 디버깅: 모든 `title` 출력
+        print("Checking JSON data for titles...")
+        for category in data['categories']:
+            for level_data in category['levels']:
+                for script in level_data['scripts']:
+                    print(script['title'])  # 각 script의 title 출력
 
-        for level_data in category['levels']:
-            level = level_data['level']
-            for script in level_data['scripts']:
-                title = script['title']
-                sentences = script['contents']
+        # 기존 데이터 처리 로직
+        for category in data['categories']:
+            category_name = category['category_name']
+            LessonModel = get_lesson_model(category_name)
 
-                # 해당 script의 오디오 파일 폴더 경로
-                audio_folder = os.path.join(AUDIO_FOLDER_PATH, f"level_{level}", title)
-                if not os.path.exists(audio_folder):
-                    print(f"Audio folder not found: {audio_folder}")
-                    continue
+            for level_data in category['levels']:
+                level = level_data['level']
+                for script in level_data['scripts']:
+                    title = script['title']
+                    sentences = script['contents']
 
-                # 오디오 파일과 sentence 매핑
-                for i, sentence in enumerate(sentences, start=1):
-                    audio_filename = f"{title}_line_{i}.wav"
-                    audio_file_path = os.path.join(audio_folder, audio_filename)
+                    # 해당 script의 오디오 파일 폴더 경로
+                    audio_folder = os.path.join(AUDIO_FOLDER_PATH, f"level_{level}", title)
 
-                    if os.path.exists(audio_file_path):
-                        s3_key = f"{category_name}/level_{level}/{title}/{audio_filename}"
-                        audio_url = upload_to_s3(audio_file_path, s3_key)
+                    # 오디오 파일과 sentence 매핑
+                    for i, sentence in enumerate(sentences, start=1):
+                        audio_filename = f"{title}_line_{i}.wav"
+                        audio_file_path = os.path.join(audio_folder, audio_filename)
 
-                        if audio_url:
-                            lesson = LessonModel(
-                                level=level,
-                                title=title,
-                                sentence=sentence,
-                                audio_file=audio_url
-                            )
-                            try:
-                                lesson.save()
-                                print(f"Saved: {lesson}")
-                            except Exception as e:
-                                print(f"Error saving lesson for {audio_filename}: {e}")
-                    else:
-                        print(f"Audio file not found: {audio_file_path}")
+                        if os.path.exists(audio_file_path):
+                            s3_key = f"{category_name}/level_{level}/{title}/{audio_filename}"
+                            audio_url = upload_to_s3(audio_file_path, s3_key)
+
+                            if audio_url:
+                                lesson = LessonModel(
+                                    level=level,
+                                    title=title,
+                                    sentence=sentence,
+                                    audio_file=audio_url
+                                )
+                                
+                                try:
+                                    lesson.save()
+                                    print(f"Saved: {lesson}")
+                                except Exception as e:
+                                    print(f"Error saving lesson for {audio_filename}: {e}")
+                        else:
+                            print(f"Audio file not found: {audio_file_path}")
+
 
 if __name__ == "__main__":
     try:
