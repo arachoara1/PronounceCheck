@@ -17,22 +17,37 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-from core.views import UserPronunciationView, register, login
+from core.views import (
+    signup_view,
+    login_view,
+    logout_view,
+    mypage_view,
+    library_view,
+    UserPronunciationView,
+    UpdateScoreView,
+    lesson_view,
+)
 from django.conf import settings
 from django.conf.urls.static import static
 from django.http import HttpResponse
 
+# 간단한 홈 페이지
 def home_view(request):
-    return HttpResponse("홈페이지에 오신 것을 환영합니다!")  # 간단한 메시지 출력
+    return HttpResponse("홈페이지에 오신 것을 환영합니다!")  # 홈 화면 메시지
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
-    path('register/', register, name='register'),  # 회원가입 엔드포인트
-    path('login/', login, name='login'),          # 로그인 엔드포인트
-    path("api/pronunciation/", UserPronunciationView.as_view(), name="user_pronunciation"),
-    path("", home_view, name="home"),  # 루트 경로 추가
+    path("admin/", admin.site.urls),                   # Django Admin
+    path("", home_view, name="home"),                  # 홈 페이지
+    path("signup/", signup_view, name="signup"),       # 회원가입 페이지
+    path("login/", login_view, name="login"),          # 로그인 페이지
+    path("logout/", logout_view, name="logout"),       # 로그아웃
+    path("mypage/", mypage_view, name="mypage"),       # 마이페이지
+    path("library/", library_view, name="library"),    # 서재 페이지
+    path("lesson/<int:lesson_id>/", lesson_view, name="lesson"),  # 학습 화면
+    path("upload/audio/", UserPronunciationView.as_view(), name="upload_audio"),
+    path("update/score/", UpdateScoreView.as_view(), name="update_score"),
 ]
 
-# 정적 파일 URL 패턴 추가
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
+# 정적 파일 URL 추가 (개발 중에만 사용)
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

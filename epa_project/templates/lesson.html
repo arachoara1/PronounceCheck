@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ lesson.title }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2rem;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .content {
+            text-align: center;
+            margin: 20px;
+        }
+        .buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script src="{% static 'js/lesson.js' %}" defer></script>
+</head>
+<body>
+    <!-- Lesson 정보 표시 -->
+    <h1>{{ lesson.title }}</h1>
+    <div class="content">
+        <h2>레벨: {{ lesson.level }}</h2>
+        <p>{{ lesson.sentence }}</p>
+    </div>
+
+    <!-- Lesson Audio File -->
+    <div class="content">
+        <h3>표준 발음 오디오</h3>
+        <audio controls>
+            <source src="{{ lesson.audio_file }}" type="audio/mpeg">
+            오디오 파일을 재생할 수 없습니다.
+        </audio>
+    </div>
+
+    <!-- 녹음 및 업로드 버튼 -->
+    <div class="buttons">
+        <button id="record-btn" onclick="startRecording()">녹음 시작</button>
+        <button id="stop-btn" onclick="stopRecording()" disabled>녹음 중지</button>
+        <button id="upload-btn" onclick="uploadAudio()" disabled>업로드</button>
+        <button id="retry-btn" onclick="retryRecording()" disabled>녹음 다시하기</button>
+    </div>
+    <audio id="audio-preview" controls></audio>
+</body>
+</html>

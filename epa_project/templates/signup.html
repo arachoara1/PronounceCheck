@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2rem;
+        }
+        .form-container {
+            max-width: 400px;
+            margin: auto;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+        }
+        .form-field {
+            margin-bottom: 1rem;
+        }
+        .help-text {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        button {
+            width: 100%;
+            padding: 0.5rem;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .redirect-links {
+            text-align: center;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>회원가입</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-field">
+                {{ form.id.label_tag }}<br>
+                {{ form.id }}
+                <p class="help-text">아이디는 150자 이하의 영문, 숫자, 특수문자 @/./+/-/_만 사용할 수 있습니다.</p>
+            </div>
+            <div class="form-field">
+                {{ form.email.label_tag }}<br>
+                {{ form.email }}
+                <p class="help-text">올바른 이메일 형식을 입력해주세요.</p>
+            </div>
+            <div class="form-field">
+                {{ form.password1.label_tag }}<br>
+                {{ form.password1 }}
+                <p class="help-text">
+                    비밀번호는 다음 조건을 충족해야 합니다:<br>
+                    - 최소 8자 이상<br>
+                    - 숫자만으로 구성되지 않아야 합니다.<br>
+                    - 흔히 사용되는 비밀번호는 사용할 수 없습니다.
+                </p>
+            </div>
+            <div class="form-field">
+                {{ form.password2.label_tag }}<br>
+                {{ form.password2 }}
+                <p class="help-text">비밀번호를 다시 한 번 입력해주세요.</p>
+            </div>
+            <button type="submit">회원가입</button>
+        </form>
+        <div class="redirect-links">
+            <p><a href="{% url 'login' %}">이미 계정이 있으신가요? 로그인</a></p>
+        </div>
+    </div>
+</body>
+</html>
