@@ -22,7 +22,7 @@ class UserSession(models.Model):
 
 
 class LessonNovel(models.Model):
-    """소설(Novel) 레슨 정보"""
+    """동화(Novel) 레슨 정보"""
     level = models.IntegerField()  # 레벨 번호
     title = models.CharField(max_length=255)  # 스크립트 제목
     sentence = models.TextField()  # JSON의 contents 리스트에서 추출한 개별 문장
@@ -52,7 +52,7 @@ class LessonConversation(models.Model):
     class Meta:
         constraints = [
             models.UniqueConstraint(
-                fields=['level', 'title', 'sentence'],
+                fields=['level', 'title', 'sentence', 'audio_file'],
                 name='unique_lesson_conversation_entry'
             )
         ]
@@ -80,6 +80,21 @@ class LessonPhonics(models.Model):
     def __str__(self):
         return f"Phonics - Level {self.level} - {self.title}: {self.sentence}"
 
+class ReadingLog(models.Model):
+    """사용자가 읽고 있는 도서 로그"""
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="reading_logs")  # 사용자
+    lesson_id = models.PositiveIntegerField()  # 읽었던 Lesson ID
+    content_type = models.CharField(max_length=50)  # 콘텐츠 유형 ('phonics', 'novel', 'conversation')
+    title = models.CharField(max_length=255)  # Lesson 제목
+    level = models.PositiveIntegerField()  # Lesson 레벨
+    last_read_at = models.DateTimeField(auto_now=True)  # 마지막으로 읽은 시간
+    last_read_sentence_index = models.PositiveIntegerField(default=0)  # 마지막으로 읽은 문장 인덱스
+
+    class Meta:
+        unique_together = ('user', 'lesson_id', 'content_type')  # 사용자와 Lesson의 중복 로그 방지
+
+    def __str__(self):
+        return f"{self.user.username} - {self.title} (Level {self.level}, Last Sentence Index {self.last_read_sentence_index})"
 
 class UserPronunciation(models.Model):
     """사용자 발음 평가"""

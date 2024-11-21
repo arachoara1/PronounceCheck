@@ -8,97 +8,105 @@ document.addEventListener('DOMContentLoaded', () => {
     const contentSelect = document.getElementById('contentSelect');
     const levelSelect = document.getElementById('levelSelect');
 
-    let currentReadingPage = 1;
-
-    // 초기 학습 도서 표시
-    function initializeLearningBooks() {
-        levelSelect.innerHTML = `
-            <option value="1">레벨 1</option>
-            <option value="2">레벨 2</option>
-        `;
-        loadLearningBooks('storybook', '1');
+    if (!readingBooksContainer || !learningBooksContainer || !contentSelect || !levelSelect) {
+        console.error('Required DOM elements are missing. Check your HTML IDs.');
+        return;
     }
 
     // 읽고 있는 도서 로드
-    function loadReadingBooks() {
-        const bookshelf = document.createElement('div');
-        bookshelf.classList.add('bookshelf');
-        for (let i = 0; i < 10; i++) {
-            const book = document.createElement('div');
-            book.classList.add('book');
-            book.textContent = `읽고 있는 책 ${currentReadingPage}-${i + 1}`;
-            book.onclick = () => {
-                const lessonId = (currentReadingPage - 1) * 10 + (i + 1);
-                window.location.href = `/lesson/${lessonId}/`;
-            };
-            bookshelf.appendChild(book);
+    async function loadReadingBooks() {
+        readingBooksContainer.innerHTML = '';
+        try {
+            const response = await fetch('/api/reading_books/');
+            if (!response.ok) throw new Error('Failed to load reading books');
+            const books = await response.json();
+
+            if (books.length === 0) {
+                readingBooksContainer.innerHTML = '<p>아직 읽은 도서가 없습니다.</p>';
+                return;
+            }
+
+            const bookshelf = document.createElement('div');
+            bookshelf.classList.add('bookshelf');
+
+            books.forEach((book) => {
+                const bookElement = document.createElement('div');
+                bookElement.classList.add('book');
+                bookElement.textContent = `${book.title} (레벨 ${book.level})`;
+                bookElement.onclick = () => {
+                    window.location.href = `/lesson/${book.lesson_id}/`;
+                };
+                bookshelf.appendChild(bookElement);
+            });
+
+            readingBooksContainer.appendChild(bookshelf);
+        } catch (error) {
+            console.error('Error in loadReadingBooks:', error);
         }
-        readingBooksContainer.appendChild(bookshelf);
-        currentReadingPage++;
     }
 
-    // 학습 도서 로드
-    function loadLearningBooks(content, level) {
+    // 학습 도서 목록 로드
+    async function loadLearningBooks(contentType, level) {
         learningBooksContainer.innerHTML = '';
-        const bookshelf = document.createElement('div');
-        bookshelf.classList.add('bookshelf');
-        for (let i = 0; i < 10; i++) {
-            const book = document.createElement('div');
-            book.classList.add('book');
-            book.textContent = `${content} - 레벨 ${level} 책 ${i + 1}`;
-            book.onclick = () => {
-                const lessonId = `${content}-${level}-${i + 1}`;
-                window.location.href = `/lesson/${lessonId}/`;
-            };
-            bookshelf.appendChild(book);
+        try {
+            const response = await fetch(`/api/lessons/?content_type=${contentType}&level=${level}`);
+            if (!response.ok) throw new Error('Failed to load learning books');
+            const books = await response.json();
+
+            if (books.length === 0) {
+                learningBooksContainer.innerHTML = '<p>해당 콘텐츠와 레벨에 학습 가능한 도서가 없습니다.</p>';
+                return;
+            }
+
+            const bookshelf = document.createElement('div');
+            bookshelf.classList.add('bookshelf');
+
+            books.forEach((book) => {
+                const bookElement = document.createElement('div');
+                bookElement.classList.add('book');
+                bookElement.textContent = `${book.title}`;
+                bookElement.onclick = () => {
+                    window.location.href = `/lesson/${book.id}/`;
+                };
+                bookshelf.appendChild(bookElement);
+            });
+
+            learningBooksContainer.appendChild(bookshelf);
+        } catch (error) {
+            console.error('Error in loadLearningBooks:', error);
         }
-        learningBooksContainer.appendChild(bookshelf);
     }
-
-    // 콘텐츠 변경 시 레벨 옵션 업데이트
-    contentSelect.addEventListener('change', () => {
-        const selectedContent = contentSelect.value;
-        if (selectedContent === 'storybook') {
-            levelSelect.innerHTML = `
-                <option value="1">레벨 1</option>
-                <option value="2">레벨 2</option>
-            `;
-        } else {
-            levelSelect.innerHTML = `
-                <option value="1">레벨 1</option>
-                <option value="2">레벨 2</option>
-                <option value="3">레벨 3</option>
-                <option value="4">레벨 4</option>
-                <option value="5">레벨 5</option>
-                <option value="6">레벨 6</option>
-                <option value="7">레벨 7</option>
-            `;
-        }
-        loadLearningBooks(selectedContent, levelSelect.value);
-    });
-
-    // 레벨 변경 시 학습 도서 로드
-    levelSelect.addEventListener('change', () => {
-        const selectedContent = contentSelect.value;
-        const selectedLevel = levelSelect.value;
-        loadLearningBooks(selectedContent, selectedLevel);
-    });
-
-    // 스크롤 버튼 이벤트
-    scrollLeftReading.addEventListener('click', () => {
-        readingBooksContainer.scrollLeft -= 300;
-    });
-    scrollRightReading.addEventListener('click', () => {
-        readingBooksContainer.scrollLeft += 300;
-    });
-    scrollLeftLearning.addEventListener('click', () => {
-        learningBooksContainer.scrollLeft -= 300;
-    });
-    scrollRightLearning.addEventListener('click', () => {
-        learningBooksContainer.scrollLeft += 300;
-    });
 
     // 초기 데이터 로드
     loadReadingBooks();
-    initializeLearningBooks();
+    loadLearningBooks(contentSelect.value, levelSelect.value);
+
+    // 콘텐츠 변경 시 학습 도서 목록 업데이트
+    contentSelect.addEventListener('change', () => {
+        loadLearningBooks(contentSelect.value, levelSelect.value);
+    });
+
+    // 레벨 변경 시 학습 도서 목록 업데이트
+    levelSelect.addEventListener('change', () => {
+        loadLearningBooks(contentSelect.value, levelSelect.value);
+    });
+
+    // 스크롤 버튼 이벤트
+    if (scrollLeftReading && scrollRightReading) {
+        scrollLeftReading.addEventListener('click', () => {
+            readingBooksContainer.scrollLeft -= 300;
+        });
+        scrollRightReading.addEventListener('click', () => {
+            readingBooksContainer.scrollLeft += 300;
+        });
+    }
+
+    if (scrollLeftLearning && scrollRightLearning) {
+        scrollLeftLearning.addEventListener('click', () => {
+            learningBooksContainer.scrollLeft -= 300;
+        });
+        scrollRightLearning.addEventListener('click', () => {
+            learningBooksContainer.scrollLeft += 300;
+        });
+    }
 });

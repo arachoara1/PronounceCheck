@@ -3,6 +3,40 @@ let recordingState = false; // 녹음 상태 변수
 let recordingStartTime = null; // 녹음 시작 시간
 let recordingTimer = null; // 녹음 타이머
 
+// DOMContentLoaded 이벤트 리스너
+document.addEventListener('DOMContentLoaded', () => {
+    const sentences = {{ sentences|safe }}; // Django에서 전달된 문장 배열
+    let currentSentenceIndex = {{ current_sentence_index }}; // 현재 문장 인덱스
+
+    // 문장 보기 업데이트
+    function updateSentenceView() {
+        document.getElementById('lesson-sentence').textContent = sentences[currentSentenceIndex];
+
+        // 이전/다음 버튼 활성화/비활성화
+        document.getElementById('prev-btn').disabled = currentSentenceIndex === 0;
+        document.getElementById('next-btn').disabled = currentSentenceIndex === sentences.length - 1;
+    }
+
+    // 이전 버튼 클릭
+    document.getElementById('prev-btn').addEventListener('click', () => {
+        if (currentSentenceIndex > 0) {
+            currentSentenceIndex--;
+            updateSentenceView();
+        }
+    });
+
+    // 다음 버튼 클릭
+    document.getElementById('next-btn').addEventListener('click', () => {
+        if (currentSentenceIndex < sentences.length - 1) {
+            currentSentenceIndex++;
+            updateSentenceView();
+        }
+    });
+
+    // 초기 문장 표시
+    updateSentenceView();
+});
+
 // 녹음 시작
 async function startRecording() {
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -80,6 +114,7 @@ async function uploadAudio() {
     formData.append("audio_file", audioBlob, "recording.wav");
     formData.append("user", "{{ user.id }}");
     formData.append("lesson", "{{ lesson.id }}");
+    formData.append("current_sentence_index", currentSentenceIndex); // 현재 문장 인덱스 추가
 
     try {
         const response = await fetch("/upload/audio/", {
