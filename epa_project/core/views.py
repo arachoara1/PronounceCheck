@@ -9,7 +9,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.http import JsonResponse
 from django.conf import settings
-from django.db.models import F
+from django.db.models import F, Min
 from django.db import transaction
 from django.contrib.auth.decorators import login_required
 from .models import UserPronunciation, LessonNovel, LessonConversation, LessonPhonics, ReadingLog
@@ -62,26 +62,27 @@ def library_view(request):
 
 # 학습 뷰
 @login_required
-def lesson_view(request, lesson_id):
-    lesson = (
-        LessonPhonics.objects.filter(id=lesson_id).first()
-        or LessonNovel.objects.filter(id=lesson_id).first()
-        or LessonConversation.objects.filter(id=lesson_id).first()
-    )
+def lesson_view(request, content_type, lesson_id):
+    # 콘텐츠 타입에 따라 레슨 객체 가져오기
+    lesson = None
+    if content_type == "phonics":
+        lesson = LessonPhonics.objects.filter(id=lesson_id).first()
+    elif content_type == "novel":
+        lesson = LessonNovel.objects.filter(id=lesson_id).first()
+    elif content_type == "conversation":
+        lesson = LessonConversation.objects.filter(id=lesson_id).first()
 
     if not lesson:
-        return redirect("library")  # 잘못된 ID로 접근 시 서재로 리디렉션
-
-    # 콘텐츠 유형 결정
-    content_type = (
-        "phonics" if isinstance(lesson, LessonPhonics)
-        else "novel" if isinstance(lesson, LessonNovel)
-        else "conversation"
-    )
+        return redirect("library")  # 콘텐츠가 없으면 서재로 리디렉션
 
     # 문장 리스트 분리
     all_sentences = lesson.sentence.split("\n")
-    current_sentence_index = int(request.GET.get("sentence_index", 0))  # URL 파라미터로 인덱스 가져옴
+    current_sentence_index = int(request.GET.get("sentence_index", 0))
+    current_sentence = all_sentences[current_sentence_index]
+
+    # 이전/다음 버튼 활성화 여부 설정
+    is_prev_enabled = current_sentence_index > 0
+    is_next_enabled = current_sentence_index < len(all_sentences) - 1
 
     # ReadingLog 업데이트
     ReadingLog.objects.update_or_create(
@@ -92,19 +93,25 @@ def lesson_view(request, lesson_id):
             "title": lesson.title,
             "level": lesson.level,
             "last_read_at": now(),
-            "last_read_sentence_index": current_sentence_index,  # 인덱스 저장
+            "last_read_sentence_index": current_sentence_index,
         },
     )
 
+    # 템플릿 렌더링
     return render(
         request,
         "lesson.html",
         {
             "lesson": lesson,
-            "sentences": all_sentences,
+            "current_sentence": current_sentence,
             "current_sentence_index": current_sentence_index,
+            "is_prev_enabled": is_prev_enabled,
+            "is_next_enabled": is_next_enabled,
+            "content_type": content_type,
         },
     )
+
+
 
 
 # 읽고 있는 도서 (사용자 학습 로그 기반)
@@ -132,15 +139,22 @@ def get_lessons(request):
     level = int(request.GET.get("level", 1))
 
     if content_type == "phonics":
-        lessons = LessonPhonics.objects.filter(level=level).values("id", "title", "level")
+        lessons = LessonPhonics.objects.filter(level=level).values(
+            "id", "title", "level"
+        ).distinct("title")  # 중복 제거
     elif content_type == "novel":
-        lessons = LessonNovel.objects.filter(level=level).values("id", "title", "level")
+        lessons = LessonNovel.objects.filter(level=level).values(
+            "id", "title", "level"
+        ).distinct("title")  # 중복 제거
     elif content_type == "conversation":
-        lessons = LessonConversation.objects.filter(level=level).values("id", "title", "level")
+        lessons = LessonConversation.objects.filter(level=level).values(
+            "id", "title", "level"
+        ).distinct("title")  # 중복 제거
     else:
         return JsonResponse({"error": "Invalid content type"}, status=400)
 
     return JsonResponse(list(lessons), safe=False)
+
 
 
 # 템플릿 기반 회원가입 뷰

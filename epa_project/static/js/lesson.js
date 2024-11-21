@@ -4,21 +4,24 @@ let recordingStartTime = null; // 녹음 시작 시간
 let recordingTimer = null; // 녹음 타이머
 
 // DOMContentLoaded 이벤트 리스너
-document.addEventListener('DOMContentLoaded', () => {
-    const sentences = {{ sentences|safe }}; // Django에서 전달된 문장 배열
-    let currentSentenceIndex = {{ current_sentence_index }}; // 현재 문장 인덱스
+document.addEventListener("DOMContentLoaded", () => {
+    const sentences = JSON.parse("{{ sentences|safe }}"); // Django에서 전달된 문장 배열
+    let currentSentenceIndex = parseInt("{{ current_sentence_index }}"); // 현재 문장 인덱스
 
     // 문장 보기 업데이트
     function updateSentenceView() {
-        document.getElementById('lesson-sentence').textContent = sentences[currentSentenceIndex];
+        document.getElementById("lesson-sentence").textContent =
+            sentences[currentSentenceIndex];
 
         // 이전/다음 버튼 활성화/비활성화
-        document.getElementById('prev-btn').disabled = currentSentenceIndex === 0;
-        document.getElementById('next-btn').disabled = currentSentenceIndex === sentences.length - 1;
+        document.getElementById("prev-btn").disabled =
+            currentSentenceIndex === 0;
+        document.getElementById("next-btn").disabled =
+            currentSentenceIndex === sentences.length - 1;
     }
 
     // 이전 버튼 클릭
-    document.getElementById('prev-btn').addEventListener('click', () => {
+    document.getElementById("prev-btn").addEventListener("click", () => {
         if (currentSentenceIndex > 0) {
             currentSentenceIndex--;
             updateSentenceView();
@@ -26,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 다음 버튼 클릭
-    document.getElementById('next-btn').addEventListener('click', () => {
+    document.getElementById("next-btn").addEventListener("click", () => {
         if (currentSentenceIndex < sentences.length - 1) {
             currentSentenceIndex++;
             updateSentenceView();
@@ -39,35 +42,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // 녹음 시작
 async function startRecording() {
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    recorder = new MediaRecorder(stream);
-    const audioChunks = [];
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        recorder = new MediaRecorder(stream);
+        const audioChunks = [];
 
-    recorder.ondataavailable = (event) => {
-        audioChunks.push(event.data);
-    };
+        recorder.ondataavailable = (event) => {
+            audioChunks.push(event.data);
+        };
 
-    recorder.onstop = () => {
-        clearInterval(recordingTimer); // 타이머 정지
-        recordingState = false; // 녹음 상태 변경
+        recorder.onstop = () => {
+            clearInterval(recordingTimer); // 타이머 정지
+            recordingState = false; // 녹음 상태 변경
+            updateRecordingStatus(); // 녹음 상태 UI 업데이트
+
+            audioBlob = new Blob(audioChunks, { type: "audio/wav" });
+            const audioUrl = URL.createObjectURL(audioBlob);
+            document.getElementById("audio-preview").src = audioUrl;
+
+            document.getElementById("upload-btn").disabled = false;
+            document.getElementById("retry-btn").disabled = false; // 녹음 다시하기 버튼 활성화
+        };
+
+        recorder.start();
+        recordingState = true; // 녹음 상태 변경
+        recordingStartTime = Date.now(); // 녹음 시작 시간 기록
+        startRecordingTimer(); // 타이머 시작
         updateRecordingStatus(); // 녹음 상태 UI 업데이트
 
-        audioBlob = new Blob(audioChunks, { type: "audio/wav" });
-        const audioUrl = URL.createObjectURL(audioBlob);
-        document.getElementById("audio-preview").src = audioUrl;
-
-        document.getElementById("upload-btn").disabled = false;
-        document.getElementById("retry-btn").disabled = false; // 녹음 다시하기 버튼 활성화
-    };
-
-    recorder.start();
-    recordingState = true; // 녹음 상태 변경
-    recordingStartTime = Date.now(); // 녹음 시작 시간 기록
-    startRecordingTimer(); // 타이머 시작
-    updateRecordingStatus(); // 녹음 상태 UI 업데이트
-
-    document.getElementById("stop-btn").disabled = false;
-    document.getElementById("record-btn").disabled = true;
+        document.getElementById("stop-btn").disabled = false;
+        document.getElementById("record-btn").disabled = true;
+    } catch (error) {
+        alert("녹음을 시작할 수 없습니다: " + error.message);
+    }
 }
 
 // 녹음 중지
@@ -96,7 +103,9 @@ function updateRecordingStatus() {
         const elapsedTime = Math.floor((Date.now() - recordingStartTime) / 1000);
         const minutes = Math.floor(elapsedTime / 60);
         const seconds = elapsedTime % 60;
-        statusElement.textContent = `녹음 중... ${minutes}:${seconds.toString().padStart(2, "0")}`;
+        statusElement.textContent = `녹음 중... ${minutes}:${seconds
+            .toString()
+            .padStart(2, "0")}`;
         statusElement.style.color = "red";
     } else {
         statusElement.textContent = "";
@@ -110,6 +119,11 @@ function startRecordingTimer() {
 
 // 파일 업로드
 async function uploadAudio() {
+    if (!audioBlob) {
+        alert("녹음 파일이 없습니다. 녹음을 진행해주세요.");
+        return;
+    }
+
     const formData = new FormData();
     formData.append("audio_file", audioBlob, "recording.wav");
     formData.append("user", "{{ user.id }}");

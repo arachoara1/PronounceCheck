@@ -3,7 +3,7 @@
     <h1 id="lesson-title">{{ lesson.title }}</h1>
     <div class="content">
         <h2>레벨: <span id="lesson-level">{{ lesson.level }}</span></h2>
-        <p id="lesson-sentence">{{ lesson.sentence }}</p>
+        <p id="lesson-sentence">{{ current_sentence }}</p>
     </div>
 
     <!-- 마지막으로 읽은 시간 표시 -->
@@ -23,8 +23,8 @@
 
     <!-- 이전 및 다음 버튼 -->
     <div class="navigation-buttons">
-        <button id="prev-btn" onclick="loadPrevLesson()">이전</button>
-        <button id="next-btn" onclick="loadNextLesson()">다음</button>
+        <button id="prev-btn" {% if not is_prev_enabled %}disabled{% endif %} onclick="navigateSentence({{ current_sentence_index|add:'-1' }})">이전</button>
+        <button id="next-btn" {% if not is_next_enabled %}disabled{% endif %} onclick="navigateSentence({{ current_sentence_index|add:'1' }})">다음</button>
     </div>
 
     <!-- 녹음 상태 표시 -->
@@ -40,6 +40,13 @@
     <audio id="audio-preview" controls></audio>
 
     <script>
+        function navigateSentence(index) {
+            // content_type과 lesson_id를 사용하여 URL을 만듦
+            const url = `{% url 'lesson' content_type=content_type lesson_id=lesson.id %}?sentence_index=${index}`;
+            window.location.href = url;
+        }
+
+        // 녹음 관련 스크립트
         const lessons = {{ lessons|safe }}; // 모든 레슨 데이터를 JavaScript로 전달
         let currentLessonIndex = {{ current_lesson_index }}; // 현재 레슨 인덱스
 
