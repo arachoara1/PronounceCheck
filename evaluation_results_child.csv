@@ -1,0 +1,253 @@
+﻿user_file,reference_file,evaluation_metric,category,value
+jaemin_1.wav,tts_1.wav,pitch_contour_similarity,음율적 오류,0.08034965043487023
+jaemin_1.wav,tts_1.wav,rhythm_similarity,음율적 오류,0.0
+jaemin_1.wav,tts_1.wav,pitch_difference,정확성,1255.984619140625
+jaemin_1.wav,tts_1.wav,rms_difference,정확성,0.0683535486459732
+jaemin_1.wav,tts_1.wav,speech_rate_difference,유창성,1.827973300970875
+jaemin_1.wav,tts_1.wav,pause_difference,유창성,0.0
+jaemin_1.wav,tts_1.wav,word_omission,완전성,0.0
+jaemin_2.wav,tts_1.wav,pitch_contour_similarity,음율적 오류,0.012157402454802324
+jaemin_2.wav,tts_1.wav,rhythm_similarity,음율적 오류,0.0
+jaemin_2.wav,tts_1.wav,pitch_difference,정확성,993.421142578125
+jaemin_2.wav,tts_1.wav,rms_difference,정확성,0.0776292011141777
+jaemin_2.wav,tts_1.wav,speech_rate_difference,유창성,2.023285800970875
+jaemin_2.wav,tts_1.wav,pause_difference,유창성,0.0
+jaemin_2.wav,tts_1.wav,word_omission,완전성,0.0
+jaemin_3.wav,tts_1.wav,pitch_contour_similarity,음율적 오류,-0.08237345534939726
+jaemin_3.wav,tts_1.wav,rhythm_similarity,음율적 오류,0.0
+jaemin_3.wav,tts_1.wav,pitch_difference,정확성,821.042236328125
+jaemin_3.wav,tts_1.wav,rms_difference,정확성,0.10045468807220459
+jaemin_3.wav,tts_1.wav,speech_rate_difference,유창성,0.981865180344343
+jaemin_3.wav,tts_1.wav,pause_difference,유창성,0.0
+jaemin_3.wav,tts_1.wav,word_omission,완전성,0.0
+jaemin_4.wav,tts_1.wav,pitch_contour_similarity,음율적 오류,-0.0568112182087158
+jaemin_4.wav,tts_1.wav,rhythm_similarity,음율적 오류,0.0
+jaemin_4.wav,tts_1.wav,pitch_difference,정확성,1124.857177734375
+jaemin_4.wav,tts_1.wav,rms_difference,정확성,0.054922834038734436
+jaemin_4.wav,tts_1.wav,speech_rate_difference,유창성,3.8300123862206092
+jaemin_4.wav,tts_1.wav,pause_difference,유창성,0.0
+jaemin_4.wav,tts_1.wav,word_omission,완전성,0.0
+jaemin_5.wav,tts_1.wav,pitch_contour_similarity,음율적 오류,0.14268570182987192
+jaemin_5.wav,tts_1.wav,rhythm_similarity,음율적 오류,0.0
+jaemin_5.wav,tts_1.wav,pitch_difference,정확성,1207.69384765625
+jaemin_5.wav,tts_1.wav,rms_difference,정확성,0.03956035524606705
+jaemin_5.wav,tts_1.wav,speech_rate_difference,유창성,2.191106067205631
+jaemin_5.wav,tts_1.wav,pause_difference,유창성,0.0
+jaemin_5.wav,tts_1.wav,word_omission,완전성,0.0
+jaemin_6.wav,tts_1.wav,pitch_contour_similarity,음율적 오류,0.13123825907172473
+jaemin_6.wav,tts_1.wav,rhythm_similarity,음율적 오류,0.0
+jaemin_6.wav,tts_1.wav,pitch_difference,정확성,1392.80517578125
+jaemin_6.wav,tts_1.wav,rms_difference,정확성,0.006345201283693314
+jaemin_6.wav,tts_1.wav,speech_rate_difference,유창성,3.911535380232145
+jaemin_6.wav,tts_1.wav,pause_difference,유창성,0.0
+jaemin_6.wav,tts_1.wav,word_omission,완전성,0.0
+jaemin_1.wav,tts_2.wav,pitch_contour_similarity,음율적 오류,-0.08793648038087219
+jaemin_1.wav,tts_2.wav,rhythm_similarity,음율적 오류,0.0
+jaemin_1.wav,tts_2.wav,pitch_difference,정확성,1849.839599609375
+jaemin_1.wav,tts_2.wav,rms_difference,정확성,0.0711967945098877
+jaemin_1.wav,tts_2.wav,speech_rate_difference,유창성,0.6666411980440117
+jaemin_1.wav,tts_2.wav,pause_difference,유창성,0.0
+jaemin_1.wav,tts_2.wav,word_omission,완전성,0.0
+jaemin_2.wav,tts_2.wav,pitch_contour_similarity,음율적 오류,-0.1057597154089337
+jaemin_2.wav,tts_2.wav,rhythm_similarity,음율적 오류,0.0
+jaemin_2.wav,tts_2.wav,pitch_difference,정확성,1587.276123046875
+jaemin_2.wav,tts_2.wav,rms_difference,정확성,0.0804724469780922
+jaemin_2.wav,tts_2.wav,speech_rate_difference,유창성,0.8619536980440117
+jaemin_2.wav,tts_2.wav,pause_difference,유창성,0.0
+jaemin_2.wav,tts_2.wav,word_omission,완전성,0.0
+jaemin_3.wav,tts_2.wav,pitch_contour_similarity,음율적 오류,-0.07703348742953137
+jaemin_3.wav,tts_2.wav,rhythm_similarity,음율적 오류,0.0
+jaemin_3.wav,tts_2.wav,pitch_difference,정확성,1414.897216796875
+jaemin_3.wav,tts_2.wav,rms_difference,정확성,0.10329793393611908
+jaemin_3.wav,tts_2.wav,speech_rate_difference,유창성,0.17946692258252028
+jaemin_3.wav,tts_2.wav,pause_difference,유창성,0.0
+jaemin_3.wav,tts_2.wav,word_omission,완전성,0.0
+jaemin_4.wav,tts_2.wav,pitch_contour_similarity,음율적 오류,-0.0791200339451565
+jaemin_4.wav,tts_2.wav,rhythm_similarity,음율적 오류,0.0
+jaemin_4.wav,tts_2.wav,pitch_difference,정확성,1718.712158203125
+jaemin_4.wav,tts_2.wav,rms_difference,정확성,0.057766079902648926
+jaemin_4.wav,tts_2.wav,speech_rate_difference,유창성,2.668680283293746
+jaemin_4.wav,tts_2.wav,pause_difference,유창성,0.0
+jaemin_4.wav,tts_2.wav,word_omission,완전성,0.0
+jaemin_5.wav,tts_2.wav,pitch_contour_similarity,음율적 오류,-0.20946594986982076
+jaemin_5.wav,tts_2.wav,rhythm_similarity,음율적 오류,0.0
+jaemin_5.wav,tts_2.wav,pitch_difference,정확성,1801.548828125
+jaemin_5.wav,tts_2.wav,rms_difference,정확성,0.04240360110998154
+jaemin_5.wav,tts_2.wav,speech_rate_difference,유창성,1.0297739642787676
+jaemin_5.wav,tts_2.wav,pause_difference,유창성,0.0
+jaemin_5.wav,tts_2.wav,word_omission,완전성,0.0
+jaemin_6.wav,tts_2.wav,pitch_contour_similarity,음율적 오류,0.05483023826751955
+jaemin_6.wav,tts_2.wav,rhythm_similarity,음율적 오류,0.0
+jaemin_6.wav,tts_2.wav,pitch_difference,정확성,1986.66015625
+jaemin_6.wav,tts_2.wav,rms_difference,정확성,0.003501955419778824
+jaemin_6.wav,tts_2.wav,speech_rate_difference,유창성,2.750203277305282
+jaemin_6.wav,tts_2.wav,pause_difference,유창성,0.0
+jaemin_6.wav,tts_2.wav,word_omission,완전성,0.0
+jaemin_1.wav,tts_3.wav,pitch_contour_similarity,음율적 오류,-0.13028609105754635
+jaemin_1.wav,tts_3.wav,rhythm_similarity,음율적 오류,0.0
+jaemin_1.wav,tts_3.wav,pitch_difference,정확성,1703.2689208984375
+jaemin_1.wav,tts_3.wav,rms_difference,정확성,0.07146024703979492
+jaemin_1.wav,tts_3.wav,speech_rate_difference,유창성,2.458639705882348
+jaemin_1.wav,tts_3.wav,pause_difference,유창성,0.0
+jaemin_1.wav,tts_3.wav,word_omission,완전성,0.0
+jaemin_2.wav,tts_3.wav,pitch_contour_similarity,음율적 오류,0.1215733859905808
+jaemin_2.wav,tts_3.wav,rhythm_similarity,음율적 오류,0.0
+jaemin_2.wav,tts_3.wav,pitch_difference,정확성,1440.7054443359375
+jaemin_2.wav,tts_3.wav,rms_difference,정확성,0.08073589950799942
+jaemin_2.wav,tts_3.wav,speech_rate_difference,유창성,2.263327205882348
+jaemin_2.wav,tts_3.wav,pause_difference,유창성,0.0
+jaemin_2.wav,tts_3.wav,word_omission,완전성,0.0
+jaemin_3.wav,tts_3.wav,pitch_contour_similarity,음율적 오류,0.03787073793307944
+jaemin_3.wav,tts_3.wav,rhythm_similarity,음율적 오류,0.0
+jaemin_3.wav,tts_3.wav,pitch_difference,정확성,1268.3265380859375
+jaemin_3.wav,tts_3.wav,rms_difference,정확성,0.1035613864660263
+jaemin_3.wav,tts_3.wav,speech_rate_difference,유창성,3.30474782650888
+jaemin_3.wav,tts_3.wav,pause_difference,유창성,0.0
+jaemin_3.wav,tts_3.wav,word_omission,완전성,0.0
+jaemin_4.wav,tts_3.wav,pitch_contour_similarity,음율적 오류,-0.035356501810495655
+jaemin_4.wav,tts_3.wav,rhythm_similarity,음율적 오류,0.0
+jaemin_4.wav,tts_3.wav,pitch_difference,정확성,1572.1414794921875
+jaemin_4.wav,tts_3.wav,rms_difference,정확성,0.05802953243255615
+jaemin_4.wav,tts_3.wav,speech_rate_difference,유창성,0.45660062063261364
+jaemin_4.wav,tts_3.wav,pause_difference,유창성,0.0
+jaemin_4.wav,tts_3.wav,word_omission,완전성,0.0
+jaemin_5.wav,tts_3.wav,pitch_contour_similarity,음율적 오류,0.05579913418412813
+jaemin_5.wav,tts_3.wav,rhythm_similarity,음율적 오류,0.0
+jaemin_5.wav,tts_3.wav,pitch_difference,정확성,1654.9781494140625
+jaemin_5.wav,tts_3.wav,rms_difference,정확성,0.04266705363988876
+jaemin_5.wav,tts_3.wav,speech_rate_difference,유창성,2.095506939647592
+jaemin_5.wav,tts_3.wav,pause_difference,유창성,0.0
+jaemin_5.wav,tts_3.wav,word_omission,완전성,0.0
+jaemin_6.wav,tts_3.wav,pitch_contour_similarity,음율적 오류,-0.036762827926037835
+jaemin_6.wav,tts_3.wav,rhythm_similarity,음율적 오류,0.0
+jaemin_6.wav,tts_3.wav,pitch_difference,정확성,1840.0894775390625
+jaemin_6.wav,tts_3.wav,rms_difference,정확성,0.0032385028898715973
+jaemin_6.wav,tts_3.wav,speech_rate_difference,유창성,0.3750776266210778
+jaemin_6.wav,tts_3.wav,pause_difference,유창성,0.0
+jaemin_6.wav,tts_3.wav,word_omission,완전성,0.0
+jaemin_1.wav,tts_4.wav,pitch_contour_similarity,음율적 오류,0.010809134680614228
+jaemin_1.wav,tts_4.wav,rhythm_similarity,음율적 오류,0.0
+jaemin_1.wav,tts_4.wav,pitch_difference,정확성,1009.38427734375
+jaemin_1.wav,tts_4.wav,rms_difference,정확성,0.07656746357679367
+jaemin_1.wav,tts_4.wav,speech_rate_difference,유창성,0.1832932692307736
+jaemin_1.wav,tts_4.wav,pause_difference,유창성,0.0
+jaemin_1.wav,tts_4.wav,word_omission,완전성,0.0
+jaemin_2.wav,tts_4.wav,pitch_contour_similarity,음율적 오류,-0.15305818208529598
+jaemin_2.wav,tts_4.wav,rhythm_similarity,음율적 오류,0.0
+jaemin_2.wav,tts_4.wav,pitch_difference,정확성,746.82080078125
+jaemin_2.wav,tts_4.wav,rms_difference,정확성,0.08584311604499817
+jaemin_2.wav,tts_4.wav,speech_rate_difference,유창성,0.012019230769226397
+jaemin_2.wav,tts_4.wav,pause_difference,유창성,0.0
+jaemin_2.wav,tts_4.wav,word_omission,완전성,0.0
+jaemin_3.wav,tts_4.wav,pitch_contour_similarity,음율적 오류,-0.02209592297391577
+jaemin_3.wav,tts_4.wav,rhythm_similarity,음율적 오류,0.0
+jaemin_3.wav,tts_4.wav,pitch_difference,정확성,574.44189453125
+jaemin_3.wav,tts_4.wav,rms_difference,정확성,0.10866860300302505
+jaemin_3.wav,tts_4.wav,speech_rate_difference,유창성,1.0294013898573056
+jaemin_3.wav,tts_4.wav,pause_difference,유창성,0.0
+jaemin_3.wav,tts_4.wav,word_omission,완전성,0.0
+jaemin_4.wav,tts_4.wav,pitch_contour_similarity,음율적 오류,0.10643121732636805
+jaemin_4.wav,tts_4.wav,rhythm_similarity,음율적 오류,0.0
+jaemin_4.wav,tts_4.wav,pitch_difference,정확성,878.2568359375
+jaemin_4.wav,tts_4.wav,rms_difference,정확성,0.0631367489695549
+jaemin_4.wav,tts_4.wav,speech_rate_difference,유창성,1.8187458160189607
+jaemin_4.wav,tts_4.wav,pause_difference,유창성,0.0
+jaemin_4.wav,tts_4.wav,word_omission,완전성,0.0
+jaemin_5.wav,tts_4.wav,pitch_contour_similarity,음율적 오류,0.19341031795955047
+jaemin_5.wav,tts_4.wav,rhythm_similarity,음율적 오류,0.0
+jaemin_5.wav,tts_4.wav,pitch_difference,정확성,961.093505859375
+jaemin_5.wav,tts_4.wav,rms_difference,정확성,0.04777427017688751
+jaemin_5.wav,tts_4.wav,speech_rate_difference,유창성,0.17983949700398227
+jaemin_5.wav,tts_4.wav,pause_difference,유창성,0.0
+jaemin_5.wav,tts_4.wav,word_omission,완전성,0.0
+jaemin_6.wav,tts_4.wav,pitch_contour_similarity,음율적 오류,-0.06203986784227606
+jaemin_6.wav,tts_4.wav,rhythm_similarity,음율적 오류,0.0
+jaemin_6.wav,tts_4.wav,pitch_difference,정확성,1146.204833984375
+jaemin_6.wav,tts_4.wav,rms_difference,정확성,0.0018687155097723007
+jaemin_6.wav,tts_4.wav,speech_rate_difference,유창성,1.9002688100304965
+jaemin_6.wav,tts_4.wav,pause_difference,유창성,0.0
+jaemin_6.wav,tts_4.wav,word_omission,완전성,0.0
+jaemin_1.wav,tts_5.wav,pitch_contour_similarity,음율적 오류,-0.16663452003336474
+jaemin_1.wav,tts_5.wav,rhythm_similarity,음율적 오류,0.0
+jaemin_1.wav,tts_5.wav,pitch_difference,정확성,885.48681640625
+jaemin_1.wav,tts_5.wav,rms_difference,정확성,0.08264058828353882
+jaemin_1.wav,tts_5.wav,speech_rate_difference,유창성,1.6690340909090864
+jaemin_1.wav,tts_5.wav,pause_difference,유창성,0.0
+jaemin_1.wav,tts_5.wav,word_omission,완전성,0.0
+jaemin_2.wav,tts_5.wav,pitch_contour_similarity,음율적 오류,0.0938186195696836
+jaemin_2.wav,tts_5.wav,rhythm_similarity,음율적 오류,0.0
+jaemin_2.wav,tts_5.wav,pitch_difference,정확성,622.92333984375
+jaemin_2.wav,tts_5.wav,rms_difference,정확성,0.09191624820232391
+jaemin_2.wav,tts_5.wav,speech_rate_difference,유창성,1.4737215909090864
+jaemin_2.wav,tts_5.wav,pause_difference,유창성,0.0
+jaemin_2.wav,tts_5.wav,word_omission,완전성,0.0
+jaemin_3.wav,tts_5.wav,pitch_contour_similarity,음율적 오류,0.14928625741015533
+jaemin_3.wav,tts_5.wav,rhythm_similarity,음율적 오류,0.0
+jaemin_3.wav,tts_5.wav,pitch_difference,정확성,450.54443359375
+jaemin_3.wav,tts_5.wav,rms_difference,정확성,0.1147417277097702
+jaemin_3.wav,tts_5.wav,speech_rate_difference,유창성,2.5151422115356183
+jaemin_3.wav,tts_5.wav,pause_difference,유창성,0.0
+jaemin_3.wav,tts_5.wav,word_omission,완전성,0.0
+jaemin_4.wav,tts_5.wav,pitch_contour_similarity,음율적 오류,0.24645036740273313
+jaemin_4.wav,tts_5.wav,rhythm_similarity,음율적 오류,0.0
+jaemin_4.wav,tts_5.wav,pitch_difference,정확성,754.359375
+jaemin_4.wav,tts_5.wav,rms_difference,정확성,0.06920987367630005
+jaemin_4.wav,tts_5.wav,speech_rate_difference,유창성,0.3330049943406479
+jaemin_4.wav,tts_5.wav,pause_difference,유창성,0.0
+jaemin_4.wav,tts_5.wav,word_omission,완전성,0.0
+jaemin_5.wav,tts_5.wav,pitch_contour_similarity,음율적 오류,0.3166676950546278
+jaemin_5.wav,tts_5.wav,rhythm_similarity,음율적 오류,0.0
+jaemin_5.wav,tts_5.wav,pitch_difference,정확성,837.196044921875
+jaemin_5.wav,tts_5.wav,rms_difference,정확성,0.05384739860892296
+jaemin_5.wav,tts_5.wav,speech_rate_difference,유창성,1.3059013246743305
+jaemin_5.wav,tts_5.wav,pause_difference,유창성,0.0
+jaemin_5.wav,tts_5.wav,word_omission,완전성,0.0
+jaemin_6.wav,tts_5.wav,pitch_contour_similarity,음율적 오류,-0.0567307246022866
+jaemin_6.wav,tts_5.wav,rhythm_similarity,음율적 오류,0.0
+jaemin_6.wav,tts_5.wav,pitch_difference,정확성,1022.307373046875
+jaemin_6.wav,tts_5.wav,rms_difference,정확성,0.007941842079162598
+jaemin_6.wav,tts_5.wav,speech_rate_difference,유창성,0.41452798835218374
+jaemin_6.wav,tts_5.wav,pause_difference,유창성,0.0
+jaemin_6.wav,tts_5.wav,word_omission,완전성,0.0
+jaemin_1.wav,tts_6.wav,pitch_contour_similarity,음율적 오류,-0.03849629646445563
+jaemin_1.wav,tts_6.wav,rhythm_similarity,음율적 오류,0.0
+jaemin_1.wav,tts_6.wav,pitch_difference,정확성,943.2117919921875
+jaemin_1.wav,tts_6.wav,rms_difference,정확성,0.07478559017181396
+jaemin_1.wav,tts_6.wav,speech_rate_difference,유창성,4.31793099442379
+jaemin_1.wav,tts_6.wav,pause_difference,유창성,0.0
+jaemin_1.wav,tts_6.wav,word_omission,완전성,0.0
+jaemin_2.wav,tts_6.wav,pitch_contour_similarity,음율적 오류,0.0623788335900858
+jaemin_2.wav,tts_6.wav,rhythm_similarity,음율적 오류,0.0
+jaemin_2.wav,tts_6.wav,pitch_difference,정확성,680.6483154296875
+jaemin_2.wav,tts_6.wav,rms_difference,정확성,0.08406124264001846
+jaemin_2.wav,tts_6.wav,speech_rate_difference,유창성,4.12261849442379
+jaemin_2.wav,tts_6.wav,pause_difference,유창성,0.0
+jaemin_2.wav,tts_6.wav,word_omission,완전성,0.0
+jaemin_3.wav,tts_6.wav,pitch_contour_similarity,음율적 오류,0.20803544660722126
+jaemin_3.wav,tts_6.wav,rhythm_similarity,음율적 오류,0.0
+jaemin_3.wav,tts_6.wav,pitch_difference,정확성,508.2694091796875
+jaemin_3.wav,tts_6.wav,rms_difference,정확성,0.10688672959804535
+jaemin_3.wav,tts_6.wav,speech_rate_difference,유창성,5.164039115050322
+jaemin_3.wav,tts_6.wav,pause_difference,유창성,0.0
+jaemin_3.wav,tts_6.wav,word_omission,완전성,0.0
+jaemin_4.wav,tts_6.wav,pitch_contour_similarity,음율적 오류,-0.129939570668206
+jaemin_4.wav,tts_6.wav,rhythm_similarity,음율적 오류,0.0
+jaemin_4.wav,tts_6.wav,pitch_difference,정확성,812.0843505859375
+jaemin_4.wav,tts_6.wav,rms_difference,정확성,0.061354875564575195
+jaemin_4.wav,tts_6.wav,speech_rate_difference,유창성,2.3158919091740557
+jaemin_4.wav,tts_6.wav,pause_difference,유창성,0.0
+jaemin_4.wav,tts_6.wav,word_omission,완전성,0.0
+jaemin_5.wav,tts_6.wav,pitch_contour_similarity,음율적 오류,-0.11906288182698097
+jaemin_5.wav,tts_6.wav,rhythm_similarity,음율적 오류,0.0
+jaemin_5.wav,tts_6.wav,pitch_difference,정확성,894.9210205078125
+jaemin_5.wav,tts_6.wav,rms_difference,정확성,0.045992396771907806
+jaemin_5.wav,tts_6.wav,speech_rate_difference,유창성,3.954798228189034
+jaemin_5.wav,tts_6.wav,pause_difference,유창성,0.0
+jaemin_5.wav,tts_6.wav,word_omission,완전성,0.0
+jaemin_6.wav,tts_6.wav,pitch_contour_similarity,음율적 오류,0.23063998826850393
+jaemin_6.wav,tts_6.wav,rhythm_similarity,음율적 오류,0.0
+jaemin_6.wav,tts_6.wav,pitch_difference,정확성,1080.0323486328125
+jaemin_6.wav,tts_6.wav,rms_difference,정확성,8.684210479259491e-05
+jaemin_6.wav,tts_6.wav,speech_rate_difference,유창성,2.23436891516252
+jaemin_6.wav,tts_6.wav,pause_difference,유창성,0.0
+jaemin_6.wav,tts_6.wav,word_omission,완전성,0.0
