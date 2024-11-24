@@ -18,6 +18,10 @@ from .forms import SignUpForm, LoginForm
 from botocore.exceptions import NoCredentialsError
 import boto3
 import json
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 User = get_user_model()
 
@@ -196,61 +200,149 @@ def logout_view(request):
     messages.success(request, "로그아웃 되었습니다.")
     return redirect('login')
 
-# UserPronunciation 로직 (로그 저장 및 S3 업로드)
+# 사용자 음성 경로 생성 함수
+def generate_s3_path(user_id, content_type, level, title, line_number):
+    """
+    사용자 음성 파일의 S3 경로를 생성
+    """
+    audio_filename = f"audio_{line_number}.wav"
+    return f"user-audio-file/{user_id}/{content_type}/level_{level}/{title}/{audio_filename}"
+
+
+# 표준 음성 경로 생성 함수
+def generate_s3_path_for_standard(content_type, level, title, line_number):
+    """
+    표준 음성 파일의 S3 경로를 생성
+    """
+    audio_filename = f"{title}_line_{line_number}.wav"
+    return f"standard-audio-file/{content_type}/level_{level}/{title}/{audio_filename}"
+
+
+# 문장 번호를 표준 음성 URL에서 추출하는 함수
+def get_sentence_number_from_url(audio_file_url):
+    """
+    표준 음성 파일 URL에서 문장 번호를 추출합니다.
+    예: 'https://standard-audio-file.s3.amazonaws.com/conversation/level_1/At the Toy Store/At the Toy Store_line_1.wav'
+    """
+    match = re.search(r'_line_(\d+)\.wav$', audio_file_url)
+    if not match:
+        raise ValueError("Invalid audio file URL format. Unable to extract line number.")
+    return int(match.group(1))
+
+
+# 사용자 발음 업로드 및 S3 저장
 class UserPronunciationView(APIView):
     def post(self, request):
         user_id = request.data.get('user')
         lesson_id = request.data.get('lesson')
+        content_type = request.data.get('content_type')
+        level = request.data.get('level')
+        title = request.data.get('title')
+        sentence = request.data.get('sentence')
         audio_file = request.FILES.get('audio_file')
 
-        if not all([user_id, lesson_id, audio_file]):
-            return Response({'error': 'Missing required fields: user, lesson, or audio_file.'}, status=status.HTTP_400_BAD_REQUEST)
+        # 필수 데이터 확인
+        if not all([user_id, lesson_id, content_type, level, title, sentence, audio_file]):
+            return Response({'error': 'Missing required fields.'}, status=status.HTTP_400_BAD_REQUEST)
 
+        # content_type 검증
+        valid_content_types = ['phonics', 'novel', 'conversation']
+        if content_type not in valid_content_types:
+            return Response({'error': '유효하지 않은 content_type입니다.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        # 표준 음성 S3 URL 생성
+        standard_audio_url = generate_s3_path_for_standard(content_type, level, title, 1)
         try:
-            user = User.objects.get(id=user_id)
-        except User.DoesNotExist:
-            return Response({'error': 'Invalid user ID.'}, status=status.HTTP_404_NOT_FOUND)
+            # URL에서 문장 번호 추출
+            line_number = get_sentence_number_from_url(standard_audio_url)
+        except ValueError as e:
+            return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
-        lesson = (
-            LessonNovel.objects.filter(id=lesson_id).first()
-            or LessonConversation.objects.filter(id=lesson_id).first()
-            or LessonPhonics.objects.filter(id=lesson_id).first()
-        )
-        if not lesson:
-            return Response({'error': 'Invalid lesson ID.'}, status=status.HTTP_404_NOT_FOUND)
+        # 사용자 음성 S3 경로 생성
+        file_path = generate_s3_path(user_id, content_type, level, title, line_number)
 
+        # S3에 업로드
+        bucket_name = "user-audio-file"  # 사용자 음성 버킷 이름
         s3 = boto3.client('s3')
-        bucket_name = settings.AWS_STORAGE_BUCKET_NAME_USER
-        file_name = f"user_{user_id}/lesson_{lesson_id}/{audio_file.name}"
         try:
-            s3.upload_fileobj(audio_file, bucket_name, file_name)
-            audio_url = f"https://{bucket_name}.s3.{settings.AWS_S3_REGION_NAME}.amazonaws.com/{file_name}"
-        except NoCredentialsError:
-            return Response({'error': 'S3 credentials not available.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            s3.upload_fileobj(audio_file, bucket_name, file_path)
+            audio_url = f"https://{bucket_name}.s3.amazonaws.com/{file_path}"
         except Exception as e:
             return Response({'error': f"Failed to upload file to S3: {str(e)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-        with transaction.atomic():
-            pronunciation = UserPronunciation.objects.create(
-                user=user,
-                lesson=lesson,
-                audio_file=audio_url,
+        # UserPronunciation 객체 생성/업데이트
+        try:
+            pronunciation, created = UserPronunciation.objects.update_or_create(
+                user_id=user_id,
+                content_type=ContentType.objects.get(model=content_type),
+                object_id=lesson_id,
+                defaults={
+                    "audio_file": audio_url,
+                    "status": "pending",  # 초기 상태 설정
+                }
             )
+        except Exception as e:
+            return Response({'error': f"Failed to update UserPronunciation: {str(e)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-        return Response({'message': 'Audio file uploaded successfully', 'audio_url': audio_url}, status=status.HTTP_200_OK)
+        # Lambda 함수 트리거
+        lambda_client = boto3.client('lambda', region_name="ap-northeast-2")  # 서울 리전 예시
+        standard_audio_key = generate_s3_path_for_standard(content_type, level, title, line_number)
+        try:
+            payload = {
+                "user_audio_key": file_path,
+                "standard_audio_key": standard_audio_key,
+                "google_credentials_key": "credentials/epaproject-442104-c9dda29df7f5.json"
+            }
+            response = lambda_client.invoke(
+                FunctionName="TimestampGeneration",  # Lambda 함수 이름
+                InvocationType='Event',  # 비동기 호출
+                Payload=json.dumps(payload)
+            )
+            if response['StatusCode'] != 202:
+                return Response({'error': 'Failed to invoke Lambda function.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        except Exception as e:
+            return Response({'error': f"Failed to trigger Lambda: {str(e)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-class UpdateScoreView(APIView):
+        return Response({
+            'message': 'Audio file uploaded and Lambda triggered successfully.',
+            'audio_url': audio_url,
+            'status': pronunciation.status,
+        }, status=status.HTTP_200_OK)
+
+
+
+# Lambda 함수 결과로 채점 데이터를 업데이트
+class UpdatePronunciationScoreView(APIView):
     def post(self, request):
+        # 람다 함수에서 전달된 데이터 수신
         data = request.data
         audio_url = data.get("audio_url")
-        score = data.get("score")
+        pitch_similarity = data.get("pitch_similarity")
+        rhythm_similarity = data.get("rhythm_similarity")
+        speed_ratio = data.get("speed_ratio")
+        pause_similarity = data.get("pause_similarity")
+        mispronounced_words = data.get("mispronounced_words", [])
+        mispronounced_ratio = data.get("mispronounced_ratio")
         feedback = data.get("feedback", "")
 
+        # 람다 함수 결과 데이터 검증
+        if not audio_url or not isinstance(pitch_similarity, float):
+            return Response({'error': '람다 함수 결과 데이터가 유효하지 않습니다.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        # UserPronunciation 레코드 업데이트
         pronunciation = UserPronunciation.objects.filter(audio_file=audio_url).first()
-        if pronunciation:
-            pronunciation.score = score
-            pronunciation.feedback = feedback
-            pronunciation.save()
-            return Response({"message": "Score and feedback updated successfully"}, status=status.HTTP_200_OK)
-        else:
-            return Response({"error": "Audio file not found"}, status=status.HTTP_404_NOT_FOUND)
+        if not pronunciation:
+            return Response({"error": "Audio file not found in UserPronunciation table."}, status=status.HTTP_404_NOT_FOUND)
+
+        pronunciation.pitch_similarity = pitch_similarity
+        pronunciation.rhythm_similarity = rhythm_similarity
+        pronunciation.speed_ratio = speed_ratio
+        pronunciation.pause_similarity = pause_similarity
+        pronunciation.mispronounced_words = mispronounced_words
+        pronunciation.mispronounced_ratio = mispronounced_ratio
+        pronunciation.feedback = feedback
+        pronunciation.status = "completed"  # 처리 완료 상태 업데이트
+        pronunciation.processed_at = now()  # 처리 시간 기록
+        pronunciation.save()
+
+        return Response({"message": "Pronunciation score updated successfully."}, status=status.HTTP_200_OK)
