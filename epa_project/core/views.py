@@ -126,14 +126,15 @@ def get_reading_books(request):
     """
     user = request.user
     logs = ReadingLog.objects.filter(user=user).order_by('-last_read_at').values(
-        lesson_id=F('lesson_id'),
-        title=F('title'),
+        annotated_lesson_id=F('lesson_id'),  # 어노테이션 이름 수정
+        annotated_title=F('title'),         # 어노테이션 이름 수정
         level=F('level'),
         content_type=F('content_type'),
         last_read_at=F('last_read_at'),
         last_read_sentence_index=F('last_read_sentence_index')  # 마지막으로 읽은 문장 인덱스 추가
     )
     return JsonResponse(list(logs), safe=False)
+
 
 
 # 학습 도서 목록
@@ -233,13 +234,26 @@ def get_sentence_number_from_url(audio_file_url):
 # 사용자 발음 업로드 및 S3 저장
 class UserPronunciationView(APIView):
     def post(self, request):
+        print("Content-Type:", request.content_type)  # 요청의 Content-Type 출력
+        print("Request FILES:", request.FILES)  # 업로드된 파일 정보 출력
+        
+        audio_file = request.FILES.get('audio_file')
+        if not audio_file:
+            return Response({'error': 'No audio file received.'}, status=status.HTTP_400_BAD_REQUEST)
+        
         user_id = request.data.get('user')
         lesson_id = request.data.get('lesson')
+        if not user_id or not lesson_id:
+            return Response({'error': 'Missing user or lesson ID.'}, status=status.HTTP_400_BAD_REQUEST)
+        
         content_type = request.data.get('content_type')
         level = request.data.get('level')
         title = request.data.get('title')
         sentence = request.data.get('sentence')
         audio_file = request.FILES.get('audio_file')
+        if not audio_file:
+            return Response({'error': 'No audio file received.'}, status=status.HTTP_400_BAD_REQUEST)
+
 
         # 필수 데이터 확인
         if not all([user_id, lesson_id, content_type, level, title, sentence, audio_file]):

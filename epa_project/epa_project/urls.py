@@ -5,6 +5,7 @@ The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
 """
 
+from django.views.generic import RedirectView
 from django.contrib import admin
 from django.urls import path
 from core.views import (
@@ -40,10 +41,12 @@ urlpatterns = [
     path("library/", library_view, name="library"),  # 서재 페이지
     path("lesson/<str:content_type>/<int:lesson_id>/", lesson_view, name="lesson"),  # 문자열 + 정수 지원  # 학습 화면
     path("upload/audio/", UserPronunciationView.as_view(), name="upload_audio"),  # 오디오 업로드
-    path("update/score/", UpdatePronunciationScoreView.as_view(), name="update_score"),  # 점수 업데이트
+    path('upload_user_pronunciation/', UserPronunciationView.as_view(), name='upload_user_pronunciation'),  # 사용자 발음 업로드
+    path('update_pronunciation_score/', UpdatePronunciationScoreView.as_view(), name='update_pronunciation_score'),
     path("api/lessons/", get_lessons, name="get_lessons"),  # 학습 도서 API
     #path("api/learning_books/", get_learning_books, name="get_learning_books"),  # 학습 도서 목록 API
     path("api/reading_books/", get_reading_books, name="get_reading_books"),  # 읽고 있는 도서 API
+    path('favicon.ico', RedirectView.as_view(url='/static/favicon.ico', permanent=True)),
 ]
 
 # 정적 파일 URL 추가 (개발 중에만 사용)

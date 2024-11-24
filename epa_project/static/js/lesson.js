@@ -56,10 +56,21 @@ async function startRecording() {
             recordingState = false; // 녹음 상태 변경
             updateRecordingStatus(); // 녹음 상태 UI 업데이트
 
+            // 녹음된 데이터로 Blob 생성
             audioBlob = new Blob(audioChunks, { type: "audio/wav" });
+
+            // 디버깅용 로그 추가
+            console.log("녹음된 데이터 크기:", audioChunks.length); // 녹음된 데이터 조각의 개수
+            console.log("녹음된 데이터:", audioChunks); // 녹음된 데이터 내용 출력
+            console.log("생성된 Blob 크기:", audioBlob.size); // Blob의 크기(바이트 단위)
+            console.log("Blob 유형:", audioBlob.type); // Blob의 MIME 유형 (audio/wav)
+
+            // Blob에서 URL 생성 및 오디오 미리보기
             const audioUrl = URL.createObjectURL(audioBlob);
+            console.log("Blob URL:", audioUrl); // Blob URL 확인
             document.getElementById("audio-preview").src = audioUrl;
 
+            // 업로드 및 다시하기 버튼 활성화
             document.getElementById("upload-btn").disabled = false;
             document.getElementById("retry-btn").disabled = false; // 녹음 다시하기 버튼 활성화
         };
@@ -79,8 +90,10 @@ async function startRecording() {
 
 // 녹음 중지
 function stopRecording() {
-    recorder.stop();
-    document.getElementById("stop-btn").disabled = true;
+    if (recorder) {
+        recorder.stop();
+        document.getElementById("stop-btn").disabled = true;
+    }
 }
 
 // 녹음 다시하기
@@ -128,12 +141,18 @@ async function uploadAudio() {
     formData.append("audio_file", audioBlob, "recording.wav");
     formData.append("user", "{{ user.id }}");
     formData.append("lesson", "{{ lesson.id }}");
-    formData.append("current_sentence_index", currentSentenceIndex); // 현재 문장 인덱스 추가
+    formData.append("current_sentence_index", currentSentenceIndex);
+
+    // 디버깅: FormData 출력
+    console.log("FormData Content:", formData);
 
     try {
-        const response = await fetch("/upload/audio/", {
+        const response = await fetch("{% url 'upload_user_pronunciation' %}", {
             method: "POST",
             body: formData,
+            headers: {
+                "X-CSRFToken": "{{ csrf_token }}",
+            },
         });
 
         if (response.ok) {
@@ -143,8 +162,10 @@ async function uploadAudio() {
         } else {
             const error = await response.json();
             alert("녹음 파일 업로드 실패: " + error.error);
+            console.error("서버 응답:", error);
         }
     } catch (e) {
         alert("업로드 중 오류 발생: " + e.message);
+        console.error("업로드 오류:", e);
     }
 }
