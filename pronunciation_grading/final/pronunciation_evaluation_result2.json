@@ -1,0 +1,1153 @@
+{
+    "comparison_1": {
+        "Pitch Pattern": 0.8091233262896382,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 1.0,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_2": {
+        "Pitch Pattern": 0.8251689592377042,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.7894736842105263,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_3": {
+        "Pitch Pattern": 0.852419589559382,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.9142857142857143,
+        "Pause Pattern": 0.5787000235573364,
+        "Mispronounced Words": {
+            "ratio": 0.2857142857142857,
+            "list": [
+                "lives",
+                "can"
+            ]
+        }
+    },
+    "comparison_4": {
+        "Pitch Pattern": 0.9055051266458676,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.7333333333333332,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_5": {
+        "Pitch Pattern": 0.9748115845550247,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 5.333333333333329,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.3333333333333333,
+            "list": [
+                "it's"
+            ]
+        }
+    },
+    "comparison_6": {
+        "Pitch Pattern": 0.9180019508268541,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.88,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_7": {
+        "Pitch Pattern": 0.8187494906783971,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 1.2258064516129035,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_8": {
+        "Pitch Pattern": 0.917625527255022,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.9705882352941176,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_9": {
+        "Pitch Pattern": 0.8727390592730573,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 1.7333333333333334,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.2,
+            "list": [
+                "your"
+            ]
+        }
+    },
+    "comparison_10": {
+        "Pitch Pattern": 0.7176430352453074,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 1.5000000000000002,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_11": {
+        "Pitch Pattern": 0.7644183435681102,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 1.3333333333333333,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_12": {
+        "Pitch Pattern": 0.6914384504062522,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.9523809523809523,
+        "Pause Pattern": 0.7142857142857143,
+        "Mispronounced Words": {
+            "ratio": 0.2,
+            "list": [
+                "should"
+            ]
+        }
+    },
+    "comparison_13": {
+        "Pitch Pattern": 0.8151704932931153,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 1.026315789473684,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_14": {
+        "Pitch Pattern": 0.7752884999719626,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 1.4285714285714288,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_15": {
+        "Pitch Pattern": 0.7675958775275541,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.7096774193548386,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_16": {
+        "Pitch Pattern": 0.797962979385354,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.75,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_17": {
+        "Pitch Pattern": 0.7944479485437219,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.9243697478991599,
+        "Pause Pattern": 0.625,
+        "Mispronounced Words": {
+            "ratio": 0.2857142857142857,
+            "list": [
+                "judger",
+                "Island"
+            ]
+        }
+    },
+    "comparison_18": {
+        "Pitch Pattern": 0.8549882882461495,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.7894736842105262,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_19": {
+        "Pitch Pattern": 0.804867685710023,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.505050505050505,
+        "Pause Pattern": 0.4347826086956522,
+        "Mispronounced Words": {
+            "ratio": 0.4444444444444444,
+            "list": [
+                "snakes",
+                "p",
+                "need",
+                "a"
+            ]
+        }
+    },
+    "comparison_20": {
+        "Pitch Pattern": 0.8567941306207043,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.625,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_21": {
+        "Pitch Pattern": 0.8337405056011991,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.6985294117647058,
+        "Pause Pattern": 0.5555555555555556,
+        "Mispronounced Words": {
+            "ratio": 0.25,
+            "list": [
+                "order",
+                "sister"
+            ]
+        }
+    },
+    "comparison_22": {
+        "Pitch Pattern": 0.8920918611365662,
+        "Rhythm Pattern": 0.9999999999999998,
+        "Speed Ratio": 0.7222222222222222,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_23": {
+        "Pitch Pattern": 0.813734752030665,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 1.103448275862069,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_24": {
+        "Pitch Pattern": 0.8851435818855218,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.8666666666666668,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_25": {
+        "Pitch Pattern": 0.9572103085393354,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.6481481481481483,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.16666666666666666,
+            "list": [
+                "game"
+            ]
+        }
+    },
+    "comparison_26": {
+        "Pitch Pattern": 0.8633929521566748,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.6388888888888887,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_27": {
+        "Pitch Pattern": 0.8250485989178392,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.6521739130434783,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_28": {
+        "Pitch Pattern": 0.8110800495224186,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 1.1250000000000002,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 1.0,
+            "list": [
+                "word",
+                "called",
+                "the",
+                "I'm"
+            ]
+        }
+    },
+    "comparison_29": {
+        "Pitch Pattern": 0.82373021747914,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 1.0526315789473684,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.3333333333333333,
+            "list": [
+                "she",
+                "said"
+            ]
+        }
+    },
+    "comparison_30": {
+        "Pitch Pattern": 0.9595482958436705,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.8620689655172414,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_31": {
+        "Pitch Pattern": 0.9746737722946536,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.8709677419354839,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_32": {
+        "Pitch Pattern": 0.8827463054263307,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.6666666666666667,
+        "Pause Pattern": 0.5263157894736844,
+        "Mispronounced Words": {
+            "ratio": 0.1111111111111111,
+            "list": [
+                "go"
+            ]
+        }
+    },
+    "comparison_33": {
+        "Pitch Pattern": 0.8971816973248682,
+        "Rhythm Pattern": 0.9999999999999998,
+        "Speed Ratio": 0.986842105263158,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.375,
+            "list": [
+                "Academy",
+                "Earth",
+                "on"
+            ]
+        }
+    },
+    "comparison_34": {
+        "Pitch Pattern": 0.9459546971005686,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.6060606060606061,
+        "Pause Pattern": 0.46725141699712675,
+        "Mispronounced Words": {
+            "ratio": 0.25,
+            "list": [
+                "s",
+                "faster"
+            ]
+        }
+    },
+    "comparison_35": {
+        "Pitch Pattern": 0.7710941902285321,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.3783783783783784,
+        "Pause Pattern": 0.6666666666666667,
+        "Mispronounced Words": {
+            "ratio": 0.3333333333333333,
+            "list": [
+                "picked",
+                "on"
+            ]
+        }
+    },
+    "comparison_36": {
+        "Pitch Pattern": 0.8824523305176386,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.4824561403508771,
+        "Pause Pattern": 0.3846153846153846,
+        "Mispronounced Words": {
+            "ratio": 0.3333333333333333,
+            "list": [
+                "plane",
+                "also",
+                "trade"
+            ]
+        }
+    },
+    "comparison_37": {
+        "Pitch Pattern": 0.9271993562219467,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 1.169230769230769,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.2,
+            "list": [
+                "milks",
+                "drink"
+            ]
+        }
+    },
+    "comparison_38": {
+        "Pitch Pattern": 0.7606093242619065,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 1.0357142857142854,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 1.5,
+            "list": [
+                "5050",
+                "the",
+                "Finance",
+                "school",
+                "of",
+                "a"
+            ]
+        }
+    },
+    "comparison_39": {
+        "Pitch Pattern": 0.783133870027815,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.7205882352941178,
+        "Pause Pattern": 0.7142857142857141,
+        "Mispronounced Words": {
+            "ratio": 0.125,
+            "list": [
+                "Bloom"
+            ]
+        }
+    },
+    "comparison_40": {
+        "Pitch Pattern": 0.9094369576652545,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.7894736842105263,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_41": {
+        "Pitch Pattern": 0.7426753202817092,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 1.0000000000000002,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_42": {
+        "Pitch Pattern": 0.8836695860527257,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.6250000000000001,
+        "Pause Pattern": 0.625,
+        "Mispronounced Words": {
+            "ratio": 0.25,
+            "list": [
+                "have"
+            ]
+        }
+    },
+    "comparison_43": {
+        "Pitch Pattern": 0.9405506858201442,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.6956521739130436,
+        "Pause Pattern": 0.625,
+        "Mispronounced Words": {
+            "ratio": 0.2,
+            "list": [
+                "will"
+            ]
+        }
+    },
+    "comparison_44": {
+        "Pitch Pattern": 0.898978032467922,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 1.0370370370370372,
+        "Pause Pattern": 0.7142857142857141,
+        "Mispronounced Words": {
+            "ratio": 0.3333333333333333,
+            "list": [
+                "choice",
+                "I",
+                "will"
+            ]
+        }
+    },
+    "comparison_45": {
+        "Pitch Pattern": 0.7177091957601944,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.9636752136752136,
+        "Pause Pattern": 0.6666666666666666,
+        "Mispronounced Words": {
+            "ratio": 0.08333333333333333,
+            "list": [
+                "kiss"
+            ]
+        }
+    },
+    "comparison_46": {
+        "Pitch Pattern": 0.979478588819107,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.8275862068965517,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_47": {
+        "Pitch Pattern": 0.8621382256663196,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.65,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_48": {
+        "Pitch Pattern": 0.8372583776054905,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.8235294117647058,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_49": {
+        "Pitch Pattern": 0.8497005581800114,
+        "Rhythm Pattern": 0.9999999999999998,
+        "Speed Ratio": 0.6666666666666665,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_50": {
+        "Pitch Pattern": 0.844966761463762,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 1.15,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_51": {
+        "Pitch Pattern": 0.6942650831132676,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 2.3999999999999977,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.4,
+            "list": [
+                "enjoy",
+                "books"
+            ]
+        }
+    },
+    "comparison_52": {
+        "Pitch Pattern": 0.9021120142908327,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.6477272727272727,
+        "Pause Pattern": 0.625,
+        "Mispronounced Words": {
+            "ratio": 0.25,
+            "list": [
+                "what",
+                "Rudin"
+            ]
+        }
+    },
+    "comparison_53": {
+        "Pitch Pattern": 0.9321071732350927,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.7619047619047619,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_54": {
+        "Pitch Pattern": 0.9318555183188164,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.6689189189189189,
+        "Pause Pattern": 0.5536406433432716,
+        "Mispronounced Words": {
+            "ratio": 0.25,
+            "list": [
+                "write",
+                "touched"
+            ]
+        }
+    },
+    "comparison_55": {
+        "Pitch Pattern": 0.9170811888009175,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 1.0,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_56": {
+        "Pitch Pattern": 0.9508270369433901,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.6521739130434784,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_57": {
+        "Pitch Pattern": 0.8584631910841913,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 1.2666666666666666,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_58": {
+        "Pitch Pattern": 0.8547716523329374,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 1.1428571428571428,
+        "Pause Pattern": 0.769230769230769,
+        "Mispronounced Words": {
+            "ratio": 0.42857142857142855,
+            "list": [
+                "Anker",
+                "running",
+                "too"
+            ]
+        }
+    },
+    "comparison_59": {
+        "Pitch Pattern": 0.959135750745395,
+        "Rhythm Pattern": 0.9999999999999999,
+        "Speed Ratio": 0.6666666666666666,
+        "Pause Pattern": 0.3571428571428571,
+        "Mispronounced Words": {
+            "ratio": 0.2,
+            "list": [
+                "soon's",
+                "grandmother"
+            ]
+        }
+    },
+    "comparison_60": {
+        "Pitch Pattern": 0.8460686286991591,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.8181818181818181,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_61": {
+        "Pitch Pattern": 0.8869311571415146,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.5641025641025641,
+        "Pause Pattern": 0.588235294117647,
+        "Mispronounced Words": {
+            "ratio": 0.3333333333333333,
+            "list": [
+                "the",
+                "thing"
+            ]
+        }
+    },
+    "comparison_62": {
+        "Pitch Pattern": 0.752267852582044,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.7242798353909465,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.1111111111111111,
+            "list": [
+                "lights"
+            ]
+        }
+    },
+    "comparison_63": {
+        "Pitch Pattern": 0.9330866967502284,
+        "Rhythm Pattern": 0.9999999999999999,
+        "Speed Ratio": 1.027027027027027,
+        "Pause Pattern": 0.7692307692307694,
+        "Mispronounced Words": {
+            "ratio": 0.1111111111111111,
+            "list": [
+                "brother"
+            ]
+        }
+    },
+    "comparison_64": {
+        "Pitch Pattern": 0.9344839617916928,
+        "Rhythm Pattern": 0.9999999999999999,
+        "Speed Ratio": 0.9124423963133639,
+        "Pause Pattern": 0.7692307692307694,
+        "Mispronounced Words": {
+            "ratio": 0.14285714285714285,
+            "list": [
+                "brings"
+            ]
+        }
+    },
+    "comparison_65": {
+        "Pitch Pattern": 0.7921873944421253,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 1.0789473684210524,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_66": {
+        "Pitch Pattern": 0.951688332732076,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.7619047619047621,
+        "Pause Pattern": 0.625,
+        "Mispronounced Words": {
+            "ratio": 0.5,
+            "list": [
+                "lock",
+                "the",
+                "run"
+            ]
+        }
+    },
+    "comparison_67": {
+        "Pitch Pattern": 0.9928257563748486,
+        "Rhythm Pattern": 0.9999999999999998,
+        "Speed Ratio": 1.0909090909090904,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.2,
+            "list": [
+                "I'd"
+            ]
+        }
+    },
+    "comparison_68": {
+        "Pitch Pattern": 0.9008617896033685,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.8839285714285714,
+        "Pause Pattern": 0.7142857142857143,
+        "Mispronounced Words": {
+            "ratio": 0.25,
+            "list": [
+                "was",
+                "hoping"
+            ]
+        }
+    },
+    "comparison_69": {
+        "Pitch Pattern": 0.9094332661354854,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.8108108108108107,
+        "Pause Pattern": 0.7692307692307694,
+        "Mispronounced Words": {
+            "ratio": 0.09090909090909091,
+            "list": [
+                "by"
+            ]
+        }
+    },
+    "comparison_70": {
+        "Pitch Pattern": 0.9104113778733921,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 1.2105263157894735,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_71": {
+        "Pitch Pattern": 0.7937791370465455,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.689655172413793,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_72": {
+        "Pitch Pattern": 0.7795770366746533,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.5581395348837209,
+        "Pause Pattern": 0.3846153846153847,
+        "Mispronounced Words": {
+            "ratio": 0.2222222222222222,
+            "list": [
+                "academic",
+                "first"
+            ]
+        }
+    },
+    "comparison_73": {
+        "Pitch Pattern": 0.8447177694635655,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 1.2500000000000002,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_74": {
+        "Pitch Pattern": 0.939331724016424,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.617283950617284,
+        "Pause Pattern": 0.5555555555555556,
+        "Mispronounced Words": {
+            "ratio": 0.16666666666666666,
+            "list": [
+                "friends"
+            ]
+        }
+    },
+    "comparison_75": {
+        "Pitch Pattern": 0.9324058413613697,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.9158249158249158,
+        "Pause Pattern": 0.6250000000000001,
+        "Mispronounced Words": {
+            "ratio": 0.1111111111111111,
+            "list": [
+                "can"
+            ]
+        }
+    },
+    "comparison_76": {
+        "Pitch Pattern": 0.9261307233926446,
+        "Rhythm Pattern": 0.9999999999999998,
+        "Speed Ratio": 0.4705882352941176,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_77": {
+        "Pitch Pattern": 0.9607710146798853,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.7857142857142858,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_78": {
+        "Pitch Pattern": 0.9047706202973634,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 1.1428571428571432,
+        "Pause Pattern": 0.6666666666666666,
+        "Mispronounced Words": {
+            "ratio": 0.5,
+            "list": [
+                "toy",
+                "from",
+                "Earth"
+            ]
+        }
+    },
+    "comparison_79": {
+        "Pitch Pattern": 0.8202560222891077,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.7843137254901961,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.3333333333333333,
+            "list": [
+                "I",
+                "will"
+            ]
+        }
+    },
+    "comparison_80": {
+        "Pitch Pattern": 0.6008716484760289,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 1.176470588235294,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_81": {
+        "Pitch Pattern": 0.9098124000889993,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.9285714285714285,
+        "Pause Pattern": 0.7349941062685068,
+        "Mispronounced Words": {
+            "ratio": 0.3333333333333333,
+            "list": [
+                "sing",
+                "B"
+            ]
+        }
+    },
+    "comparison_82": {
+        "Pitch Pattern": 0.9687280340161836,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.5909090909090909,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.5,
+            "list": [
+                "what",
+                "love"
+            ]
+        }
+    },
+    "comparison_83": {
+        "Pitch Pattern": 0.6773760824874995,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 1.730769230769231,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.25,
+            "list": [
+                "move"
+            ]
+        }
+    },
+    "comparison_84": {
+        "Pitch Pattern": 0.8718882112282382,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 1.2307692307692304,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.4,
+            "list": [
+                "father",
+                "May"
+            ]
+        }
+    },
+    "comparison_85": {
+        "Pitch Pattern": 0.9089852962743703,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.6250000000000001,
+        "Pause Pattern": 0.6096399597571442,
+        "Mispronounced Words": {
+            "ratio": 0.375,
+            "list": [
+                "want",
+                "form",
+                "on"
+            ]
+        }
+    },
+    "comparison_86": {
+        "Pitch Pattern": 0.929742096061805,
+        "Rhythm Pattern": 0.9999999999999998,
+        "Speed Ratio": 0.6842105263157895,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_87": {
+        "Pitch Pattern": 0.7453390235158145,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.8076923076923079,
+        "Pause Pattern": 0.6666666666666666,
+        "Mispronounced Words": {
+            "ratio": 0.5,
+            "list": [
+                "shoes",
+                "knickers"
+            ]
+        }
+    },
+    "comparison_88": {
+        "Pitch Pattern": 0.6768880421655374,
+        "Rhythm Pattern": 0.9999999999999999,
+        "Speed Ratio": 0.4848484848484848,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_89": {
+        "Pitch Pattern": 0.9060986041985328,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.90234375,
+        "Pause Pattern": 0.6249999999999998,
+        "Mispronounced Words": {
+            "ratio": 0.125,
+            "list": [
+                "grace"
+            ]
+        }
+    },
+    "comparison_90": {
+        "Pitch Pattern": 0.9640847511347058,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 1.1868131868131866,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.42857142857142855,
+            "list": [
+                "there",
+                "they",
+                "is"
+            ]
+        }
+    },
+    "comparison_91": {
+        "Pitch Pattern": 0.823033079192129,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 1.0,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_92": {
+        "Pitch Pattern": 0.9066325978545358,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 1.0,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_93": {
+        "Pitch Pattern": 0.9378480265131023,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 1.1333333333333335,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_94": {
+        "Pitch Pattern": 0.7975950769072283,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.9272727272727272,
+        "Pause Pattern": 0.588235294117647,
+        "Mispronounced Words": {
+            "ratio": 0.2,
+            "list": [
+                "sucked",
+                "the"
+            ]
+        }
+    },
+    "comparison_95": {
+        "Pitch Pattern": 0.7757954924196998,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.9750000000000001,
+        "Pause Pattern": 0.7142857142857143,
+        "Mispronounced Words": {
+            "ratio": 0.09090909090909091,
+            "list": [
+                "will"
+            ]
+        }
+    },
+    "comparison_96": {
+        "Pitch Pattern": 0.8675995851737762,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 1.0666666666666667,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_97": {
+        "Pitch Pattern": 0.9735123009825749,
+        "Rhythm Pattern": 0.9999999999999998,
+        "Speed Ratio": 0.7500000000000001,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_98": {
+        "Pitch Pattern": 0.8179755002408708,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.9075630252100841,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.14285714285714285,
+            "list": [
+                "has"
+            ]
+        }
+    },
+    "comparison_99": {
+        "Pitch Pattern": 0.5754918577891092,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 1.85,
+        "Pause Pattern": 1.0,
+        "Mispronounced Words": {
+            "ratio": 0.0,
+            "list": []
+        }
+    },
+    "comparison_100": {
+        "Pitch Pattern": 0.9008728467808347,
+        "Rhythm Pattern": 1.0,
+        "Speed Ratio": 0.8666666666666668,
+        "Pause Pattern": 0.7692307692307694,
+        "Mispronounced Words": {
+            "ratio": 0.2,
+            "list": [
+                "puppy"
+            ]
+        }
+    }
+}
