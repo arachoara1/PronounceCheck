@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User  # Django 기본 User 모델 사용
+from django.contrib.auth.models import User # Django 기본 User 모델 사용
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.db import models
@@ -176,3 +176,4 @@ class UserScore(models.Model):
         """새 점수를 추가하고 누적 점수 업데이트"""
         self.total_score += new_score
         self.save()
+

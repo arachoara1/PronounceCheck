@@ -19,6 +19,7 @@ from botocore.exceptions import NoCredentialsError
 import boto3
 import json
 from dotenv import load_dotenv
+from django.http import JsonResponse
 
 load_dotenv()
 
@@ -116,8 +117,6 @@ def lesson_view(request, content_type, lesson_id):
     )
 
 
-
-
 # 읽고 있는 도서 (사용자 학습 로그 기반)
 @login_required
 def get_reading_books(request):
@@ -176,7 +175,7 @@ def signup_view(request):
 
     return render(request, 'signup.html', {'form': form})
 
-# 템플릿 기반 로그인
+#템플릿 기반 로그인
 def login_view(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
@@ -194,6 +193,9 @@ def login_view(request):
         form = LoginForm()
 
     return render(request, 'login.html', {'form': form})
+
+
+
 
 # 로그아웃 뷰
 def logout_view(request):
@@ -230,6 +232,12 @@ def get_sentence_number_from_url(audio_file_url):
         raise ValueError("Invalid audio file URL format. Unable to extract line number.")
     return int(match.group(1))
 
+# 아이디 중복 확인 API
+def check_username(request):
+    username = request.GET.get('username', None)
+    if username and User.objects.filter(username=username).exists():
+        return JsonResponse({'exists': True}, status=200)
+    return JsonResponse({'exists': False}, status=200)
 
 # 사용자 발음 업로드 및 S3 저장
 class UserPronunciationView(APIView):

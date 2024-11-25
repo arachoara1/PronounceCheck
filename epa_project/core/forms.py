@@ -34,7 +34,7 @@ class SignUpForm(UserCreationForm):
 
 
 class LoginForm(forms.Form):
-    id = forms.CharField(
+    username = forms.CharField(  # 'id' 대신 'username' 사용
         label="아이디",
         max_length=150,
         widget=forms.TextInput(attrs={'placeholder': '아이디를 입력하세요'}),

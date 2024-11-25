@@ -84,5 +84,57 @@
             <p><a href="{% url 'login' %}">이미 계정이 있으신가요? 로그인</a></p>
         </div>
     </div>
+
+    <!-- 커스텀 팝업 추가 -->
+    <div id="custom-alert" style="display: none; position: absolute; z-index: 1000; background-color: white; padding: 20px; border: 1px solid #ddd; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); text-align: center;">
+        <p id="custom-alert-message" style="margin: 0 0 10px;">여기에 메시지가 표시됩니다.</p>
+        <button id="custom-alert-close" style="padding: 5px 10px; background-color: #4CAF50; color: white; border: none; border-radius: 3px; cursor: pointer;">확인</button>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const idInput = document.querySelector('#id_id'); // 아이디 필드
+            const alertBox = document.querySelector('#custom-alert'); // 커스텀 팝업 박스
+            const alertMessage = document.querySelector('#custom-alert-message'); // 커스텀 팝업 메시지
+            const alertClose = document.querySelector('#custom-alert-close'); // 닫기 버튼
+    
+            // 커스텀 팝업 표시 함수
+            function showAlert(message) {
+                alertMessage.textContent = message; // 메시지 설정
+    
+                // 입력 필드 위치 가져오기
+                const rect = idInput.getBoundingClientRect();
+                alertBox.style.left = `${rect.left + window.scrollX}px`; // X 좌표 설정
+                alertBox.style.top = `${rect.top + window.scrollY - alertBox.offsetHeight - 10}px`; // 입력 필드 위에 표시 (-10px 여백)
+                
+                alertBox.style.display = 'block'; // 팝업 표시
+            }
+    
+            // 커스텀 팝업 닫기 이벤트
+            alertClose.addEventListener('click', function () {
+                alertBox.style.display = 'none'; // 팝업 숨기기
+            });
+    
+            // 아이디 필드에서 blur 이벤트 발생 시 중복 체크
+            idInput.addEventListener('blur', function () {
+                const username = idInput.value;
+    
+                if (username) {
+                    fetch(`/check-username/?username=${encodeURIComponent(username)}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.exists) {
+                                showAlert("이미 사용 중인 아이디입니다."); // 커스텀 팝업 표시
+                                idInput.value = ""; // 중복된 아이디일 경우 필드 초기화
+                                idInput.focus(); // 다시 입력할 수 있도록 포커스 설정
+                            }
+                        })
+                        .catch(error => {
+                            console.error("Error:", error);
+                        });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
