@@ -12,6 +12,8 @@
         <p>{{ lesson.last_read_at }}</p>
     </div>
 
+    <p>{{lesson.audio_file}}</p>
+
     <!-- Lesson Audio File -->
     <div class="content">
         <h3>표준 발음 오디오</h3>
@@ -113,6 +115,7 @@
             formData.append("title", "{{ lesson.title }}");
             formData.append("sentence", "{{ current_sentence }}");
             formData.append("audio_file", audioBlob, "recording.wav");
+
 
             fetch("{% url 'upload_user_pronunciation' %}", {
                 method: "POST",
