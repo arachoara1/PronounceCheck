@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 class SignUpForm(UserCreationForm):
-    id = forms.CharField(
+    username = forms.CharField(
         max_length=150,
         required=True,
         label="아이디",
@@ -17,24 +17,24 @@ class SignUpForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['id', 'email', 'password1', 'password2']  # 필드 순서 수정
+        fields = ['username', 'email', 'password1', 'password2']  # `username` 필드로 변경
 
-    def clean_id(self):
-        id = self.cleaned_data.get('id')
-        if User.objects.filter(username=id).exists():  # `username` 필드에 매핑
+    def clean_username(self):  # `id` 대신 `username`으로 변경
+        username = self.cleaned_data.get('username')
+        if User.objects.filter(username=username).exists():
             raise forms.ValidationError("이미 사용 중인 아이디입니다.")
-        return id
+        return username
 
     def save(self, commit=True):
         user = super().save(commit=False)
-        user.username = self.cleaned_data['id']  # `id`를 `username`으로 저장
+        user.email = self.cleaned_data['email']
         if commit:
             user.save()
         return user
 
 
 class LoginForm(forms.Form):
-    id = forms.CharField(
+    username = forms.CharField(  # `id`를 `username`으로 변경
         label="아이디",
         max_length=150,
         widget=forms.TextInput(attrs={'placeholder': '아이디를 입력하세요'}),

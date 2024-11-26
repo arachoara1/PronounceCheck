@@ -183,7 +183,7 @@ def login_view(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
-            username = form.cleaned_data.get('username')
+            username = form.cleaned_data.get('username')  # `id` -> `username`으로 변경
             password = form.cleaned_data.get('password')
             user = authenticate(request, username=username, password=password)
             if user:
@@ -196,6 +196,7 @@ def login_view(request):
         form = LoginForm()
 
     return render(request, 'login.html', {'form': form})
+
 
 # 로그아웃 뷰
 def logout_view(request):
