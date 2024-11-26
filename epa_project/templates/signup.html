@@ -1,140 +1,153 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
+
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 2rem;
-        }
-        .form-container {
-            max-width: 400px;
-            margin: auto;
-            padding: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h2 {
-            text-align: center;
-        }
-        label {
-            font-weight: bold;
-        }
-        .form-field {
-            margin-bottom: 1rem;
-        }
-        .help-text {
-            font-size: 0.9rem;
-            color: #666;
-        }
-        button {
-            width: 100%;
-            padding: 0.5rem;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        .redirect-links {
-            text-align: center;
-            margin-top: 1rem;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        margin: 2rem;
+      }
+
+      .form-container {
+        max-width: 400px;
+        margin: auto;
+        padding: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+        text-align: center;
+      }
+
+      label {
+        font-weight: bold;
+      }
+
+      .form-field {
+        margin-bottom: 1rem;
+      }
+
+      .help-text {
+        font-size: 0.9rem;
+        color: #666;
+      }
+
+      button {
+        width: 100%;
+        padding: 0.5rem;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+
+      .redirect-links {
+        text-align: center;
+        margin-top: 1rem;
+      }
     </style>
-</head>
-<body>
+  </head>
+
+  <body>
     <div class="form-container">
-        <h2>회원가입</h2>
-        <form method="POST">
-            {% csrf_token %}
-            <div class="form-field">
-                {{ form.id.label_tag }}<br>
-                {{ form.id }}
-                <p class="help-text">아이디는 150자 이하의 영문, 숫자, 특수문자 @/./+/-/_만 사용할 수 있습니다.</p>
-            </div>
-            <div class="form-field">
-                {{ form.email.label_tag }}<br>
-                {{ form.email }}
-                <p class="help-text">올바른 이메일 형식을 입력해주세요.</p>
-            </div>
-            <div class="form-field">
-                {{ form.password1.label_tag }}<br>
-                {{ form.password1 }}
-                <p class="help-text">
-                    비밀번호는 다음 조건을 충족해야 합니다:<br>
-                    - 최소 8자 이상<br>
-                    - 숫자만으로 구성되지 않아야 합니다.<br>
-                    - 흔히 사용되는 비밀번호는 사용할 수 없습니다.
-                </p>
-            </div>
-            <div class="form-field">
-                {{ form.password2.label_tag }}<br>
-                {{ form.password2 }}
-                <p class="help-text">비밀번호를 다시 한 번 입력해주세요.</p>
-            </div>
-            <button type="submit">회원가입</button>
-        </form>
-        <div class="redirect-links">
-            <p><a href="{% url 'login' %}">이미 계정이 있으신가요? 로그인</a></p>
+      <h2>회원가입</h2>
+      <form method="POST">
+        {% csrf_token %}
+        <div class="form-field">
+          {{ form.id.label_tag }}<br>
+          {{ form.id }}
+          <p class="help-text">아이디는 150자 이하의 영문, 숫자, 특수문자 @/./+/-/_만 사용할 수 있습니다.</p>
         </div>
+        <div class="form-field">
+          {{ form.email.label_tag }}<br>
+          {{ form.email }}
+          <p class="help-text">올바른 이메일 형식을 입력해주세요.</p>
+        </div>
+        <div class="form-field">
+          {{ form.password1.label_tag }}<br>
+          {{ form.password1 }}
+          <p class="help-text">
+            비밀번호는 다음 조건을 충족해야 합니다:<br>
+            - 최소 8자 이상<br>
+            - 숫자만으로 구성되지 않아야 합니다.<br>
+            - 흔히 사용되는 비밀번호는 사용할 수 없습니다.
+          </p>
+        </div>
+        <div class="form-field">
+          {{ form.password2.label_tag }}<br>
+          {{ form.password2 }}
+          <p class="help-text">비밀번호를 다시 한 번 입력해주세요.</p>
+        </div>
+        <button type="submit">회원가입</button>
+      </form>
+      <div class="redirect-links">
+        <p>
+          <a href="{% url 'login' %}">이미 계정이 있으신가요? 로그인</a>
+        </p>
+      </div>
     </div>
 
-    <!-- 커스텀 팝업 추가 -->
     <div id="custom-alert" style="display: none; position: absolute; z-index: 1000; background-color: white; padding: 20px; border: 1px solid #ddd; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); text-align: center;">
-        <p id="custom-alert-message" style="margin: 0 0 10px;">여기에 메시지가 표시됩니다.</p>
-        <button id="custom-alert-close" style="padding: 5px 10px; background-color: #4CAF50; color: white; border: none; border-radius: 3px; cursor: pointer;">확인</button>
+      <p id="custom-alert-message" style="margin: 0 0 10px;">여기에 메시지가 표시됩니다.</p>
+      <button id="custom-alert-close" style="padding: 5px 10px; background-color: #4CAF50; color: white; border: none; border-radius: 3px; cursor: pointer;">확인</button>
     </div>
-    
+
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const idInput = document.querySelector('#id_id'); // 아이디 필드
-            const alertBox = document.querySelector('#custom-alert'); // 커스텀 팝업 박스
-            const alertMessage = document.querySelector('#custom-alert-message'); // 커스텀 팝업 메시지
-            const alertClose = document.querySelector('#custom-alert-close'); // 닫기 버튼
-    
-            // 커스텀 팝업 표시 함수
-            function showAlert(message) {
-                alertMessage.textContent = message; // 메시지 설정
-    
-                // 입력 필드 위치 가져오기
-                const rect = idInput.getBoundingClientRect();
-                alertBox.style.left = `${rect.left + window.scrollX}px`; // X 좌표 설정
-                alertBox.style.top = `${rect.top + window.scrollY - alertBox.offsetHeight - 10}px`; // 입력 필드 위에 표시 (-10px 여백)
-                
-                alertBox.style.display = 'block'; // 팝업 표시
-            }
-    
-            // 커스텀 팝업 닫기 이벤트
-            alertClose.addEventListener('click', function () {
-                alertBox.style.display = 'none'; // 팝업 숨기기
-            });
-    
-            // 아이디 필드에서 blur 이벤트 발생 시 중복 체크
-            idInput.addEventListener('blur', function () {
-                const username = idInput.value;
-    
-                if (username) {
-                    fetch(`/check-username/?username=${encodeURIComponent(username)}`)
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.exists) {
-                                showAlert("이미 사용 중인 아이디입니다."); // 커스텀 팝업 표시
-                                idInput.value = ""; // 중복된 아이디일 경우 필드 초기화
-                                idInput.focus(); // 다시 입력할 수 있도록 포커스 설정
-                            }
-                        })
-                        .catch(error => {
-                            console.error("Error:", error);
-                        });
-                }
-            });
+      document.addEventListener('DOMContentLoaded', function () {
+        const idInput = document.querySelector('#id_id'); // 아이디 필드
+        const alertBox = document.querySelector('#custom-alert'); // 커스텀 팝업 박스
+        const alertMessage = document.querySelector('#custom-alert-message'); // 커스텀 팝업 메시지
+        const alertClose = document.querySelector('#custom-alert-close'); // 닫기 버튼
+
+        // 커스텀 팝업 표시 함수
+        function showAlert(message) {
+          alertMessage.textContent = message; // 메시지 설정
+
+          // 입력 필드 위치 가져오기
+          const rect = idInput.getBoundingClientRect();
+          alertBox.style.left = `${rect.left + window.scrollX}px`; // X 좌표 설정
+          alertBox.style.top = `${rect.top + window.scrollY - alertBox.offsetHeight - 10}px`; // 입력 필드 위에 표시 (-10px 여백)
+
+          alertBox.style.display = 'block'; // 팝업 표시
+        }
+
+        // 커스텀 팝업 닫기 이벤트
+        alertClose.addEventListener('click', function () {
+          alertBox.style.display = 'none'; // 팝업 숨기기
         });
+
+        // 아이디 필드에서 blur 이벤트 발생 시 중복 체크
+        idInput.addEventListener('blur', function () {
+          const username = idInput.value;
+
+          if (username) {
+            fetch(`/check-username/?username=${encodeURIComponent(username)}`)
+              .then(response => response.json())
+              .then(data => {
+                if (data.exists) {
+                  showAlert("이미 사용 중인 아이디입니다."); // 커스텀 팝업 표시
+                  idInput.value = ""; // 중복된 아이디일 경우 필드 초기화
+                  idInput.focus(); // 다시 입력할 수 있도록 포커스 설정
+                }
+              })
+              .catch(error => {
+                console.error("Error:", error);
+              });
+          }
+        });
+      });
     </script>
-</body>
+
+  </body>
+
 </html>

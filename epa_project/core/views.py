@@ -228,6 +228,15 @@ def login_view(request):
 
     return render(request, 'login.html', {'form': form})
 
+
+
+# 아이디 중복 확인 API
+def check_username(request):
+    username = request.GET.get('username', None)
+    if username and User.objects.filter(username=username).exists():
+        return JsonResponse({'exists': True}, status=200)
+    return JsonResponse({'exists': False}, status=200)
+
 # 로그아웃 뷰
 def logout_view(request):
     logout(request)
