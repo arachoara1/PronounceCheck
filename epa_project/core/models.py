@@ -44,10 +44,8 @@ class LessonNovel(models.Model):
     class Meta:
         constraints = [
             models.UniqueConstraint(
-                fields=["level", "title", "sentence"], name="unique_lesson_novel_entry"
-            ),
-            models.UniqueConstraint(
-                fields=["level", "title_kor", "sentence_kor"], name="unique_lesson_novel_entry_kor"
+                fields=["level", "title", "sentence"],  # level, title, sentence만 기준으로 중복 방지
+                name="unique_lesson_novel_entry",
             )
         ]
 
@@ -69,12 +67,8 @@ class LessonConversation(models.Model):
     class Meta:
         constraints = [
             models.UniqueConstraint(
-                fields=["level", "title", "sentence", "audio_file"],
+                fields=["level", "title", "sentence", "audio_file"],  # level, title, sentence, audio_file만 기준으로 중복 방지
                 name="unique_lesson_conversation_entry",
-            ),
-            models.UniqueConstraint(
-                fields=["level", "title_kor", "sentence_kor", "audio_file"], 
-                name="unique_lesson_conversation_entry_kor"
             )
         ]
 
@@ -87,7 +81,7 @@ class LessonPhonics(models.Model):
 
     level = models.IntegerField()  # 레벨 번호
     title = models.CharField(max_length=255)  # 원본 스크립트 제목
-    title_kor = models.CharField(max_length=255,null=True)  # 번역된 제목 저장 필드
+    title_kor = models.CharField(max_length=255, null=True)  # 번역된 제목 저장 필드
     sentence = models.TextField()  # JSON의 contents 리스트에서 추출한 개별 문장
     sentence_kor = models.TextField(null=True)  # 번역된 문장 저장 필드
     audio_file = models.URLField()  # S3 URL을 저장할 필드
@@ -96,17 +90,14 @@ class LessonPhonics(models.Model):
     class Meta:
         constraints = [
             models.UniqueConstraint(
-                fields=["level", "title", "sentence", "audio_file"],
+                fields=["level", "title", "sentence", "audio_file"],  # level, title, sentence, audio_file만 기준으로 중복 방지
                 name="unique_lesson_phonics_entry",
-            ),
-            models.UniqueConstraint(
-                fields=["level", "title_kor", "sentence_kor", "audio_file"],
-                name="unique_lesson_phonics_entry_kor"
             )
         ]
 
     def __str__(self):
         return f"Phonics - Level {self.level} - {self.title} (Korean: {self.title_kor}): {self.sentence} (Korean: {self.sentence_kor})"
+
 
 
 class ReadingLog(models.Model):
