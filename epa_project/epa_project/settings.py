@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 from decouple import config
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,6 +28,9 @@ SECRET_KEY = "django-insecure-$x23nme2)))r(z=bb65#gq*mf@%&iq&70!5%ejwb=(a%kg)k(o
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']  # EC2 퍼블릭 IP 또는 도메인
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # Application definition
@@ -159,7 +163,3 @@ REST_FRAMEWORK = {
         'rest_framework.parsers.JSONParser',
     ],
 }
-
-AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-]
