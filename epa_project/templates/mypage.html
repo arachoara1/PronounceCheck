@@ -1,53 +1,113 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
+
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>마이페이지</title>
+    {% load static %}
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 2rem;
-        }
-        .container {
-            max-width: 600px;
-            margin: auto;
-            padding: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
-        }
-        .buttons {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .button {
-            display: inline-block;
-            margin: 10px;
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-        .button:hover {
-            background-color: #45a049;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        text-align: center;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        /* 좌우로 버튼 및 이미지 정렬 */
+        align-items: center;
+        margin-top: 40px;
+        width: 100%;
+        /* 화면 전체 너비를 차지하도록 설정 */
+        padding: 0 20px;
+        /* 좌우 여백 추가 */
+      }
+
+      .profile-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 800px;
+        width: 100%;
+        margin-top: 20px;
+      }
+
+      .profile-container img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-right: 50px;
+      }
+
+      .profile-info {
+        text-align: left;
+      }
+
+      .profile-info h1 {
+        margin: 0;
+        font-size: 2rem;
+        margin-bottom: 30px;
+      }
+
+      .profile-info p {
+        margin: 10px 0;
+        font-size: 1.2rem;
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+
+      .button {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        margin: 0 10px;
+      }
+
+      .button:hover {
+        background-color: #45a049;
+      }
+
+      .logout-button {
+        background-color: #f45a049;
+      }
     </style>
-</head>
-<body>
-    <div class="container">
-        <h1>마이페이지</h1>
-        <p>안녕하세요, {{ user.username }}님!</p>
-        <p>이메일: {{ user.email }}</p>
-        <div class="buttons">
-            <a href="{% url 'library' %}" class="button">서재로 가기</a>
-            <a href="{% url 'logout' %}" class="button">로그아웃</a>
-        </div>
+  </head>
+
+  <body>
+    <div class="header">
+      <!-- 로그아웃 버튼 (flex로 오른쪽에 배치) -->
+      <a href="{% url 'logout' %}" class="button logout-button">로그아웃</a>
     </div>
-</body>
+
+    <div class="profile-container">
+      <!-- 사용자 이미지 -->
+      <img src="{% static 'images/profile.png' %}" alt="User Image">
+      <div class="profile-info">
+        <h1>마이페이지</h1>
+        <p>안녕하세요,
+          {{ user.username }}님!</p>
+        <p>공부를 시작해볼까요? 😄</p>
+        <div class="buttons">
+          <!-- 서재로 가기 버튼 -->
+          <a href="{% url 'library' %}" class="button">서재로 가기</a>
+        </div>
+      </div>
+    </div>
+  </body>
+
 </html>
