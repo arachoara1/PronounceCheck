@@ -15,6 +15,7 @@ from core.views import (
     mypage_view,
     library_view,
     UserPronunciationView,
+    ProcessAudioLambdaView,
     UpdatePronunciationScoreView,
     lesson_view,
     get_lessons,
@@ -41,7 +42,8 @@ urlpatterns = [
     path("library/", library_view, name="library"),  # 서재 페이지
     path("lesson/<str:content_type>/<int:lesson_id>/", lesson_view, name="lesson"),  # 문자열 + 정수 지원  # 학습 화면
     path("upload/audio/", UserPronunciationView.as_view(), name="upload_audio"),  # 오디오 업로드
-    path('upload_user_pronunciation/', UserPronunciationView.as_view(), name='upload_user_pronunciation'),  # 사용자 발음 업로드
+    path('upload_user_pronunciation/', UserPronunciationView.as_view(), name='upload_user_pronunciation'),  # 사용자 녹음 업로드
+    path("process_audio_lambda/", ProcessAudioLambdaView.as_view(), name="process_audio_lambda"),  # 발음 채점
     path('update_pronunciation_score/', UpdatePronunciationScoreView.as_view(), name='update_pronunciation_score'),
     path("api/lessons/", get_lessons, name="get_lessons"),  # 학습 도서 API
     #path("api/learning_books/", get_learning_books, name="get_learning_books"),  # 학습 도서 목록 API

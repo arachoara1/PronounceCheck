@@ -127,16 +127,17 @@ class UserPronunciation(models.Model):
     )  # Lesson 모델 타입
     object_id = models.PositiveIntegerField()  # Lesson 모델 ID
     lesson = GenericForeignKey("content_type", "object_id")  # 다형성 참조
-
     audio_file = models.URLField()  # 업로드된 음성 파일 S3 URL
-    score = models.FloatField(
-        validators=[MinValueValidator(0.0), MaxValueValidator(100.0)],
-        blank=True,
-        null=True,
-    )  # 발음 점수
-    feedback = models.TextField(blank=True, null=True)  # 발음 피드백
-    created_at = models.DateTimeField(auto_now_add=True)  # 업로드 시간
-    processed_at = models.DateTimeField(null=True, blank=True)  # 처리 완료 시간 추가
+    pitch_similarity = models.FloatField(null=True, blank=True)  # 채점 항목1) 피치 패턴 유사도
+    rhythm_similarity = models.FloatField(null=True, blank=True)  # 채점 항목2) 리듬 패턴 유사도
+    speed_ratio = models.FloatField(null=True, blank=True)  # 채점 항목3) 발화 속도 비율
+    pause_similarity = models.FloatField(null=True, blank=True)  # 채점 항목4) 휴지 패턴 유사도
+    mispronounced_words = models.JSONField(null=True, blank=True)  # 잘못 인식된 단어 리스트 저장
+    mispronounced_ratio = models.FloatField(null=True, blank=True)  # 잘못 인식된 단어 비율
+    feedback = models.TextField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    processed_at = models.DateTimeField(null=True, blank=True)
+    status = models.CharField(max_length=20, choices=[("pending", "Pending"), ("completed", "Completed")], default="pending")
 
     def __str__(self):
         return f"User {self.user.id} - {self.lesson}: {self.score}"

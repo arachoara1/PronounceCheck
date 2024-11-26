@@ -12,6 +12,7 @@ from django.conf import settings
 from django.db.models import F, Min
 from django.db import transaction
 from django.contrib.auth.decorators import login_required
+from core.audio_analysis import analyze_audio  # 채점 함수 임포트
 from .models import UserPronunciation, LessonNovel, LessonConversation, LessonPhonics, ReadingLog
 from .serializers import UserPronunciationSerializer, UserSerializer
 from .forms import SignUpForm, LoginForm
@@ -287,6 +288,66 @@ class UserPronunciationView(APIView):
 
         except Exception as e:
             return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+# Lambda가 호출할 엔드포인트 (채점 함수 호출)
+class ProcessAudioLambdaView(APIView):
+    """
+    Lambda에서 호출하여 채점 함수 실행
+    """
+    def post(self, request):
+        try:
+            # Lambda로부터 전달된 데이터 가져오기
+            user_audio_key = request.data.get("user_audio_key")
+            standard_audio_key = request.data.get("standard_audio_key")
+
+            if not user_audio_key or not standard_audio_key:
+                return Response({'error': 'S3 오디오 키가 제공되지 않았습니다.'}, status=status.HTTP_400_BAD_REQUEST)
+
+            # S3에서 파일 다운로드
+            s3 = boto3.client('s3')
+            user_audio_path = "/tmp/user_audio.wav"
+            ref_audio_path = "/tmp/ref_audio.wav"
+
+            s3.download_file("user-audio-file", user_audio_key, user_audio_path)
+            s3.download_file("standard-audio-file", standard_audio_key, ref_audio_path)
+
+            # 채점 함수 호출
+            results = analyze_audio(user_audio_path, ref_audio_path)
+
+            # 채점 결과 저장
+            pitch_similarity = results["Pitch Pattern"]
+            rhythm_similarity = results["Rhythm Pattern"]
+            speed_ratio = results["Speed Ratio"]
+            pause_similarity = results["Pause Pattern"]
+            mispronounced_words = results["Mispronounced Words"]["list"]
+            mispronounced_ratio = results["Mispronounced Words"]["ratio"]
+
+            # UserPronunciation 데이터베이스 업데이트
+            user_audio_url = f"https://user-audio-file.s3.amazonaws.com/{user_audio_key}"
+            pronunciation = UserPronunciation.objects.filter(audio_file=user_audio_url).first()
+            if not pronunciation:
+                return Response({"error": "UserPronunciation 데이터가 존재하지 않습니다."}, status=status.HTTP_404_NOT_FOUND)
+
+            pronunciation.pitch_similarity = pitch_similarity
+            pronunciation.rhythm_similarity = rhythm_similarity
+            pronunciation.speed_ratio = speed_ratio
+            pronunciation.pause_similarity = pause_similarity
+            pronunciation.mispronounced_words = mispronounced_words
+            pronunciation.mispronounced_ratio = mispronounced_ratio
+            pronunciation.status = "completed"
+            pronunciation.processed_at = now()
+            pronunciation.save()
+
+            # 임시 파일 삭제
+            os.remove(user_audio_path)
+            os.remove(ref_audio_path)
+
+            return Response({"message": "채점 완료 및 데이터베이스 업데이트 성공"}, status=status.HTTP_200_OK)
+
+        except Exception as e:
+            return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 # 발음 채점 결과 postgresql 업로드
 class UpdatePronunciationScoreView(APIView):
