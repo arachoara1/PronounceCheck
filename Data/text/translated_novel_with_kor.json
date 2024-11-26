@@ -1,0 +1,2128 @@
+{
+    "categories": [
+        {
+            "category_name": "novel",
+            "levels": [
+                {
+                    "level": 1,
+                    "scripts": [
+                        {
+                            "title": "The Rabbit and the Tortoise",
+                            "contents": [
+                                "Rabbit and Tortoise had a race.",
+                                "Rabbit ran fast.",
+                                "Tortoise walked slow.",
+                                "Rabbit stopped to rest.",
+                                "Tortoise kept walking.",
+                                "Tortoise passed Rabbit.",
+                                "Rabbit woke up.",
+                                "He ran, but too late.",
+                                "Tortoise won the race.",
+                                "Slow and steady wins!"
+                            ]
+                        },
+                        {
+                            "title_kor": "토끼와 거북이",
+                            "contents_kor": [
+                                "토끼와 거북이가 경주를 했습니다.",
+                                "토끼는 빨리 달렸습니다.",
+                                "거북이는 천천히 걸었습니다.",
+                                "토끼는 쉬기 위해 멈췄습니다.",
+                                "거북이는 계속 걸었습니다.",
+                                "거북이가 토끼를 지나갔습니다.",
+                                "토끼가 깨어났습니다.",
+                                "그는 달렸지만 너무 늦었습니다.",
+                                "거북이가 경주에서 이겼습니다.",
+                                "천천히 그리고 꾸준히 하면 이깁니다!"
+                            ]
+                        },
+                        {
+                            "title": "The Sun and the Wind",
+                            "contents": [
+                                "Sun and Wind saw a man.",
+                                "The man wore a coat.",
+                                "Wind blew hard.",
+                                "The man held his coat tight.",
+                                "Sun shone warm.",
+                                "The man felt hot.",
+                                "He took off his coat.",
+                                "Sun won with kindness.",
+                                "Kind is strong.",
+                                "Wind learned this."
+                            ]
+                        },
+                        {
+                            "title_kor": "태양과 바람",
+                            "contents_kor": [
+                                "태양과 바람은 한 남자를 보았습니다.",
+                                "그 남자는 코트를 입고 있었습니다.",
+                                "바람이 세게 불었습니다.",
+                                "그 남자는 자신의 코트를 꼭 잡았다.",
+                                "태양이 따뜻하게 빛을 쪼았습니다.",
+                                "그 남자는 더위를 느꼈습니다.",
+                                "그는 코트를 벗었습니다.",
+                                "썬은 친절함으로 승리했습니다.",
+                                "친절은 강합니다.",
+                                "바람은 이것을 배웠습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Lion and the Mouse",
+                            "contents": [
+                                "Lion was sleeping.",
+                                "Mouse ran on Lion.",
+                                "Lion caught Mouse.",
+                                "Mouse said, \"Please, let me go.\"",
+                                "Lion laughed and let him go.",
+                                "Later, Lion was trapped.",
+                                "Mouse came to help.",
+                                "Mouse chewed the net.",
+                                "Lion was free.",
+                                "Lion thanked Mouse."
+                            ]
+                        },
+                        {
+                            "title_kor": "사자와 쥐",
+                            "contents_kor": [
+                                "사자는 잠을 자고 있었습니다.",
+                                "쥐가 사자를 따라 달렸습니다.",
+                                "사자가 쥐를 잡았습니요.",
+                                "마우스는 &quot;제발, 저를 놓아주세요.&quot;라고 말했습니다.",
+                                "사자는 웃으며 그를 놓아주었습니다.",
+                                "나중에 라이온은 갇히게 되었습니다.",
+                                "마우스가 도와주러 왔습니요.",
+                                "쥐가 그물을 씹었습니다.",
+                                "사자는 풀려났습니다.",
+                                "사자는 쥐에게 고마움을 표했습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Fox and the Grapes",
+                            "contents": [
+                                "Fox saw grapes on a tree.",
+                                "The grapes were high.",
+                                "Fox jumped up.",
+                                "He could not reach.",
+                                "He jumped again.",
+                                "Still, no grapes.",
+                                "Fox said, \"They are sour!\"",
+                                "He walked away.",
+                                "Sometimes, we can’t have things.",
+                                "That’s okay."
+                            ]
+                        },
+                        {
+                            "title_kor": "여우와 포도",
+                            "contents_kor": [
+                                "여우는 나무에 포도가 열린 것을 보았습니다.",
+                                "포도가 높이 있었습니다.",
+                                "여우가 점프했습니다.",
+                                "그는 도달할 수 없었습니다.",
+                                "그는 다시 뛰어올랐습니다.",
+                                "아직도 포도는 못 얻었습니다.",
+                                "폭스는 &quot;그들은 신맛이 난다!&quot;고 말했다.",
+                                "그는 떠났습니다.",
+                                "가끔은 우리는 물건을 가질 수 없을 때도 있습니다.",
+                                "그건 괜찮습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Boy Who Cried Wolf",
+                            "contents": [
+                                "A boy watched sheep.",
+                                "He was bored.",
+                                "He shouted, \"Wolf! Wolf!\"",
+                                "People came to help.",
+                                "There was no wolf.",
+                                "The boy laughed.",
+                                "Later, a real wolf came.",
+                                "The boy shouted, but no one came.",
+                                "The wolf took the sheep.",
+                                "The boy was sad."
+                            ]
+                        },
+                        {
+                            "title_kor": "늑대 소리를 지른 소년",
+                            "contents_kor": [
+                                "한 소년이 양을 지켜보았습니다.",
+                                "그는 지루했습니다.",
+                                "그는 &quot;늑대야! 늑대야!&quot;라고 소리쳤다.",
+                                "사람들이 도와주러 왔습니다.",
+                                "늑대는 없었습니다.",
+                                "그 소년은 웃었습니다.",
+                                "나중에 진짜 늑대가 나타났습니다.",
+                                "소년은 소리를 질렀지만 아무도 오지 않았습니다.",
+                                "늑대는 양을 잡아갔습니다.",
+                                "소년은 슬펐습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Crane and the Fox",
+                            "contents": [
+                                "Fox invited Crane to dinner.",
+                                "Fox gave soup in a flat dish.",
+                                "Crane could not eat it.",
+                                "Crane was sad.",
+                                "Next day, Crane invited Fox.",
+                                "Crane gave soup in a tall jar.",
+                                "Fox could not reach it.",
+                                "Fox felt bad.",
+                                "Fox learned to think of others.",
+                                "They became friends."
+                            ]
+                        },
+                        {
+                            "title_kor": "학과 여우",
+                            "contents_kor": [
+                                "여우는 학을 저녁 식사에 초대했습니다.",
+                                "여우는 평평한 접시에 수프를 담아 주었습니다.",
+                                "학은 그것을 먹을 수 없었습니다.",
+                                "학은 슬펐습니다.",
+                                "다음 날, 학은 폭스를 초대했습니다.",
+                                "학은 기다란 항아리에 수프를 담아 주었습니다.",
+                                "여우는 도달할 수 없었습니다.",
+                                "여우는 기분이 나빴습니다.",
+                                "여우는 다른 사람들에 대해 생각하는 법을 배웠습니다.",
+                                "그들은 친구가 되었습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Ant and the Grasshopper",
+                            "contents": [
+                                "Ant worked hard in summer.",
+                                "Grasshopper played and sang.",
+                                "Ant saved food for winter.",
+                                "Grasshopper did not.",
+                                "Winter came.",
+                                "Grasshopper was hungry.",
+                                "He asked Ant for food.",
+                                "Ant shared with him.",
+                                "Grasshopper learned to work hard.",
+                                "They both stayed warm."
+                            ]
+                        },
+                        {
+                            "title_kor": "개미와 메뚜기",
+                            "contents_kor": [
+                                "개미는 여름에 열심히 일했습니다.",
+                                "메뚜기는 놀고 노래했습니다.",
+                                "개미는 겨울을 위해 음식을 남겨 두었습니다.",
+                                "메뚜기는 그렇지 않았습니다.",
+                                "겨울이 왔습니다.",
+                                "메뚜기는 배가 고팠습니다.",
+                                "그는 개미에게 음식을 달라고 했습니다.",
+                                "개미는 그에게 음식을 나누어 주었습니다.",
+                                "메뚜기는 열심히 일하는 법을 배웠습니다.",
+                                "두 사람 모두 따뜻했습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Gingerbread Man",
+                            "contents": [
+                                "An old woman baked a Gingerbread Man.",
+                                "He jumped up and ran away.",
+                                "He said, \"Run, run! Catch me!\"",
+                                "He passed a cow.",
+                                "He passed a pig.",
+                                "They could not catch him.",
+                                "Then, he met a fox.",
+                                "Fox helped him cross a river.",
+                                "But the fox ate him.",
+                                "The Gingerbread Man was gone."
+                            ]
+                        },
+                        {
+                            "title_kor": "진저브레드 맨",
+                            "contents_kor": [
+                                "한 늙은 여자가 진저브레드 맨을 구웠습니다.",
+                                "그는 뛰어 일어나 도망갔습니다.",
+                                "그는 말했습니다, &quot;달려, 달려! 날 잡아!&quot;",
+                                "그는 소 한 마리를 지나갔습니다.",
+                                "그는 돼지 한 마리를 지나갔습니다.",
+                                "그들은 그를 잡을 수 없었습니다.",
+                                "그때 그는 여우를 만났습니다.",
+                                "여우는 그가 강을 건너도록 도왔습니다.",
+                                "하지만 여우가 그를 먹어치웠습니다.",
+                                "진저브레드 맨은 사라졌습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Crow and the Pitcher",
+                            "contents": [
+                                "A Crow was thirsty.",
+                                "He found a pitcher with water.",
+                                "But the water was low.",
+                                "Crow could not reach it.",
+                                "He had an idea.",
+                                "He dropped stones in the pitcher.",
+                                "The water rose up.",
+                                "Crow drank the water.",
+                                "Crow was happy.",
+                                "Smart thinking helped him."
+                            ]
+                        },
+                        {
+                            "title_kor": "까마귀와 주전자",
+                            "contents_kor": [
+                                "까마귀는 목이 말랐습니다.",
+                                "그는 물이 담긴 주전자를 발견했습니다.",
+                                "하지만 물은 얕게 있었습니다.",
+                                "까마귀는 거기에 도달할 수 없었습니다.",
+                                "그는 좋은 생각이 떠올랐습니다.",
+                                "그는 항아리에 돌을 던졌습니다.",
+                                "물이 올라갔습니다.",
+                                "까마귀는 물을 마셨습니다.",
+                                "까마귀는 행복했습니다.",
+                                "똑똑한 생각이 그에게 도움이 되었습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Three Little Pigs",
+                            "contents": [
+                                "Three little pigs made houses.",
+                                "One pig used straw.",
+                                "One pig used sticks.",
+                                "One pig used bricks.",
+                                "A wolf came.",
+                                "He blew down the straw house.",
+                                "He blew down the stick house.",
+                                "He could not blow down the brick house.",
+                                "The pigs were safe.",
+                                "Strong houses are best."
+                            ]
+                        },
+                        {
+                            "title_kor": "3마리의 작은 돼지",
+                            "contents_kor": [
+                                "세 마리의 돼지가 집을 만들었습니다.",
+                                "돼지 한 마리는 짚을 사용했습니다.",
+                                "돼지 한 마리는 막대기를 사용했습니다.",
+                                "돼지 한 마리는 벽돌을 사용했습니다.",
+                                "늑대가 왔습니다.",
+                                "그는 짚으로 만든 집을 무너뜨렸습니다.",
+                                "그는 막대기 집을 무너뜨렸습니다.",
+                                "그는 벽돌집을 무너뜨릴 수 없었습니다.",
+                                "돼지들은 안전했습니다.",
+                                "튼튼한 집이 가장 좋습니다."
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "level": 2,
+                    "scripts": [
+                        {
+                            "title": "The Clever Monkey",
+                            "contents": [
+                                "A Monkey and a Crocodile were friends.",
+                                "The Crocodile said, \"Come to my house!\"",
+                                "Monkey said, \"But I can’t swim.\"",
+                                "The Crocodile said, \"I’ll carry you.\"",
+                                "Monkey got on the Crocodile’s back.",
+                                "Halfway, Crocodile said, \"I need your heart.\"",
+                                "Monkey was scared but had an idea.",
+                                "He said, \"My heart is in the tree!\"",
+                                "Crocodile turned back to the tree.",
+                                "Monkey jumped off and ran away.",
+                                "Monkey was safe because he was clever."
+                            ]
+                        },
+                        {
+                            "title_kor": "영리한 원숭이",
+                            "contents_kor": [
+                                "원숭이와 악어는 친구였습니다.",
+                                "악어가 말했습니다. &quot;내 집으로 와!&quot;",
+                                "원숭이가 말했습니다. &quot;하지만 저는 수영을 못해요.&quot;",
+                                "악어는 &quot;내가 너를 업어갈게.&quot;라고 말했습니다.",
+                                "원숭이가 악어 등에 올라탔습니다.",
+                                "중간에 악어가 &quot;너의 심장이 필요해.&quot;라고 말했습니다.",
+                                "원숭이는 무서웠지만 좋은 생각이 떠올랐습니다.",
+                                "그는 말했다. &quot;내 심장은 나무에 있어요!&quot;",
+                                "악어는 나무 쪽으로 돌아섰다.",
+                                "원숭이는 뛰어내려 도망갔습니다.",
+                                "원숭이는 똑똑했기 때문에 안전했습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Two Goats",
+                            "contents": [
+                                "Two Goats met on a narrow bridge.",
+                                "Each Goat wanted to cross.",
+                                "One Goat said, \"Move! I want to go first!\"",
+                                "The other Goat said, \"No, you move!\"",
+                                "They argued and pushed each other.",
+                                "Both Goats fell into the river.",
+                                "They learned not to fight.",
+                                "If they took turns, they would be safe.",
+                                "Next time, they decided to let others go first.",
+                                "They became kind Goats."
+                            ]
+                        },
+                        {
+                            "title_kor": "두 마리의 염소",
+                            "contents_kor": [
+                                "두 마리의 염소가 좁은 다리 위에서 만났습니다.",
+                                "각 염소는 건너고 싶어했습니다.",
+                                "한 염소가 말했습니다, &quot;움직여! 내가 먼저 가고 싶어!&quot;",
+                                "다른 염소가 말했습니다. &quot;아니, 너나 움직여!&quot;",
+                                "그들은 서로 다투고 밀었습니다.",
+                                "두 염소 모두 강에 빠졌습니다.",
+                                "그들은 싸우지 않는 법을 배웠습니다.",
+                                "그들이 교대로 한다면 안전할 것입니다.",
+                                "다음 번에는 다른 염소가 먼저 가도록 하기로 했습니다.",
+                                "그들은 친절한 염소가 되었습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Crow and the Peacock",
+                            "contents": [
+                                "Crow saw Peacock’s pretty feathers.",
+                                "Crow wanted to be pretty too.",
+                                "He found Peacock feathers on the ground.",
+                                "Crow put them on himself.",
+                                "He went to the Peacocks and said, \"Look at me!\"",
+                                "But the Peacocks saw he was still a Crow.",
+                                "They laughed and said, \"Be yourself, Crow.\"",
+                                "Crow took off the feathers.",
+                                "He learned to be happy as he was.",
+                                "Crow didn’t need Peacock feathers anymore."
+                            ]
+                        },
+                        {
+                            "title_kor": "까마귀와 공작",
+                            "contents_kor": [
+                                "까마귀는 공작의 예쁜 깃털을 보았습니다.",
+                                "까마귀도 예쁘고 싶었어요.",
+                                "그는 땅에서 공작깃털을 발견했습니다.",
+                                "까마귀가 직접 착용했습니다.",
+                                "그는 공작에게 가서 &quot;나를 봐요!&quot;라고 말했습니다.",
+                                "하지만 공작들은 그가 여전히 까마귀라는 것을 알았습니다.",
+                                "그들은 웃으며 말했다. &quot;자신답게 행동하세요, 까마귀.&quot;",
+                                "까마귀는 깃털을 벗어던졌습니다.",
+                                "그는 있는 그대로 행복해지는 법을 배웠습니다.",
+                                "까마귀는 더 이상 공작깃털이 필요하지 않았습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Fox and the Stork",
+                            "contents": [
+                                "Fox invited Stork for dinner.",
+                                "Fox served soup in a flat plate.",
+                                "Fox drank the soup easily.",
+                                "But Stork had a long beak and couldn’t drink.",
+                                "Stork was hungry and left.",
+                                "Next day, Stork invited Fox.",
+                                "She served soup in a tall jar.",
+                                "Stork drank easily, but Fox couldn’t reach.",
+                                "Fox learned to think about his friends.",
+                                "He promised to be kind."
+                            ]
+                        },
+                        {
+                            "title_kor": "여우와 황새",
+                            "contents_kor": [
+                                "여우는 황새를 저녁 식사에 초대했습니다.",
+                                "여우는 평평한 접시에 수프를 담았습니다.",
+                                "여우는 수프를 쉽게 마셨습니다.",
+                                "하지만 황새는 부리가 길어서 물을 마실 수 없었습니다.",
+                                "황새는 배가 고파서 떠났습니다.",
+                                "다음 날, 황새는 여우를 초대했습니다.",
+                                "그녀는 키가 큰 항아리에 수프를 담아 제공했습니다.",
+                                "황새는 쉽게 물을 마셨지만, 여우는 닿을 수 없었습니다.",
+                                "여우는 친구들에 대해 생각하는 법을 배웠습니다.",
+                                "그는 친절할 것을 약속했습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Dog and His Reflection",
+                            "contents": [
+                                "A Dog had a big bone.",
+                                "He walked by a river with it.",
+                                "In the water, he saw his reflection.",
+                                "The Dog thought it was another dog with a bigger bone.",
+                                "He wanted the other bone too.",
+                                "He opened his mouth to bark.",
+                                "The bone in his mouth fell into the river.",
+                                "Now he had no bone.",
+                                "The Dog learned not to be greedy.",
+                                "Sometimes, it’s good to be happy with what you have."
+                            ]
+                        },
+                        {
+                            "title_kor": "개와 그의 반사",
+                            "contents_kor": [
+                                "어떤 개가 큰 뼈를 가지고 있었습니다.",
+                                "그는 그것을 가지고 강을 따라 걸었습니다.",
+                                "그는 물속에 비친 자신의 모습을 보았습니다.",
+                                "그 개는 다른 개에게 더 큰 뼈가 있다고 생각했습니다.",
+                                "그는 나머지 뼈도 원했습니다.",
+                                "그는 입을 벌려 짖었습니다.",
+                                "그의 입 속의 뼈가 강물에 빠졌습니다.",
+                                "이제 그는 뼈가 없었습니다.",
+                                "개는 탐욕스러워서는 안 된다는 것을 배웠습니다.",
+                                "가끔은 지금 가지고 있는 것에 만족하는 것도 좋습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Thirsty Crow",
+                            "contents": [
+                                "A Crow was very thirsty.",
+                                "He found a jar with some water.",
+                                "The water was at the bottom.",
+                                "Crow couldn’t reach it.",
+                                "He saw some small stones nearby.",
+                                "Crow dropped the stones into the jar.",
+                                "With each stone, the water rose.",
+                                "Soon, the water was high enough.",
+                                "Crow drank the water and felt better.",
+                                "He learned that smart thinking helps."
+                            ]
+                        },
+                        {
+                            "title_kor": "목마른 까마귀",
+                            "contents_kor": [
+                                "까마귀는 매우 목이 말랐습니다.",
+                                "그는 물이 담긴 항아리를 발견했습니다.",
+                                "물은 바닥에 있었습니다.",
+                                "까마귀는 거기에 도달할 수 없었습니다.",
+                                "그는 근처에 작은 돌들이 있는 것을 보았습니다.",
+                                "까마귀는 돌을 항아리에 떨어뜨렸습니다.",
+                                "돌 하나하나가 올라갈 때마다 물이 불어났습니다.",
+                                "곧 물이 충분히 높아졌습니다.",
+                                "까마귀는 물을 마시고 기분이 나아졌습니다.",
+                                "그는 똑똑하게 생각하는 것이 도움이 된다는 것을 배웠습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Lion and the Fox",
+                            "contents": [
+                                "Lion was old and weak.",
+                                "He couldn’t hunt anymore.",
+                                "Lion thought, \"I need a plan.\"",
+                                "He pretended to be sick.",
+                                "Many animals came to see him.",
+                                "One by one, they went into his cave.",
+                                "Lion ate them easily.",
+                                "Fox came but stayed outside.",
+                                "Fox said, \"I see many tracks going in, but none coming out!\"",
+                                "Fox left, and Lion went hungry.",
+                                "Fox was safe because he was careful."
+                            ]
+                        },
+                        {
+                            "title_kor": "사자와 여우",
+                            "contents_kor": [
+                                "사자는 늙고 약했습니다.",
+                                "그는 더 이상 사냥을 할 수 없었습니다.",
+                                "사자는 &quot;계획이 필요해.&quot;라고 생각했습니다.",
+                                "그는 아픈 척했습니다.",
+                                "많은 동물들이 그를 보러 왔습니다.",
+                                "그들은 차례로 그의 동굴로 들어갔습니다.",
+                                "사자는 그것들을 쉽게 먹어치웠습니다.",
+                                "여우는 왔으나 밖에 머물렀습니다.",
+                                "여우는 &quot;많은 트랙이 들어가는 걸 보지만, 나오는 건 하나도 없어!&quot;라고 말했습니다.",
+                                "여우는 떠났고, 사자는 배고픔을 느꼈습니다.",
+                                "여우는 조심했기 때문에 안전했습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Wise Owl",
+                            "contents": [
+                                "An Owl lived in a tree.",
+                                "Every day, he watched the animals.",
+                                "He saw a Fox playing tricks.",
+                                "He saw a Rabbit running fast.",
+                                "He saw a Bear looking for food.",
+                                "The animals came to Owl for advice.",
+                                "Owl listened but spoke little.",
+                                "He gave wise advice to each one.",
+                                "The animals learned to trust him.",
+                                "Owl became a wise friend to all."
+                            ]
+                        },
+                        {
+                            "title_kor": "현명한 올빼미",
+                            "contents_kor": [
+                                "올빼미가 나무에 살았습니다.",
+                                "그는 매일 동물들을 지켜보았습니다.",
+                                "그는 여우가 장난치는 것을 보았습니다.",
+                                "그는 토끼 한 마리가 빠르게 달리는 것을 보았습니다.",
+                                "그는 곰이 음식을 찾고 있는 것을 보았습니다.",
+                                "동물들은 조언을 구하기 위해 올빼미에게 왔습니다.",
+                                "올빼미는 듣기는 했지만 거의 말을 하지 않았습니다.",
+                                "그는 그들 각자에게 현명한 조언을 해주었습니다.",
+                                "동물들은 그를 신뢰하는 법을 배웠습니다.",
+                                "올빼미는 모든 사람의 현명한 친구가 되었습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Donkey and the Salt",
+                            "contents": [
+                                "A Donkey carried salt on his back.",
+                                "He walked over a river bridge.",
+                                "The Donkey slipped and fell in the water.",
+                                "The salt melted, and his load got lighter.",
+                                "The next day, he carried salt again.",
+                                "He remembered the water and fell on purpose.",
+                                "The owner got angry.",
+                                "He loaded the Donkey with sponges next time.",
+                                "The Donkey fell, but the sponges got heavy with water.",
+                                "The Donkey learned not to trick others."
+                            ]
+                        },
+                        {
+                            "title_kor": "당나귀와 소금",
+                            "contents_kor": [
+                                "당나귀는 등에 소금을 짊어지고 있었습니다.",
+                                "그는 강다리를 건너갔습니다.",
+                                "당나귀는 미끄러져 물에 빠졌습니다.",
+                                "소금이 녹자 그의 짐은 가벼워졌습니다.",
+                                "다음날 그는 다시 소금을 나르게 되었다.",
+                                "그는 물을 기억하고 일부러 넘어졌습니다.",
+                                "주인은 화를 냈습니다.",
+                                "그는 다음 번에는 당나귀에 스펀지를 싣었습니다.",
+                                "당나귀는 쓰러졌지만, 스펀지는 물로 무거워졌습니다.",
+                                "당나귀는 다른 사람을 속이지 않도록 배웠습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Mice and the Cat",
+                            "contents": [
+                                "A group of Mice was scared of a Cat.",
+                                "They had a meeting.",
+                                "One Mouse said, \"Let’s tie a bell on the Cat.\"",
+                                "All the Mice cheered.",
+                                "Then one Mouse asked, \"Who will tie the bell?\"",
+                                "No Mouse wanted to do it.",
+                                "They realized it was too hard.",
+                                "The Mice learned to think carefully.",
+                                "They decided to stay alert instead.",
+                                "Sometimes, ideas are easy, but actions are hard."
+                            ]
+                        },
+                        {
+                            "title_kor": "쥐와 고양이",
+                            "contents_kor": [
+                                "쥐 무리는 고양이를 무서워했습니다.",
+                                "그들은 회의를 가졌습니다.",
+                                "한 마리의 쥐가 말했다. &quot;고양이에게 종을 달아주자.&quot;",
+                                "모든 쥐들이 환호했습니다.",
+                                "그러자 쥐 한 마리가 물었습니다. &quot;누가 종을 묶을까요?&quot;",
+                                "어떤 쥐도 그것을 하고 싶어하지 않았습니다.",
+                                "그들은 그것이 너무 어렵다는 것을 깨달았습니다.",
+                                "쥐들은 신중하게 생각하는 법을 배웠습니다.",
+                                "대신 그들은 경계를 늦추지 않기로 결심했습니다.",
+                                "때로는 아이디어는 쉽지만, 행동은 어렵습니다."
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "level": 3,
+                    "scripts": [
+                        {
+                            "title": "The Brave Little Bird",
+                            "contents": [
+                                "A small bird wanted to fly far away.",
+                                "Her friends said, \"It’s too far. You can’t do it.\"",
+                                "But the little bird believed in herself.",
+                                "She flew over tall trees and rivers.",
+                                "Sometimes, she felt tired but kept going.",
+                                "She met new animals along the way.",
+                                "They cheered her on, saying, \"You’re very brave!\"",
+                                "After a long journey, the little bird reached her goal.",
+                                "She learned to believe in herself.",
+                                "Her friends were proud of her when she came back."
+                            ]
+                        },
+                        {
+                            "title_kor": "용감한 작은 새",
+                            "contents_kor": [
+                                "작은 새 한 마리가 멀리 날아가고 싶어했습니다.",
+                                "그녀의 친구들은 &quot;너무 멀어. 너는 할 수 없어.&quot;라고 말했습니다.",
+                                "하지만 작은 새는 자신을 믿었습니다.",
+                                "그녀는 높은 나무와 강 위를 날았습니다.",
+                                "때로는 피곤함을 느꼈지만 계속해서 나아갔습니다.",
+                                "그녀는 여행 중에 새로운 동물을 만났습니다.",
+                                "그들은 &quot;당신은 정말 용감해요!&quot;라고 말하며 그녀를 응원했습니다.",
+                                "긴 여행 끝에 작은 새는 목적지에 도착했습니다.",
+                                "그녀는 자신을 믿는 법을 배웠습니다.",
+                                "그녀가 돌아왔을 때 그녀의 친구들은 그녀를 자랑스러워했습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Proud Pine Tree",
+                            "contents": [
+                                "A Pine Tree stood tall in the forest.",
+                                "He thought he was the best tree around.",
+                                "One day, a storm came with strong winds.",
+                                "The Pine Tree stood firm, while small trees bent.",
+                                "He laughed, \"Look at me, so strong!\"",
+                                "But the wind grew stronger and broke his branches.",
+                                "The small trees were safe because they bent with the wind.",
+                                "The Pine Tree learned to be humble.",
+                                "Strength isn’t always about standing tall.",
+                                "Sometimes, being flexible is better."
+                            ]
+                        },
+                        {
+                            "title_kor": "자랑스러운 소나무",
+                            "contents_kor": [
+                                "숲 속에 소나무 한 그루가 우뚝 솟아 있었습니다.",
+                                "그는 자기가 이 세상에서 가장 좋은 나무라고 생각했습니다.",
+                                "어느 날, 강풍을 동반한 폭풍이 몰아쳤습니다.",
+                                "소나무는 굳건히 서 있었지만, 작은 나무들은 구부러졌습니다.",
+                                "그는 웃으며 말했습니다. &quot;나를 봐, 정말 강하잖아!&quot;",
+                                "하지만 바람이 점점 더 강해져서 그의 가지가 부러졌습니다.",
+                                "작은 나무들은 바람에 따라 구부러졌기 때문에 안전했습니다.",
+                                "소나무는 겸손해지는 법을 배웠습니다.",
+                                "힘은 항상 꿋꿋이 서는 것에 있는 것은 아닙니다.",
+                                "때로는 유연한 것이 더 나을 수도 있습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Clever Deer",
+                            "contents": [
+                                "A Deer was drinking water by the river.",
+                                "He saw a Hunter coming near.",
+                                "The Deer quickly ran into the forest.",
+                                "The Hunter chased him but lost sight.",
+                                "The Deer found a big rock to hide behind.",
+                                "He stayed very quiet until the Hunter left.",
+                                "The Deer was safe because he was clever.",
+                                "He learned that sometimes, staying calm helps.",
+                                "He was thankful for the big rock.",
+                                "The forest animals admired his smart thinking."
+                            ]
+                        },
+                        {
+                            "title_kor": "영리한 사슴",
+                            "contents_kor": [
+                                "사슴 한 마리가 강가에서 물을 마시고 있었습니다.",
+                                "그는 사냥꾼이 다가오는 것을 보았습니다.",
+                                "사슴은 재빨리 숲으로 달려갔습니다.",
+                                "사냥꾼은 그를 쫓았지만 시야에서 사라졌습니다.",
+                                "사슴은 숨을 큰 바위를 찾았습니다.",
+                                "그는 사냥꾼이 떠날 때까지 아무 말도 하지 않았습니다.",
+                                "사슴은 똑똑했기 때문에 안전했습니다.",
+                                "그는 때로는 침착함을 유지하는 것이 도움이 된다는 것을 배웠습니다.",
+                                "그는 큰 바위에 고마움을 느꼈습니다.",
+                                "숲의 동물들은 그의 똑똑한 사고방식에 감탄했습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Cat and the Rooster",
+                            "contents": [
+                                "A Cat wanted to catch a Rooster.",
+                                "She hid and waited for the Rooster to come close.",
+                                "When the Rooster came near, he saw the Cat.",
+                                "The Rooster said, \"I know a story. Want to hear it?\"",
+                                "The Cat was curious and said, \"Yes, tell me.\"",
+                                "The Rooster told a funny story, and the Cat laughed.",
+                                "While the Cat was distracted, the Rooster ran away.",
+                                "The Cat was surprised and couldn’t catch him.",
+                                "The Cat learned not to be fooled.",
+                                "The Rooster was happy to be safe."
+                            ]
+                        },
+                        {
+                            "title_kor": "고양이와 수탉",
+                            "contents_kor": [
+                                "고양이가 수탉을 잡고 싶어했습니다.",
+                                "그녀는 숨어서 수탉이 다가오기를 기다렸습니다.",
+                                "수탉이 다가갔을 때 고양이가 보였습니다.",
+                                "수탉이 말했습니다. &quot;나는 이야기를 알고 있어. 듣고 싶어?&quot;",
+                                "고양이는 호기심이 생겨서 &quot;그래요, 말해보세요.&quot;라고 말했습니다.",
+                                "수탉은 재밌는 이야기를 했고, 고양이는 웃었습니다.",
+                                "고양이가 딴 데로 돌아간 사이에 수탉은 도망갔습니다.",
+                                "고양이는 놀랐고 그를 잡을 수 없었습니다.",
+                                "고양이는 속지 않는 법을 배웠습니다.",
+                                "수탉은 안전해서 기뻤습니다."
+                            ]
+                        },
+                        {
+                            "contents": [
+                                "A Rabbit was scared of the dark.",
+                                "He went to Owl and said, \"How can I feel safe at night?\"",
+                                "Owl thought and said, \"Find something good in the dark.\"",
+                                "The Rabbit looked up and saw the stars.",
+                                "He said, \"The stars are beautiful.\"",
+                                "Owl nodded and said, \"See, the night has beauty, too.\"",
+                                "The Rabbit wasn’t as scared anymore.",
+                                "He learned to look for the good in things.",
+                                "From then on, he enjoyed the stars every night.",
+                                "Owl’s advice helped him be brave."
+                            ],
+                            "title_kor": "The Owl’s Advice"
+                        },
+                        {
+                            "title_kor": "올빼미의 조언",
+                            "contents_kor": [
+                                "토끼는 어둠을 무서워했습니다.",
+                                "그는 올빼미에게 가서 &quot;밤에 어떻게 안전함을 느낄 수 있을까요?&quot;라고 물었습니다.",
+                                "올빼미는 생각하며 말했습니다. &quot;어둠 속에서 좋은 것을 찾아보세요.&quot;",
+                                "토끼는 고개를 들어 별을 보았습니다.",
+                                "그는 말했습니다, &quot;별이 아름답네요.&quot;",
+                                "올빼미는 고개를 끄덕이며 말했습니다. &quot;보세요, 밤에도 아름다움이 있어요.&quot;",
+                                "토끼는 더 이상 무서워하지 않았습니다.",
+                                "그는 사물의 좋은 점을 찾는 법을 배웠습니다.",
+                                "그때부터 그는 매일 밤 별을 즐겼습니다.",
+                                "올빼미의 조언은 그가 용기를 갖는 데 도움이 되었습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Brave Lamb",
+                            "contents": [
+                                "A Lamb got lost in the forest.",
+                                "She was scared but kept walking.",
+                                "She saw a Wolf watching her.",
+                                "The Lamb said, \"I’m not afraid of you.\"",
+                                "The Wolf was surprised and laughed.",
+                                "He thought, \"This little lamb is brave.\"",
+                                "The Wolf decided not to chase her.",
+                                "The Lamb walked safely back to her family.",
+                                "She learned that sometimes, bravery can help.",
+                                "Her family was proud of her courage."
+                            ]
+                        },
+                        {
+                            "title_kor": "용감한 어린 양",
+                            "contents_kor": [
+                                "어린 양 한 마리가 숲에서 길을 잃었습니다.",
+                                "그녀는 무서웠지만 계속 걸었습니다.",
+                                "그녀는 늑대가 자신을 지켜보고 있는 것을 보았습니다.",
+                                "어린양이 말했습니다. &quot;나는 당신을 두려워하지 않습니다.&quot;",
+                                "늑대는 놀라서 웃었습니다.",
+                                "그는 &quot;이 어린 양은 용감하구나.&quot;라고 생각했습니다.",
+                                "늑대는 그녀를 쫓지 않기로 결심했습니다.",
+                                "어린 양은 무사히 가족에게로 돌아왔습니다.",
+                                "그녀는 용기가 때로는 도움이 될 수 있다는 것을 배웠습니다.",
+                                "그녀의 가족은 그녀의 용기를 자랑스러워했습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Helpful Ant",
+                            "contents": [
+                                "A Bee fell into a puddle.",
+                                "She couldn’t fly out and was scared.",
+                                "An Ant saw her and came to help.",
+                                "The Ant found a leaf and pushed it to the Bee.",
+                                "The Bee climbed on the leaf and flew away.",
+                                "She thanked the Ant for his help.",
+                                "The Ant was happy to help a friend.",
+                                "Later, the Bee brought food to the Ant’s home.",
+                                "They became good friends.",
+                                "The Bee learned that helping others brings happiness."
+                            ]
+                        },
+                        {
+                            "title_kor": "도움이 되는 개미",
+                            "contents_kor": [
+                                "벌이 웅덩이에 빠졌습니다.",
+                                "그녀는 날아갈 수 없었고 무서웠습니다.",
+                                "개미가 그녀를 보고 도와주러 왔습니다.",
+                                "개미는 잎사귀를 발견하여 벌에게 밀어주었습니다.",
+                                "벌은 잎 위로 올라가 날아갔습니다.",
+                                "그녀는 개미의 도움에 고마움을 표했습니다.",
+                                "개미는 친구를 도울 수 있어서 기뻤습니다.",
+                                "나중에, 벌은 개미의 집에 음식을 가져왔습니다.",
+                                "그들은 좋은 친구가 되었습니다.",
+                                "꿀벌은 다른 사람을 돕는 것이 행복을 가져온다는 것을 배웠습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Little Spider",
+                            "contents": [
+                                "A little Spider wanted to make a web.",
+                                "She tried but kept falling.",
+                                "She said, \"I will try again.\"",
+                                "She worked hard and spun her web.",
+                                "A strong wind blew and broke the web.",
+                                "The Spider did not give up and made a new one.",
+                                "The wind broke her web again, but she tried again.",
+                                "Finally, she made a strong web that stayed.",
+                                "She was proud and learned not to give up.",
+                                "Her friends cheered for her hard work."
+                            ]
+                        },
+                        {
+                            "title_kor": "작은 거미",
+                            "contents_kor": [
+                                "작은 거미가 거미줄을 만들고 싶어했습니다.",
+                                "그녀는 노력했지만 계속 넘어졌습니다.",
+                                "그녀는 &quot;다시 시도해볼게요&quot;라고 말했습니다.",
+                                "그녀는 열심히 일해서 거미줄을 쳤습니다.",
+                                "강풍이 불어서 거미줄이 끊어졌습니다.",
+                                "거미는 포기하지 않고 새로운 거미줄을 만들었습니다.",
+                                "바람이 그녀의 거미줄을 다시 끊어버렸지만, 그녀는 다시 시도했습니다.",
+                                "마침내 그녀는 튼튼한 그물을 만들어냈고 그것이 지속되었습니다.",
+                                "그녀는 자랑스러웠고 포기하지 않는 법을 배웠습니다.",
+                                "그녀의 친구들은 그녀의 열심히 일하는 모습을 응원했습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Hungry Frog",
+                            "contents": [
+                                "A Frog was very hungry.",
+                                "He saw bugs flying near the water.",
+                                "He tried to catch them, but they flew away.",
+                                "The Frog thought and waited very still.",
+                                "The bugs didn’t see him and came close.",
+                                "Then, the Frog jumped and caught a bug!",
+                                "He was happy with his food.",
+                                "The Frog learned that patience works.",
+                                "He ate until he was full.",
+                                "Now, he always waits patiently for food."
+                            ]
+                        },
+                        {
+                            "title_kor": "배고픈 개구리",
+                            "contents_kor": [
+                                "개구리는 매우 배가 고팠습니다.",
+                                "그는 물 근처로 벌레들이 날아다니는 것을 보았습니다.",
+                                "그는 새들을 잡으려고 노력했지만 새들은 날아가 버렸습니다.",
+                                "개구리는 생각하며 아주 조용히 기다렸습니다.",
+                                "벌레들은 그를 보지 못하고 가까이 다가왔습니다.",
+                                "그러자 개구리가 뛰어올라 벌레를 잡았어요!",
+                                "그는 음식에 만족했습니다.",
+                                "개구리는 인내심이 효과가 있다는 걸 배웠습니다.",
+                                "그는 배불리 먹었습니다.",
+                                "이제 그는 항상 음식을 참을성 있게 기다립니다."
+                            ]
+                        },
+                        {
+                            "title": "The Loyal Dog",
+                            "contents": [
+                                "A Dog and his owner were in a forest.",
+                                "The owner fell and hurt his leg.",
+                                "The Dog stayed by his side.",
+                                "The owner asked, \"Can you find help?\"",
+                                "The Dog ran to find someone.",
+                                "He barked and barked until people came.",
+                                "The people helped the owner.",
+                                "The owner hugged the Dog and said, \"Thank you!\"",
+                                "The Dog was happy to help his friend.",
+                                "Everyone admired the Dog’s loyalty."
+                            ]
+                        },
+                        {
+                            "title_kor": "충성스러운 개",
+                            "contents_kor": [
+                                "한 마리의 개와 그 주인이 숲에 있었습니다.",
+                                "주인이 넘어져 다리를 다쳤습니다.",
+                                "개는 그의 옆에 머물렀습니다.",
+                                "주인이 &quot;도움을 구할 수 있나요?&quot;라고 물었습니다.",
+                                "개는 누군가를 찾아 달려갔습니다.",
+                                "그는 사람들이 올 때까지 짖고 또 짖었습니다.",
+                                "사람들은 주인을 도왔습니다.",
+                                "주인은 개를 껴안고 &quot;고맙다!&quot;고 말했습니다.",
+                                "개는 친구를 도울 수 있어서 기뻤습니다.",
+                                "모두가 개의 충성심에 감탄했습니다."
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "level": 4,
+                    "scripts": [
+                        {
+                            "title": "The Golden Ax",
+                            "contents": [
+                                "A poor Woodcutter was cutting trees by a river.",
+                                "Suddenly, his ax fell into the water.",
+                                "The Woodcutter was very sad because he couldn’t work without his ax.",
+                                "Just then, a Spirit came out of the water.",
+                                "The Spirit held a shiny golden ax and asked, \"Is this your ax?\"",
+                                "The Woodcutter shook his head and said, \"No, mine is not gold.\"",
+                                "The Spirit then showed him a silver ax.",
+                                "The Woodcutter said, \"No, mine is not silver.\"",
+                                "Finally, the Spirit showed him a plain iron ax.",
+                                "The Woodcutter smiled and said, \"Yes, that is my ax!\"",
+                                "The Spirit was pleased with his honesty and gave him all three axes.",
+                                "The Woodcutter went home, happy and proud.",
+                                "He learned that being honest is always the best choice."
+                            ]
+                        },
+                        {
+                            "title_kor": "황금도끼",
+                            "contents_kor": [
+                                "가난한 나무꾼이 강가에서 나무를 베고 있었습니다.",
+                                "갑자기 그의 도끼가 물속으로 빠졌습니다.",
+                                "나무꾼은 도끼 없이는 일을 할 수 없어서 매우 슬펐습니다.",
+                                "바로 그때, 한 정령이 물에서 나왔습니다.",
+                                "정령은 빛나는 황금도끼를 들고 &quot;이게 네 도끼냐?&quot;라고 물었습니다.",
+                                "나무꾼은 고개를 저으며 말했습니다. &quot;아니요, 제 것은 금이 아닙니다.&quot;",
+                                "그러자 성령께서 그에게 은도끼를 보여 주셨습니다.",
+                                "나무꾼이 말했습니다. &quot;아니요, 제 것은 은이 아닙니다.&quot;",
+                                "마침내 성령께서 그에게 단순한 철도끼를 보여 주셨습니다.",
+                                "나무꾼은 미소를 지으며 말했습니다. &quot;그렇습니다. 그것이 내 도끼입니다!&quot;",
+                                "성령은 그의 정직함을 기뻐하셨고 그에게 도끼 세 개를 모두 주셨습니다.",
+                                "나무꾼은 행복하고 자랑스러운 마음으로 집으로 돌아갔습니다.",
+                                "그는 정직하는 것이 항상 최선의 선택이라는 것을 배웠습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Honest Merchant",
+                            "contents": [
+                                "A Merchant was unloading rice bags one day.",
+                                "In one bag, he found a small pouch of gold coins.",
+                                "The Merchant thought, \"Someone must have lost this.\"",
+                                "He decided to go to the town and look for the owner.",
+                                "The Merchant called out, \"Did anyone lose a pouch of gold?\"",
+                                "An old man said, \"Those coins are mine! Thank you.\"",
+                                "The Merchant gave him the pouch right away.",
+                                "People in town praised the Merchant’s honesty.",
+                                "Later, the old man gave him a small reward.",
+                                "The Merchant felt good and knew honesty is always rewarded.",
+                                "From that day, he was known as the honest Merchant."
+                            ]
+                        },
+                        {
+                            "title_kor": "정직한 상인",
+                            "contents_kor": [
+                                "어느 날 상인이 쌀 가마니를 내려싣고 있었습니다.",
+                                "그는 한 가방에서 금화가 가득 든 작은 주머니를 발견했습니다.",
+                                "상인은 &quot;누군가 이걸 잃어버린 게 틀림없다.&quot;고 생각했습니다.",
+                                "그는 마을로 가서 주인을 찾기로 결심했습니다.",
+                                "상인이 소리쳤습니다. &quot;금화 주머니를 잃어버린 사람 있나요?&quot;",
+                                "한 노인이 말했습니다. &quot;그 동전들은 내 거야! 고맙구나.&quot;",
+                                "상인은 그에게 바로 주머니를 주었습니다.",
+                                "마을 사람들은 상인의 정직함을 칭찬했습니다.",
+                                "나중에 노인은 그에게 작은 보상을 주었습니다.",
+                                "상인은 기분이 좋았고 정직은 항상 보상을 받는다는 걸 알았습니다.",
+                                "그날부터 그는 정직한 상인으로 알려졌습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Wise Judge",
+                            "contents": [
+                                "Two women came to a Judge, each claiming a baby was hers.",
+                                "The Judge listened to both women but could not tell who the real mother was.",
+                                "Then, he had an idea.",
+                                "He said, \"I will cut the baby in half. Each of you can have a part.\"",
+                                "One woman cried, \"No, let her have the baby!\"",
+                                "The other woman stayed silent and agreed.",
+                                "The Judge smiled and said, \"The real mother would never harm her baby.\"",
+                                "He gave the baby to the woman who cried out.",
+                                "The people praised the Judge’s wisdom.",
+                                "The real mother was thankful, and everyone learned a lesson in love."
+                            ]
+                        },
+                        {
+                            "title_kor": "현명한 판사",
+                            "contents_kor": [
+                                "두 여자가 판사에게 찾아와서 각자 아기가 자기 아기라고 주장했습니다.",
+                                "판사는 두 여자의 말을 모두 들었지만 누가 진짜 어머니인지는 알 수 없었습니다.",
+                                "그러자 그는 한 가지 아이디어를 떠올렸습니다.",
+                                "그는 말했습니다, &quot;나는 아기를 반으로 자르겠습니다. 여러분 각자가 한 부분을 가질 수 있습니다.&quot;",
+                                "한 여성은 &quot;안 돼요, 그녀가 아기를 갖게 하세요!&quot;라고 외쳤습니다.",
+                                "다른 여자는 아무 말도 하지 않고 동의했습니다.",
+                                "판사는 미소를 지으며 말했습니다. &quot;진짜 엄마는 결코 자기 아기를 해치지 않습니다.&quot;",
+                                "그는 울부짖는 여자에게 아기를 주었습니다.",
+                                "사람들은 판사의 지혜를 칭찬했습니다.",
+                                "진짜 어머니는 감사했고, 모두가 사랑에 대한 교훈을 얻었습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Talking Fish",
+                            "contents": [
+                                "A Fisherman caught a shiny Fish in his net.",
+                                "To his surprise, the Fish spoke and said, \"Please let me go, and I will give you a wish.\"",
+                                "The Fisherman was kind and let the Fish go.",
+                                "He wished for just enough food for his family.",
+                                "Each day, his family had food on their table.",
+                                "The Fisherman’s greedy neighbor found out about the Fish.",
+                                "He caught the Fish and asked for endless gold.",
+                                "But the Fish, seeing his greed, swam away forever.",
+                                "The Fisherman was happy with his simple wish.",
+                                "He learned that kindness and a humble heart bring happiness."
+                            ]
+                        },
+                        {
+                            "title_kor": "말하는 물고기",
+                            "contents_kor": [
+                                "어부가 그물로 반짝이는 물고기를 잡았습니다.",
+                                "놀랍게도 물고기는 &quot;저를 놓아주세요. 그러면 소원을 들어드리겠습니다.&quot;라고 말했습니다.",
+                                "어부는 친절하게도 물고기를 놓아주었습니다.",
+                                "그는 가족을 부양할 만큼의 음식만 원했습니다.",
+                                "매일 그의 가족은 식탁에 음식을 올릴 수 있었습니다.",
+                                "어부의 탐욕스러운 이웃이 물고기에 대해 알아냈습니다.",
+                                "그는 물고기를 잡고 끝없는 금을 요구했습니다.",
+                                "그러나 물고기는 그의 탐욕을 깨닫고 영원히 헤엄쳐 떠났습니다.",
+                                "어부는 그의 단순한 소원에 만족했습니다.",
+                                "그는 친절과 겸손한 마음이 행복을 가져다준다는 것을 배웠습니다."
+                            ]
+                        },
+                        {
+                            "contents": [
+                                "An old Farmer had three sons.",
+                                "Before he died, he told them, \"There is treasure hidden in the fields.\"",
+                                "After he passed away, the sons eagerly dug all over the fields.",
+                                "They didn’t find gold or jewels, only soil.",
+                                "Since they had worked the land so well, they decided to plant crops.",
+                                "That year, they had the best harvest and earned a lot of money.",
+                                "The sons realized their father’s words were about hard work.",
+                                "They learned that working the land was the true treasure.",
+                                "They were grateful to their father for his wise lesson.",
+                                "The family lived happily, remembering the value of hard work."
+                            ],
+                            "title_kor": "The Farmer’s Treasure"
+                        },
+                        {
+                            "title_kor": "농부의 보물",
+                            "contents_kor": [
+                                "한 늙은 농부에게 세 아들이 있었습니다.",
+                                "그는 죽기 전에 그들에게 이렇게 말했습니다. &quot;밭에 보물이 숨겨져 있다.&quot;",
+                                "그가 세상을 떠난 후에 아들들은 열심히 밭을 파헤쳤습니다.",
+                                "그들은 금이나 보석을 발견하지 못했고, 오직 흙만 발견했습니다.",
+                                "그들은 땅을 아주 잘 일구었으므로 작물을 심기로 결정했습니다.",
+                                "그해에 그들은 최고의 수확을 거두었고 많은 돈을 벌었습니다.",
+                                "아들들은 아버지의 말이 열심히 일하라는 말이라는 것을 깨달았습니다.",
+                                "그들은 땅을 경작하는 것이 진정한 보물이라는 것을 깨달았습니다.",
+                                "그들은 아버지의 현명한 교훈에 감사했습니다.",
+                                "가족은 열심히 일하는 것의 가치를 기억하며 행복하게 살았습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Two Pots",
+                            "contents": [
+                                "A woman carried two pots for water every day.",
+                                "One pot was perfect, but the other had a crack.",
+                                "The cracked pot leaked water on the path.",
+                                "One day, the pot said, \"I am sorry, I waste water.\"",
+                                "The woman smiled and said, \"Look at the flowers on your side.\"",
+                                "The cracked pot saw beautiful flowers along the path.",
+                                "The water it spilled helped the flowers grow.",
+                                "The pot felt proud of its special purpose.",
+                                "The woman taught it that everyone has value.",
+                                "Even small flaws can bring beauty."
+                            ]
+                        },
+                        {
+                            "title_kor": "두 개의 냄비",
+                            "contents_kor": [
+                                "한 여인이 매일 물을 담는 항아리 두 개를 들고 다녔습니다.",
+                                "한 냄비는 완벽했는데 다른 냄비에는 금이 갔습니다.",
+                                "깨진 항아리에서 물이 길로 새어 나왔습니다.",
+                                "어느 날, 냄비가 말했습니다. &quot;미안해요, 물을 낭비했어요.&quot;",
+                                "그 여인은 미소를 지으며 말했습니다. &quot;당신 옆에 있는 꽃을 보세요.&quot;",
+                                "깨진 화분에는 길을 따라 아름다운 꽃이 피어 있었습니다.",
+                                "쏟아진 물은 꽃이 자라는 데 도움이 되었습니다.",
+                                "그 냄비는 그 특별한 용도에 대해 자랑스러워했습니다.",
+                                "그 여자는 모든 사람이 가치 있는 존재라는 것을 가르쳤습니다.",
+                                "아무리 작은 결점이라도 아름다움을 가져올 수 있습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Boy and the Starfish",
+                            "contents": [
+                                "A boy walked along a beach covered with starfish.",
+                                "He picked up a starfish and threw it back into the sea.",
+                                "An old man saw him and said, \"You can’t save all of them.\"",
+                                "The boy picked up another starfish and said, \"I can save this one.\"",
+                                "The old man watched as the boy continued helping starfish.",
+                                "The man joined him, throwing starfish back into the water.",
+                                "Together, they saved many starfish.",
+                                "The boy taught the man that small acts matter.",
+                                "Helping even one starfish made a difference.",
+                                "The beach was a little better because of their kindness."
+                            ]
+                        },
+                        {
+                            "title_kor": "소년과 불가사리",
+                            "contents_kor": [
+                                "한 소년이 불가사리로 덮인 해변을 따라 걷고 있었습니다.",
+                                "그는 불가사리 한 마리를 집어 바다에 다시 던졌습니다.",
+                                "한 노인이 그를 보고 말했습니다. &quot;모두를 구할 수는 없습니다.&quot;",
+                                "소년은 또 다른 불가사리를 집어 들고 &quot;이건 내가 살릴 수 있을 것 같아.&quot;라고 말했습니다.",
+                                "그 노인은 소년이 불가사리를 돕는 것을 지켜보았습니다.",
+                                "그 남자가 그에게 합류해서 불가사리를 다시 물속으로 던졌습니다.",
+                                "그들은 힘을 합쳐 많은 불가사리를 구했습니다.",
+                                "소년은 남자에게 작은 행동이 중요하다는 것을 가르쳐 주었습니다.",
+                                "불가사리 한 마리를 돕는 것도 큰 도움이 되었습니다.",
+                                "그들의 친절 덕분에 해변은 조금 더 나아졌습니다."
+                            ]
+                        },
+                        {
+                            "contents": [
+                                "A thirsty Crow found a pitcher with a little water at the bottom.",
+                                "He tried to drink, but his beak couldn’t reach.",
+                                "The Crow saw some small stones nearby.",
+                                "He picked up each stone and dropped it into the pitcher.",
+                                "With each stone, the water level rose a little.",
+                                "Finally, the water was high enough for the Crow to drink.",
+                                "A Farmer saw the clever Crow and told his children.",
+                                "He said, \"The Crow was smart and solved his problem.\"",
+                                "The children learned to think creatively.",
+                                "The Crow’s idea became a lesson for everyone."
+                            ],
+                            "title_kor": "The Crow’s Gift"
+                        },
+                        {
+                            "title_kor": "까마귀의 선물",
+                            "contents_kor": [
+                                "목마른 까마귀가 바닥에서 약간의 물이 담긴 주전자를 발견했습니다.",
+                                "그는 물을 마시려고 했지만 부리가 닿지 않았습니다.",
+                                "까마귀는 근처에 작은 돌들이 있는 것을 보았습니다.",
+                                "그는 돌을 하나하나 집어 주전자에 떨어뜨렸습니다.",
+                                "돌을 던질 때마다 수위가 조금씩 올라갔습니다.",
+                                "마침내 까마귀가 마실 수 있을 만큼 물이 차올랐습니다.",
+                                "한 농부가 똑똑한 까마귀를 보고 아이들에게 이야기해 주었습니다.",
+                                "그는 &quot;까마귀는 똑똑해서 문제를 해결했다&quot;고 말했습니다.",
+                                "아이들은 창의적으로 생각하는 법을 배웠습니다.",
+                                "까마귀의 생각은 모든 사람에게 교훈이 되었습니다."
+                            ]
+                        },
+                        {
+                            "contents": [
+                                "A tired Carpenter wanted to stop working.",
+                                "He was asked to build one last house before he retired.",
+                                "The Carpenter used cheap wood and worked quickly.",
+                                "When he finished, his boss surprised him.",
+                                "\"This house is a gift for you,\" the boss said.",
+                                "The Carpenter felt ashamed for not doing his best.",
+                                "He realized that his own home was poorly built.",
+                                "From that day, he promised to always do his best.",
+                                "He learned that each job reflects who we are.",
+                                "The Carpenter became proud of his work once again."
+                            ],
+                            "title_kor": "The Carpenter’s House"
+                        },
+                        {
+                            "title_kor": "목수의 집",
+                            "contents_kor": [
+                                "지친 목수는 일을 그만두고 싶어했습니다.",
+                                "그는 은퇴하기 전에 마지막 집을 짓라는 요청을 받았습니다.",
+                                "목수는 싼 나무를 사용해서 작업을 빨리 마쳤습니다.",
+                                "그가 끝내자, 그의 상사가 그를 놀라게 했습니다.",
+                                "&quot;이 집은 당신에게 주는 선물입니다.&quot; 사장님이 말했습니다.",
+                                "목수는 최선을 다하지 못한 것이 부끄러웠습니다.",
+                                "그는 자신의 집이 제대로 지어지지 않았다는 것을 깨달았습니다.",
+                                "그날부터 그는 항상 최선을 다하겠다고 약속했습니다.",
+                                "그는 각각의 직업이 우리가 누구인지를 반영한다는 것을 배웠습니다.",
+                                "목수는 다시 한번 자신의 일에 자부심을 느꼈습니다."
+                            ]
+                        },
+                        {
+                            "contents": [
+                                "A young Shepherd cared for his sheep each day.",
+                                "One day, he found a lamb stuck in a bush.",
+                                "An older Shepherd saw him and said, \"Good job.\"",
+                                "The young Shepherd asked, \"How can I keep my sheep safe?\"",
+                                "The older Shepherd said, \"Know each sheep well.\"",
+                                "The young Shepherd learned each sheep’s face and sound.",
+                                "One day, he noticed one was missing and found it quickly.",
+                                "The older Shepherd praised him for his good care.",
+                                "The young Shepherd became wise and careful.",
+                                "He earned respect from everyone who saw his dedication."
+                            ],
+                            "title_kor": "The Shepherd’s Advice"
+                        },
+                        {
+                            "title_kor": "목자의 조언",
+                            "contents_kor": [
+                                "젊은 목동이 매일 양을 돌보았습니다.",
+                                "어느 날 그는 덤불에 갇힌 어린 양을 발견했습니다.",
+                                "나이 많은 목동이 그를 보고 &quot;잘했어요.&quot;라고 말했습니다.",
+                                "젊은 목동은 &quot;어떻게 하면 제 양을 안전하게 지킬 수 있을까요?&quot;라고 물었습니다.",
+                                "나이 많은 목자는 &quot;양 하나하나를 잘 알아야 한다&quot;고 말했습니다.",
+                                "젊은 양치기는 양들의 얼굴과 소리를 하나하나 배웠습니다.",
+                                "어느 날 그는 하나가 없어진 것을 알아차리고 재빨리 찾아냈습니다.",
+                                "나이 많은 목동은 그가 잘 돌보아준 것에 대해 칭찬했다.",
+                                "젊은 목동은 현명해지고 조심스러워졌습니다.",
+                                "그는 자신의 헌신을 본 모든 사람으로부터 존경을 받았습니다."
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "level": 5,
+                    "scripts": [
+                        {
+                            "title": "The Clever Turtle",
+                            "contents": [
+                                "Once upon a time, there was a Turtle who lived peacefully by a wide river.",
+                                "One day, a hungry Tiger came to the river, spotting the Turtle.",
+                                "The Tiger thought, \"That Turtle would make a tasty meal.\"",
+                                "The Turtle, seeing the Tiger approach, realized he was in danger.",
+                                "Quickly, he thought of a plan and said, \"Oh, no! Please don’t eat me!\"",
+                                "The Tiger was puzzled and asked, \"Why not?\"",
+                                "The Turtle replied, \"My shell is hard. You won’t enjoy it.\"",
+                                "The Tiger asked, \"How can I eat you, then?\"",
+                                "The Turtle said, \"Throw me into the water, and I will soften up.\"",
+                                "The Tiger, not realizing the trick, threw the Turtle into the river.",
+                                "The Turtle happily swam away, safe and free.",
+                                "The Tiger learned he had been outsmarted by the clever Turtle."
+                            ]
+                        },
+                        {
+                            "title_kor": "영리한 거북이",
+                            "contents_kor": [
+                                "옛날 옛적에, 넓은 강가에 거북이 한 마리가 평화롭게 살았습니다.",
+                                "어느 날, 배고픈 호랑이 한 마리가 강에 와서 거북이를 발견했습니다.",
+                                "호랑이는 &quot;저 거북이는 맛있는 식사가 될 것 같다.&quot;고 생각했습니다.",
+                                "거북이는 호랑이가 다가오는 것을 보고 위험에 처해 있다는 것을 깨달았습니다.",
+                                "그는 재빨리 계획을 생각해내며 말했습니다. &quot;안돼! 제발 저를 먹지 마세요!&quot;",
+                                "호랑이는 당황하여 “왜 안 되죠?”라고 물었습니다.",
+                                "거북이는 &quot;내 껍질은 딱딱해요. 너는 그것을 즐기지 않을 거야.&quot;라고 대답했습니다.",
+                                "호랑이가 물었습니다. &quot;그럼 내가 어떻게 너를 먹을 수 있겠느냐?&quot;",
+                                "거북이가 말했습니다. &quot;나를 물속에 던져 넣으면 부드러워질 거야.&quot;",
+                                "호랑이는 그 속임수를 깨닫지 못하고 거북이를 강에 던졌습니다.",
+                                "거북이는 행복하게 헤엄쳐 돌아갔습니다. 안전하고 자유로웠죠.",
+                                "호랑이는 똑똑한 거북이에게 속았다는 사실을 알게 되었습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Generous Tree",
+                            "contents": [
+                                "In a peaceful village, a great apple Tree grew, offering shade and delicious apples.",
+                                "A young boy would play under the Tree and eat its sweet apples every day.",
+                                "As the boy grew, he visited the Tree less often, but the Tree still loved him.",
+                                "One day, the boy returned, needing money, so the Tree offered him its apples to sell.",
+                                "Years later, the boy needed a home, so the Tree let him cut its branches for wood.",
+                                "When he grew older, he needed a boat, so the Tree gave its trunk.",
+                                "Now the Tree was just a stump, waiting alone and quietly.",
+                                "One day, the man returned as an old man.",
+                                "The Tree whispered, \"I have nothing left, but you can rest here.\"",
+                                "The old man sat down, and the Tree felt complete again, giving till the end."
+                            ]
+                        },
+                        {
+                            "title_kor": "관대한 나무",
+                            "contents_kor": [
+                                "평화로운 마을에 커다란 사과나무가 자랐습니다. 그 나무는 그늘을 드리우고 맛있는 사과를 열었습니다.",
+                                "어린 소년은 나무 아래서 놀며 매일 달콤한 사과를 먹었습니다.",
+                                "소년이 자라면서 나무를 찾는 일은 점점 줄었지만, 나무는 여전히 그를 사랑했습니다.",
+                                "어느 날 소년이 돈이 필요해서 돌아왔을 때, 나무는 그에게 사과를 팔겠다고 제안했습니다.",
+                                "수년 후, 소년은 집이 필요했고, 나무는 그 소년이 나무를 자르도록 허락했습니다.",
+                                "그가 나이가 들었을 때, 그는 배가 필요했고, 나무는 그에게 줄기를 주었습니다.",
+                                "이제 나무는 단지 그루터기에 불과하여, 홀로 조용히 기다리고 있었습니다.",
+                                "어느 날 그 남자는 노인이 되어 돌아왔습니다.",
+                                "나무가 속삭였습니다. &quot;나에게는 아무것도 남지 않았지만, 너는 여기서 쉬어도 돼.&quot;",
+                                "노인은 앉았고, 나무는 다시 완전해진 느낌을 받으며 끝가지 주었습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Wise Old Owl",
+                            "contents": [
+                                "An Owl lived high in an old, sturdy tree, watching over the forest creatures below.",
+                                "All the animals respected the Owl for his wisdom and calm nature.",
+                                "One day, a Rabbit and a Fox argued about who was the fastest.",
+                                "They decided to ask the Owl to settle their argument.",
+                                "The Owl thought and said, \"Why don’t you both race and let the result speak?\"",
+                                "Eager to prove themselves, they agreed and began the race.",
+                                "The Fox sped off quickly but soon grew tired and stopped to rest.",
+                                "The Rabbit, though slower, kept hopping steadily toward the finish line.",
+                                "In the end, the Rabbit won, proving that focus is just as important as speed.",
+                                "The Owl’s advice taught them that patience and persistence often lead to success."
+                            ]
+                        },
+                        {
+                            "title_kor": "현명한 늙은 올빼미",
+                            "contents_kor": [
+                                "올빼미 한 마리가 오래되고 튼튼한 나무 높은 곳에 살며, 아래에 있는 숲속 생물들을 지키고 있었습니다.",
+                                "모든 동물들은 올빼미의 지혜와 차분한 성격을 존경했습니다.",
+                                "어느 날, 토끼와 여우가 누가 가장 빠른지에 대해 다투었습니다.",
+                                "그들은 올빼미에게 논쟁을 해결해 달라고 요청하기로 결정했습니다.",
+                                "올빼미는 생각하며 말했습니다. &quot;두 사람 다 경주해서 결과를 보고 판단하는 건 어떨까?&quot;",
+                                "그들은 자신이 믿을 수 있다는 것을 증명하고 싶어서 동의하고 경주를 시작했습니다.",
+                                "여우는 재빨리 달려갔지만 곧 지쳐서 쉬기 위해 멈췄습니다.",
+                                "토끼는 비록 느렸지만 결승선을 향해 꾸준히 뛰어올랐습니다.",
+                                "결국 토끼가 승리하면서 속도만큼 집중력도 중요하다는 것이 입증되었습니다.",
+                                "올빼미의 조언은 인내심과 끈기가 종종 성공으로 이어진다는 것을 가르쳐 주었습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Magic Paintbrush",
+                            "contents": [
+                                "In a poor village, there was a young boy named Liang who loved to paint.",
+                                "One night, he dreamed of a paintbrush that brought drawings to life.",
+                                "The next morning, Liang found a strange paintbrush lying on his table.",
+                                "Curious, he painted a fish, and to his amazement, it swam away.",
+                                "Realizing its magic, he painted food for the hungry villagers.",
+                                "One day, a greedy official heard about Liang’s brush and demanded it.",
+                                "The official tried painting gold, but nothing happened.",
+                                "Liang knew only kindness could unlock its magic.",
+                                "With the brush returned, he continued helping his village.",
+                                "Liang’s generosity brought happiness to his people."
+                            ]
+                        },
+                        {
+                            "title_kor": "마법의 페인트브러쉬",
+                            "contents_kor": [
+                                "가난한 마을에 그림 그리는 것을 좋아하는 량이라는 소년이 살았습니다.",
+                                "어느 날 밤, 그는 그림에 생명을 불어넣어 주는 그림붓을 꿈꿨습니다.",
+                                "다음날 아침, 량은 테이블 위에 이상한 그림붓이 놓여 있는 것을 발견했습니다.",
+                                "그는 호기심이 생겨 물고기를 그렸는데, 놀랍게도 물고기는 헤엄쳐 갔습니다.",
+                                "그는 그 마법을 깨닫고, 배고픈 마을 사람들을 위해 음식을 그렸습니다.",
+                                "어느 날, 욕심 많은 관리가 량의 붓에 대한 이야기를 듣고 그것을 요구했습니다.",
+                                "공무원은 금을 칠해 보려고 했지만 아무 일도 일어나지 않았습니다.",
+                                "량은 친절함만이 그 마법을 풀 수 있다는 것을 알고 있었습니다.",
+                                "그는 솔을 돌려받은 후에도 마을을 돕는 일을 계속했습니다.",
+                                "량의 관대함은 그의 백성에게 행복을 가져다 주었습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Golden Fish",
+                            "contents": [
+                                "A poor Fisherman caught a golden fish sparkling in the sunlight.",
+                                "The fish spoke and said, \"If you let me go, I will grant you a wish.\"",
+                                "The Fisherman was kind and let the fish go, asking only for enough food each day.",
+                                "His simple wish was granted, and he and his family lived happily.",
+                                "One day, his greedy neighbor found out and tried to catch the golden fish.",
+                                "When he finally caught it, he demanded endless wealth and riches.",
+                                "However, the fish sensed his greed and swam away, granting him nothing.",
+                                "The Fisherman continued to live peacefully, content with his simple life.",
+                                "The neighbor learned that selfishness brings no reward.",
+                                "Sometimes, a modest wish is worth more than great riches."
+                            ]
+                        },
+                        {
+                            "title_kor": "황금 물고기",
+                            "contents_kor": [
+                                "가난한 어부가 햇빛에 반짝이는 황금빛 물고기를 잡았습니다.",
+                                "물고기가 말했습니다. &quot;나를 놓아준다면 소원을 하나 들어줄게요.&quot;",
+                                "어부는 친절하게도 물고기를 놓아주었고, 매일 충분한 양의 음식만 달라고 부탁했습니다.",
+                                "그의 단순한 소원은 이루어졌고, 그와 그의 가족은 행복하게 살았습니다.",
+                                "어느 날, 그의 탐욕스러운 이웃이 이 사실을 알고 황금물고기를 잡으려 했습니다.",
+                                "마침내 그가 그것을 잡았을 때, 그는 끝없는 부와 재물을 요구했습니다.",
+                                "하지만 물고기는 그의 탐욕을 알아차리고 아무것도 주지 않고 떠나갔습니다.",
+                                "어부는 단순한 삶에 만족하며 평화롭게 계속 살았습니다.",
+                                "그 이웃은 이기심은 아무런 보상도 가져다주지 않는다는 것을 배웠습니다.",
+                                "때로는 겸손한 소원이 막대한 부보다 더 가치가 있습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Brave Little Pig",
+                            "contents": [
+                                "A young Pig grew curious about the world outside his farm.",
+                                "Determined, he left his family to explore the forest.",
+                                "Soon, he encountered a large Wolf hiding behind the trees.",
+                                "The Pig felt fear but quickly thought of a clever plan.",
+                                "He greeted the Wolf politely, saying, \"You must be very fast and strong!\"",
+                                "The Wolf, pleased by the flattery, asked, \"Do you want to see how fast I am?\"",
+                                "The Pig suggested a race to the river, pretending to be impressed.",
+                                "When the Wolf started running, the Pig hid behind a rock.",
+                                "The Wolf reached the river and looked back, but the Pig was nowhere to be seen.",
+                                "The Pig had tricked the Wolf and escaped safely back to the farm."
+                            ]
+                        },
+                        {
+                            "title_kor": "용감한 작은 돼지",
+                            "contents_kor": [
+                                "어린 돼지는 농장 바깥 세상에 호기심을 갖게 되었습니다.",
+                                "그는 결심하고 가족을 떠나 숲을 탐험하기로 했습니다.",
+                                "곧 그는 나무 뒤에 숨어 있는 큰 늑대를 발견했습니다.",
+                                "돼지는 두려움을 느꼈지만 재빨리 영리한 계획을 생각해냈습니다.",
+                                "그는 늑대에게 정중하게 인사하며 말했습니다. &quot;정말 빠르고 힘이 세시군요!&quot;",
+                                "늑대는 아첨에 기뻐하며 &quot;내 속도가 얼마나 빠른지 보고 싶니?&quot;라고 물었습니다.",
+                                "돼지는 감명받은 척하며 강까지 달려가자고 제안했습니다.",
+                                "늑대가 달리기 시작하자 돼지는 바위 뒤에 숨었습니다.",
+                                "늑대는 강에 도착하여 뒤돌아보았지만, 돼지는 어디에도 보이지 않았습니다.",
+                                "돼지는 늑대를 속여 안전하게 농장으로 돌아왔습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Mouse and the Bell",
+                            "contents": [
+                                "In a quiet village, a group of mice worried about a large, silent Cat.",
+                                "The Cat would sneak up and frighten them every day.",
+                                "One day, a young Mouse suggested, \"Let’s put a bell on the Cat.\"",
+                                "The mice cheered at the idea, thinking it would keep them safe.",
+                                "Then, an old Mouse asked, \"But who will put the bell on the Cat?\"",
+                                "Silence fell as no one wanted to face the Cat.",
+                                "The young Mouse looked nervous and stayed quiet.",
+                                "The old Mouse continued, \"Ideas are easy; actions are hard.\"",
+                                "The mice realized that even the best ideas need courage.",
+                                "They learned to stay alert and rely on each other instead."
+                            ]
+                        },
+                        {
+                            "title_kor": "쥐와 종",
+                            "contents_kor": [
+                                "조용한 마을에서, 한 무리의 쥐들이 크고 조용한 고양이를 걱정하고 있었습니다.",
+                                "고양이는 매일 몰래 다가와서 그들을 놀라게 했습니다.",
+                                "어느 날, 어린 쥐가 &quot;고양이에게 종을 달아주자&quot;고 제안했습니다.",
+                                "쥐들은 그 생각에 환호하며, 그것이 자신들을 안전하게 지켜줄 것이라고 생각했습니다.",
+                                "그러자 늙은 쥐가 물었습니다. &quot;그럼 고양이에게 종을 달아줄 사람은 누구인가요?&quot;",
+                                "고양이와 마주하고 싶어하는 사람이 아무도 없어서 침묵이 흘렀습니다.",
+                                "어린 쥐는 긴장한 듯 아무 말도 하지 않았습니다.",
+                                "늙은 쥐는 계속해서 말했습니다. &quot;아이디어는 쉽지만, 행동은 어렵다.&quot;",
+                                "쥐들은 가장 좋은 아이디어에도 용기가 필요하다는 것을 깨달았습니다.",
+                                "그들은 대신 경계를 늦추지 않고 서로 의지하는 법을 배웠습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Girl and the Rice Cakes",
+                            "contents": [
+                                "A kind girl was traveling through a forest on a cold day.",
+                                "She saw a group of old men struggling to start a fire.",
+                                "The girl shared her rice cakes with them, feeling sorry for their hunger.",
+                                "The old men, grateful for her kindness, gave her a shiny stone.",
+                                "They said, \"This is a magic stone. It will bring you what you truly need.\"",
+                                "The girl used the stone to get food and clothes for her family.",
+                                "One day, her greedy neighbor stole the stone to gain wealth.",
+                                "But when he held it, the stone turned to dust.",
+                                "The girl learned that kindness is rewarded while greed brings nothing.",
+                                "She lived a simple life, happy with the magic of kindness."
+                            ]
+                        },
+                        {
+                            "title_kor": "소녀와 떡",
+                            "contents_kor": [
+                                "친절한 소녀가 추운 어느 날 숲을 여행하고 있었습니다.",
+                                "그녀는 한 무리의 노인들이 불을 피우려고 애쓰는 모습을 보았습니다.",
+                                "소녀는 그들의 배고픔을 불쌍히 여겨 그들에게 떡을 나누어 주었습니다.",
+                                "노인들은 그녀의 친절에 감사하여 그녀에게 반짝이는 돌을 주었습니다.",
+                                "그들은 말했습니다, &quot;이건 마법의 돌이야. 너한테 정말 필요한 걸 가져다 줄 거야.&quot;",
+                                "그 소녀는 그 돌을 이용해 가족을 위한 음식과 옷을 구입했습니다.",
+                                "어느 날, 그녀의 탐욕스러운 이웃이 부를 얻으려고 그 돌을 훔쳤습니다.",
+                                "하지만 그가 돌을 쥐자마자 그 돌은 먼지로 변했습니다.",
+                                "그 소녀는 친절은 보상을 받지만 탐욕은 아무런 보상도 주지 못한다는 것을 배웠습니다.",
+                                "그녀는 친절함의 마법에 행복해하며 단순한 삶을 살았습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Generous Bamboo Tree",
+                            "contents": [
+                                "In a village by the river, a tall Bamboo Tree grew, loved by all animals.",
+                                "The Bamboo shaded the animals in summer and protected them in rain.",
+                                "One day, a tired Deer came seeking shelter, and the Bamboo bent low to cover him.",
+                                "Later, a poor Farmer needed wood to fix his house.",
+                                "The Bamboo Tree offered a few of its stalks to help him.",
+                                "The Farmer built a sturdy roof, feeling grateful to the Bamboo.",
+                                "Even after losing many leaves, the Bamboo was content.",
+                                "The villagers admired the Bamboo’s generosity and kindness.",
+                                "The Bamboo taught everyone that true happiness comes from helping others.",
+                                "In return, the village took care of the Bamboo, ensuring it grew strong and tall."
+                            ]
+                        },
+                        {
+                            "title_kor": "관대한 대나무",
+                            "contents_kor": [
+                                "강가의 어느 마을에 키가 큰 대나무 한 그루가 자랐는데, 모든 동물이 그 나무를 사랑했습니다.",
+                                "대나무는 여름에 동물들에게 그늘을 제공하고 비로부터 동물을 보호해 줬습니다.",
+                                "어느 날, 지친 사슴 한 마리가 피난처를 찾아왔고, 대나무는 몸을 숙여 그를 덮었습니다.",
+                                "나중에, 가난한 농부 한 명이 집을 고치기 위해 나무가 필요했습니다.",
+                                "대나무는 그에게 도움을 주기 위해 몇 개의 줄기를 내밀었습니다.",
+                                "농부는 대나무에 고마움을 느껴 튼튼한 지붕을 쌓았습니다.",
+                                "많은 잎사귀를 잃은 후에도 대나무는 만족했습니다.",
+                                "마을 사람들은 대나무의 관대함과 친절에 감탄했습니다.",
+                                "대나무는 모든 사람에게 진정한 행복은 다른 사람을 돕는 데서 온다는 것을 가르쳐 주었습니다.",
+                                "그 대가로 마을 사람들은 대나무를 돌보아 튼튼하고 크게 자라도록 했습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Magic Lotus Flower",
+                            "contents": [
+                                "A young boy was wandering along a riverbank when he found a glowing Lotus Flower.",
+                                "He ran to show it to the village elder, who said, \"This flower can grant one wish.\"",
+                                "The boy thought hard and wished for fresh water for his village.",
+                                "The Lotus glowed brightly, and a fresh spring appeared by the village.",
+                                "The people celebrated, thankful for the boy’s thoughtful wish.",
+                                "One day, a rich man from another town heard about the Lotus.",
+                                "Greedily, he stole the Lotus and wished for endless gold.",
+                                "However, the Lotus wilted and lost its power.",
+                                "The boy was sad to lose the flower but glad his wish was wise.",
+                                "The village lived happily with clean water, grateful for the boy’s kindness."
+                            ]
+                        },
+                        {
+                            "title_kor": "마법의 연꽃",
+                            "contents_kor": [
+                                "어린 소년이 강둑을 따라 산책하던 중 빛나는 연꽃을 발견했습니다.",
+                                "그는 달려가서 그 꽃을 마을의 장로에게 보여주었고, 장로는 &quot;이 꽃은 하나의 소원을 들어줄 수 있어요.&quot;라고 말했습니다.",
+                                "소년은 깊이 생각하며 마을에 깨끗한 물이 공급되기를 바랐습니다.",
+                                "연꽃이 밝게 빛났고, 마을에 신선한 샘이 나타났습니다.",
+                                "사람들은 소년의 사려 깊은 소원에 감사하며 축하했습니다.",
+                                "어느 날, 다른 마을의 한 부자가 연꽃에 대한 이야기를 들었습니다.",
+                                "그는 탐욕스럽게 연꽃을 훔치고 끝없는 금을 원했습니다.",
+                                "하지만 연꽃은 시들어지고 힘을 잃었습니다.",
+                                "소년은 꽃을 잃어버려 슬펐지만, 자신의 소원이 현명해서 기뻤습니다.",
+                                "마을 사람들은 깨끗한 물이 흐르면서 행복하게 살았고, 소년의 친절에 감사했습니다."
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "level": 6,
+                    "scripts": [
+                        {
+                            "contents": [
+                                "In a remote mountain village, a sacred fire brought warmth and light to all.",
+                                "One stormy night, a fierce wind extinguished the fire, casting darkness over the village.",
+                                "Han, a brave young boy, volunteered to relight the sacred flame.",
+                                "He journeyed up the treacherous mountain alone, searching for the fire spirits.",
+                                "Upon reaching the summit, Han met an ancient fire spirit guarding a small ember.",
+                                "The spirit said, “Only the pure-hearted can carry this flame safely.”",
+                                "Han, with unwavering resolve, promised to protect the flame.",
+                                "The spirit granted him the ember, which Han carefully carried back to the village.",
+                                "The villagers rejoiced as Han rekindled the fire, earning him the title of Firekeeper.",
+                                "From that day, his courage and dedication were remembered in village tales."
+                            ],
+                            "title_kor": "The Firekeeper’s Quest"
+                        },
+                        {
+                            "title_kor": "방화수의 탐구",
+                            "contents_kor": [
+                                "외딴 산골 마을에서 신성한 불이 모든 사람에게 따뜻함과 빛을 가져다주었습니다.",
+                                "폭풍우가 치던 어느 날 밤, 강한 바람에 불이 꺼졌고, 마을 전체가 어둠에 휩싸였습니다.",
+                                "용감한 소년 한이 성스러운 불꽃을 다시 밝히겠다고 자원했습니다.",
+                                "그는 불의 정령을 찾아 혼자서 위험한 산을 올라갔습니다.",
+                                "정상에 도착한 한은 작은 불씨를 지키고 있는 고대 불의 정령을 만났습니다.",
+                                "영혼은 말했습니다. &quot;순수한 마음만이 이 불꽃을 안전하게 운반할 수 있습니다.&quot;",
+                                "한은 확고한 결의로 불꽃을 보호하겠다고 약속했습니다.",
+                                "정령은 그에게 불씨를 주었고, 한은 그것을 조심스럽게 마을로 가져갔습니다.",
+                                "한씨가 불을 다시 피우자 마을 사람들은 기뻐했고, 그에게 방화수라는 칭호가 주어졌습니다.",
+                                "그날부터 그의 용기와 헌신은 마을 이야기 속에서 기억되게 되었다."
+                            ]
+                        },
+                        {
+                            "contents": [
+                                "An elderly couple in a peaceful village found a glowing bamboo stalk in the forest.",
+                                "Inside, they discovered a tiny baby wrapped in silk, whom they named Bamboo Prince.",
+                                "As he grew, he became known for his kindness and wisdom.",
+                                "One day, an evil sorcerer arrived, demanding wealth and control over the village.",
+                                "The Bamboo Prince stepped forward, calmly offering himself in exchange for the village’s peace.",
+                                "The sorcerer, struck by the prince’s selflessness, sensed a rare, powerful spirit within him.",
+                                "Humbled, the sorcerer left the village unharmed.",
+                                "The villagers planted bamboo in the prince’s honor, celebrating his bravery and purity.",
+                                "His legend spread, inspiring generations with the power of compassion and courage."
+                            ],
+                            "title_kor": "The Bamboo Prince and the Sorcerer’s Challenge"
+                        },
+                        {
+                            "title_kor": "대나무 왕자와 마법사의 도전",
+                            "contents_kor": [
+                                "평화로운 마을의 한 노부부가 숲에서 빛나는 대나무 줄기를 발견했습니다.",
+                                "그들은 안에서 실크로 싸인 작은 아기를 발견했고, 아기에게 대나무 왕자라는 이름을 붙였습니다.",
+                                "그는 자라면서 친절과 지혜로 유명해졌습니다.",
+                                "어느 날, 사악한 마법사가 나타나 부와 마을의 지배권을 요구했습니다.",
+                                "대나무 왕자는 마을의 평화를 위해 차분하게 자신의 몸을 내어주며 나아갔습니다.",
+                                "마법사는 왕자의 사심없는 태도에 감동하여 그에게서 보기 드물고 강력한 영혼을 느꼈습니다.",
+                                "겸손해진 마법사는 마을을 무사히 떠났다.",
+                                "마을 사람들은 왕자의 용기와 순수함을 기리며 그를 기리기 위해 대나무를 심었습니다.",
+                                "그의 전설은 퍼져나가며 여러 세대에 연민과 용기의 힘을 불어넣었습니다."
+                            ]
+                        },
+                        {
+                            "contents": [
+                                "A skilled Weaver in a quiet valley dreamed of creating a tapestry that captured the stars.",
+                                "One evening, a celestial spirit appeared, offering her a challenge to gather stardust from the highest peak.",
+                                "The Weaver embarked on a perilous journey, braving steep cliffs and icy winds.",
+                                "Upon reaching the summit, she carefully collected the stardust.",
+                                "Returning home, she wove the stardust into her tapestry, which shimmered like the night sky.",
+                                "When the villagers saw it, they were mesmerized, believing the heavens themselves were captured.",
+                                "Her story became a legend, a reminder of the beauty found in dedication and dreams."
+                            ],
+                            "title_kor": "The Weaver’s Journey Across the Stars"
+                        },
+                        {
+                            "title_kor": "별을 가로지르는 직공의 여행",
+                            "contents_kor": [
+                                "조용한 계곡의 숙련된 직공이 별을 담은 태피스트리를 만드는 꿈을 꾸었습니다.",
+                                "어느 날 저녁, 천상의 정령이 나타나 그녀에게 가장 높은 봉우리에서 별의 가루를 모아오라는 도전을 제안했습니다.",
+                                "위버는 가파른 절벽과 얼음바람을 무릅쓰고 위험한 여행을 시작했습니다.",
+                                "정상에 도착하자 그녀는 조심스럽게 별의 가루를 모았습니다.",
+                                "집으로 돌아와, 그녀는 별가루를 그녀의 태피스트리에 엮었고, 그것은 밤하늘처럼 반짝였다.",
+                                "마을 사람들은 그것을 보고 황홀경에 빠져 하늘이 이미 사로잡혔다고 믿었습니다.",
+                                "그녀의 이야기는 전설이 되었고, 헌신과 꿈에서 찾을 수 있는 아름다움을 일깨워 주었습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Scholar and the Spirit of Knowledge",
+                            "contents": [
+                                "A young Scholar, devoted to learning, longed to find the mythical Spirit of Knowledge.",
+                                "After many years of study, he journeyed across distant lands to find the spirit’s hidden cave.",
+                                "When he finally arrived, the spirit asked, “Why do you seek wisdom?”",
+                                "The Scholar replied, “I wish to enlighten others and bring peace through knowledge.”",
+                                "Impressed, the spirit shared secrets of the universe with him.",
+                                "The Scholar returned to his village, sharing wisdom that transformed lives.",
+                                "He became known as the Great Scholar, and his story inspired many to pursue knowledge selflessly."
+                            ]
+                        },
+                        {
+                            "title_kor": "학자와 지식의 정신",
+                            "contents_kor": [
+                                "학습에 헌신한 젊은 학자는 신화 속의 지식의 영혼을 찾고자 갈망했습니다.",
+                                "그는 수년간의 연구 끝에 영혼의 숨겨진 동굴을 찾기 위해 먼 땅을 여행했습니다.",
+                                "마침내 그가 도착했을 때, 그 영혼은 &quot;왜 지혜를 추구하느냐?&quot;라고 물었습니다.",
+                                "학자는 “저는 지식을 통해 다른 사람들을 깨우치고 평화를 가져다주고 싶습니다.”라고 대답했습니다.",
+                                "감명을 받은 그 영혼은 그에게 우주의 비밀을 말해주었습니다.",
+                                "학자는 마을로 돌아와 삶을 변화시킬 지혜를 공유했습니다.",
+                                "그는 위대한 학자로 알려졌으며, 그의 이야기는 많은 사람들에게 사심없이 지식을 추구하도록 영감을 주었습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Celestial Archer",
+                            "contents": [
+                                "An Archer, famous for his skill, dreamed of reaching the stars.",
+                                "One night, he saw a comet streak across the sky and aimed his bow at it.",
+                                "A celestial being appeared, offering him a magical bow that could shoot arrows to the stars.",
+                                "The Archer, steady and true, released an arrow that touched the comet.",
+                                "In gratitude, the comet granted him a wish, which he used to protect his village.",
+                                "The comet became a guardian star, shining over his village every night.",
+                                "His story became a legend, inspiring others to strive for dreams beyond their reach."
+                            ]
+                        },
+                        {
+                            "title_kor": "천상의 궁수",
+                            "contents_kor": [
+                                "뛰어난 기술로 유명한 궁수가 별에 도달하는 꿈을 꾸었습니다.",
+                                "어느 날 밤, 그는 하늘을 가로질러 혜성이 지나가는 것을 보고 활을 겨누었습니다.",
+                                "그러자 천상의 존재가 나타나 별을 향해 화살을 쏠 수 있는 마법의 활을 그에게 주었다.",
+                                "궁수는 꾸준하고 진실하게 화살을 쏘아 혜성을 맞혔습니다.",
+                                "이에 대한 보답으로 혜성은 그에게 소원을 들어주었고, 그는 이를 바탕으로 자신의 마을을 보호했습니다.",
+                                "혜성은 수호성이 되어 매일 밤 그의 마을을 비추었습니다.",
+                                "그의 이야기는 전설이 되었고, 다른 사람들이 자신이 이룰 수 없는 꿈을 향해 노력하도록 영감을 주었습니다."
+                            ]
+                        },
+                        {
+                            "contents": [
+                                "A village by a river suffered from long droughts that dried up their crops.",
+                                "One night, a young girl named Ara dreamed of a shimmering river spirit.",
+                                "The spirit told her, \"Find the three golden stones, and water will return.\"",
+                                "The next day, Ara searched along the riverbank and found three golden stones.",
+                                "Following the spirit’s advice, she placed them in the dried riverbed.",
+                                "Soon, water began to flow, filling the river once again.",
+                                "The villagers were overjoyed, and they celebrated Ara’s bravery.",
+                                "The river spirit’s gift continued to bring water, saving the village from drought.",
+                                "Ara’s story became a symbol of hope and perseverance in hard times."
+                            ],
+                            "title_kor": "The River Spirit’s Gift"
+                        },
+                        {
+                            "title_kor": "강의 정령의 선물",
+                            "contents_kor": [
+                                "강가에 있는 한 마을은 오랜 가뭄으로 농작물이 말라죽었습니다.",
+                                "어느 날 밤, 아라라는 어린 소녀가 반짝이는 강의 정령에 대한 꿈을 꾸었습니다.",
+                                "그 정령은 그녀에게 말했습니다. &quot;세 개의 금돌을 찾으면 물이 돌아올 것이다.&quot;",
+                                "다음 날, 아라는 강둑을 따라 수색하다가 금돌 세 개를 발견했습니다.",
+                                "그녀는 정령의 조언에 따라 그것들을 마른 강바닥에 두었습니다.",
+                                "곧 물이 흐르기 시작하여 강은 다시 한 번 채워졌습니다.",
+                                "마을 사람들은 기쁨에 넘쳐 아라의 용기를 축하했습니다.",
+                                "강의 정령의 선물은 계속해서 물을 가져와서 마을을 가뭄으로부터 구했습니다.",
+                                "아라의 이야기는 힘든 시기에도 희망과 인내를 상징하는 이야기가 되었습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Guardian of the Forest",
+                            "contents": [
+                                "In a dense forest, a young boy named Suho wandered too far from his village.",
+                                "As night fell, he realized he was lost and felt fear grip his heart.",
+                                "Suddenly, an old, wise deer appeared and led him through the forest trails.",
+                                "The deer warned Suho to respect the forest, as it was home to many creatures.",
+                                "With the deer’s guidance, Suho safely returned to his village by morning.",
+                                "Grateful, he vowed to protect the forest and teach others to respect nature.",
+                                "In time, Suho became known as the Guardian of the Forest, inspiring his village to care for their environment.",
+                                "His story reminded people that nature, when respected, would always lead them home."
+                            ]
+                        },
+                        {
+                            "title_kor": "숲의 수호자",
+                            "contents_kor": [
+                                "울창한 숲 속에서 수호라는 어린 소년이 마을에서 너무 멀리 떨어져 방황했습니다.",
+                                "밤이 되자 그는 길을 잃었다는 것을 깨달았고 두려움이 그의 가슴을 움켜쥐는 것을 느꼈습니다.",
+                                "그런데 갑자기 늙고 현명한 사슴이 나타나 그를 숲길로 인도했습니다.",
+                                "사슴은 수호에게 숲을 존중하라고 경고했습니다. 숲에는 많은 생물이 살고 있으니까요.",
+                                "사슴의 인도로 수호는 아침까지 무사히 마을로 돌아왔습니다.",
+                                "그는 감사한 마음으로 숲을 보호하고 다른 사람들에게 자연을 존중하는 법을 가르치겠다고 맹세했습니다.",
+                                "시간이 지나면서 수호는 숲의 수호자로 알려졌고, 그의 마을 사람들은 숲 환경을 보살피게 되었습니다.",
+                                "그의 이야기는 사람들에게 자연을 존중하면 항상 그들을 집으로 인도한다는 것을 일깨워 주었습니다."
+                            ]
+                        },
+                        {
+                            "contents": [
+                                "A poor farmer’s son, Jino, dreamed of helping his struggling family.",
+                                "One day, he found a bright, golden feather on a mountain trail.",
+                                "The feather belonged to a Phoenix, a legendary bird of fire and rebirth.",
+                                "Knowing the Phoenix’s feather was priceless, Jino considered selling it.",
+                                "But the Phoenix appeared and warned, “True wealth is not in gold, but in kindness.”",
+                                "Moved, Jino returned the feather, and the Phoenix granted him a single wish.",
+                                "Jino wished for a bountiful harvest, and soon his family’s fields flourished.",
+                                "From that day, his family never went hungry, and the village admired his integrity.",
+                                "Jino’s story became a lesson in valuing kindness over riches."
+                            ],
+                            "title_kor": "The Phoenix’s Feather"
+                        },
+                        {
+                            "title_kor": "피닉스의 깃털",
+                            "contents_kor": [
+                                "가난한 농부의 아들 지노는 어려움에 처한 가족을 돕는 것을 꿈꿨습니다.",
+                                "어느 날 그는 산길에서 밝고 황금빛 깃털을 발견했습니다.",
+                                "그 깃털은 불과 재생의 전설적인 새인 불사조의 깃털이었습니다.",
+                                "지노는 불사조의 깃털이 매우 귀중하다는 것을 알고 그것을 팔 생각을 했습니다.",
+                                "그런데 불사조가 나타나서 경고했습니다. &quot;진정한 부는 금이 아니라 친절에 있다.&quot;",
+                                "감동한 지노는 깃털을 돌려주었고, 불사조는 그에게 단 하나의 소원을 들어주었습니다.",
+                                "지노는 풍년을 기원했고 곧 그의 가족의 밭은 풍성해졌습니다.",
+                                "그날부터 그의 가족은 결코 배고프지 않았고, 마을 사람들은 그의 정직함을 존경했습니다.",
+                                "지노의 이야기는 부보다 친절을 더 소중히 여기는 교훈이 되었습니다."
+                            ]
+                        },
+                        {
+                            "contents": [
+                                "A kind Fisherman saved a magical turtle caught in his net.",
+                                "The turtle, grateful, offered him a wish in return for his kindness.",
+                                "The Fisherman thought and asked only for the health and happiness of his village.",
+                                "The turtle granted his wish, and the village prospered with good harvests and peace.",
+                                "Years passed, and the Fisherman was respected as a man of wisdom.",
+                                "One day, his greedy neighbor tried to capture the turtle for riches.",
+                                "But the turtle vanished, taking with it any chance of selfish gain.",
+                                "The Fisherman’s story reminded the village of the power of selflessness and goodwill.",
+                                "The tale of the Fisherman’s promise became a lasting legend of humility."
+                            ],
+                            "title_kor": "The Fisherman’s Promise"
+                        },
+                        {
+                            "title_kor": "어부의 약속",
+                            "contents_kor": [
+                                "친절한 어부가 그물에 걸린 마법의 거북이를 구해주었습니다.",
+                                "거북이는 고마워하며 그의 친절에 대한 보답으로 소원을 들어주었습니다.",
+                                "어부는 오직 자기 마을 사람들의 건강과 행복만을 생각하고 기도했습니다.",
+                                "거북이는 그의 소원을 들어주었고, 마을은 풍작과 평화로 번영했습니다.",
+                                "세월이 흐르고, 어부는 현명한 사람으로 존경을 받게 되었습니다.",
+                                "어느 날, 그의 탐욕스러운 이웃이 거북이를 잡아서 돈을 벌려고 했습니다.",
+                                "하지만 거북이는 이기적인 이익을 얻을 수 있는 모든 기회를 잃고 말았습니다.",
+                                "어부의 이야기는 마을 사람들에게 사심없는 마음과 선의의 힘을 일깨워 주었습니다.",
+                                "어부의 약속 이야기는 겸손에 대한 영원한 전설이 되었습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Enchanted Garden",
+                            "contents": [
+                                "In a small village, there was a hidden garden said to bloom only under the moonlight.",
+                                "A curious girl named Mira followed whispers of the garden’s beauty.",
+                                "One night, she sneaked out and found the garden glowing with flowers under the moon.",
+                                "A gentle voice told her, \"This garden blooms for those with pure hearts.\"",
+                                "The spirit of the garden blessed her with a single, radiant flower.",
+                                "The flower, known for its healing powers, saved her ailing mother the next day.",
+                                "Mira promised to protect the garden’s secret, and she returned every year to see it bloom.",
+                                "Her village treasured her tale, and the garden became a symbol of purity and love.",
+                                "Mira’s story was passed down, inspiring others to seek beauty and kindness in the world."
+                            ]
+                        },
+                        {
+                            "title_kor": "마법의 정원",
+                            "contents_kor": [
+                                "어떤 작은 마을에는 달빛 아래에서만 꽃이 핀다는 숨겨진 정원이 있었습니다.",
+                                "미라라는 호기심 많은 소녀는 정원의 아름다움에 대한 속삭임을 따라갔습니다.",
+                                "어느 날 밤, 그녀는 몰래 빠져나가 달빛 아래 꽃으로 빛나는 정원을 보았습니다.",
+                                "부드러운 목소리가 그녀에게 말했습니다. &quot;이 정원은 순수한 마음을 가진 사람들을 위해 꽃을 피웁니다.&quot;",
+                                "정원의 정령이 그녀에게 빛나는 한 송이 꽃을 축복해 주었습니다.",
+                                "그 꽃은 치유력이 뛰어난 것으로 알려져 있었고, 다음 날 그녀의 병든 어머니를 구해냈습니다.",
+                                "미라는 정원의 비밀을 지키겠다고 약속하고 매년 정원이 꽃피는 것을 보려고 돌아왔습니다.",
+                                "그녀의 마을 사람들은 그녀의 이야기를 소중히 여겼고, 그 정원은 순수함과 사랑의 상징이 되었습니다.",
+                                "미라의 이야기는 전해져 다른 사람들이 세상에서 아름다움과 친절을 추구하도록 영감을 주었습니다."
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "level": 7,
+                    "scripts": [
+                        {
+                            "title": "The Sorceress of the Hidden Falls",
+                            "contents": [
+                                "Deep in an ancient forest, there was a waterfall said to hold secrets of immense power.",
+                                "Legends spoke of a reclusive sorceress who lived nearby, guarding the falls with powerful spells.",
+                                "A young scholar, ambitious and driven by curiosity, set out to uncover the secrets of the waterfall.",
+                                "Upon reaching it, he encountered the sorceress, who warned him of the danger in seeking power for selfish reasons.",
+                                "The scholar, undeterred, insisted that he would use the power for the greater good.",
+                                "The sorceress agreed to test his intentions and conjured a vision of his heart’s true desires.",
+                                "He saw himself wealthy and renowned, enjoying his power rather than using it for others.",
+                                "Shaken by the vision, he realized his hidden motives and humbly apologized to the sorceress.",
+                                "Impressed by his newfound self-awareness, she granted him wisdom instead of power.",
+                                "The scholar returned home, his story a lesson in understanding one’s true intentions before seeking greatness."
+                            ]
+                        },
+                        {
+                            "title_kor": "숨겨진 폭포의 마녀",
+                            "contents_kor": [
+                                "깊은 고대 숲 속에는 엄청난 힘의 비밀을 간직하고 있다는 폭포가 있었습니다.",
+                                "전설에 따르면 근처에는 강력한 주문으로 폭포를 지키는 은둔형 마법사가 살았다고 합니다.",
+                                "야심차고 호기심이 많은 한 젊은 학자는 폭포의 비밀을 밝히기 위해 나섰습니다.",
+                                "그곳에 도착하자마자 그는 마녀를 만났는데, 마녀는 이기적인 이유로 권력을 추구하는 것은 위험하다고 경고했습니다.",
+                                "그 학자는 굴하지 않고 더 큰 선을 위해 그 힘을 사용하겠다고 주장했습니다.",
+                                "마녀는 그의 의도를 시험하기로 동의하고 그의 마음의 진정한 소망을 환상으로 표현해냈습니다.",
+                                "그는 자신이 부유하고 유명하다고 생각했으며, 다른 사람을 위해 권력을 사용하기보다는 자신의 권력을 즐기는 것으로 여겼습니다.",
+                                "그는 그 환상에 흔들렸고, 자신의 숨은 동기를 깨닫고 마녀에게 겸손하게 사과했습니다.",
+                                "그의 새롭게 찾은 자기 인식에 감명을 받은 그녀는 그에게 권력 대신 지혜를 주었습니다.",
+                                "학자는 집으로 돌아왔고, 그의 이야기는 위대함을 추구하기 전에 자신의 진정한 의도를 이해하는 방법에 대한 교훈이었습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Enchanted Sage of the Ironwood Forest",
+                            "contents": [
+                                "In a remote region, a forest of ironwood trees was known for its unbreakable silence and eerie stillness.",
+                                "It was said that a sage lived among the trees, possessing knowledge of the universe’s mysteries.",
+                                "A young prince, restless and dissatisfied with palace life, journeyed to seek the sage’s wisdom.",
+                                "After days of navigating the dense, silent forest, he found the sage meditating beneath an ancient tree.",
+                                "The sage listened as the prince expressed his desire for endless knowledge and power.",
+                                "With a solemn gaze, the sage handed the prince a scroll and said, “Read only if you seek true enlightenment.”",
+                                "The prince unrolled the scroll, which revealed a single line: “In silence, you find your answers.”",
+                                "Confused, he returned to the palace and spent years contemplating its meaning.",
+                                "Through his introspection, he gained insight, realizing the value of inner peace and humility.",
+                                "The prince eventually ruled his kingdom with wisdom, his encounter with the sage remembered as a transformative legend."
+                            ]
+                        },
+                        {
+                            "title_kor": "아이언우드 숲의 마법에 걸린 현자",
+                            "contents_kor": [
+                                "외딴 지역에 있는 철목림은 깨지지 않는 고요함과 으스스한 고요함으로 유명했습니다.",
+                                "나무 사이에는 우주의 신비에 대한 지식을 지닌 현자가 살고 있다고 전해졌습니다.",
+                                "궁궐 생활에 불만과 불안을 느낀 젊은 왕자가 현자의 지혜를 구하고자 여행을 떠났습니다.",
+                                "그는 며칠 동안 울창하고 조용한 숲을 헤매다가, 오래된 나무 아래서 명상을 하고 있는 현자를 발견했습니다.",
+                                "현자는 왕자가 끝없는 지식과 힘에 대한 열망을 표현하는 것을 들었습니다.",
+                                "성자는 엄숙한 눈빛으로 왕자에게 두루마리를 건네며 말했습니다. &quot;진정한 깨달음을 추구하는 사람만 읽어라.&quot;",
+                                "왕자는 두루마리를 펼쳤는데, 거기에는 한 줄이 적혀 있었습니다. &quot;침묵 속에서 당신은 답을 찾을 수 있다.&quot;",
+                                "그는 혼란스러워서 궁전으로 돌아와 수년 동안 그 의미에 대해 숙고했습니다.",
+                                "그는 성찰을 통해 통찰력을 얻었고, 내면의 평화와 겸손의 가치를 깨달았습니다.",
+                                "결국 왕자는 지혜롭게 그의 왕국을 통치했고, 현자와의 만남은 변화를 가져온 전설로 기억된다."
+                            ]
+                        },
+                        {
+                            "contents": [
+                                "In a bustling village, a poor stone cutter wished for a life of ease, envying the wealth of noblemen.",
+                                "One evening, he found a shimmering crystal embedded in the stone he was cutting.",
+                                "As he touched it, a spirit appeared, granting him a wish to become anyone he desired.",
+                                "The stone cutter wished to be a wealthy merchant, enjoying luxury for a while until he grew dissatisfied again.",
+                                "Each time he wished for more—first a king, then the sun, then a storm—he experienced fleeting happiness.",
+                                "Finally, he wished to become the mountain itself, believing it was the strongest of all.",
+                                "But soon, he felt the endless chipping of stone cutters breaking pieces of him.",
+                                "Realizing the simplicity and beauty of his original life, he wished to return to it.",
+                                "The spirit, satisfied with his journey, granted his wish.",
+                                "The stone cutter spent his remaining days content, his story shared as a reminder that true happiness lies within."
+                            ],
+                            "title_kor": "The Stone Cutter’s Redemption"
+                        },
+                        {
+                            "title_kor": "돌 자르는 사람의 구원",
+                            "contents_kor": [
+                                "번화한 어느 마을에서, 가난한 석공이 귀족들의 부를 부러워하며 편안한 삶을 원했습니다.",
+                                "어느 날 저녁, 그는 자신이 자르던 돌 속에 반짝이는 수정이 박혀 있는 것을 발견했습니다.",
+                                "그가 그것을 만지자 영혼이 나타나 그가 원하는 사람이 될 수 있다는 소원을 들어주었습니다.",
+                                "석공은 부유한 상인이 되어 잠시 사치를 즐기다가 다시 불만을 품게 되기를 바랐습니다.",
+                                "그가 더 많은 것을 바랄 때마다—처음에는 왕, 그다음에는 태양, 그리고 폭풍—그는 덧없는 행복을 경험했습니다.",
+                                "마지막으로 그는 산 자체가 되고 싶어했는데, 산이 모든 것 중 가장 강하다고 믿었기 때문이었습니다.",
+                                "하지만 곧 그는 돌을 자르는 사람들이 끊임없이 쪼개는 소리를 들으며 자신의 몸이 조각나는 것을 느꼈다.",
+                                "그는 본래의 삶의 단순함과 아름다움을 깨닫고 그곳으로 돌아가기를 원했습니다.",
+                                "그 영혼은 여행에 만족하여 그의 소원을 들어주었습니다.",
+                                "석공은 남은 나날을 만족스럽게 보냈고, 그의 이야기는 진정한 행복이 내면에 있다는 것을 일깨워 주었습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Daughters of the Moonlit Sea",
+                            "contents": [
+                                "Long ago, a coastal village worshipped the Sea Goddess, who protected their waters and provided abundant fish.",
+                                "The goddess had two daughters, each embodying different traits: one graceful and gentle, the other fierce and unpredictable.",
+                                "To honor them, the villagers held a festival every year, dancing under the moonlight to ensure the daughters’ favor.",
+                                "One year, a young fisherman dared to fish beyond the forbidden coral reefs, seeking wealth from uncharted waters.",
+                                "Angered by his disrespect, the fierce daughter unleashed a violent storm, nearly destroying the village.",
+                                "The gentle daughter pleaded with her sister to spare the villagers, offering her own powers to calm the sea.",
+                                "Impressed by her sacrifice, the fierce daughter relented, and the storm ceased.",
+                                "From that day, the villagers respected the sea’s boundaries, recognizing the balance between gentleness and strength.",
+                                "The legend of the Sea Goddess’s daughters taught future generations the importance of respecting nature’s limits.",
+                                "The village thrived, honoring both daughters’ duality in every aspect of life."
+                            ]
+                        },
+                        {
+                            "title_kor": "달빛 바다의 딸들",
+                            "contents_kor": [
+                                "옛날에, 해안 마을 사람들은 바다의 여신을 숭배했습니다. 바다의 여신은 마을의 물을 보호하고 풍부한 물고기를 제공해 주었습니다.",
+                                "여신에게는 두 딸이 있었는데, 각자 다른 특성을 지니고 있었습니다. 한 명은 우아하고 온화했고, 다른 한 명은 사나우며 예측 불가능했습니다.",
+                                "그들을 기리기 위해 마을 사람들은 매년 축제를 열고 달빛 아래서 춤을 추어 딸들의 호의를 구했습니다.",
+                                "어느 해, 한 젊은 어부가 금지된 산호초 너머에서 낚시를 하며 알려지지 않은 바다에서 부를 얻고자 대담하게 도전했습니다.",
+                                "그의 무례함에 화가 난 사나운 딸은 격렬한 폭풍을 일으켜 마을을 거의 파괴했습니다.",
+                                "온화한 딸은 언니에게 마을 사람들을 살려 달라고 간청하며, 바다를 진정시킬 자신의 힘을 제안했습니다.",
+                                "그녀의 희생에 감명을 받은 사나운 딸은 마음을 바꾸었고, 폭풍은 멈췄습니다.",
+                                "그날부터 마을 사람들은 바다의 경계를 존중하고, 온화함과 강함 사이의 균형을 인식하게 되었습니다.",
+                                "바다의 여신의 딸들에 대한 전설은 미래 세대에게 자연의 한계를 존중하는 것이 얼마나 중요한지를 가르쳐 주었습니다.",
+                                "두 딸의 이중성을 삶의 모든 측면에서 존중하며 마을은 번영했습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Silent Flute of the Forgotten Valley",
+                            "contents": [
+                                "In a valley shrouded by mist, there was a flute known to bring forth spirits when played at midnight.",
+                                "A curious musician, known for his skill and pride, ventured into the valley to find this mystical instrument.",
+                                "The flute lay abandoned near an ancient tree, humming with a faint, otherworldly sound.",
+                                "Ignoring the warnings he’d heard, he played a melody, hoping to summon spirits for his own gain.",
+                                "As he played, shadows emerged, surrounding him, whispering secrets of the world beyond.",
+                                "The spirits offered him knowledge, but at the cost of his voice, for they demanded complete silence in return.",
+                                "The musician, valuing his pride, chose to accept, believing he could still play beautifully.",
+                                "However, without his voice, he found his music empty and void of emotion, a mere shadow of his former self.",
+                                "Realizing the value of balance between sound and silence, he returned the flute to its place.",
+                                "The legend of the Silent Flute became a cautionary tale, teaching others to respect the mystery of the unknown."
+                            ]
+                        },
+                        {
+                            "title_kor": "잊혀진 계곡의 조용한 플루트",
+                            "contents_kor": [
+                                "안개로 뒤덮인 계곡에는 자정에 연주하면 영혼을 불러온다는 피리가 있었습니다.",
+                                "실력과 자부심이 강한 것으로 알려진 호기심 많은 음악가가 이 신비한 악기를 찾아 계곡으로 모험을 떠났습니다.",
+                                "플루트는 오래된 나무 근처에 버려져 있었고, 희미하고도 이 세상이 아닌 듯한 소리를 냈습니다.",
+                                "그는 경고를 무시한 채 곡을 연주하며 자신의 이익을 위해 영혼을 불러들이고자 했습니다.",
+                                "그가 놀자, 그를 둘러싼 그림자가 나타나, 그 너머 세상의 비밀을 속삭였다.",
+                                "영혼들은 그에게 지식을 주었지만 목소리를 잃게 했습니다. 그들은 대가로 완전한 침묵을 요구했습니다.",
+                                "음악가는 자신의 자존심을 소중히 여기고 여전히 아름답게 연주할 수 있다고 믿으며 수락하기로 선택했습니다.",
+                                "하지만 목소리가 없어지자 그는 자신의 음악이 공허하고 감정이 없으며, 예전 자신의 모습의 그림자일 뿐이라는 것을 깨달았습니다.",
+                                "그는 소리와 고요함 사이의 균형이 얼마나 중요한지 깨닫고 플루트를 원래 자리로 돌려놓았습니다.",
+                                "침묵의 피리에 대한 전설은 경고 이야기가 되어, 다른 사람들에게 알려지지 않은 것의 신비를 존중하도록 가르쳤습니다."
+                            ]
+                        },
+                        {
+                            "title": "The Willow of Eternal Sorrow",
+                            "contents": [
+                                "In a forgotten village, a willow tree stood alone by a river, its branches weeping into the water.",
+                                "Villagers believed the tree housed a spirit who absorbed their grief, easing their burdens.",
+                                "One day, a proud nobleman scoffed at these beliefs, claiming no tree could hold power over emotions.",
+                                "He approached the willow and, in mockery, laughed at its drooping branches, challenging the spirit to show itself.",
+                                "As he touched the tree, a wave of sadness overtook him, memories of pain and loss flooding his mind.",
+                                "Overwhelmed, he fell to his knees, realizing that the tree’s sorrow was a reflection of humanity’s suffering.",
+                                "The spirit whispered, \"Only by acknowledging others' pain can one find true strength.\"",
+                                "Humbled, the nobleman returned to his village, forever changed, sharing stories of the willow’s silent wisdom.",
+                                "The willow became a symbol of empathy, reminding villagers of the importance of compassion.",
+                                "Generations later, the tree still stands, its branches gently swaying, bearing witness to countless unspoken sorrows."
+                            ]
+                        },
+                        {
+                            "title_kor": "영원한 슬픔의 버드나무",
+                            "contents_kor": [
+                                "잊혀진 마을에서 버드나무 한 그루가 강가에 홀로 서 있었고, 가지가 물 위로 울고 있었습니다.",
+                                "마을 사람들은 이 나무에 슬픔을 흡수해 주고 짐을 덜어 주는 영혼이 살고 있다고 믿었습니다.",
+                                "어느 날, 한 거만한 귀족이 이런 믿음을 비웃으며, 어떤 나무도 감정을 지배할 수 없다고 주장했습니다.",
+                                "그는 버드나무에 다가가서 처진 가지를 조롱조로 비웃으며, 그 영혼에게 모습을 드러내라고 도전했다.",
+                                "그가 나무를 만지는 순간, 슬픔의 물결이 그를 덮쳤고, 고통과 상실의 기억이 그의 마음을 흘러넘쳤습니다.",
+                                "그는 압도되어 무릎을 꿇었고, 나무의 슬픔이 인류의 고통을 반영한다는 것을 깨달았습니다.",
+                                "영혼은 속삭였습니다. &quot;다른 사람의 고통을 인정해야만 진정한 힘을 찾을 수 있다.&quot;",
+                                "겸손해진 귀족은 마을로 돌아와 영원히 변화된 모습으로 돌아와 버드나무의 조용한 지혜에 대한 이야기를 들려주었습니다.",
+                                "버드나무는 공감의 상징이 되었고, 마을 사람들에게 연민의 중요성을 상기시켜주었습니다.",
+                                "여러 세대가 지난 지금도 그 나무는 여전히 서 있고, 가지가 부드럽게 흔들리며 말로 표현할 수 없는 수많은 슬픔을 증언하고 있습니다."
+                            ]
+                        },
+                        {
+                            "contents": [
+                                "High above the clouds, there lived a Weaver who created constellations from threads of starlight.",
+                                "Each night, she wove patterns that guided travelers and inspired dreams.",
+                                "One evening, a young astronomer climbed the tallest peak, yearning to glimpse her work up close.",
+                                "The Weaver, moved by his passion, agreed to show him her craft on one condition: he could never share what he saw.",
+                                "The astronomer eagerly agreed, marveling at the delicate threads of stardust and cosmic patterns.",
+                                "However, upon returning, he struggled to keep his promise, the beauty haunting his thoughts.",
+                                "Unable to resist, he revealed the secrets, only to find the stars in the night sky dimming.",
+                                "The Weaver appeared, disappointed, explaining that the stars would now shine faintly for all.",
+                                "His story was passed down as a lesson in restraint, teaching future generations to honor promises.",
+                                "The dim stars remained, a reminder of the consequences of betraying trust, even in the face of wonder."
+                            ],
+                            "title_kor": "The Star Weaver’s Bargain"
+                        },
+                        {
+                            "title_kor": "스타 위버의 거래",
+                            "contents_kor": [
+                                "구름 위 높은 곳에는 별빛 실로 별자리를 만드는 직공이 살았습니다.",
+                                "매일 밤, 그녀는 여행자들을 인도하고 꿈을 꾸게 하는 패턴을 짜냈습니다.",
+                                "어느 날 저녁, 한 젊은 천문학자가 자신의 작업을 가까이서 보고 싶어서 가장 높은 봉우리에 올랐습니다.",
+                                "그의 열정에 감동한 직공은 한 가지 조건 하에 자신의 기술을 그에게 보여주기로 했습니다. 그가 본 것을 절대로 다른 사람과 공유할 수 없다는 조건이었습니다.",
+                                "천문학자는 기꺼이 동의하며, 성간먼지의 섬세한 실과 우주의 패턴에 감탄했습니다.",
+                                "하지만 돌아온 후 그는 약속을 지키기 위해 애썼습니다. 그의 생각 속에는 그 아름다움이 계속 떠올랐습니다.",
+                                "그는 저항할 수 없어 비밀을 공개했고, 밤하늘의 별이 점점 어두워지는 것을 보게 되었습니다.",
+                                "위버가 실망한 표정으로 나타나서 별은 이제 모두를 위해 희미하게 빛날 것이라고 설명했습니다.",
+                                "그의 이야기는 자제에 대한 교훈으로 전해져 내려오며, 미래 세대에게 약속을 지키도록 가르칩니다.",
+                                "희미한 별들은 놀라움에 직면해 있을 때조차도 신뢰를 저버리면 어떤 결과가 초래되는지 상기시켜주며 그대로 남아 있었습니다."
+                            ]
+                        },
+                        {
+                            "contents": [
+                                "In a secluded desert village, there was a tale of a Phoenix that rose from its ashes every hundred years.",
+                                "One day, a healer, desperate to save her ailing child, sought the Phoenix’s ashes, known to cure any ailment.",
+                                "She journeyed across barren lands, braving sandstorms and scorching heat to reach the mythical nest.",
+                                "There, she found the Phoenix reborn, its feathers blazing with radiant colors.",
+                                "The Phoenix, aware of her purpose, offered her a single feather but warned that the ashes must be used with purity of heart.",
+                                "With gratitude, she took the feather and promised to use it only for good.",
+                                "Upon returning, she cured her child, sharing the ashes sparingly to heal others in need.",
+                                "However, a greedy merchant heard of the ashes and attempted to steal them for profit.",
+                                "The ashes turned to dust in his hands, leaving him empty and humbled.",
+                                "The healer’s story spread, symbolizing the Phoenix’s power and the importance of selfless intentions."
+                            ],
+                            "title_kor": "The Immortal Phoenix’s Ashes"
+                        },
+                        {
+                            "title_kor": "불멸의 피닉스의 재",
+                            "contents_kor": [
+                                "외딴 사막 마을에는 백 년마다 재에서 부활하는 불사조에 대한 이야기가 있습니다.",
+                                "어느 날, 병든 자식을 살리고 싶어 하는 한 치료사가 모든 질병을 치료한다고 알려진 피닉스의 재를 찾으러 갔습니다.",
+                                "그녀는 황무지를 가로질러 모래 폭풍과 뜨거운 열기를 이겨내며 여행하여 신화 속 둥지에 도달했습니다.",
+                                "그곳에서 그녀는 빛나는 색깔로 깃털이 타오르는 불사조가 다시 태어난 것을 보았습니다.",
+                                "그녀의 목적을 알고 있던 피닉스는 그녀에게 깃털 한 개를 주었지만, 그 재는 순수한 마음으로 사용해야 한다고 경고했습니다.",
+                                "그녀는 고마운 마음으로 그 깃털을 받았고 그것을 좋은 일에만 쓰겠다고 약속했습니다.",
+                                "그녀는 돌아와서 자기 아이를 고쳐 주고, 남은 재를 아껴서 다른 사람들이 병을 앓도록 나누어 주었습니다.",
+                                "그런데 욕심 많은 상인이 그 재에 대한 소문을 듣고 그것을 훔쳐 이익을 얻으려고 했습니다.",
+                                "그의 손 안에서 재는 먼지로 변했고, 그는 텅 비어 있고 겸손해졌습니다.",
+                                "치료사의 이야기는 퍼져나가며 피닉스의 힘과 사심없는 의도의 중요성을 상징하게 되었습니다."
+                            ]
+                        },
+                        {
+                            "contents": [
+                                "A mysterious wanderer arrived in a village, known only by the enchanting songs he played each night.",
+                                "His music could soothe any sorrow, lifting the spirits of those who heard it.",
+                                "Curious, the villagers asked about his journey, but he only replied, \"My songs are all that I carry.\"",
+                                "One evening, a young girl approached him, asking to learn his music, hoping to share his gift with others.",
+                                "The wanderer agreed, but he warned her, \"Each song carries a piece of my soul.\"",
+                                "The girl, undeterred, began learning, her heart growing heavy with the sorrow of each melody.",
+                                "As she mastered his songs, the wanderer’s presence faded, his essence transferred into his music.",
+                                "The villagers noticed his absence, realizing he had left his spirit in his songs to be shared.",
+                                "The girl became a guardian of his music, spreading hope with every note.",
+                                "The tale of the wanderer reminded people that sometimes, true legacies are carried not in words, but in the feelings they inspire."
+                            ],
+                            "title_kor": "The Wanderer’s Song"
+                        },
+                        {
+                            "title_kor": "방랑자의 노래",
+                            "contents_kor": [
+                                "신비로운 방랑자가 어느 마을에 도착했습니다. 그 마을은 매일 밤 그가 연주하는 매혹적인 노래로만 알려졌습니다.",
+                                "그의 음악은 어떤 슬픔이라도 달래주고, 그것을 듣는 사람들의 기분을 좋게 만들어 주었습니다.",
+                                "호기심이 생긴 마을 사람들은 그의 여행에 대해 물었지만 그는 단지 &quot;내 노래가 내가 지닌 전부입니다&quot;라고 대답했습니다.",
+                                "어느 날 저녁, 한 어린 소녀가 그에게 다가와 그의 음악을 배우고 싶다고 했고, 그의 재능을 다른 사람들과 공유하고 싶어했습니다.",
+                                "방랑자는 동의했지만, 그녀에게 경고했습니다. &quot;노래 하나하나가 내 영혼의 일부를 담고 있어요.&quot;",
+                                "그 소녀는 굴하지 않고 배우기 시작했습니다. 그녀의 마음은 각 곡조의 슬픔으로 무거워졌습니다.",
+                                "그녀가 그의 노래를 익히자, 방랑자의 존재감은 사라졌고, 그의 본질이 음악 속으로 옮겨갔습니다.",
+                                "마을 사람들은 그의 부재를 알아차렸고, 그가 자신의 영혼을 노래 속에 남겨 공유하고자 했다는 것을 깨달았습니다.",
+                                "그 소녀는 그의 음악의 수호자가 되어, 그의 음악이 내는 모든 음표로 희망을 전파했습니다.",
+                                "방랑자의 이야기는 사람들에게 때로는 진정한 유산은 말이 아니라 그 말이 불러일으키는 감정으로 전해진다는 것을 일깨워줍니다."
+                            ]
+                        },
+                        {
+                            "contents": [
+                                "In an ancient kingdom, a renowned scholar studied rare texts, searching for knowledge on immortality.",
+                                "One night, a dragon, intrigued by the scholar’s pursuit, appeared in his study.",
+                                "The dragon offered the scholar a potion, saying, \"Drink, and you will live forever, but lose the wisdom you’ve gained.\"",
+                                "The scholar hesitated, realizing that immortality without wisdom would render his life hollow.",
+                                "Instead, he proposed a trade: he would share his knowledge with the dragon in exchange for a glimpse of eternity.",
+                                "The dragon accepted, revealing visions of the universe’s vastness, life’s cycles, and the depth of human experience.",
+                                "Though mortal, the scholar gained insight into the profound beauty of life’s fleeting moments.",
+                                "He chose to live with purpose, sharing his wisdom rather than seeking endless life.",
+                                "The story of the scholar and the dragon taught generations to value the richness of life over eternal existence.",
+                                "The dragon’s tale, immortalized in the kingdom’s history, became a reminder that wisdom often outweighs longevity."
+                            ],
+                            "title_kor": "The Dragon and the Scholar’s Dilemma"
+                        },
+                        {
+                            "title_kor": "드래곤과 학자의 딜레마",
+                            "contents_kor": [
+                                "고대 왕국에서 유명한 학자가 희귀한 문헌을 연구하며 불로불사에 대한 지식을 얻고자 했습니다.",
+                                "어느 날 밤, 학자의 쫓김에 흥미를 느낀 용이 그의 서재에 나타났습니다.",
+                                "용은 학자에게 물약을 주며 말했습니다. &quot;물을 마시면 영원히 살 수 있지만 얻은 지혜는 사라질 것이다.&quot;",
+                                "학자는 지혜가 없는 불사는 자신의 삶을 공허하게 만들 것이라는 것을 깨닫고 주저했습니다.",
+                                "그 대신 그는 거래를 제안했습니다. 그는 용에게 자신의 지식을 공유하는 대가로 영원을 엿볼 수 있는 기회를 얻겠다고 했습니다.",
+                                "용은 이를 받아들여, 우주의 광대함, 생명의 순환, 그리고 인간 경험의 깊이에 대한 비전을 보여주었습니다.",
+                                "학자는 비록 필멸자였지만, 인생의 덧없는 순간 속에 숨겨진 깊은 아름다움에 대한 통찰력을 얻었습니다.",
+                                "그는 끝없는 삶을 추구하기보다는 목적을 가지고 살기로 선택했고, 자신의 지혜를 공유했습니다.",
+                                "학자와 용의 이야기는 여러 세대에 걸쳐 영원한 존재보다 삶의 풍요로움을 더 소중히 여기도록 가르쳐 주었습니다.",
+                                "왕국의 역사에 불후의 명작으로 남은 용의 이야기는 지혜가 종종 장수보다 중요하다는 것을 일깨워 주는 교훈이 되었습니다."
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

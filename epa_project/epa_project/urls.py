@@ -20,7 +20,6 @@ from core.views import (
     get_lessons,
     # get_learning_books,
     get_reading_books,
-    check_username,
 )
 from django.conf import settings
 from django.conf.urls.static import static
@@ -41,16 +40,23 @@ urlpatterns = [
     path("mypage/", mypage_view, name="mypage"),  # 마이페이지
     path("library/", library_view, name="library"),  # 서재 페이지
     path("lesson/<str:content_type>/<int:lesson_id>/", lesson_view, name="lesson"),  # 문자열 + 정수 지원  # 학습 화면
-    path("upload/audio/", UserPronunciationView.as_view(), name="upload_audio"),  # 오디오 업로드
+    # path("upload/audio/", UserPronunciationView.as_view(), name="upload_audio"),  # 오디오 업로드
     path('upload_user_pronunciation/', UserPronunciationView.as_view(), name='upload_user_pronunciation'),  # 사용자 발음 업로드
     path('update_pronunciation_score/', UpdatePronunciationScoreView.as_view(), name='update_pronunciation_score'),
     path("api/lessons/", get_lessons, name="get_lessons"),  # 학습 도서 API
     #path("api/learning_books/", get_learning_books, name="get_learning_books"),  # 학습 도서 목록 API
     path("api/reading_books/", get_reading_books, name="get_reading_books"),  # 읽고 있는 도서 API
     path('favicon.ico', RedirectView.as_view(url='/static/favicon.ico', permanent=True)),
+<<<<<<< HEAD
     path("check-username/", check_username, name="check_username")
 ] 
 
 # 미디어 파일과 정적 파일 URL 패턴 추가
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+=======
+]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+>>>>>>> 851b1230b8c99d02459683baa048553418d08287

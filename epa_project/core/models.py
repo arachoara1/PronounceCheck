@@ -1,9 +1,11 @@
-from django.contrib.auth.models import User # Django 기본 User 모델 사용
+from django.contrib.auth.models import User  # Django 기본 User 모델 사용
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from dotenv import load_dotenv
+from django.contrib.auth import get_user_model
+from django.db.models import JSONField
 
 load_dotenv()
 
@@ -32,8 +34,10 @@ class LessonNovel(models.Model):
     """동화(Novel) 레슨 정보"""
 
     level = models.IntegerField()  # 레벨 번호
-    title = models.CharField(max_length=255)  # 스크립트 제목
+    title = models.CharField(max_length=255)  # 원본 스크립트 제목
+    title_kor = models.CharField(max_length=255, null=True)  # 번역된 제목 저장 필드
     sentence = models.TextField()  # JSON의 contents 리스트에서 추출한 개별 문장
+    sentence_kor = models.TextField(null=True)  # 번역된 문장 저장 필드
     audio_file = models.URLField()  # S3 URL을 저장할 필드
     created_at = models.DateTimeField(auto_now_add=True)  # 생성 시간
     image_path = models.CharField(max_length=255, blank=True, null=True)  # 이미지 경로 필드 추가
@@ -41,20 +45,23 @@ class LessonNovel(models.Model):
     class Meta:
         constraints = [
             models.UniqueConstraint(
-                fields=["level", "title", "sentence"], name="unique_lesson_novel_entry"
+                fields=["level", "title", "sentence"],  # level, title, sentence만 기준으로 중복 방지
+                name="unique_lesson_novel_entry",
             )
         ]
 
     def __str__(self):
-        return f"Novel - Level {self.level} - {self.title}: {self.sentence}"
+        return f"Novel - Level {self.level} - {self.title} (Korean: {self.title_kor}): {self.sentence} (Korean: {self.sentence_kor})"
 
 
 class LessonConversation(models.Model):
     """회화(Conversation) 레슨 정보"""
 
     level = models.IntegerField()  # 레벨 번호
-    title = models.CharField(max_length=255)  # 스크립트 제목
+    title = models.CharField(max_length=255)  # 원본 스크립트 제목
+    title_kor = models.CharField(max_length=255, null=True)  # 번역된 제목 저장 필드
     sentence = models.TextField()  # JSON의 contents 리스트에서 추출한 개별 문장
+    sentence_kor = models.TextField(null=True)  # 번역된 문장 저장 필드
     audio_file = models.URLField()  # S3 URL을 저장할 필드
     created_at = models.DateTimeField(auto_now_add=True)  # 생성 시간
     image_path = models.CharField(max_length=255, blank=True, null=True)  # 이미지 경로 필드 추가
@@ -62,21 +69,23 @@ class LessonConversation(models.Model):
     class Meta:
         constraints = [
             models.UniqueConstraint(
-                fields=["level", "title", "sentence", "audio_file"],
+                fields=["level", "title", "sentence", "audio_file"],  # level, title, sentence, audio_file만 기준으로 중복 방지
                 name="unique_lesson_conversation_entry",
             )
         ]
 
     def __str__(self):
-        return f"Conversation - Level {self.level} - {self.title}: {self.sentence}"
+        return f"Conversation - Level {self.level} - {self.title} (Korean: {self.title_kor}): {self.sentence} (Korean: {self.sentence_kor})"
 
 
 class LessonPhonics(models.Model):
     """파닉스(Phonics) 레슨 정보"""
 
     level = models.IntegerField()  # 레벨 번호
-    title = models.CharField(max_length=255)  # 스크립트 제목
+    title = models.CharField(max_length=255)  # 원본 스크립트 제목
+    title_kor = models.CharField(max_length=255, null=True)  # 번역된 제목 저장 필드
     sentence = models.TextField()  # JSON의 contents 리스트에서 추출한 개별 문장
+    sentence_kor = models.TextField(null=True)  # 번역된 문장 저장 필드
     audio_file = models.URLField()  # S3 URL을 저장할 필드
     created_at = models.DateTimeField(auto_now_add=True)  # 생성 시간
     image_path = models.CharField(max_length=255, blank=True, null=True)  # 이미지 경로 필드 추가
@@ -85,13 +94,14 @@ class LessonPhonics(models.Model):
     class Meta:
         constraints = [
             models.UniqueConstraint(
-                fields=["level", "title", "sentence", "audio_file"],
+                fields=["level", "title", "sentence", "audio_file"],  # level, title, sentence, audio_file만 기준으로 중복 방지
                 name="unique_lesson_phonics_entry",
             )
         ]
 
     def __str__(self):
-        return f"Phonics - Level {self.level} - {self.title}: {self.sentence}"
+        return f"Phonics - Level {self.level} - {self.title} (Korean: {self.title_kor}): {self.sentence} (Korean: {self.sentence_kor})"
+
 
 
 class ReadingLog(models.Model):
@@ -132,18 +142,40 @@ class UserPronunciation(models.Model):
     object_id = models.PositiveIntegerField()  # Lesson 모델 ID
     lesson = GenericForeignKey("content_type", "object_id")  # 다형성 참조
 
-    audio_file = models.URLField()  # 업로드된 음성 파일 S3 URL
-    score = models.FloatField(
-        validators=[MinValueValidator(0.0), MaxValueValidator(100.0)],
+    audio_file = models.URLField(max_length=500)  # 업로드된 음성 파일 S3 URL
+    pitch_similarity = models.FloatField(
+        validators=[MinValueValidator(0.0), MaxValueValidator(1.0)],
         blank=True,
         null=True,
-    )  # 발음 점수
+    )  # 피치 패턴 유사도
+    rhythm_similarity = models.FloatField(
+        validators=[MinValueValidator(0.0), MaxValueValidator(1.0)],
+        blank=True,
+        null=True,
+    )  # 리듬 패턴 유사도
+    speed_ratio = models.FloatField(blank=True, null=True)  # 속도 비율
+    pause_similarity = models.FloatField(
+        validators=[MinValueValidator(0.0), MaxValueValidator(1.0)],
+        blank=True,
+        null=True,
+    )  # 휴지 패턴 유사도
+    mispronounced_words = JSONField(blank=True, null=True)  # 잘못 발음된 단어 목록
+    mispronounced_ratio = models.FloatField(
+        validators=[MinValueValidator(0.0), MaxValueValidator(1.0)],
+        blank=True,
+        null=True,
+    )  # 잘못 발음된 단어 비율
     feedback = models.TextField(blank=True, null=True)  # 발음 피드백
     created_at = models.DateTimeField(auto_now_add=True)  # 업로드 시간
-    processed_at = models.DateTimeField(null=True, blank=True)  # 처리 완료 시간 추가
+    processed_at = models.DateTimeField(null=True, blank=True)  # 처리 완료 시간
+    status = models.CharField(
+        max_length=20,
+        choices=[("pending", "Pending"), ("completed", "Completed")],
+        default="pending",
+    )  # 처리 상태
 
     def __str__(self):
-        return f"User {self.user.id} - {self.lesson}: {self.score}"
+        return f"User {self.user.id} - {self.lesson}: {self.pitch_similarity:.2f}"
 
 
 class FeedbackLog(models.Model):
@@ -180,4 +212,3 @@ class UserScore(models.Model):
         """새 점수를 추가하고 누적 점수 업데이트"""
         self.total_score += new_score
         self.save()
-
