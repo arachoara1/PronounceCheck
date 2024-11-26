@@ -34,8 +34,10 @@ class LessonNovel(models.Model):
     """동화(Novel) 레슨 정보"""
 
     level = models.IntegerField()  # 레벨 번호
-    title = models.CharField(max_length=255)  # 스크립트 제목
+    title = models.CharField(max_length=255)  # 원본 스크립트 제목
+    title_kor = models.CharField(max_length=255, null=True)  # 번역된 제목 저장 필드
     sentence = models.TextField()  # JSON의 contents 리스트에서 추출한 개별 문장
+    sentence_kor = models.TextField(null=True)  # 번역된 문장 저장 필드
     audio_file = models.URLField()  # S3 URL을 저장할 필드
     created_at = models.DateTimeField(auto_now_add=True)  # 생성 시간
 
@@ -43,19 +45,24 @@ class LessonNovel(models.Model):
         constraints = [
             models.UniqueConstraint(
                 fields=["level", "title", "sentence"], name="unique_lesson_novel_entry"
+            ),
+            models.UniqueConstraint(
+                fields=["level", "title_kor", "sentence_kor"], name="unique_lesson_novel_entry_kor"
             )
         ]
 
     def __str__(self):
-        return f"Novel - Level {self.level} - {self.title}: {self.sentence}"
+        return f"Novel - Level {self.level} - {self.title} (Korean: {self.title_kor}): {self.sentence} (Korean: {self.sentence_kor})"
 
 
 class LessonConversation(models.Model):
     """회화(Conversation) 레슨 정보"""
 
     level = models.IntegerField()  # 레벨 번호
-    title = models.CharField(max_length=255)  # 스크립트 제목
+    title = models.CharField(max_length=255)  # 원본 스크립트 제목
+    title_kor = models.CharField(max_length=255, null=True)  # 번역된 제목 저장 필드
     sentence = models.TextField()  # JSON의 contents 리스트에서 추출한 개별 문장
+    sentence_kor = models.TextField(null=True)  # 번역된 문장 저장 필드
     audio_file = models.URLField()  # S3 URL을 저장할 필드
     created_at = models.DateTimeField(auto_now_add=True)  # 생성 시간
 
@@ -64,19 +71,25 @@ class LessonConversation(models.Model):
             models.UniqueConstraint(
                 fields=["level", "title", "sentence", "audio_file"],
                 name="unique_lesson_conversation_entry",
+            ),
+            models.UniqueConstraint(
+                fields=["level", "title_kor", "sentence_kor", "audio_file"], 
+                name="unique_lesson_conversation_entry_kor"
             )
         ]
 
     def __str__(self):
-        return f"Conversation - Level {self.level} - {self.title}: {self.sentence}"
+        return f"Conversation - Level {self.level} - {self.title} (Korean: {self.title_kor}): {self.sentence} (Korean: {self.sentence_kor})"
 
 
 class LessonPhonics(models.Model):
     """파닉스(Phonics) 레슨 정보"""
 
     level = models.IntegerField()  # 레벨 번호
-    title = models.CharField(max_length=255)  # 스크립트 제목
+    title = models.CharField(max_length=255)  # 원본 스크립트 제목
+    title_kor = models.CharField(max_length=255,null=True)  # 번역된 제목 저장 필드
     sentence = models.TextField()  # JSON의 contents 리스트에서 추출한 개별 문장
+    sentence_kor = models.TextField(null=True)  # 번역된 문장 저장 필드
     audio_file = models.URLField()  # S3 URL을 저장할 필드
     created_at = models.DateTimeField(auto_now_add=True)  # 생성 시간
 
@@ -85,11 +98,15 @@ class LessonPhonics(models.Model):
             models.UniqueConstraint(
                 fields=["level", "title", "sentence", "audio_file"],
                 name="unique_lesson_phonics_entry",
+            ),
+            models.UniqueConstraint(
+                fields=["level", "title_kor", "sentence_kor", "audio_file"],
+                name="unique_lesson_phonics_entry_kor"
             )
         ]
 
     def __str__(self):
-        return f"Phonics - Level {self.level} - {self.title}: {self.sentence}"
+        return f"Phonics - Level {self.level} - {self.title} (Korean: {self.title_kor}): {self.sentence} (Korean: {self.sentence_kor})"
 
 
 class ReadingLog(models.Model):
