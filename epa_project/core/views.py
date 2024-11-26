@@ -20,6 +20,7 @@ import boto3
 import json
 from dotenv import load_dotenv
 from django.http import JsonResponse
+import os
 
 load_dotenv()
 
@@ -63,7 +64,41 @@ def mypage_view(request):
 # 서재 뷰
 @login_required
 def library_view(request):
-    return render(request, 'library.html', {'user': request.user})
+    base_dir = os.path.join(settings.BASE_DIR, 'static/lesson_images')
+    content_types = ['Phonics', 'Conversation', 'Novel']
+    image_data = {}
+
+    for content_type in content_types:
+        content_dir = os.path.join(base_dir, content_type)
+        if os.path.exists(content_dir):
+            image_data[content_type] = {}
+            for level_dir in sorted(os.listdir(content_dir)):
+                level_path = os.path.join(content_dir, level_dir)
+                if os.path.isdir(level_path):
+                    images = []
+                    for img in sorted(os.listdir(level_path)):
+                        if img.endswith(('.png', '.jpg', '.jpeg')):
+                            lesson = None
+                            if content_type == 'Phonics':
+                                lesson = LessonPhonics.objects.filter(title=os.path.splitext(img)[0]).first()
+                            elif content_type == 'Novel':
+                                lesson = LessonNovel.objects.filter(title=os.path.splitext(img)[0]).first()
+                            elif content_type == 'Conversation':
+                                lesson = LessonConversation.objects.filter(title=os.path.splitext(img)[0]).first()
+
+                            if lesson:
+                                images.append({
+                                    "path": f"lesson_images/{content_type}/{level_dir}/{img}",
+                                    "name": os.path.splitext(img)[0],
+                                    "lesson_id": lesson.id
+                                })
+                    image_data[content_type][level_dir] = images
+
+    return render(request, 'library.html', {
+        'image_data': image_data,
+        'user': request.user,
+    })
+
 
 # 학습 뷰
 @login_required
@@ -120,45 +155,92 @@ def lesson_view(request, content_type, lesson_id):
 # 읽고 있는 도서 (사용자 학습 로그 기반)
 @login_required
 def get_reading_books(request):
-    """
-    사용자가 읽은 도서 목록을 반환합니다.
-    """
     user = request.user
-    logs = ReadingLog.objects.filter(user=user).order_by('-last_read_at').values(
-        annotated_lesson_id=F('lesson_id'),  # 어노테이션 이름 수정
-        annotated_title=F('title'),         # 어노테이션 이름 수정
-        level=F('level'),
-        content_type=F('content_type'),
-        last_read_at=F('last_read_at'),
-        last_read_sentence_index=F('last_read_sentence_index')  # 마지막으로 읽은 문장 인덱스 추가
-    )
-    return JsonResponse(list(logs), safe=False)
+    logs = ReadingLog.objects.filter(user=user).order_by('-last_read_at')
+    reading_books = []
+    
+    for log in logs:
+        # content_type에 따라 적절한 모델에서 이미지 경로 가져오기
+        if log.content_type == 'phonics':
+            lesson = LessonPhonics.objects.filter(id=log.lesson_id).first()
+        elif log.content_type == 'conversation':
+            lesson = LessonConversation.objects.filter(id=log.lesson_id).first()
+        elif log.content_type == 'novel':
+            lesson = LessonNovel.objects.filter(id=log.lesson_id).first()
+        
+        if lesson:
+            book_data = {
+                'lesson_id': log.lesson_id,
+                'content_type': log.content_type,
+                'title': log.title,
+                'level': log.level,
+                'image_path': lesson.image_path if lesson.image_path else None
+            }
+            reading_books.append(book_data)
 
+    return JsonResponse(reading_books, safe=False)
 
 
 # 학습 도서 목록
 @login_required
 def get_lessons(request):
-    content_type = request.GET.get("content_type")
-    level = int(request.GET.get("level", 1))
+    content_type = request.GET.get('content_type')
+    level = request.GET.get('level')
+    
+    lessons_data = []
+    
+    if content_type == 'novel':
+        # 제목별로 그룹화하여 첫 번째 항목만 가져오기
+        novels = LessonNovel.objects.filter(level=level).values('title').distinct()
+        for novel in novels:
+            first_lesson = LessonNovel.objects.filter(
+                title=novel['title'], 
+                level=level
+            ).first()
+            
+            lesson_data = {
+                'id': first_lesson.id,
+                'title': first_lesson.title,
+                'level': first_lesson.level,
+                'image_path': first_lesson.image_path
+            }
+            lessons_data.append(lesson_data)
+            
+    elif content_type == 'phonics':
+        # 파닉스 레슨 그룹화
+        phonics = LessonPhonics.objects.filter(level=level).values('title').distinct()
+        for phonic in phonics:
+            first_lesson = LessonPhonics.objects.filter(
+                title=phonic['title'],
+                level=level
+            ).first()
+            
+            lesson_data = {
+                'id': first_lesson.id,
+                'title': first_lesson.title,
+                'level': first_lesson.level,
+                'image_path': first_lesson.image_path
+            }
+            lessons_data.append(lesson_data)
+            
+    elif content_type == 'conversation':
+        # 회화 레슨 그룹화
+        conversations = LessonConversation.objects.filter(level=level).values('title').distinct()
+        for conv in conversations:
+            first_lesson = LessonConversation.objects.filter(
+                title=conv['title'],
+                level=level
+            ).first()
+            
+            lesson_data = {
+                'id': first_lesson.id,
+                'title': first_lesson.title,
+                'level': first_lesson.level,
+                'image_path': first_lesson.image_path
+            }
+            lessons_data.append(lesson_data)
 
-    if content_type == "phonics":
-        lessons = LessonPhonics.objects.filter(level=level).values(
-            "id", "title", "level"
-        ).distinct("title")  # 중복 제거
-    elif content_type == "novel":
-        lessons = LessonNovel.objects.filter(level=level).values(
-            "id", "title", "level"
-        ).distinct("title")  # 중복 제거
-    elif content_type == "conversation":
-        lessons = LessonConversation.objects.filter(level=level).values(
-            "id", "title", "level"
-        ).distinct("title")  # 중복 제거
-    else:
-        return JsonResponse({"error": "Invalid content type"}, status=400)
-
-    return JsonResponse(list(lessons), safe=False)
-
+    return JsonResponse(lessons_data, safe=False)
 
 
 # 템플릿 기반 회원가입 뷰

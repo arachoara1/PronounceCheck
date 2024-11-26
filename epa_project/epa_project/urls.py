@@ -49,8 +49,8 @@ urlpatterns = [
     path("api/reading_books/", get_reading_books, name="get_reading_books"),  # 읽고 있는 도서 API
     path('favicon.ico', RedirectView.as_view(url='/static/favicon.ico', permanent=True)),
     path("check-username/", check_username, name="check_username")
-]
+] 
 
-# 정적 파일 URL 추가 (개발 중에만 사용)
-if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+# 미디어 파일과 정적 파일 URL 패턴 추가
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

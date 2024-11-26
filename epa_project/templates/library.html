@@ -12,15 +12,22 @@
     <div class="section-container">
         <h1>{{ user.username }}님의 서재</h1>
 
-        <!-- 읽고 있는 도서 섹션 -->
         <h2>읽고 있는 도서</h2>
         <div class="bookshelf-container-wrapper">
             <button class="scroll-button left" id="scrollLeftReading">&lt;</button>
-            <div class="bookshelf-container" id="readingBooksContainer"></div>
+            <div class="bookshelf-container">
+                <div class="bookshelf" id="readingBooksContainer">
+                    {% for book in reading_books %}
+                        <div class="book-item">
+                            <img src="{% static img.path %}" alt="{{ img.name }}" class="book-image">
+                            <p class="book-title">{{ img.name }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
             <button class="scroll-button right" id="scrollRightReading">&gt;</button>
         </div>
 
-        <!-- 학습 도서 목록 섹션 -->
         <h2>학습 도서 목록</h2>
         <div class="dropdown">
             <label for="contentSelect">콘텐츠:</label>
@@ -32,14 +39,24 @@
         </div>
         <div class="dropdown">
             <label for="levelSelect">레벨:</label>
-            <select id="levelSelect">
-                <option value="1">레벨 1</option>
-                <option value="2">레벨 2</option>
-            </select>
+            <select id="levelSelect"></select>
         </div>
         <div class="bookshelf-container-wrapper">
             <button class="scroll-button left" id="scrollLeftLearning">&lt;</button>
-            <div class="bookshelf-container" id="learningBooksContainer"></div>
+            <div class="bookshelf-container">
+                <div class="bookshelf" id="learningBooksContainer">
+                    {% for content_type, levels in image_data.items %}
+                        {% for level, images in levels.items %}
+                            {% for img in images %}
+                                <div class="book-item">
+                                    <img src="{% static img.path %}" alt="{{ img.name }}" class="book-image">
+                                    <p class="book-title">{{ img.name }}</p>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            </div>
             <button class="scroll-button right" id="scrollRightLearning">&gt;</button>
         </div>
 

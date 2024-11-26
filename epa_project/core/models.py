@@ -36,6 +36,7 @@ class LessonNovel(models.Model):
     sentence = models.TextField()  # JSON의 contents 리스트에서 추출한 개별 문장
     audio_file = models.URLField()  # S3 URL을 저장할 필드
     created_at = models.DateTimeField(auto_now_add=True)  # 생성 시간
+    image_path = models.CharField(max_length=255, blank=True, null=True)  # 이미지 경로 필드 추가
 
     class Meta:
         constraints = [
@@ -56,6 +57,7 @@ class LessonConversation(models.Model):
     sentence = models.TextField()  # JSON의 contents 리스트에서 추출한 개별 문장
     audio_file = models.URLField()  # S3 URL을 저장할 필드
     created_at = models.DateTimeField(auto_now_add=True)  # 생성 시간
+    image_path = models.CharField(max_length=255, blank=True, null=True)  # 이미지 경로 필드 추가
 
     class Meta:
         constraints = [
@@ -77,6 +79,8 @@ class LessonPhonics(models.Model):
     sentence = models.TextField()  # JSON의 contents 리스트에서 추출한 개별 문장
     audio_file = models.URLField()  # S3 URL을 저장할 필드
     created_at = models.DateTimeField(auto_now_add=True)  # 생성 시간
+    image_path = models.CharField(max_length=255, blank=True, null=True)  # 이미지 경로 필드 추가
+
 
     class Meta:
         constraints = [

@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 from decouple import config
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -83,7 +84,7 @@ DATABASES = {
         'NAME': 'epa_db',
         'USER': 'epa_user',
         'PASSWORD': '7027',
-        'HOST': '43.201.36.187',  # EC2의 퍼블릭 IP 주소
+        'HOST': '13.125.206.213',  # EC2의 퍼블릭 IP 주소
         'PORT': '443',  # PostgreSQL의 기본 포트
     }
 }
@@ -122,10 +123,17 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-STATIC_URL = 'static/'  # 정적 파일의 URL 경로
-STATIC_ROOT = BASE_DIR / 'staticfiles'  # 배포 환경에서 정적 파일을 모아두는 폴더
-STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+LOGIN_URL = '/login/'  # accounts/login/ 대신 실제 로그인 URL 사용
+LOGIN_REDIRECT_URL = '/library/'  # 로그인 후 리다이렉트될 페이지
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

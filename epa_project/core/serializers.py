@@ -3,6 +3,7 @@ from .models import UserPronunciation, LessonNovel, LessonConversation, LessonPh
 from .storages import UserAudioStorage
 from django.contrib.auth.models import User
 
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -16,6 +17,7 @@ class UserSerializer(serializers.ModelSerializer):
         user.set_password(validated_data['password'])
         user.save()
         return user
+
 
 class UserPronunciationSerializer(serializers.ModelSerializer):
     audio_file = serializers.FileField(required=True)
@@ -42,3 +44,37 @@ class UserPronunciationSerializer(serializers.ModelSerializer):
 
     def get_audio_file_url(self, obj):
         return str(obj.audio_file)
+
+
+# 새로운 Serializer 추가
+class LessonPhonicsSerializer(serializers.ModelSerializer):
+    content_type = serializers.SerializerMethodField()
+
+    class Meta:
+        model = LessonPhonics
+        fields = ['id', 'title', 'content_type', 'level', 'image_path']
+
+    def get_content_type(self, obj):
+        return 'phonics'
+
+
+class LessonConversationSerializer(serializers.ModelSerializer):
+    content_type = serializers.SerializerMethodField()
+
+    class Meta:
+        model = LessonConversation
+        fields = ['id', 'title', 'content_type', 'level', 'image_path']
+
+    def get_content_type(self, obj):
+        return 'conversation'
+
+
+class LessonNovelSerializer(serializers.ModelSerializer):
+    content_type = serializers.SerializerMethodField()
+
+    class Meta:
+        model = LessonNovel
+        fields = ['id', 'title', 'content_type', 'level', 'image_path']
+
+    def get_content_type(self, obj):
+        return 'novel'
