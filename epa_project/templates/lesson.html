@@ -198,6 +198,14 @@
                 <strong>마지막으로 읽은 시간:</strong> {{ lesson.last_read_at }}
             </div>
         </div>
+    <!-- Lesson 정보 표시 -->
+    <h1 id="lesson-title">{{ lesson.title }}</h1>
+    <h2 id="lesson-title-kor" style="font-weight: normal; color: gray;">{{ lesson.title_kor }}</h2>
+
+    <div class="content">
+        <h2>레벨: <span id="lesson-level">{{ lesson.level }}</span></h2>
+        <p id="lesson-sentence">{{ current_sentence }}</p>
+        <p id="lesson-sentence-kor" style="color: gray; font-style: italic;">{{ current_sentence_kor }}</p>
     </div>
 
     <script src="{% static 'js/lesson.js' %}"></script>
