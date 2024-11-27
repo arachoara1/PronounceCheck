@@ -18,19 +18,16 @@
       .header {
         display: flex;
         justify-content: space-between;
-        /* 좌우로 버튼 및 이미지 정렬 */
         align-items: center;
         margin-top: 40px;
         width: 100%;
-        /* 화면 전체 너비를 차지하도록 설정 */
         padding: 0 20px;
-        /* 좌우 여백 추가 */
       }
 
       .profile-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        display: flex; /* 가로로 정렬 */
+        align-items: center; /* 세로 축 중앙 정렬 */
+        justify-content: center; /* 좌우 정렬 */
         background-color: white;
         padding: 30px;
         border-radius: 10px;
@@ -44,7 +41,6 @@
         width: 100px;
         height: 100px;
         border-radius: 50%;
-        margin-right: 50px;
       }
 
       .profile-info {
@@ -81,33 +77,139 @@
       .button:hover {
         background-color: #45a049;
       }
+      
+      .profile-character {
+        display: flex;
+        flex-direction: column; /* 세로로 정렬 */
+        align-items: center; /* 가운데 정렬 */
+        margin-right: 30px; /* 오른쪽 여백 추가 */
+      }
+
+      .profile-character img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-bottom: 10px; /* 이미지와 버튼 사이 간격 */
+      }
 
       .logout-button {
         background-color: #f45a049;
       }
+      #character-modal {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1000;
+        display: none;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        width: 300px;
+      }
+  
+      #character-modal img {
+        border: 2px solid transparent;
+        margin: 10px;
+        cursor: pointer;
+      }
+  
+      #character-modal img.selected {
+        border: 2px solid #4CAF50;
+      }
+  
+      #character-modal button {
+        margin-top: 10px;}
+
+      #select-character-btn {
+          margin-top: 10px; /* 이미지와 버튼 사이 간격 */
+        }
     </style>
   </head>
 
   <body>
     <div class="header">
-      <!-- 로그아웃 버튼 (flex로 오른쪽에 배치) -->
       <a href="{% url 'logout' %}" class="button logout-button">로그아웃</a>
     </div>
 
     <div class="profile-container">
-      <!-- 사용자 이미지 -->
-      <img src="{% static 'images/profile.png' %}" alt="User Image">
+      <!-- 캐릭터 이미지와 버튼 -->
+      <div class="profile-character">
+        <img src="{% static 'images/character' %}{{ request.session.character_id|default:'1' }}.png" alt="User Image">
+        <button class="button" id="select-character-btn">캐릭터 선택</button>
+      </div>
+    
+      <!-- 사용자 정보 -->
       <div class="profile-info">
         <h1>마이페이지</h1>
-        <p>안녕하세요,
-          {{ user.username }}님!</p>
+        <p>안녕하세요, {{ user.username }}님!</p>
         <p>공부를 시작해볼까요? 😄</p>
         <div class="buttons">
-          <!-- 서재로 가기 버튼 -->
           <a href="{% url 'library' %}" class="button">서재로 가기</a>
         </div>
       </div>
     </div>
-  </body>
+    
+    <!-- 캐릭터 선택 팝업 -->
+  <div id="character-modal">
+    <div>
+      <h2>캐릭터 선택</h2>
+      <div>
+        {% for i in character_range %}
+          <img src="{% static 'images/character' %}{{ i }}.png" 
+               alt="Character {{ i }}" 
+               class="character-option" 
+               data-character-id="{{ i }}" 
+               style="width: 100px; height: 100px; cursor: pointer; margin: 10px;">
+        {% endfor %}
+      </div>
+      <button id="confirm-character-btn" class="button">확인</button>
+    </div>
+  </div>
+
+  <script>
+    // 캐릭터 선택 버튼 클릭 시 팝업 표시
+    document.getElementById("select-character-btn").addEventListener("click", function () {
+      document.getElementById("character-modal").style.display = "block"; // 팝업창 보이기
+    });
+  
+    let selectedCharacterId = null; // 선택된 캐릭터 ID 초기화
+  
+    // 캐릭터 선택 이벤트
+    document.querySelectorAll(".character-option").forEach(img => {
+      img.addEventListener("click", function () {
+        document.querySelectorAll(".character-option").forEach(option => option.classList.remove("selected"));
+        img.classList.add("selected"); // 선택된 캐릭터에 클래스 추가
+        selectedCharacterId = img.dataset.characterId; // 선택된 캐릭터 ID 저장
+      });
+    });
+  
+    // 확인 버튼 클릭 시 팝업 숨기기 및 데이터 전송
+    document.getElementById("confirm-character-btn").addEventListener("click", function () {
+      if (selectedCharacterId) {
+        fetch('/update-character/', {
+          method: 'POST',
+          headers: {
+            'X-CSRFToken': '{{ csrf_token }}',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ character_id: selectedCharacterId }),
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            document.querySelector(".profile-container img").src = data.image_url; // 이미지 업데이트
+            document.getElementById("character-modal").style.display = "none"; // 팝업창 숨기기
+          }
+        });
+      } else {
+        alert("캐릭터를 선택해주세요!"); // 캐릭터 선택 안 된 경우 경고
+      }
+    });
+  </script>
+  
+</body>
 
 </html>

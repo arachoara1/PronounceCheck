@@ -21,6 +21,7 @@ from core.views import (
     # get_learning_books,
     get_reading_books,
     check_username,
+    update_character,
 )
 from django.conf import settings
 from django.conf.urls.static import static
@@ -49,6 +50,7 @@ urlpatterns = [
     path("api/reading_books/", get_reading_books, name="get_reading_books"),  # 읽고 있는 도서 API
     path('favicon.ico', RedirectView.as_view(url='/static/favicon.ico', permanent=True)),
     path('check-username/', check_username, name='check_username'),
+    path('update-character/', update_character, name='update_character'),
 ]
 
 if settings.DEBUG:

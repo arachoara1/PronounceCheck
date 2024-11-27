@@ -87,7 +87,7 @@ DATABASES = {
         'NAME': 'epa_db',
         'USER': 'epa_user',
         'PASSWORD': '7027',
-        'HOST': '13.125.206.213',  # EC2의 퍼블릭 IP 주소
+        'HOST': '3.39.226.215',  # EC2의 퍼블릭 IP 주소
         'PORT': '443',  # PostgreSQL의 기본 포트
     }
 }
@@ -163,3 +163,9 @@ REST_FRAMEWORK = {
         'rest_framework.parsers.JSONParser',
     ],
 }
+
+# 세션 만료 시간 설정 (하루 동안 유지, 초 단위)
+SESSION_COOKIE_AGE = 24 * 60 * 60  # 86400초 = 1일
+
+# 세션이 브라우저를 닫아도 유지되도록 설정
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
