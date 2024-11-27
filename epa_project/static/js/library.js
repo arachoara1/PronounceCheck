@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    // 읽고 있는 도서 로드
     async function loadReading() {
         loadReadingBooksContainer.innerHTML = '';
         try {
@@ -30,41 +29,52 @@ document.addEventListener('DOMContentLoaded', () => {
             bookshelf.classList.add('bookshelf');
 
             books.forEach((book) => {
+                if (!book || !book.content_type || !book.lesson_id) {
+                    console.error('Invalid book data:', book);
+                    return;
+                }
+
                 const bookElement = document.createElement('div');
-                bookElement.classList.add('book');
-                bookElement.textContent = `${book.title} (레벨 ${book.level})`;
+                bookElement.classList.add('book-item');
+                
+                const image = document.createElement('img');
+                if (book.image_path) {
+                    const cleanPath = book.image_path.replace(/^static\/|^\/static\//, '');
+                    image.src = `/static/${cleanPath}`;
+                }
+                image.alt = book.title || '도서 이미지';
+                image.classList.add('book-image');
+                
+                const title = document.createElement('p');
+                title.textContent = book.title || '제목 없음';
+                title.classList.add('book-title');
+                
+                bookElement.appendChild(image);
+                bookElement.appendChild(title);
+                
                 bookElement.onclick = () => {
-                    window.location.href = `/lesson/${book.content_type}/${book.lesson_id}/`;
+                    try {
+                        if (typeof book.content_type === 'string' && 
+                            typeof book.lesson_id === 'number') {
+                            window.location.href = `/lesson/${book.content_type}/${book.lesson_id}/`;
+                        } else {
+                            throw new Error('Invalid book data');
+                        }
+                    } catch (error) {
+                        console.error('Navigation error:', error);
+                    }
                 };
+                
                 bookshelf.appendChild(bookElement);
             });
 
             loadReadingBooksContainer.appendChild(bookshelf);
         } catch (error) {
             console.error('Error in loadReading:', error);
+            loadReadingBooksContainer.innerHTML = '<p>도서를 불러오는데 실패했습니다.</p>';
         }
     }
 
-    // 콘텐츠별 레벨 맵핑
-    const levelsByContent = {
-        phonics: [1, 2],
-        novel: [1, 2, 3, 4, 5, 6, 7],
-        conversation: [1, 2, 3, 4, 5, 6, 7],
-    };
-
-    // 레벨 드롭다운 업데이트
-    function updateLevelOptions(contentType) {
-        const levels = levelsByContent[contentType] || [];
-        levelSelect.innerHTML = ''; // 기존 옵션 제거
-        levels.forEach((level) => {
-            const option = document.createElement('option');
-            option.value = level;
-            option.textContent = `레벨 ${level}`;
-            levelSelect.appendChild(option);
-        });
-    }
-
-    // 학습 도서 목록 로드
     async function loadLessons(contentType, level) {
         loadLessonContainer.innerHTML = '';
         try {
@@ -82,10 +92,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
             books.forEach((book) => {
                 const bookElement = document.createElement('div');
-                bookElement.classList.add('book');
-                bookElement.textContent = `${book.title}`;
+                bookElement.classList.add('book-item');
+                
+                const image = document.createElement('img');
+                if (book.image_path) {
+                    image.src = `/static/${book.image_path}`;  // 경로 단순화
+                }
+                image.alt = book.title;
+                image.classList.add('book-image');
+                
+                const title = document.createElement('p');
+                title.textContent = book.title;
+                title.classList.add('book-title');
+                
+                bookElement.appendChild(image);
+                bookElement.appendChild(title);
                 bookElement.onclick = () => {
-                    window.location.href = `/lesson/${contentType}/${book.id}/`;
+                    window.location.href = `/lesson/${contentType}/${book.id}/`;  // contentType 사용
                 };
                 bookshelf.appendChild(bookElement);
             });
@@ -93,11 +116,27 @@ document.addEventListener('DOMContentLoaded', () => {
             loadLessonContainer.appendChild(bookshelf);
         } catch (error) {
             console.error('Error in loadLessons:', error);
-            loadLessonContainer.innerHTML = '<p>학습 도서를 불러오는 데 실패했습니다.</p>';
+            loadLessonContainer.innerHTML = '<p>학습 도서를 불러오는데 실패했습니다.</p>';
         }
     }
 
-    // 콘텐츠 변경 시 레벨 드롭다운 업데이트 및 학습 도서 로드
+    const levelsByContent = {
+        phonics: [1, 2],
+        novel: [1, 2, 3, 4, 5, 6, 7],
+        conversation: [1, 2, 3, 4, 5, 6, 7],
+    };
+
+    function updateLevelOptions(contentType) {
+        const levels = levelsByContent[contentType] || [];
+        levelSelect.innerHTML = '';
+        levels.forEach((level) => {
+            const option = document.createElement('option');
+            option.value = level;
+            option.textContent = `레벨 ${level}`;
+            levelSelect.appendChild(option);
+        });
+    }
+
     contentSelect.addEventListener('change', () => {
         const contentType = contentSelect.value;
         updateLevelOptions(contentType);
@@ -105,14 +144,13 @@ document.addEventListener('DOMContentLoaded', () => {
         loadLessons(contentType, level);
     });
 
-    // 레벨 변경 시 학습 도서 로드
     levelSelect.addEventListener('change', () => {
         const contentType = contentSelect.value;
         const level = levelSelect.value;
         loadLessons(contentType, level);
     });
 
-    // 초기 데이터 로드
+    // 초기 로드
     const initialContentType = contentSelect.value;
     updateLevelOptions(initialContentType);
     loadLessons(initialContentType, levelSelect.value || 1);

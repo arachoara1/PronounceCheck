@@ -50,15 +50,32 @@ select {
     gap: 10px;
 }
 
-.book {
+.book-item {
+    width: 200px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.book-item:hover {
+    transform: scale(1.05);
+}
+
+.book-image {
     width: 150px;
     height: 200px;
-    border: 1px solid #ddd;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-color: #f9f9f9;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.book-title {
+    margin-top: 10px;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .book:hover {
@@ -108,3 +125,4 @@ select {
 .button:hover {
     background-color: #45a049;
 }
+
