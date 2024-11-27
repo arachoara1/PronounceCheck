@@ -42,3 +42,38 @@ class UserPronunciationSerializer(serializers.ModelSerializer):
 
     def get_audio_file_url(self, obj):
         return str(obj.audio_file)
+
+
+
+
+class LessonPhonicsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = LessonPhonics
+        fields = ['id', 'title', 'level', 'image_path']
+
+class LessonConversationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = LessonConversation
+        fields = ['id', 'title', 'level', 'image_path']
+
+class LessonNovelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = LessonNovel
+        fields = ['id', 'title', 'level', 'image_path']
+
+class ReadingLogSerializer(serializers.ModelSerializer):
+    image_path = serializers.SerializerMethodField()
+
+    class Meta:
+        model = ReadingLog
+        fields = ['lesson_id', 'content_type', 'title', 'level', 'image_path']
+
+    def get_image_path(self, obj):
+        if obj.content_type == 'phonics':
+            lesson = LessonPhonics.objects.filter(id=obj.lesson_id).first()
+        elif obj.content_type == 'conversation':
+            lesson = LessonConversation.objects.filter(id=obj.lesson_id).first()
+        elif obj.content_type == 'novel':
+            lesson = LessonNovel.objects.filter(id=obj.lesson_id).first()
+        
+        return lesson.image_path if lesson else None
