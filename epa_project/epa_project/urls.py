@@ -20,7 +20,6 @@ from core.views import (
     get_lessons,
     # get_learning_books,
     get_reading_books,
-
 )
 from django.conf import settings
 from django.conf.urls.static import static
@@ -48,14 +47,16 @@ urlpatterns = [
     #path("api/learning_books/", get_learning_books, name="get_learning_books"),  # 학습 도서 목록 API
     path("api/reading_books/", get_reading_books, name="get_reading_books"),  # 읽고 있는 도서 API
     path('favicon.ico', RedirectView.as_view(url='/static/favicon.ico', permanent=True)),
+<<<<<<< HEAD
+    path("check-username/", check_username, name="check_username")
 ] 
 
 # 미디어 파일과 정적 파일 URL 패턴 추가
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+=======
+]
 
-
-# 개발 환경에서만 미디어/정적 파일 서빙
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+>>>>>>> 851b1230b8c99d02459683baa048553418d08287

@@ -26,6 +26,12 @@ import json
 import re
 import os
 from dotenv import load_dotenv
+<<<<<<< HEAD
+from django.http import JsonResponse
+import os
+=======
+import pdb
+>>>>>>> 851b1230b8c99d02459683baa048553418d08287
 
 # .env 파일 로드
 load_dotenv()
@@ -182,17 +188,19 @@ def lesson_view(request, content_type, lesson_id):
 @login_required
 def get_reading_books(request):
     user = request.user
+<<<<<<< HEAD
     logs = ReadingLog.objects.filter(user=user).order_by('-last_read_at')
     reading_books = []
     
     for log in logs:
+        # content_type에 따라 적절한 모델에서 이미지 경로 가져오기
         if log.content_type == 'phonics':
             lesson = LessonPhonics.objects.filter(id=log.lesson_id).first()
         elif log.content_type == 'conversation':
             lesson = LessonConversation.objects.filter(id=log.lesson_id).first()
         elif log.content_type == 'novel':
             lesson = LessonNovel.objects.filter(id=log.lesson_id).first()
-            
+        
         if lesson:
             book_data = {
                 'lesson_id': log.lesson_id,
@@ -202,9 +210,18 @@ def get_reading_books(request):
                 'image_path': lesson.image_path if lesson.image_path else None
             }
             reading_books.append(book_data)
+=======
+    logs = ReadingLog.objects.filter(user=user).order_by('-last_read_at').values(
+        'lesson_id',             # 원래 필드 이름 그대로 반환
+        'title',                 # 원래 필드 이름 그대로 반환
+        'content_type',          # 원래 필드 이름 그대로 반환
+        'last_read_at',          # 원래 필드 이름 그대로 반환
+        last_read_sentence_index=F('last_read_sentence_index')  # 어노테이션 이름 변경
+    )
+    return JsonResponse(list(logs), safe=False)
+>>>>>>> 851b1230b8c99d02459683baa048553418d08287
 
     return JsonResponse(reading_books, safe=False)
-
 
 # 학습 도서 목록
 @login_required
@@ -265,9 +282,12 @@ def get_lessons(request):
             }
             lessons_data.append(lesson_data)
 
+<<<<<<< HEAD
     return JsonResponse(lessons_data, safe=False)
 
 
+=======
+>>>>>>> 851b1230b8c99d02459683baa048553418d08287
 # 템플릿 기반 회원가입 뷰
 def signup_view(request):
     if request.method == 'POST':
