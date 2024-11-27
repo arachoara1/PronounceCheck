@@ -31,16 +31,19 @@ class UserSession(models.Model):
 class LessonNovel(models.Model):
     """동화(Novel) 레슨 정보"""
 
-    level = models.IntegerField()  # 레벨 번호
-    title = models.CharField(max_length=255)  # 스크립트 제목
-    sentence = models.TextField()  # JSON의 contents 리스트에서 추출한 개별 문장
-    audio_file = models.URLField()  # S3 URL을 저장할 필드
-    created_at = models.DateTimeField(auto_now_add=True)  # 생성 시간
+    level = models.IntegerField()
+    title = models.CharField(max_length=255)
+    title_kor = models.CharField(max_length=255, blank=True, null=True)  # 한글 제목
+    sentence = models.TextField()
+    sentence_kor = models.TextField(blank=True, null=True)  # 한글 문장
+    audio_file = models.URLField()
+    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         constraints = [
             models.UniqueConstraint(
-                fields=["level", "title", "sentence"], name="unique_lesson_novel_entry"
+                fields=["level", "title", "sentence"],
+                name="unique_lesson_novel_entry",
             )
         ]
 
@@ -51,11 +54,13 @@ class LessonNovel(models.Model):
 class LessonConversation(models.Model):
     """회화(Conversation) 레슨 정보"""
 
-    level = models.IntegerField()  # 레벨 번호
-    title = models.CharField(max_length=255)  # 스크립트 제목
-    sentence = models.TextField()  # JSON의 contents 리스트에서 추출한 개별 문장
-    audio_file = models.URLField()  # S3 URL을 저장할 필드
-    created_at = models.DateTimeField(auto_now_add=True)  # 생성 시간
+    level = models.IntegerField()
+    title = models.CharField(max_length=255)
+    title_kor = models.CharField(max_length=255, blank=True, null=True)  # 한글 제목
+    sentence = models.TextField()
+    sentence_kor = models.TextField(blank=True, null=True)  # 한글 문장
+    audio_file = models.URLField()
+    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         constraints = [
@@ -72,11 +77,13 @@ class LessonConversation(models.Model):
 class LessonPhonics(models.Model):
     """파닉스(Phonics) 레슨 정보"""
 
-    level = models.IntegerField()  # 레벨 번호
-    title = models.CharField(max_length=255)  # 스크립트 제목
-    sentence = models.TextField()  # JSON의 contents 리스트에서 추출한 개별 문장
-    audio_file = models.URLField()  # S3 URL을 저장할 필드
-    created_at = models.DateTimeField(auto_now_add=True)  # 생성 시간
+    level = models.IntegerField()
+    title = models.CharField(max_length=255)
+    title_kor = models.CharField(max_length=255, blank=True, null=True)  # 한글 제목
+    sentence = models.TextField()
+    sentence_kor = models.TextField(blank=True, null=True)  # 한글 문장
+    audio_file = models.URLField()
+    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         constraints = [
