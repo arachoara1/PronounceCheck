@@ -20,7 +20,10 @@ def normalize_title(title):
     title = re.sub(r"[^a-zA-Z0-9\s\']", "", title)
 
     # 연속된 공백 처리
-    title = re.sub(r"\s+", " ", title).strip()
+    title = re.sub(r'\s+', ' ', title).strip()
+    title = title.replace("(", "")
+    title = title.replace(",", "")
+    title = title.replace(" ", "")
 
     return title
 
