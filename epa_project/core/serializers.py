@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import UserPronunciation, LessonNovel, LessonConversation, LessonPhonics
+from .models import UserPronunciation, LessonNovel, LessonConversation, LessonPhonics, ReadingLog
 from .storages import UserAudioStorage
 from django.contrib.auth.models import User
 
@@ -42,7 +42,6 @@ class UserPronunciationSerializer(serializers.ModelSerializer):
 
     def get_audio_file_url(self, obj):
         return str(obj.audio_file)
-
 
 
 
