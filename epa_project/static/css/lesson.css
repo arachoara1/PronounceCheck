@@ -1,32 +1,112 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 2rem;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-h1, h2 {
-    text-align: center;
+.lesson-container {
+    position: relative;
+    width: 800px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
 }
 
-.content {
+.header-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+.lesson-title {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.lesson-level {
+    text-align: right;
+}
+
+.content-overlay {
     text-align: center;
-    margin: 20px;
+    margin: 20px 0;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#lesson-sentence {
+    font-size: 24px;
+    margin-bottom: 0px; /* 문장 간 간격 추가 */
+}
+
+#lesson-sentence-kor {
+    color: gray; /* 한국어 문장은 회색으로 표시 (선택 사항) */
+    font-style: italic; /* 이탤릭체로 표시 (선택 사항) */
+}
+
+
+.navigation-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
 
 .buttons {
-    text-align: center;
     margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
+
+.content h3 {
+    font-size: 15px; /* 원하는 크기로 조정 */
+    font-weight: normal; /* 선택 사항: 기본 글씨 두께로 변경 */
+    color: black; /* 선택 사항: 글씨 색상 변경 */
+}
+
 
 button {
     padding: 10px 20px;
-    margin: 10px;
     background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 14px;
 }
 
 button:hover {
     background-color: #45a049;
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.footer-info {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
 }

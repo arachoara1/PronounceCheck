@@ -1,4 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson</title>
+    <link rel="stylesheet" href="{% static 'css/lesson.css' %}">
+</head>
 <body>
+<<<<<<< HEAD
     <!-- Lesson 정보 표시 -->
     <h1 id="lesson-title">{{ lesson.title }}</h1>
     <div class="content">
@@ -135,4 +145,62 @@
                 });
         }
     </script>
+=======
+    <div class="lesson-container">
+        <!-- 상단 정보 -->
+        <div class="header-info">
+            <div class="lesson-title">
+                <strong>{{ lesson.title }} ({{ lesson.title_kor }})</strong>
+            </div>
+            <div class="lesson-level">
+                <strong>레벨:</strong> <span id="lesson-level">{{ lesson.level }}</span>
+            </div>
+        </div>
+
+        <!-- 메인 콘텐츠 -->
+        <div class="content-overlay">
+            <div class="content">
+                <p id="lesson-sentence">{{ current_sentence }}</p>
+                <p id="lesson-sentence-kor">{{ current_sentence_kor }}</p>
+            </div>
+            
+
+            <div class="content">
+                <h3>표준 발음 오디오</h3>
+                <audio id="lesson-audio" controls>
+                    <source src="{{ lesson.audio_file }}" type="audio/mpeg">
+                    오디오 파일을 재생할 수 없습니다.
+                </audio>
+            </div>
+
+            <!-- 이전 및 다음 버튼 -->
+            <div class="navigation-buttons">
+                <button id="prev-btn" {% if not is_prev_enabled %}disabled{% endif %} onclick="navigateSentence({{ current_sentence_index|add:'-1' }})">이전</button>
+                <button id="next-btn" {% if not is_next_enabled %}disabled{% endif %} onclick="navigateSentence({{ current_sentence_index|add:'1' }})">다음</button>
+            </div>
+
+            <!-- 녹음 상태 표시 -->
+            <div id="recording-status">녹음 상태: 대기 중</div>
+
+            <!-- 녹음 및 업로드 버튼 -->
+            <div class="buttons">
+                <button id="record-btn" onclick="startRecording()">녹음 시작</button>
+                <button id="stop-btn" onclick="stopRecording()" disabled>녹음 중지</button>
+                <button id="upload-btn" onclick="uploadAudio()" disabled>업로드</button>
+                <button id="retry-btn" onclick="retryRecording()" disabled>녹음 다시하기</button>
+            </div>
+            <audio id="audio-preview" controls></audio>
+        </div>
+
+        <!-- 하단 정보 -->
+        <div class="footer-info">
+            <div class="lesson-last-read">
+                <strong>마지막으로 읽은 시간:</strong> {{ lesson.last_read_at }}
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/lesson.js' %}"></script>
+>>>>>>> 4c7f8d97 (레슨화면)
 </body>
+</html>
