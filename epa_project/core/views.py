@@ -176,63 +176,45 @@ def get_reading_books(request):
 def get_lessons(request):
     content_type = request.GET.get('content_type')
     level = int(request.GET.get('level', 1))
+    lessons_data = []
     
     if content_type == 'novel':
-        novels = LessonNovel.objects.filter(level=level).values('title').distinct()
-        lessons_data = []
-        for novel in novels:
-            first_lesson = LessonNovel.objects.filter(
-                title=novel['title'], 
-                level=level
-            ).first()
-            
-            lesson_data = {
-                'id': first_lesson.id,
-                'title': first_lesson.title,
-                'level': first_lesson.level,
-                'image_path': first_lesson.image_path,
+        titles = LessonNovel.objects.filter(level=level).values_list('title', flat=True).distinct()
+        for title in titles:
+            lesson = LessonNovel.objects.filter(level=level, title=title).first()
+            lessons_data.append({
+                'id': lesson.id,
+                'title': lesson.title,
+                'level': lesson.level,
+                'image_path': lesson.image_path,
                 'content_type': content_type
-            }
-            lessons_data.append(lesson_data)
+            })
             
     elif content_type == 'phonics':
-        phonics = LessonPhonics.objects.filter(level=level).values('title').distinct()
-        lessons_data = []
-        for phonic in phonics:
-            first_lesson = LessonPhonics.objects.filter(
-                title=phonic['title'],
-                level=level
-            ).first()
-            
-            lesson_data = {
-                'id': first_lesson.id,
-                'title': first_lesson.title,
-                'level': first_lesson.level,
-                'image_path': first_lesson.image_path,
+        titles = LessonPhonics.objects.filter(level=level).values_list('title', flat=True).distinct()
+        for title in titles:
+            lesson = LessonPhonics.objects.filter(level=level, title=title).first()
+            lessons_data.append({
+                'id': lesson.id,
+                'title': lesson.title,
+                'level': lesson.level,
+                'image_path': lesson.image_path,
                 'content_type': content_type
-            }
-            lessons_data.append(lesson_data)
+            })
             
     elif content_type == 'conversation':
-        conversations = LessonConversation.objects.filter(level=level).values('title').distinct()
-        lessons_data = []
-        for conv in conversations:
-            first_lesson = LessonConversation.objects.filter(
-                title=conv['title'],
-                level=level
-            ).first()
-            
-            lesson_data = {
-                'id': first_lesson.id,
-                'title': first_lesson.title,
-                'level': first_lesson.level,
-                'image_path': first_lesson.image_path,
+        titles = LessonConversation.objects.filter(level=level).values_list('title', flat=True).distinct()
+        for title in titles:
+            lesson = LessonConversation.objects.filter(level=level, title=title).first()
+            lessons_data.append({
+                'id': lesson.id,
+                'title': lesson.title,
+                'level': lesson.level,
+                'image_path': lesson.image_path,
                 'content_type': content_type
-            }
-            lessons_data.append(lesson_data)
+            })
 
     return JsonResponse(lessons_data, safe=False)
-
 
 # 템플릿 기반 회원가입 뷰
 def signup_view(request):

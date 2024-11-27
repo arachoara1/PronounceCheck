@@ -9,28 +9,23 @@ django.setup()
 from core.models import LessonPhonics, LessonConversation, LessonNovel
 
 def normalize_title(title):
-    """
-    제목을 정규화하여 파일명과 데이터베이스의 일치를 보장
-    """
-    # 유니코드 정규화로 특수 문자 처리
-    title = unicodedata.normalize('NFKD', title)
-    
-    # 's를 그대로 유지하고 다른 특수문자만 처리
-    title = re.sub(r'[^a-zA-Z0-9\s\']', '', title)
-    
-    # 연속된 공백 처리
-    title = re.sub(r'\s+', ' ', title).strip()
-    
-    """ 
-    title = title.replace("(", "")
-    title = title.replace(",", "")
-    title = title.replace(" ", "")
-    """
-    
+    # 특수문자 및 아포스트로피 처리
+    title = unicodedata.normalize('NFKD', title).encode('ASCII', 'ignore').decode('utf-8')
+    title = re.sub(r'\([^)]*\)', '', title)  # 괄호와 괄호 안의 내용 제거
+    title = title.replace("'s", "s")         # 소유격 처리
+    title = title.replace(",", "")           # 쉼표 제거
+    title = title.replace("'", "")           # 작은따옴표 제거
+    title = title.replace('"', "")           # 큰따옴표 제거
+    title = title.replace("é", "e")          # 프랑스어 악센트 처리
+    title = title.replace("è", "e")
+    title = title.replace("ê", "e")
+    title = title.replace("-", " ")          # 하이픈을 공백으로
+    title = ' '.join(title.split())          # 연속된 공백을 하나로
+    title = title.strip()                    # 앞뒤 공백 제거
     return title
 
 def assign_images():
-    base_path = 'lesson_images'
+    base_path = 'lesson_images'  # 'on_images'가 아닌 'lesson_images'로 수정
 
     content_map = {
         'Phonics': {'model': LessonPhonics, 'levels': range(1, 3)},
@@ -58,21 +53,19 @@ def assign_images():
                 normalized_title = normalize_title(title)
                 image_path = f'{base_path}/{content}/level_{level}/{file_name}'
 
-                lessons = model.objects.filter(level=level)
+                # 같은 제목을 가진 모든 레슨에 이미지 할당
+                lessons = model.objects.filter(level=level, title=title)
                 matched = False
+                
                 for lesson in lessons:
-                    normalized_lesson_title = normalize_title(lesson.title)
-                    if normalized_lesson_title == normalized_title:
-                        lesson.image_path = image_path
-                        lesson.save()
-                        print(f"Updated {content} image for title '{lesson.title}', level {level}")
-                        matched = True
-                        break
+                    lesson.image_path = image_path
+                    lesson.save()
+                    print(f"Updated {content} image for title '{lesson.title}', level {level}")
+                    matched = True
 
                 if not matched:
                     no_match_titles.append((content, title, level))
 
-    # 매칭되지 않은 이미지 목록을 마지막에 정리해서 출력
     if no_match_titles:
         print("\n=== 매칭되지 않은 이미지 목록 ===")
         no_match_titles.sort(key=lambda x: (x[0], x[2]))
