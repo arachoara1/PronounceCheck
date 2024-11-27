@@ -741,6 +741,7 @@
                             ]
                         },
                         {
+                            "title": "The Owl’s Advice",
                             "contents": [
                                 "A Rabbit was scared of the dark.",
                                 "He went to Owl and said, \"How can I feel safe at night?\"",
@@ -752,8 +753,7 @@
                                 "He learned to look for the good in things.",
                                 "From then on, he enjoyed the stars every night.",
                                 "Owl’s advice helped him be brave."
-                            ],
-                            "title_kor": "The Owl’s Advice"
+                            ]
                         },
                         {
                             "title_kor": "올빼미의 조언",
@@ -1054,6 +1054,7 @@
                             ]
                         },
                         {
+                            "title": "The Farmer’s Treasure",
                             "contents": [
                                 "An old Farmer had three sons.",
                                 "Before he died, he told them, \"There is treasure hidden in the fields.\"",
@@ -1065,8 +1066,7 @@
                                 "They learned that working the land was the true treasure.",
                                 "They were grateful to their father for his wise lesson.",
                                 "The family lived happily, remembering the value of hard work."
-                            ],
-                            "title_kor": "The Farmer’s Treasure"
+                            ]
                         },
                         {
                             "title_kor": "농부의 보물",
@@ -1144,6 +1144,7 @@
                             ]
                         },
                         {
+                            "title": "The Crow’s Gift",
                             "contents": [
                                 "A thirsty Crow found a pitcher with a little water at the bottom.",
                                 "He tried to drink, but his beak couldn’t reach.",
@@ -1155,8 +1156,7 @@
                                 "He said, \"The Crow was smart and solved his problem.\"",
                                 "The children learned to think creatively.",
                                 "The Crow’s idea became a lesson for everyone."
-                            ],
-                            "title_kor": "The Crow’s Gift"
+                            ]
                         },
                         {
                             "title_kor": "까마귀의 선물",
@@ -1174,6 +1174,7 @@
                             ]
                         },
                         {
+                            "title": "The Carpenter’s House",
                             "contents": [
                                 "A tired Carpenter wanted to stop working.",
                                 "He was asked to build one last house before he retired.",
@@ -1185,8 +1186,7 @@
                                 "From that day, he promised to always do his best.",
                                 "He learned that each job reflects who we are.",
                                 "The Carpenter became proud of his work once again."
-                            ],
-                            "title_kor": "The Carpenter’s House"
+                            ]
                         },
                         {
                             "title_kor": "목수의 집",
@@ -1204,6 +1204,7 @@
                             ]
                         },
                         {
+                            "title": "he Shepherd’s Advice",
                             "contents": [
                                 "A young Shepherd cared for his sheep each day.",
                                 "One day, he found a lamb stuck in a bush.",
@@ -1215,8 +1216,7 @@
                                 "The older Shepherd praised him for his good care.",
                                 "The young Shepherd became wise and careful.",
                                 "He earned respect from everyone who saw his dedication."
-                            ],
-                            "title_kor": "The Shepherd’s Advice"
+                            ]
                         },
                         {
                             "title_kor": "목자의 조언",
@@ -1548,6 +1548,7 @@
                     "level": 6,
                     "scripts": [
                         {
+                            "title": "The Firekeeper’s Quest",
                             "contents": [
                                 "In a remote mountain village, a sacred fire brought warmth and light to all.",
                                 "One stormy night, a fierce wind extinguished the fire, casting darkness over the village.",
@@ -1559,8 +1560,7 @@
                                 "The spirit granted him the ember, which Han carefully carried back to the village.",
                                 "The villagers rejoiced as Han rekindled the fire, earning him the title of Firekeeper.",
                                 "From that day, his courage and dedication were remembered in village tales."
-                            ],
-                            "title_kor": "The Firekeeper’s Quest"
+                            ]
                         },
                         {
                             "title_kor": "방화수의 탐구",
@@ -1578,6 +1578,7 @@
                             ]
                         },
                         {
+                            "title": "The Bamboo Prince and the Sorcerer’s Challenge",
                             "contents": [
                                 "An elderly couple in a peaceful village found a glowing bamboo stalk in the forest.",
                                 "Inside, they discovered a tiny baby wrapped in silk, whom they named Bamboo Prince.",
@@ -1588,8 +1589,7 @@
                                 "Humbled, the sorcerer left the village unharmed.",
                                 "The villagers planted bamboo in the prince’s honor, celebrating his bravery and purity.",
                                 "His legend spread, inspiring generations with the power of compassion and courage."
-                            ],
-                            "title_kor": "The Bamboo Prince and the Sorcerer’s Challenge"
+                            ]
                         },
                         {
                             "title_kor": "대나무 왕자와 마법사의 도전",
@@ -1606,6 +1606,7 @@
                             ]
                         },
                         {
+                            "title": "The Weaver’s Journey Across the Stars",
                             "contents": [
                                 "A skilled Weaver in a quiet valley dreamed of creating a tapestry that captured the stars.",
                                 "One evening, a celestial spirit appeared, offering her a challenge to gather stardust from the highest peak.",
@@ -1614,8 +1615,7 @@
                                 "Returning home, she wove the stardust into her tapestry, which shimmered like the night sky.",
                                 "When the villagers saw it, they were mesmerized, believing the heavens themselves were captured.",
                                 "Her story became a legend, a reminder of the beauty found in dedication and dreams."
-                            ],
-                            "title_kor": "The Weaver’s Journey Across the Stars"
+                            ]
                         },
                         {
                             "title_kor": "별을 가로지르는 직공의 여행",

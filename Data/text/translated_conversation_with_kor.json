@@ -1681,7 +1681,7 @@
                                 "사람이 너무 많아지기 전에 줄을 서요."
                             ]
                         },
-                        {
+                        {   "title": "At the Farmer’s Market",
                             "contents": [
                                 "Hey, Emma! Do you shop at the market every week?",
                                 "Yes, I usually come to buy fresh vegetables.",
@@ -1693,8 +1693,7 @@
                                 "Yes, I want to get some fruit and maybe a few herbs.",
                                 "Let’s look around together.",
                                 "Good idea! There’s so much to see."
-                            ],
-                            "title_kor": "At the Farmer’s Market"
+                            ]
                         },
                         {
                             "title_kor": "농부 시장에서",
@@ -1867,6 +1866,7 @@
                             ]
                         },
                         {
+                            "title": "At a Cafe",
                             "contents": [
                                 "Hi, I’d like to order a coffee and a piece of cake, please.",
                                 "Sure, we have chocolate, cheesecake, and a new mango flavor.",
@@ -1878,8 +1878,7 @@
                                 "Alright, here’s your total and your receipt.",
                                 "Thanks! By the way, do you have Wi-Fi here?",
                                 "Yes, just use the code on your receipt. Enjoy!"
-                            ],
-                            "title_kor": "At a Café"
+                            ]
                         },
                         {
                             "title_kor": "카페에서",
