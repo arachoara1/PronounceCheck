@@ -29,6 +29,7 @@ import re
 import os
 from dotenv import load_dotenv
 import pdb
+from django.views.decorators.csrf import csrf_exempt
 
 
 # .env 파일 로드
@@ -81,7 +82,8 @@ def api_login(request):
 # 마이페이지 뷰
 @login_required
 def mypage_view(request):
-    return render(request, 'mypage.html', {'user': request.user})
+    character_range = range(1, 6)  # 캐릭터 선택 범위 전달
+    return render(request, 'mypage.html', {'character_range': character_range})
 
 
 # 서재 뷰
@@ -178,6 +180,18 @@ def get_reading_books(request):
             reading_books.append(book_data)
 
     return JsonResponse(reading_books, safe=False)
+
+# 캐릭터 업데이트 뷰
+@csrf_exempt
+def update_character(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        character_id = data.get('character_id')
+        if character_id:
+            request.session['character_id'] = character_id
+            image_url = f"/static/images/character{character_id}.png"
+            return JsonResponse({'success': True, 'image_url': image_url})
+    return JsonResponse({'success': False, 'error': 'Invalid request'})
 
 
 # 학습 도서 목록
