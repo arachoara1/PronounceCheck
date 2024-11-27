@@ -14,14 +14,14 @@ from core.views import (
     logout_view,
     mypage_view,
     library_view,
-    UserPronunciationView,
+    # UserPronunciationView,
+    # ProcessAudioLambdaView,
+    EvaluatePronunciationView,
     UpdatePronunciationScoreView,
     lesson_view,
     get_lessons,
     # get_learning_books,
     get_reading_books,
-    check_username,
-    update_character,
 )
 from django.conf import settings
 from django.conf.urls.static import static
@@ -42,16 +42,17 @@ urlpatterns = [
     path("mypage/", mypage_view, name="mypage"),  # 마이페이지
     path("library/", library_view, name="library"),  # 서재 페이지
     path("lesson/<str:content_type>/<int:lesson_id>/", lesson_view, name="lesson"),  # 문자열 + 정수 지원  # 학습 화면
-    # path("upload/audio/", UserPronunciationView.as_view(), name="upload_audio"),  # 오디오 업로드
-    path('upload_user_pronunciation/', UserPronunciationView.as_view(), name='upload_user_pronunciation'),  # 사용자 발음 업로드
-    path('update_pronunciation_score/', UpdatePronunciationScoreView.as_view(), name='update_pronunciation_score'),
+    #path("upload/audio/", UserPronunciationView.as_view(), name="upload_audio"),  # 오디오 업로드
+    #path('upload_user_pronunciation/', UserPronunciationView.as_view(), name='upload_user_pronunciation'),  # 사용자 녹음 업로드
+    #path("process_audio_lambda/", ProcessAudioLambdaView.as_view(), name="process_audio_lambda"),  # 발음 채점
+    path('evaluate-pronunciation/', EvaluatePronunciationView.as_view(), name='evaluate_pronunciation'),  # 채점 API 엔드포인트
+    path('update-pronunciation-score/', UpdatePronunciationScoreView.as_view(), name='update_pronunciation_score'),  # 채점 결과 DB 저장 엔드포인트
     path("api/lessons/", get_lessons, name="get_lessons"),  # 학습 도서 API
     #path("api/learning_books/", get_learning_books, name="get_learning_books"),  # 학습 도서 목록 API
     path("api/reading_books/", get_reading_books, name="get_reading_books"),  # 읽고 있는 도서 API
     path('favicon.ico', RedirectView.as_view(url='/static/favicon.ico', permanent=True)),
-    path('check-username/', check_username, name='check_username'),
-    path('update-character/', update_character, name='update_character'),
 ]
 
+# 정적 파일 URL 추가 (개발 중에만 사용)
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
