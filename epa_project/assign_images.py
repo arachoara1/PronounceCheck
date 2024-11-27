@@ -21,6 +21,10 @@ def normalize_title(title):
     # 연속된 공백 처리
     title = re.sub(r'\s+', ' ', title).strip()
     
+    title = title.replace("(", "").replace(")", "")
+    title = title.replace(",", "")
+    title = title.replace(" ", "")
+    
     return title
 
 def assign_images():
