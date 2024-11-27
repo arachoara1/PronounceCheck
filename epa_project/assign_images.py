@@ -13,6 +13,7 @@ def normalize_title(title):
     title = unicodedata.normalize('NFKD', title).encode('ASCII', 'ignore').decode('utf-8')
     title = re.sub(r'\([^)]*\)', '', title)  # 괄호와 괄호 안의 내용 제거
     title = title.replace("'s", "s")         # 소유격 처리
+    title = title.replace("'", "")           # 다른 아포스트로피 처리
     title = title.replace(",", "")           # 쉼표 제거
     title = title.replace("'", "")           # 작은따옴표 제거
     title = title.replace('"', "")           # 큰따옴표 제거
@@ -21,8 +22,8 @@ def normalize_title(title):
     title = title.replace("ê", "e")
     title = title.replace("-", " ")          # 하이픈을 공백으로
     title = ' '.join(title.split())          # 연속된 공백을 하나로
-    title = title.strip()                    # 앞뒤 공백 제거
-    return title
+
+    return title.strip()
 
 def assign_images():
     base_path = 'lesson_images'  # 'on_images'가 아닌 'lesson_images'로 수정
