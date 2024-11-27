@@ -108,9 +108,14 @@ def lesson_view(request, content_type, lesson_id):
 
     # 문장 리스트 분리
     all_sentences = lesson.sentence.split("\n")
+    all_sentences_kor = lesson.sentence_kor.split("\n") if lesson.sentence_kor else []
     current_sentence_index = int(request.GET.get("sentence_index", 0))
     current_sentence = all_sentences[current_sentence_index]
-
+    current_sentence_kor = (
+        all_sentences_kor[current_sentence_index]
+        if current_sentence_index < len(all_sentences_kor)
+        else ""
+    )
     # 이전/다음 버튼 활성화 여부 설정
     is_prev_enabled = current_sentence_index > 0
     is_next_enabled = current_sentence_index < len(all_sentences) - 1
@@ -138,12 +143,14 @@ def lesson_view(request, content_type, lesson_id):
         {
             "lesson": lesson,
             "current_sentence": current_sentence,
+            "current_sentence_kor": current_sentence_kor,
             "current_sentence_index": current_sentence_index,
             "is_prev_enabled": is_prev_enabled,
             "is_next_enabled": is_next_enabled,
             "content_type": content_type,
             "standard_audio_url": lesson.audio_file,  # 표준 음성 파일 URL 추가
             "sentences": all_sentences,  # 전체 문장 리스트
+            "lesson_title_kor":lesson.title_kor,
         },
     )
 
@@ -241,7 +248,6 @@ def login_view(request):
         form = LoginForm()
 
     return render(request, 'login.html', {'form': form})
-
 
 
 # 아이디 중복 확인 API
