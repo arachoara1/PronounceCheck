@@ -1,144 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson</title>
+    <link rel="stylesheet" href="{% static 'css/lesson.css' %}">
+</head>
 <body>
-    <!-- Lesson 정보 표시 -->
-    <h1 id="lesson-title">{{ lesson.title }}</h1>
-    <h2 id="lesson-title-kor" style="font-weight: normal; color: gray;">{{ lesson.title_kor }}</h2>
+    <div class="lesson-container">
+        <!-- 상단 정보 -->
+        <div class="header-info">
+            <div class="lesson-title">
+                <strong>{{ lesson.title }} ({{ lesson.title_kor }})</strong>
+            </div>
+            <div class="lesson-level">
+                <strong>레벨:</strong> <span id="lesson-level">{{ lesson.level }}</span>
+            </div>
+        </div>
 
-    <div class="content">
-        <h2>레벨: <span id="lesson-level">{{ lesson.level }}</span></h2>
-        <p id="lesson-sentence">{{ current_sentence }}</p>
-        <p id="lesson-sentence-kor" style="color: gray; font-style: italic;">{{ current_sentence_kor }}</p>
+        <!-- 메인 콘텐츠 -->
+        <div class="content-overlay">
+            <div class="content">
+                <p id="lesson-sentence">{{ current_sentence }}</p>
+                <p id="lesson-sentence-kor">{{ current_sentence_kor }}</p>
+            </div>
+            
+
+            <div class="content">
+                <h3>표준 발음 오디오</h3>
+                <audio id="lesson-audio" controls>
+                    <source src="{{ lesson.audio_file }}" type="audio/mpeg">
+                    오디오 파일을 재생할 수 없습니다.
+                </audio>
+            </div>
+
+            <!-- 이전 및 다음 버튼 -->
+            <div class="navigation-buttons">
+                <button id="prev-btn" {% if not is_prev_enabled %}disabled{% endif %} onclick="navigateSentence({{ current_sentence_index|add:'-1' }})">이전</button>
+                <button id="next-btn" {% if not is_next_enabled %}disabled{% endif %} onclick="navigateSentence({{ current_sentence_index|add:'1' }})">다음</button>
+            </div>
+
+            <!-- 녹음 상태 표시 -->
+            <div id="recording-status">녹음 상태: 대기 중</div>
+
+            <!-- 녹음 및 업로드 버튼 -->
+            <div class="buttons">
+                <button id="record-btn" onclick="startRecording()">녹음 시작</button>
+                <button id="stop-btn" onclick="stopRecording()" disabled>녹음 중지</button>
+                <button id="upload-btn" onclick="uploadAudio()" disabled>업로드</button>
+                <button id="retry-btn" onclick="retryRecording()" disabled>녹음 다시하기</button>
+            </div>
+            <audio id="audio-preview" controls></audio>
+        </div>
+
+        <!-- 하단 정보 -->
+        <div class="footer-info">
+            <div class="lesson-last-read">
+                <strong>마지막으로 읽은 시간:</strong> {{ lesson.last_read_at }}
+            </div>
+        </div>
     </div>
 
-    <!-- 마지막으로 읽은 시간 표시 -->
-    <div>
-        <h3>마지막으로 읽은 시간</h3>
-        <p>{{ lesson.last_read_at }}</p>
-    </div>
-
-    <p>{{lesson.audio_file}}</p>
-
-    <!-- Lesson Audio File -->
-    <div class="content">
-        <h3>표준 발음 오디오</h3>
-        <audio id="lesson-audio" controls>
-            <source src="{{ lesson.audio_file }}" type="audio/mpeg">
-            오디오 파일을 재생할 수 없습니다.
-        </audio>
-    </div>
-
-    <!-- 이전 및 다음 버튼 -->
-    <div class="navigation-buttons">
-        <button id="prev-btn" {% if not is_prev_enabled %}disabled{% endif %} onclick="navigateSentence({{ current_sentence_index|add:'-1' }})">이전</button>
-        <button id="next-btn" {% if not is_next_enabled %}disabled{% endif %} onclick="navigateSentence({{ current_sentence_index|add:'1' }})">다음</button>
-    </div>
-
-    <!-- 녹음 상태 표시 -->
-    <div id="recording-status" style="text-align: center; margin-top: 10px; font-size: 16px; color: red;">녹음 상태: 대기 중</div>
-
-    <!-- 녹음 및 업로드 버튼 -->
-    <div class="buttons">
-        <button id="record-btn" onclick="startRecording()">녹음 시작</button>
-        <button id="stop-btn" onclick="stopRecording()" disabled>녹음 중지</button>
-        <button id="upload-btn" onclick="uploadAudio()" disabled>업로드</button>
-        <button id="retry-btn" onclick="retryRecording()" disabled>녹음 다시하기</button>
-    </div>
-    <audio id="audio-preview" controls></audio>
-
-    <script>
-        let mediaRecorder;
-        let recordedChunks = [];
-        let recordingStartTime;
-        let recordingInterval;
-
-        // 녹음 시작
-        function startRecording() {
-            navigator.mediaDevices.getUserMedia({ audio: true })
-                .then(stream => {
-                    mediaRecorder = new MediaRecorder(stream);
-                    mediaRecorder.start();
-
-                    // 녹음 시작 시간 저장 및 상태 업데이트
-                    recordingStartTime = Date.now();
-                    document.getElementById("recording-status").textContent = "녹음 중...";
-                    document.getElementById("record-btn").disabled = true;
-                    document.getElementById("stop-btn").disabled = false;
-
-                    // 녹음 중 시간 표시
-                    recordingInterval = setInterval(() => {
-                        const elapsedSeconds = Math.floor((Date.now() - recordingStartTime) / 1000);
-                        document.getElementById("recording-status").textContent = `녹음 중... (${elapsedSeconds}초)`;
-                    }, 1000);
-
-                    mediaRecorder.ondataavailable = event => {
-                        if (event.data.size > 0) {
-                            recordedChunks.push(event.data);
-                        }
-                    };
-                })
-                .catch(error => {
-                    console.error("마이크 접근 실패:", error);
-                    alert("마이크 접근에 실패했습니다. 권한을 확인해주세요.");
-                });
-        }
-
-        // 녹음 중지
-        function stopRecording() {
-            mediaRecorder.stop();
-            clearInterval(recordingInterval);
-            document.getElementById("recording-status").textContent = "녹음 완료";
-            document.getElementById("stop-btn").disabled = true;
-            document.getElementById("upload-btn").disabled = false;
-            document.getElementById("retry-btn").disabled = false;
-
-            mediaRecorder.onstop = () => {
-                const audioBlob = new Blob(recordedChunks, { type: 'audio/wav' });
-                const audioURL = URL.createObjectURL(audioBlob);
-                document.getElementById("audio-preview").src = audioURL;
-            };
-        }
-
-        // 녹음 다시하기
-        function retryRecording() {
-            recordedChunks = [];
-            document.getElementById("recording-status").textContent = "녹음 상태: 대기 중";
-            document.getElementById("upload-btn").disabled = true;
-            document.getElementById("retry-btn").disabled = true;
-            document.getElementById("record-btn").disabled = false;
-        }
-
-        // 녹음 파일 업로드
-        function uploadAudio() {
-            const audioBlob = new Blob(recordedChunks, { type: 'audio/wav' });
-            const formData = new FormData();
-
-            formData.append("user", "{{ request.user.id }}");
-            formData.append("lesson", "{{ lesson.id }}");
-            formData.append("content_type", "{{ content_type }}");
-            formData.append("level", "{{ lesson.level }}");
-            formData.append("title", "{{ lesson.title }}");
-            formData.append("sentence", "{{ current_sentence }}");
-            formData.append("audio_file", audioBlob, "recording.wav");
-
-
-            fetch("{% url 'upload_user_pronunciation' %}", {
-                method: "POST",
-                body: formData,
-                headers: {
-                    "X-CSRFToken": "{{ csrf_token }}"
-                }
-            })
-                .then(response => {
-                    if (response.ok) {
-                        alert("녹음 파일 업로드 성공!");
-                        document.getElementById("upload-btn").disabled = true;
-                    } else {
-                        response.json().then(data => alert(`업로드 실패: ${data.error}`));
-                    }
-                })
-                .catch(error => {
-                    console.error("업로드 실패:", error);
-                    alert("업로드 중 오류가 발생했습니다.");
-                });
-        }
-    </script>
+    <script src="{% static 'js/lesson.js' %}"></script>
 </body>
+</html>
