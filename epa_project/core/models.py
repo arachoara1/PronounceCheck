@@ -38,6 +38,7 @@ class LessonNovel(models.Model):
     sentence_kor = models.TextField(blank=True, null=True)  # 한글 문장
     audio_file = models.URLField()
     created_at = models.DateTimeField(auto_now_add=True)
+    image_path = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         constraints = [
@@ -61,6 +62,7 @@ class LessonConversation(models.Model):
     sentence_kor = models.TextField(blank=True, null=True)  # 한글 문장
     audio_file = models.URLField()
     created_at = models.DateTimeField(auto_now_add=True)
+    image_path = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         constraints = [
@@ -84,6 +86,7 @@ class LessonPhonics(models.Model):
     sentence_kor = models.TextField(blank=True, null=True)  # 한글 문장
     audio_file = models.URLField()
     created_at = models.DateTimeField(auto_now_add=True)
+    image_path = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         constraints = [
