@@ -85,7 +85,7 @@ DATABASES = {
         'USER': 'epa_user',
         'PASSWORD': '7027',
         'HOST': '3.39.226.215',  # EC2의 퍼블릭 IP 주소
-        'PORT': '443',  # PostgreSQL의 기본 포트
+        'PORT': '80',  # PostgreSQL의 기본 포트
     }
 }
 
