@@ -10,11 +10,13 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.http import JsonResponse
 from django.conf import settings
+from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.decorators import login_required
 from core.models import UserPronunciation, LessonNovel, LessonConversation, LessonPhonics, ReadingLog
 from core.forms import SignUpForm, LoginForm
 from core.audio_analysis import analyze_audio # audio_analysis.py의 채점 함수 호출
 from pydub import AudioSegment
+import requests
 import tempfile
 import boto3
 import json
@@ -29,16 +31,17 @@ load_dotenv()
 # 환경 변수 읽기
 AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
-AWS_REGION = os.getenv("AWS_REGION", "ap-northeast-2")
-S3_USER_BUCKET = os.getenv("S3_USER_BUCKET", "user-audio-file")
-S3_STANDARD_BUCKET = os.getenv("S3_STANDARD_BUCKET", "standard-audio-file")
+AWS_S3_REGION_NAME = os.getenv("AWS_S3_REGION_NAME")
+AWS_STORAGE_BUCKET_NAME_USER = os.getenv("AWS_STORAGE_BUCKET_NAME_USER")
+AWS_STORAGE_BUCKET_NAME_STANDARD = os.getenv("AWS_STORAGE_BUCKET_NAME_STANDARD")
+
 
 # S3 클라이언트 생성
 s3 = boto3.client(
     "s3",
     aws_access_key_id=AWS_ACCESS_KEY_ID,
     aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
-    region_name=AWS_REGION,
+    region_name=AWS_S3_REGION_NAME,
 )
 
 User = get_user_model()
@@ -323,137 +326,120 @@ def logout_view(request):
 class UserPronunciationView(APIView):
     parser_classes = [MultiPartParser, FormParser]
 
-    # def get(self, request):
-    #     return Response({"message": "이 뷰는 GET 요청을 지원하지 않습니다. POST 요청을 사용하세요."}, status=405)
-
     def post(self, request):
+        user = request.user
+        print(f"[DEBUG] 요청 유저: {user}")
+
+        # 요청 데이터 추출
+        audio_file = request.FILES.get('audio_file')
+        content_type = request.data.get('content_type')
+        level = request.data.get('level')
+        title = request.data.get('title')
+        print(f"[DEBUG] 요청 데이터: audio_file={audio_file}, content_type={content_type}, level={level}, title={title}")
+
+        # 필수 필드 확인
+        required_fields = {"audio_file": audio_file, "content_type": content_type, "level": level, "title": title}
+        missing_fields = [key for key, value in required_fields.items() if not value]
+        if missing_fields:
+            print(f"[ERROR] 필수 필드 누락: {missing_fields}")
+            return Response({"error": f"필수 필드가 누락되었습니다: {', '.join(missing_fields)}"}, status=400)
+
+        # 레슨 객체 가져오기
+        lesson_mapping = {"phonics": LessonPhonics, "novel": LessonNovel, "conversation": LessonConversation}
+        lesson_model = lesson_mapping.get(content_type.lower())
+        if not lesson_model:
+            print(f"[ERROR] 잘못된 content_type: {content_type}")
+            return Response({"error": f"Invalid content_type: {content_type}"}, status=400)
+
+        lesson = lesson_model.objects.filter(title=title, level=level).first()
+        if not lesson:
+            print(f"[ERROR] 해당 레슨이 없습니다: content_type={content_type}, title={title}, level={level}")
+            return Response({"error": "해당 레슨이 존재하지 않습니다."}, status=404)
+
+        if not lesson.audio_file:
+            print(f"[ERROR] 레슨에 audio_file이 없습니다: {lesson}")
+            return Response({"error": "표준 오디오 파일이 존재하지 않습니다."}, status=404)
+
+        print(f"[DEBUG] 레슨 정보: {content_type} - Level {lesson.level} - {lesson.title}: {lesson.sentence}")
+        print(f"[DEBUG] 표준 오디오 URL: {lesson.audio_file}")
+
+        # 표준 오디오 파일 URL 및 키 추출
+        standard_audio_url = lesson.audio_file
+        sentence_index = None
+        match = re.search(r'_(\d+)\.wav$', standard_audio_url)
+        if match:
+            sentence_index = int(match.group(1))
+            print(f"[DEBUG] 추출된 sentence_index: {sentence_index}")
+        else:
+            print(f"[ERROR] 표준 오디오 URL 정규식 매칭 실패: {standard_audio_url}")
+            return Response({"error": "표준 오디오 URL에서 sentence_index를 추출할 수 없습니다."}, status=400)
+
+        # 임시 파일 경로 설정
+        user_audio_path = tempfile.NamedTemporaryFile(delete=False).name
+        user_wav_path = tempfile.NamedTemporaryFile(delete=False, suffix=".wav").name
+        standard_audio_path = None  # 나중에 설정
+
         try:
-            # 요청을 보낸 사용자
-            user = request.user
-            print(f"요청 유저: {user}")
-
-            # 요청 데이터 추출
-            audio_file = request.FILES.get('audio_file')
-            content_type = request.data.get('content_type')
-            level = request.data.get('level')
-            title = request.data.get('title')
-            print(f"요청 데이터: audio_file={audio_file}, content_type={content_type}, level={level}, title={title}")
-
-            # 필수 필드 확인
-            required_fields = {
-                "audio_file": audio_file,
-                "content_type": content_type,
-                "level": level,
-                "title": title,
-            }
-            missing_fields = [key for key, value in required_fields.items() if not value]
-            if missing_fields:
-                return Response(
-                    {"error": f"필수 필드가 누락되었습니다: {', '.join(missing_fields)}"},
-                    status=400,
-                )
-
-            # 레슨 정보 가져오기
-            lesson = None
-            if content_type == "phonics":
-                lesson = LessonPhonics.objects.filter(title=title, level=level).first()
-            elif content_type == "novel":
-                lesson = LessonNovel.objects.filter(title=title, level=level).first()
-            elif content_type == "conversation":
-                lesson = LessonConversation.objects.filter(title=title, level=level).first()
-
-            if not lesson or not lesson.audio_file:
-                return Response({"error": "해당 레슨 또는 표준 오디오 파일이 존재하지 않습니다."}, status=404)
-            
-            print(f"레슨 정보: {content_type} - Level {lesson.level} - {lesson.title}: {lesson.sentence}")
-
-            # 표준 오디오 URL 및 키 추출
-            standard_audio_url = lesson.audio_file
-            print(f"표준 오디오 URL: {standard_audio_url}")  # 디버깅: URL 확인
-            match = re.search(r'_(\d+)\.wav$', standard_audio_url)
-            if match:
-                sentence_index = int(match.group(1))
-                print(f"추출된 sentence_index: {sentence_index}")  # 디버깅: 추출된 값 확인
-            else:
-                print("정규식 매칭 실패")  # 디버깅: 매칭 실패 메시지
-                return Response(
-                    {"error": "표준 오디오 URL에서 sentence_index를 추출할 수 없습니다."},
-                    status=400,
-                )
-            standard_audio_key = standard_audio_url.split("/")[-1]
-            print(f"표준 오디오 URL: {standard_audio_url}")
-            print(f"S3에서 요청된 키: {standard_audio_key}")
-
-            # 사용자 오디오 파일 임시 저장
-            user_audio_path = tempfile.NamedTemporaryFile(delete=False).name
+            # 사용자 오디오 파일 저장
             with open(user_audio_path, 'wb') as temp_file:
                 for chunk in audio_file.chunks():
                     temp_file.write(chunk)
-            print(f"임시 사용자 오디오 경로: {user_audio_path}")
+            print(f"[DEBUG] 임시 사용자 오디오 경로: {user_audio_path}")
 
-            # 사용자 오디오 파일을 WAV 형식으로 변환
-            user_wav_path = tempfile.NamedTemporaryFile(delete=False, suffix=".wav").name
+            # 사용자 오디오 WAV 변환
             audio = AudioSegment.from_file(user_audio_path)
             audio.export(user_wav_path, format="wav")
-            print(f"변환된 사용자 오디오 경로: {user_wav_path}")
+            print(f"[DEBUG] 변환된 사용자 오디오 경로: {user_wav_path}")
 
-            # 표준 오디오 파일 다운로드
-            standard_audio_path = tempfile.NamedTemporaryFile(delete=False).name
-            try:
-                s3.download_file(S3_STANDARD_BUCKET, standard_audio_key, standard_audio_path)
-                print(f"표준 오디오 파일 다운로드 성공: {standard_audio_path}")
-            except Exception as e:
-                print(f"표준 오디오 파일 다운로드 실패: {e}")
-                return Response({"error": f"표준 오디오 파일 다운로드 실패: {e}"}, status=404)
+            # 표준 오디오 다운로드
+            response = requests.get(standard_audio_url)
+            if response.status_code == 200:
+                with tempfile.NamedTemporaryFile(delete=False, suffix=".wav") as temp_file:
+                    temp_file.write(response.content)
+                    standard_audio_path = temp_file.name
+                print(f"[DEBUG] 표준 오디오 파일 다운로드 성공: {standard_audio_path}")
+            else:
+                print(f"[ERROR] 표준 오디오 파일 URL 응답 실패: {response.status_code}")
+                return Response({"error": "표준 오디오 파일 다운로드 실패"}, status=404)
 
-            # 오디오 분석 시작
-            try:
-                results = analyze_audio(user_wav_path, standard_audio_path)
-                print(f"오디오 분석 결과: {results}")
-            except Exception as e:
-                print(f"오디오 분석 중 오류 발생: {e}")
-                return Response({"error": f"오디오 분석 중 오류 발생: {e}"}, status=500)
+            # 오디오 분석
+            results = analyze_audio(user_wav_path, standard_audio_path)
+            print(f"[DEBUG] 오디오 분석 결과: {results}")
 
-            # 사용자 오디오 파일 S3에 업로드
+            # 사용자 오디오 S3 업로드
             user_audio_key = f"{user.id}/{content_type}/level_{level}/{title}/user_audio_sentence_{sentence_index}.wav"
-            try:
-                s3.upload_file(user_wav_path, S3_USER_BUCKET, user_audio_key)
-                uploaded_url = f"https://{S3_USER_BUCKET}.s3.amazonaws.com/{user_audio_key}"
-                print(f"사용자 오디오 파일 업로드 성공: {uploaded_url}")
-            except Exception as e:
-                print(f"사용자 오디오 파일 업로드 실패: {e}")
-                return Response({"error": f"사용자 오디오 파일 업로드 실패: {e}"}, status=500)
+            s3.upload_file(user_wav_path, AWS_STORAGE_BUCKET_NAME_USER, user_audio_key)
+            uploaded_url = f"https://{AWS_STORAGE_BUCKET_NAME_USER}.s3.amazonaws.com/{user_audio_key}"
+            print(f"[DEBUG] 사용자 오디오 파일 업로드 성공: {uploaded_url}")
 
-            # 데이터베이스에 발음 채점 결과 저장
-            try:
-                UserPronunciation.objects.update_or_create(
-                    user=user,
-                    content_type=content_type,
-                    defaults={
-                        "audio_file": uploaded_url,
-                        "pitch_similarity": results.get("Pitch Pattern", 0),
-                        "rhythm_similarity": results.get("Rhythm Pattern", 0),
-                        "speed_ratio": results.get("Speed Ratio", 0),
-                        "pause_similarity": results.get("Pause Pattern", 0),
-                        "mispronounced_words": results.get("Mispronounced Words", {}).get("list", []),
-                        "mispronounced_ratio": results.get("Mispronounced Words", {}).get("ratio", 0),
-                        "status": "completed",
-                        "processed_at": now(),
-                    },
-                )
-                print("데이터베이스 저장 성공")
-            except Exception as e:
-                print(f"데이터베이스 저장 실패: {e}")
-                return Response({"error": f"데이터베이스 저장 실패: {e}"}, status=500)
-
-            # 임시 파일 삭제
-            os.remove(user_audio_path)
-            os.remove(user_wav_path)
-            os.remove(standard_audio_path)
-            print("임시 파일 삭제 완료")
-
-            return Response({"message": "파일 업로드 및 채점 성공", "url": uploaded_url}, status=200)
+            # ContentType 가져오기 및 데이터 저장
+            content_type_obj = ContentType.objects.get_for_model(lesson)
+            UserPronunciation.objects.update_or_create(
+                user=user,
+                content_type=content_type_obj,
+                object_id=lesson.id,
+                defaults={
+                    "audio_file": uploaded_url,
+                    "pitch_similarity": results.get("Pitch Pattern", 0),
+                    "rhythm_similarity": results.get("Rhythm Pattern", 0),
+                    "speed_ratio": results.get("Speed Ratio", 0),
+                    "pause_similarity": results.get("Pause Pattern", 0),
+                    "mispronounced_words": results.get("Mispronounced Words", {}).get("list", []),
+                    "mispronounced_ratio": results.get("Mispronounced Words", {}).get("ratio", 0),
+                    "status": "completed",
+                    "processed_at": now(),
+                },
+            )
+            print("[DEBUG] 데이터베이스 저장 성공")
+            return Response({"message": "Data saved successfully", "url": uploaded_url}, status=200)
 
         except Exception as e:
-            print(f"예기치 못한 오류: {e}")
+            print(f"[ERROR] 처리 중 오류 발생: {e}")
             return Response({"error": str(e)}, status=500)
+
+        finally:
+            # 임시 파일 삭제
+            for path in [user_audio_path, user_wav_path, standard_audio_path]:
+                if path and os.path.exists(path):
+                    os.remove(path)
+                    print(f"[DEBUG] 임시 파일 삭제: {path}")

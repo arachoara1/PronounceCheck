@@ -68,8 +68,12 @@ def recognize_speech(y, sr, language_code="en-US"):
 
 def calculate_cosine_similarity(vec1, vec2):
     """벡터 간 코사인 유사도 계산 (길이 패딩 포함)"""
+    # 입력 벡터를 검증
+    vec1 = np.ravel(vec1)  # 다차원 배열을 1차원으로 변환
+    vec2 = np.ravel(vec2)
+
     if len(vec1) == 0 or len(vec2) == 0:
-        return 0.0
+        return 0.0  # 벡터가 비어있는 경우 유사도 0 반환
     max_len = max(len(vec1), len(vec2))
     vec1 = np.pad(vec1, (0, max_len - len(vec1)), mode="constant")
     vec2 = np.pad(vec2, (0, max_len - len(vec2)), mode="constant")
@@ -81,25 +85,29 @@ def analyze_audio(user_audio_path, standard_audio_path):
     y_user, sr_user = preprocess_audio(user_audio_path)
     y_standard, sr_standard = preprocess_audio(standard_audio_path)
 
+    # 음성 인식 결과
     user_timestamps = recognize_speech(y_user, sr_user)
     standard_timestamps = recognize_speech(y_standard, sr_standard)
 
-    # 속도와 유사도 계산
+    # 단어 목록
     user_words = [word["word"] for word in user_timestamps]
     standard_words = [word["word"] for word in standard_timestamps]
 
+    # 발음 오류 계산
     mispronounced_words = list(set(user_words) - set(standard_words))
     mispronounced_ratio = len(mispronounced_words) / len(standard_words) if standard_words else 0.0
 
-    pitch_similarity = calculate_cosine_similarity(
-        librosa.feature.chroma_cqt(y=y_user, sr=sr_user),
-        librosa.feature.chroma_cqt(y=y_standard, sr=sr_standard),
-    )
+    # 피치 유사도 계산 (2차원 -> 1차원으로 변환)
+    chroma_user = librosa.feature.chroma_cqt(y=y_user, sr=sr_user).mean(axis=1)
+    chroma_standard = librosa.feature.chroma_cqt(y=y_standard, sr=sr_standard).mean(axis=1)
+
+    pitch_similarity = calculate_cosine_similarity(chroma_user, chroma_standard)
 
     return {
         "Pitch Pattern": pitch_similarity,
         "Mispronounced Words": {"ratio": mispronounced_ratio, "list": mispronounced_words},
     }
+
 
 
 def process_and_save_results(user_key, standard_key):
