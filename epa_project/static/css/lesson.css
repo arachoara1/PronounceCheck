@@ -54,14 +54,13 @@ h1 {
 
 #lesson-sentence {
     font-size: 24px;
-    margin-bottom: 0px; /* 문장 간 간격 추가 */
+    margin-bottom: 0px;
 }
 
 #lesson-sentence-kor {
-    color: gray; /* 한국어 문장은 회색으로 표시 (선택 사항) */
-    font-style: italic; /* 이탤릭체로 표시 (선택 사항) */
+    color: gray;
+    font-style: italic;
 }
-
 
 .navigation-buttons {
     margin-top: 20px;
@@ -78,11 +77,10 @@ h1 {
 }
 
 .content h3 {
-    font-size: 15px; /* 원하는 크기로 조정 */
-    font-weight: normal; /* 선택 사항: 기본 글씨 두께로 변경 */
-    color: black; /* 선택 사항: 글씨 색상 변경 */
+    font-size: 15px;
+    font-weight: normal;
+    color: black;
 }
-
 
 button {
     padding: 10px 20px;
