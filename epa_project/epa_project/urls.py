@@ -1,10 +1,3 @@
-"""
-URL configuration for epa_project project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
-"""
-
 from django.views.generic import RedirectView
 from django.contrib import admin
 from django.urls import path
@@ -15,12 +8,9 @@ from core.views import (
     mypage_view,
     library_view,
     UserPronunciationView,
-    ProcessAudioLambdaView,
-    UpdatePronunciationScoreView,
-    lesson_view,
     get_lessons,
-    # get_learning_books,
     get_reading_books,
+    lesson_view,
 )
 from django.conf import settings
 from django.conf.urls.static import static
@@ -40,13 +30,9 @@ urlpatterns = [
     path("logout/", logout_view, name="logout"),  # 로그아웃
     path("mypage/", mypage_view, name="mypage"),  # 마이페이지
     path("library/", library_view, name="library"),  # 서재 페이지
-    path("lesson/<str:content_type>/<int:lesson_id>/", lesson_view, name="lesson"),  # 문자열 + 정수 지원  # 학습 화면
-    path("upload/audio/", UserPronunciationView.as_view(), name="upload_audio"),  # 오디오 업로드
-    path('upload_user_pronunciation/', UserPronunciationView.as_view(), name='upload_user_pronunciation'),  # 사용자 녹음 업로드
-    path("process_audio_lambda/", ProcessAudioLambdaView.as_view(), name="process_audio_lambda"),  # 발음 채점
-    path('update_pronunciation_score/', UpdatePronunciationScoreView.as_view(), name='update_pronunciation_score'),
+    path("lesson/<str:content_type>/<int:lesson_id>/", lesson_view, name="lesson"),  # 학습 화면
+    path("upload/audio/", UserPronunciationView.as_view(), name="upload_audio"),  # 사용자 녹음 업로드 및 채점
     path("api/lessons/", get_lessons, name="get_lessons"),  # 학습 도서 API
-    #path("api/learning_books/", get_learning_books, name="get_learning_books"),  # 학습 도서 목록 API
     path("api/reading_books/", get_reading_books, name="get_reading_books"),  # 읽고 있는 도서 API
     path('favicon.ico', RedirectView.as_view(url='/static/favicon.ico', permanent=True)),
 ]

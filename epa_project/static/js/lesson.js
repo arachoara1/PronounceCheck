@@ -4,8 +4,8 @@ let recordingStartTime;
 let recordingInterval;
 
 document.addEventListener("DOMContentLoaded", () => {
-    const sentences = JSON.parse(document.getElementById('sentences-data').textContent);
-    let currentSentenceIndex = parseInt(document.getElementById('current-sentence-index').textContent);
+    const sentences = JSON.parse(document.getElementById("sentences-data").textContent);
+    let currentSentenceIndex = parseInt(document.getElementById("current-sentence-index").textContent);
 
     function updateSentenceView() {
         document.getElementById("lesson-sentence").textContent = sentences[currentSentenceIndex];
@@ -15,17 +15,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 이전/다음 버튼 이벤트 리스너
     document.getElementById("prev-btn").addEventListener("click", () => {
-        if (currentSentenceIndex > 0) {
-            currentSentenceIndex--;
-            updateSentenceView();
-        }
+        const index = parseInt(document.getElementById("current-sentence-index").value, 10);
+        navigateSentence(index - 1);
     });
-
+    
     document.getElementById("next-btn").addEventListener("click", () => {
-        if (currentSentenceIndex < sentences.length - 1) {
-            currentSentenceIndex++;
-            updateSentenceView();
-        }
+        const index = parseInt(document.getElementById("current-sentence-index").value, 10);
+        navigateSentence(index + 1);
     });
 
     // 녹음 관련 버튼 이벤트 리스너
@@ -40,10 +36,10 @@ document.addEventListener("DOMContentLoaded", () => {
 // 녹음 시작
 function startRecording() {
     navigator.mediaDevices.getUserMedia({ audio: true })
-        .then(stream => {
+        .then((stream) => {
             mediaRecorder = new MediaRecorder(stream);
             mediaRecorder.start();
-            
+
             recordingStartTime = Date.now();
             document.getElementById("recording-status").textContent = "녹음 중...";
             document.getElementById("record-btn").disabled = true;
@@ -54,13 +50,13 @@ function startRecording() {
                 document.getElementById("recording-status").textContent = `녹음 중... (${elapsedSeconds}초)`;
             }, 1000);
 
-            mediaRecorder.ondataavailable = event => {
+            mediaRecorder.ondataavailable = (event) => {
                 if (event.data.size > 0) {
                     recordedChunks.push(event.data);
                 }
             };
         })
-        .catch(error => {
+        .catch((error) => {
             console.error("마이크 접근 실패:", error);
             alert("마이크 접근에 실패했습니다. 권한을 확인해주세요.");
         });
@@ -76,7 +72,7 @@ function stopRecording() {
     document.getElementById("retry-btn").disabled = false;
 
     mediaRecorder.onstop = () => {
-        const audioBlob = new Blob(recordedChunks, { type: 'audio/wav' });
+        const audioBlob = new Blob(recordedChunks, { type: "audio/wav" });
         const audioURL = URL.createObjectURL(audioBlob);
         document.getElementById("audio-preview").src = audioURL;
     };
@@ -89,6 +85,7 @@ function retryRecording() {
     document.getElementById("upload-btn").disabled = true;
     document.getElementById("retry-btn").disabled = true;
     document.getElementById("record-btn").disabled = false;
+    document.getElementById("stop-btn").disabled = true;
     document.getElementById("audio-preview").src = "";
 }
 
@@ -99,34 +96,49 @@ async function uploadAudio() {
         return;
     }
 
-    const audioBlob = new Blob(recordedChunks, { type: 'audio/wav' });
+    const audioBlob = new Blob(recordedChunks, { type: "audio/wav" });
     const formData = new FormData();
-    formData.append("user", document.getElementById('user-id').value);
-    formData.append("lesson", document.getElementById('lesson-id').value);
-    formData.append("content_type", document.getElementById('content-type').value);
-    formData.append("level", document.getElementById('level').value);
-    formData.append("title", document.getElementById('title').value);
-    formData.append("sentence", document.getElementById('lesson-sentence').textContent);
     formData.append("audio_file", audioBlob, "recording.wav");
 
+    // HTML에서 CSRF 토큰과 URL 읽기
+    const csrfToken = document.getElementById("csrf-token").value;
+    const uploadUrl = document.getElementById("upload-url").value;
+
+    const lessonIdElement = document.getElementById("lesson-id");
+    const contentTypeElement = document.getElementById("content-type");
+    const levelElement = document.getElementById("level");
+    const titleElement = document.getElementById("title");
+    const sentenceElement = document.getElementById("lesson-sentence");
+    const sentenceIndexElement = document.getElementById("current-sentence-index");
+
+    formData.append("lesson", lessonIdElement ? lessonIdElement.value : "");
+    formData.append("content_type", contentTypeElement ? contentTypeElement.value : "");
+    formData.append("level", levelElement ? levelElement.value : "");
+    formData.append("title", titleElement ? titleElement.value : "");
+    formData.append("sentence", sentenceElement ? sentenceElement.textContent : "");
+    formData.append("sentence_index", sentenceIndexElement ? sentenceIndexElement.value : "");
+
     try {
-        const response = await fetch("/upload-pronunciation/", {
+        const response = await fetch(uploadUrl, {
             method: "POST",
             body: formData,
             headers: {
-                "X-CSRFToken": document.querySelector('[name=csrfmiddlewaretoken]').value
+                "X-CSRFToken": csrfToken
             }
         });
 
         if (response.ok) {
+            const result = await response.json();
             alert("녹음 파일 업로드 성공!");
+            console.log(result);
             document.getElementById("upload-btn").disabled = true;
         } else {
             const error = await response.json();
+            console.error("업로드 실패 응답:", error);
             alert(`업로드 실패: ${error.error}`);
         }
     } catch (error) {
-        console.error("업로드 실패:", error);
+        console.error("업로드 중 오류:", error);
         alert("업로드 중 오류가 발생했습니다.");
     }
 }

@@ -1,12 +1,14 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lesson</title>
     <link rel="stylesheet" href="{% static 'css/lesson.css' %}">
 </head>
+
 <body>
     <div class="lesson-container">
         <!-- 상단 정보 -->
@@ -30,19 +32,20 @@
             <div class="content">
                 <h3>표준 발음 오디오</h3>
                 <audio id="lesson-audio" controls>
-                    <source src="{{ lesson.audio_file }}" type="audio/mpeg">
+                    <source src="{{ lesson.audio_file }}" type="audio/wav">
                     오디오 파일을 재생할 수 없습니다.
                 </audio>
             </div>
 
             <!-- 이전/다음 버튼 -->
             <div class="navigation-buttons">
-                <button id="prev-btn" {% if not is_prev_enabled %}disabled{% endif %} onclick="navigateSentence({{ current_sentence_index|add:'-1' }})">이전</button>
-                <button id="next-btn" {% if not is_next_enabled %}disabled{% endif %} onclick="navigateSentence({{ current_sentence_index|add:'1' }})">다음</button>
+                <button id="prev-btn" data-action="prev" {% if not is_prev_enabled %}disabled{% endif %}>이전</button>
+                <button id="next-btn" data-action="next" {% if not is_next_enabled %}disabled{% endif %}>다음</button>
             </div>
 
             <!-- 녹음 상태 표시 -->
-            <div id="recording-status" style="text-align: center; margin-top: 10px; font-size: 16px; color: red;">녹음 상태: 대기 중</div>
+            <div id="recording-status" style="text-align: center; margin-top: 10px; font-size: 16px; color: red;">녹음 상태:
+                대기 중</div>
 
             <!-- 녹음 및 업로드 버튼 -->
             <div class="buttons">
@@ -80,7 +83,7 @@
                 .then(stream => {
                     mediaRecorder = new MediaRecorder(stream);
                     mediaRecorder.start();
-                    
+
                     // 녹음 시작 시간 저장 및 상태 업데이트
                     recordingStartTime = Date.now();
                     document.getElementById("recording-status").textContent = "녹음 중...";
@@ -142,26 +145,27 @@
             formData.append("sentence", "{{ current_sentence }}");
             formData.append("audio_file", audioBlob, "recording.wav");
 
-            fetch("{% url 'upload_user_pronunciation' %}", {
+            fetch("{% url 'upload_audio' %}", {
                 method: "POST",
                 body: formData,
                 headers: {
                     "X-CSRFToken": "{{ csrf_token }}"
                 }
             })
-            .then(response => {
-                if (response.ok) {
-                    alert("녹음 파일 업로드 성공!");
-                    document.getElementById("upload-btn").disabled = true;
-                } else {
-                    response.json().then(data => alert(`업로드 실패: ${data.error}`));
-                }
-            })
-            .catch(error => {
-                console.error("업로드 실패:", error);
-                alert("업로드 중 오류가 발생했습니다.");
-            });
+                .then(response => {
+                    if (response.ok) {
+                        alert("녹음 파일 업로드 성공!");
+                        document.getElementById("upload-btn").disabled = true;
+                    } else {
+                        response.json().then(data => alert(`업로드 실패: ${data.error}`));
+                    }
+                })
+                .catch(error => {
+                    console.error("업로드 실패:", error);
+                    alert("업로드 중 오류가 발생했습니다.");
+                });
         }
     </script>
 </body>
+
 </html>

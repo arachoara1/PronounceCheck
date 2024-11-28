@@ -29,6 +29,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']  # EC2 퍼블릭 IP 또는 도메인
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://3.39.226.215',
+    'http://localhost',
+    'http://127.0.0.1',
+]
+
 
 # Application definition
 

@@ -10,25 +10,17 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.http import JsonResponse
 from django.conf import settings
-from django.db.models import F, Min
-from django.db import transaction
 from django.contrib.auth.decorators import login_required
-from .models import UserPronunciation, LessonNovel, LessonConversation, LessonPhonics, ReadingLog
-from .serializers import UserPronunciationSerializer, UserSerializer
-from .forms import SignUpForm, LoginForm
-from botocore.exceptions import NoCredentialsError
-from django.contrib.contenttypes.models import ContentType
-from mimetypes import guess_type
-import mimetypes
-from pathlib import Path
-import subprocess
+from core.models import UserPronunciation, LessonNovel, LessonConversation, LessonPhonics, ReadingLog
+from core.forms import SignUpForm, LoginForm
+from core.audio_analysis import analyze_audio # audio_analysis.py의 채점 함수 호출
+from pydub import AudioSegment
 import tempfile
 import boto3
 import json
 import re
 import os
 from dotenv import load_dotenv
-import pdb
 from django.views.decorators.csrf import csrf_exempt
 
 # .env 파일 로드
@@ -48,6 +40,7 @@ s3 = boto3.client(
     aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
     region_name=AWS_REGION,
 )
+
 User = get_user_model()
 
 
@@ -93,7 +86,6 @@ def library_view(request):
 # 학습 뷰
 @login_required
 def lesson_view(request, content_type, lesson_id):
-    # 콘텐츠 타입에 따라 레슨 객체 가져오기
     lesson = None
     if content_type == "phonics":
         lesson = LessonPhonics.objects.filter(id=lesson_id).first()
@@ -101,24 +93,39 @@ def lesson_view(request, content_type, lesson_id):
         lesson = LessonNovel.objects.filter(id=lesson_id).first()
     elif content_type == "conversation":
         lesson = LessonConversation.objects.filter(id=lesson_id).first()
+    
     if not lesson:
-        return redirect("library")  # 콘텐츠가 없으면 서재로 리디렉션
-    # standard_audio_path를 세션에 저장
-    # 문장 리스트 분리
+        return redirect("library")
+
     all_sentences = lesson.sentence.split("\n")
     all_sentences_kor = lesson.sentence_kor.split("\n") if lesson.sentence_kor else []
-    current_sentence_index = int(request.GET.get("sentence_index", 0))
-    current_sentence = all_sentences[current_sentence_index]
-    current_sentence_kor = (
+
+    last_read_log = ReadingLog.objects.filter(
+        user=request.user,
+        lesson_id=lesson_id,
+        content_type=content_type,
+    ).first()
+    current_sentence_index = last_read_log.last_read_sentence_index if last_read_log else 0
+
+    try:
+        current_sentence = all_sentences[current_sentence_index]
+        current_sentence_kor = (
             all_sentences_kor[current_sentence_index]
             if current_sentence_index < len(all_sentences_kor)
             else ""
-    )
+        )
+    except IndexError:
+        current_sentence_index = 0
+        current_sentence = all_sentences[current_sentence_index]
+        current_sentence_kor = (
+            all_sentences_kor[current_sentence_index]
+            if current_sentence_index < len(all_sentences_kor)
+            else ""
+        )
 
-    # 이전/다음 버튼 활성화 여부 설정
     is_prev_enabled = current_sentence_index > 0
     is_next_enabled = current_sentence_index < len(all_sentences) - 1
-    # ReadingLog 업데이트
+
     ReadingLog.objects.update_or_create(
         user=request.user,
         lesson_id=lesson.id,
@@ -130,10 +137,7 @@ def lesson_view(request, content_type, lesson_id):
             "last_read_sentence_index": current_sentence_index,
         },
     )
-    standard_audio_path = lesson.audio_file
-    print(standard_audio_path)
-    request.session["standard_audio_path"] = lesson.audio_file
-    # ** 템플릿 렌더링에 필요한 데이터 추가 **
+
     return render(
         request,
         "lesson.html",
@@ -145,11 +149,12 @@ def lesson_view(request, content_type, lesson_id):
             "is_prev_enabled": is_prev_enabled,
             "is_next_enabled": is_next_enabled,
             "content_type": content_type,
-            "standard_audio_url": lesson.audio_file,  # 표준 음성 파일 URL 추가
-            "sentences": all_sentences,  # 전체 문장 리스트
-            "lesson_title_kor":lesson.title_kor,
+            "standard_audio_url": lesson.audio_file,
+            "sentences": all_sentences,
+            "lesson_title_kor": lesson.title_kor
         },
     )
+
 
 
 # 읽고 있는 도서 (사용자 학습 로그 기반)
@@ -158,26 +163,33 @@ def get_reading_books(request):
     user = request.user
     logs = ReadingLog.objects.filter(user=user).order_by('-last_read_at')
     reading_books = []
-    
+
     for log in logs:
+        lesson = None
         if log.content_type == 'phonics':
             lesson = LessonPhonics.objects.filter(id=log.lesson_id).first()
         elif log.content_type == 'conversation':
             lesson = LessonConversation.objects.filter(id=log.lesson_id).first()
         elif log.content_type == 'novel':
             lesson = LessonNovel.objects.filter(id=log.lesson_id).first()
-            
+        
         if lesson:
+            # URL에서 sentence_index 추출
+            match = re.search(r'_(\d+)\.wav$', lesson.audio_file)
+            sentence_index = int(match.group(1)) if match else 0
+
             book_data = {
                 'lesson_id': log.lesson_id,
                 'content_type': log.content_type,
                 'title': log.title,
                 'level': log.level,
-                'image_path': lesson.image_path if lesson.image_path else None
+                'image_path': lesson.image_path if lesson.image_path else None,
+                'sentence_index': sentence_index,  # 추가
             }
             reading_books.append(book_data)
 
     return JsonResponse(reading_books, safe=False)
+
 
 # 캐릭터 업데이트 뷰
 @csrf_exempt
@@ -306,218 +318,142 @@ def logout_view(request):
     return redirect('login')
 
 
-# S3 경로 생성
-def generate_s3_path(user_id, content_type, level, title, line_number):
-    """
-    사용자 음성 파일의 S3 경로를 생성
-    """
-    # line_number에 이미 "line_"이 포함되어 있으므로 추가하지 않음
-    return f"{user_id}/{content_type}/level_{level}/{title}/{title}_{line_number}.wav"
-
-
-# 표준 음성 경로 생성 함수
-def generate_s3_path_for_standard(content_type, level, title, line_number):
-    return f"{S3_STANDARD_BUCKET}/{content_type}/level_{level}/{title}/audio_line_{line_number}.wav"
-
-
-# 문장 번호 추출
-def get_sentence_number_from_url(audio_file_url):
-    """
-    표준 음성 파일 URL에서 문장 번호를 추출
-    """
-    match = re.search(r"line_\d+", audio_file_url)
-    if match:
-        return match.group()  # "line_숫자" 형태 반환
-    raise ValueError("URL에서 문장 번호를 찾을 수 없습니다.")
-
-
-# 업로드된 파일 형식 검증
-def validate_audio_file(file):
-    # 파일 이름에서 MIME 타입 추정
-    mime_type, _ = mimetypes.guess_type(file.name)
-    # 지원되는 MIME 타입 목록
-    valid_mime_types = ['audio/wav', 'audio/x-wav']
-    # 지원되는 파일 확장자 목록
-    valid_extensions = ['.wav']
-    # 확장자 확인
-    file_extension = Path(file.name).suffix.lower()
-    # MIME 타입과 확장자 검증
-    if mime_type not in valid_mime_types or file_extension not in valid_extensions:
-        raise ValueError("지원되지 않는 파일 형식입니다. .wav 파일만 업로드 가능합니다.")
-    
-
-# S3 업로드 및 데이터 저장 뷰
+# 사용자 녹음 파일 처리 및 채점 뷰
+# 사용자 녹음 파일 임시 저장 -> 채점 & S3 저장 -> 채점 결과 및 S3 URL 데이터베이스 저장
 class UserPronunciationView(APIView):
     parser_classes = [MultiPartParser, FormParser]
+
+    # def get(self, request):
+    #     return Response({"message": "이 뷰는 GET 요청을 지원하지 않습니다. POST 요청을 사용하세요."}, status=405)
+
     def post(self, request):
         try:
+            # 요청을 보낸 사용자
+            user = request.user
+            print(f"요청 유저: {user}")
+
+            # 요청 데이터 추출
             audio_file = request.FILES.get('audio_file')
-            user_id = request.data.get('user')
             content_type = request.data.get('content_type')
             level = request.data.get('level')
             title = request.data.get('title')
-            sentence = request.data.get('sentence')
-            standard_audio_path = request.session.get("standard_audio_path")
-            # 검증
-            user = User.objects.get(id=user_id)
+            print(f"요청 데이터: audio_file={audio_file}, content_type={content_type}, level={level}, title={title}")
+
+            # 필수 필드 확인
+            required_fields = {
+                "audio_file": audio_file,
+                "content_type": content_type,
+                "level": level,
+                "title": title,
+            }
+            missing_fields = [key for key, value in required_fields.items() if not value]
+            if missing_fields:
+                return Response(
+                    {"error": f"필수 필드가 누락되었습니다: {', '.join(missing_fields)}"},
+                    status=400,
+                )
+
+            # 레슨 정보 가져오기
+            lesson = None
             if content_type == "phonics":
-                content_type_obj = ContentType.objects.get_for_model(LessonPhonics)
+                lesson = LessonPhonics.objects.filter(title=title, level=level).first()
             elif content_type == "novel":
-                content_type_obj = ContentType.objects.get_for_model(LessonNovel)
+                lesson = LessonNovel.objects.filter(title=title, level=level).first()
             elif content_type == "conversation":
-                content_type_obj = ContentType.objects.get_for_model(LessonConversation)
+                lesson = LessonConversation.objects.filter(title=title, level=level).first()
+
+            if not lesson or not lesson.audio_file:
+                return Response({"error": "해당 레슨 또는 표준 오디오 파일이 존재하지 않습니다."}, status=404)
+            
+            print(f"레슨 정보: {content_type} - Level {lesson.level} - {lesson.title}: {lesson.sentence}")
+
+            # 표준 오디오 URL 및 키 추출
+            standard_audio_url = lesson.audio_file
+            print(f"표준 오디오 URL: {standard_audio_url}")  # 디버깅: URL 확인
+            match = re.search(r'_(\d+)\.wav$', standard_audio_url)
+            if match:
+                sentence_index = int(match.group(1))
+                print(f"추출된 sentence_index: {sentence_index}")  # 디버깅: 추출된 값 확인
             else:
-                return Response({"error": "Invalid content_type"}, status=400)
-            line_number = get_sentence_number_from_url(standard_audio_path)
-            user_audio_path = generate_s3_path(user.id, content_type, level, title, line_number)
-            validate_audio_file(audio_file)
-            # S3 업로드
-            s3.upload_fileobj(audio_file, S3_USER_BUCKET, user_audio_path)
-            uploaded_url = f"https://{S3_USER_BUCKET}.s3.{AWS_REGION}.amazonaws.com/{user_audio_path}"
-            # 데이터 저장
-            UserPronunciation.objects.update_or_create(
-                user=user,
-                object_id=user.id,
-                content_type=content_type_obj,
-                defaults={
-                    "audio_file": uploaded_url,
-                    "status": "pending",
-                },
-            )
-            return Response({'message': '음성 파일이 S3에 성공적으로 업로드되었습니다.', 'url': uploaded_url}, status=status.HTTP_200_OK)
-        except Exception as e:
-            return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+                print("정규식 매칭 실패")  # 디버깅: 매칭 실패 메시지
+                return Response(
+                    {"error": "표준 오디오 URL에서 sentence_index를 추출할 수 없습니다."},
+                    status=400,
+                )
+            standard_audio_key = standard_audio_url.split("/")[-1]
+            print(f"표준 오디오 URL: {standard_audio_url}")
+            print(f"S3에서 요청된 키: {standard_audio_key}")
 
+            # 사용자 오디오 파일 임시 저장
+            user_audio_path = tempfile.NamedTemporaryFile(delete=False).name
+            with open(user_audio_path, 'wb') as temp_file:
+                for chunk in audio_file.chunks():
+                    temp_file.write(chunk)
+            print(f"임시 사용자 오디오 경로: {user_audio_path}")
 
-# Lambda가 호출할 엔드포인트 (채점 함수 호출)
-class ProcessAudioLambdaView(APIView):
-    """
-    Lambda에서 호출하여 채점 함수 실행
-    """
-    def post(self, request):
-        try:
-            # Lambda로부터 전달된 데이터 가져오기
-            user_audio_key = request.data.get("user_audio_key")
-            standard_audio_key = request.data.get("standard_audio_key")
+            # 사용자 오디오 파일을 WAV 형식으로 변환
+            user_wav_path = tempfile.NamedTemporaryFile(delete=False, suffix=".wav").name
+            audio = AudioSegment.from_file(user_audio_path)
+            audio.export(user_wav_path, format="wav")
+            print(f"변환된 사용자 오디오 경로: {user_wav_path}")
 
-            if not user_audio_key or not standard_audio_key:
-                return Response({'error': 'S3 오디오 키가 제공되지 않았습니다.'}, status=status.HTTP_400_BAD_REQUEST)
+            # 표준 오디오 파일 다운로드
+            standard_audio_path = tempfile.NamedTemporaryFile(delete=False).name
+            try:
+                s3.download_file(S3_STANDARD_BUCKET, standard_audio_key, standard_audio_path)
+                print(f"표준 오디오 파일 다운로드 성공: {standard_audio_path}")
+            except Exception as e:
+                print(f"표준 오디오 파일 다운로드 실패: {e}")
+                return Response({"error": f"표준 오디오 파일 다운로드 실패: {e}"}, status=404)
 
-            # S3에서 파일 다운로드
-            s3 = boto3.client('s3')
-            user_audio_path = "/tmp/user_audio.wav"
-            ref_audio_path = "/tmp/ref_audio.wav"
+            # 오디오 분석 시작
+            try:
+                results = analyze_audio(user_wav_path, standard_audio_path)
+                print(f"오디오 분석 결과: {results}")
+            except Exception as e:
+                print(f"오디오 분석 중 오류 발생: {e}")
+                return Response({"error": f"오디오 분석 중 오류 발생: {e}"}, status=500)
 
-            s3.download_file("user-audio-file", user_audio_key, user_audio_path)
-            s3.download_file("standard-audio-file", standard_audio_key, ref_audio_path)
+            # 사용자 오디오 파일 S3에 업로드
+            user_audio_key = f"{user.id}/{content_type}/level_{level}/{title}/user_audio_sentence_{sentence_index}.wav"
+            try:
+                s3.upload_file(user_wav_path, S3_USER_BUCKET, user_audio_key)
+                uploaded_url = f"https://{S3_USER_BUCKET}.s3.amazonaws.com/{user_audio_key}"
+                print(f"사용자 오디오 파일 업로드 성공: {uploaded_url}")
+            except Exception as e:
+                print(f"사용자 오디오 파일 업로드 실패: {e}")
+                return Response({"error": f"사용자 오디오 파일 업로드 실패: {e}"}, status=500)
 
-            # 채점 함수 호출
-            results = analyze_audio(user_audio_path, ref_audio_path)
-
-            # 채점 결과 저장
-            pitch_similarity = results["Pitch Pattern"]
-            rhythm_similarity = results["Rhythm Pattern"]
-            speed_ratio = results["Speed Ratio"]
-            pause_similarity = results["Pause Pattern"]
-            mispronounced_words = results["Mispronounced Words"]["list"]
-            mispronounced_ratio = results["Mispronounced Words"]["ratio"]
-
-            # UserPronunciation 데이터베이스 업데이트
-            user_audio_url = f"https://user-audio-file.s3.amazonaws.com/{user_audio_key}"
-            pronunciation = UserPronunciation.objects.filter(audio_file=user_audio_url).first()
-            if not pronunciation:
-                return Response({"error": "UserPronunciation 데이터가 존재하지 않습니다."}, status=status.HTTP_404_NOT_FOUND)
-
-            pronunciation.pitch_similarity = pitch_similarity
-            pronunciation.rhythm_similarity = rhythm_similarity
-            pronunciation.speed_ratio = speed_ratio
-            pronunciation.pause_similarity = pause_similarity
-            pronunciation.mispronounced_words = mispronounced_words
-            pronunciation.mispronounced_ratio = mispronounced_ratio
-            pronunciation.status = "completed"
-            pronunciation.processed_at = now()
-            pronunciation.save()
+            # 데이터베이스에 발음 채점 결과 저장
+            try:
+                UserPronunciation.objects.update_or_create(
+                    user=user,
+                    content_type=content_type,
+                    defaults={
+                        "audio_file": uploaded_url,
+                        "pitch_similarity": results.get("Pitch Pattern", 0),
+                        "rhythm_similarity": results.get("Rhythm Pattern", 0),
+                        "speed_ratio": results.get("Speed Ratio", 0),
+                        "pause_similarity": results.get("Pause Pattern", 0),
+                        "mispronounced_words": results.get("Mispronounced Words", {}).get("list", []),
+                        "mispronounced_ratio": results.get("Mispronounced Words", {}).get("ratio", 0),
+                        "status": "completed",
+                        "processed_at": now(),
+                    },
+                )
+                print("데이터베이스 저장 성공")
+            except Exception as e:
+                print(f"데이터베이스 저장 실패: {e}")
+                return Response({"error": f"데이터베이스 저장 실패: {e}"}, status=500)
 
             # 임시 파일 삭제
             os.remove(user_audio_path)
-            os.remove(ref_audio_path)
+            os.remove(user_wav_path)
+            os.remove(standard_audio_path)
+            print("임시 파일 삭제 완료")
 
-            return Response({"message": "채점 완료 및 데이터베이스 업데이트 성공"}, status=status.HTTP_200_OK)
+            return Response({"message": "파일 업로드 및 채점 성공", "url": uploaded_url}, status=200)
 
         except Exception as e:
-            return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-
-# 발음 채점 결과 postgresql 업로드
-class UpdatePronunciationScoreView(APIView):
-    def post(self, request):
-        user_audio_path = None
-        ref_audio_path = None
-        try:
-            # 요청 데이터 확인
-            user_id = request.data.get("user_id")  # 사용자 ID
-            lesson_id = request.data.get("lesson_id")  # 레슨 ID
-            content_type = request.data.get("content_type")  # 콘텐츠 타입 (phonics, novel, conversation)
-            title = request.data.get("title")  # 레슨 제목
-            level = request.data.get("level")  # 레벨
-            standard_audio_url = request.data.get("standard_audio_url")  # 표준 음성 URL
-            if not all([user_id, lesson_id, content_type, title, level, standard_audio_url]):
-                return Response({'error': '필수 필드가 누락되었습니다.'}, status=status.HTTP_400_BAD_REQUEST)
-            # 표준 음성에서 문장 번호 추출
-            try:
-                line_number = get_sentence_number_from_url(standard_audio_url)
-            except ValueError as e:
-                return Response({'error': f'표준 음성 URL에서 문장 번호를 추출할 수 없습니다: {str(e)}'}, status=status.HTTP_400_BAD_REQUEST)
-            # 사용자 음성 경로 생성
-            user_audio_key = generate_s3_path(user_id, content_type, level, title, line_number)
-            standard_audio_key = generate_s3_path_for_standard(content_type, level, title, line_number)
-            # S3에서 사용자와 표준 음성 파일 다운로드
-            user_audio_path = tempfile.NamedTemporaryFile(delete=False).name
-            ref_audio_path = tempfile.NamedTemporaryFile(delete=False).name
-            try:
-                s3.download_file(S3_USER_BUCKET, user_audio_key, user_audio_path)
-                s3.download_file(S3_STANDARD_BUCKET, standard_audio_key, ref_audio_path)
-            except Exception as e:
-                return Response({'error': f'S3 파일 다운로드 실패: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-            # 발음 채점 함수 호출
-            try:
-                results = analyze_audio(user_audio_path, ref_audio_path)
-            except Exception as e:
-                return Response({'error': f'채점 함수 실행 중 오류 발생: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-            # 채점 결과 검증
-            required_keys = ["Pitch Pattern", "Rhythm Pattern", "Speed Ratio", "Pause Pattern", "Mispronounced Words"]
-            if not isinstance(results, dict) or not all(key in results for key in required_keys):
-                return Response({'error': '채점 결과 데이터가 올바르지 않습니다.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-            # 채점 결과 파싱
-            pitch_similarity = results["Pitch Pattern"]
-            rhythm_similarity = results["Rhythm Pattern"]
-            speed_ratio = results["Speed Ratio"]
-            pause_similarity = results["Pause Pattern"]
-            mispronounced_words = results["Mispronounced Words"]["list"]
-            mispronounced_ratio = results["Mispronounced Words"]["ratio"]
-            # S3 경로에서 URL 생성
-            user_audio_url = f"https://{S3_USER_BUCKET}.s3.amazonaws.com/{user_audio_key}"
-            # UserPronunciation 데이터베이스 업데이트
-            pronunciation = UserPronunciation.objects.filter(audio_file=user_audio_url).first()
-            if not pronunciation:
-                return Response({"error": "UserPronunciation 데이터가 존재하지 않습니다."}, status=status.HTTP_404_NOT_FOUND)
-            # 채점 결과 업데이트
-            pronunciation.pitch_similarity = pitch_similarity
-            pronunciation.rhythm_similarity = rhythm_similarity
-            pronunciation.speed_ratio = speed_ratio
-            pronunciation.pause_similarity = pause_similarity
-            pronunciation.mispronounced_words = mispronounced_words
-            pronunciation.mispronounced_ratio = mispronounced_ratio
-            pronunciation.status = "completed"
-            pronunciation.processed_at = now()
-            pronunciation.save()
-            return Response({"message": "점수 업데이트 성공"}, status=status.HTTP_200_OK)
-        except NoCredentialsError as e:
-            return Response({'error': f'AWS 자격 증명이 누락되었습니다: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        except Exception as e:
-            return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        finally:
-            if user_audio_path and os.path.exists(user_audio_path):
-                os.remove(user_audio_path)
-            if ref_audio_path and os.path.exists(ref_audio_path):
-                os.remove(ref_audio_path)
+            print(f"예기치 못한 오류: {e}")
+            return Response({"error": str(e)}, status=500)

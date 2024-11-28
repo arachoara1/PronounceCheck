@@ -84,7 +84,7 @@ h1 {
 
 button {
     padding: 10px 20px;
-    background-color: #4CAF50;
+    background-color: #3976d8;
     color: white;
     border: none;
     border-radius: 5px;
@@ -93,7 +93,8 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #67a0fc;
+    color: #000000;
 }
 
 button:disabled {

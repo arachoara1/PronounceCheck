@@ -76,24 +76,24 @@ def calculate_cosine_similarity(vec1, vec2):
     return 1 - cosine(vec1, vec2)
 
 
-def analyze_audio(user_audio_path, ref_audio_path):
+def analyze_audio(user_audio_path, standard_audio_path):
     """사용자와 기준 음성을 분석하여 결과 반환"""
     y_user, sr_user = preprocess_audio(user_audio_path)
-    y_ref, sr_ref = preprocess_audio(ref_audio_path)
+    y_standard, sr_standard = preprocess_audio(standard_audio_path)
 
     user_timestamps = recognize_speech(y_user, sr_user)
-    ref_timestamps = recognize_speech(y_ref, sr_ref)
+    standard_timestamps = recognize_speech(y_standard, sr_standard)
 
     # 속도와 유사도 계산
     user_words = [word["word"] for word in user_timestamps]
-    ref_words = [word["word"] for word in ref_timestamps]
+    standard_words = [word["word"] for word in standard_timestamps]
 
-    mispronounced_words = list(set(user_words) - set(ref_words))
-    mispronounced_ratio = len(mispronounced_words) / len(ref_words) if ref_words else 0.0
+    mispronounced_words = list(set(user_words) - set(standard_words))
+    mispronounced_ratio = len(mispronounced_words) / len(standard_words) if standard_words else 0.0
 
     pitch_similarity = calculate_cosine_similarity(
         librosa.feature.chroma_cqt(y=y_user, sr=sr_user),
-        librosa.feature.chroma_cqt(y=y_ref, sr=sr_ref),
+        librosa.feature.chroma_cqt(y=y_standard, sr=sr_standard),
     )
 
     return {
@@ -102,18 +102,18 @@ def analyze_audio(user_audio_path, ref_audio_path):
     }
 
 
-def process_and_save_results(user_key, ref_key):
+def process_and_save_results(user_key, standard_key):
     """S3 파일을 다운로드하고 분석 결과를 저장"""
     user_audio_path = "/tmp/user_audio.wav"
-    ref_audio_path = "/tmp/ref_audio.wav"
+    standard_audio_path = "/tmp/standard_audio.wav"
 
     try:
         # S3에서 파일 다운로드
         s3.download_file(USER_BUCKET, user_key, user_audio_path)
-        s3.download_file(STANDARD_BUCKET, ref_key, ref_audio_path)
+        s3.download_file(STANDARD_BUCKET, standard_key, standard_audio_path)
 
         # 분석 함수 호출
-        results = analyze_audio(user_audio_path, ref_audio_path)
+        results = analyze_audio(user_audio_path, standard_audio_path)
 
         # 결과 저장 (예시: UserPronunciation 업데이트)
         user_audio_url = f"https://{USER_BUCKET}.s3.amazonaws.com/{user_key}"
@@ -132,5 +132,5 @@ def process_and_save_results(user_key, ref_key):
         # 임시 파일 삭제
         if os.path.exists(user_audio_path):
             os.remove(user_audio_path)
-        if os.path.exists(ref_audio_path):
-            os.remove(ref_audio_path)
+        if os.path.exists(standard_audio_path):
+            os.remove(standard_audio_path)

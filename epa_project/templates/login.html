@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,42 +8,67 @@
         body {
             font-family: Arial, sans-serif;
             margin: 2rem;
+            background-color: #f9f9f9;
         }
         .form-container {
             max-width: 400px;
             margin: auto;
-            padding: 1rem;
+            padding: 1.5rem;
+            background: #ffffff;
             border: 1px solid #ddd;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         h2 {
             text-align: center;
+            color: #333;
+            margin-bottom: 1.5rem;
         }
         label {
             font-weight: bold;
+            display: block;
+            margin-bottom: 0.5rem;
         }
         .form-field {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .form-field input {
+            width: 100%;
+            padding: 0.75rem;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
         }
         button {
             width: 100%;
-            padding: 0.5rem;
-            background-color: #4CAF50;
+            padding: 0.75rem;
+            font-size: 1rem;
+            background-color: #3976d8;
             color: white;
             border: none;
-            border-radius: 3px;
+            border-radius: 4px;
             cursor: pointer;
         }
         button:hover {
-            background-color: #45a049;
+            background-color: #67a0fc;
+            color: #000000;
         }
         .redirect-links {
             text-align: center;
             margin-top: 1rem;
         }
+        .redirect-links a {
+            text-decoration: none;
+            color: #3976d8;
+        }
+        .redirect-links a:hover {
+            text-decoration: underline;
+        }
         .error {
             color: red;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
             text-align: center;
         }
     </style>
@@ -51,6 +76,8 @@
 <body>
     <div class="form-container">
         <h2>로그인</h2>
+
+        <!-- 에러 메시지 출력 -->
         {% if messages %}
             <div class="error">
                 {% for message in messages %}
@@ -58,14 +85,36 @@
                 {% endfor %}
             </div>
         {% endif %}
+
+        <!-- 로그인 폼 -->
         <form method="POST">
             {% csrf_token %}
-            
-            <table>
-                {{ form.as_table }}
-            </table>
+            <div class="form-field">
+                <label for="id_username">아이디</label>
+                <input
+                    type="text"
+                    id="id_username"
+                    name="username"
+                    placeholder="아이디를 입력하세요"
+                    aria-label="아이디"
+                    required
+                >
+            </div>
+            <div class="form-field">
+                <label for="id_password">비밀번호</label>
+                <input
+                    type="password"
+                    id="id_password"
+                    name="password"
+                    placeholder="비밀번호를 입력하세요"
+                    aria-label="비밀번호"
+                    required
+                >
+            </div>
             <button type="submit">로그인</button>
         </form>
+
+        <!-- 회원가입 리다이렉트 -->
         <div class="redirect-links">
             <p><a href="{% url 'signup' %}">계정이 없으신가요? 회원가입</a></p>
         </div>

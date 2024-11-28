@@ -115,7 +115,7 @@ select {
     display: block;
     margin: 20px auto;
     padding: 10px 20px;
-    background-color: #4CAF50;
+    background-color: #3976d8;
     color: white;
     text-align: center;
     text-decoration: none;
@@ -123,6 +123,7 @@ select {
 }
 
 .button:hover {
-    background-color: #45a049;
+    background-color: #67a0fc;
+    color: #000000;
 }
 
